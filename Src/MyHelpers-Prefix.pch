@@ -5,5 +5,53 @@
 //
 
 #ifdef __OBJC__
-    #import <Foundation/Foundation.h>
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+//=== global level headers
+
+#import "MacrosBase.h"
+#import "GlobalBase.h"
+
+//=== classes
+
+#import "Base64.h"
+
+#import "CoreDataCtrl.h"
+
+#import "AdvancedList.h"
+#import "AdvancedTableCtrl.h"
+
+#import "ViewVisibilityCtrl.h"
+#import "WebVisibilityCtrl.h"
+#import "RemoteImageView.h"
+
+//=== categories
+
+#import "NSObject+Helpers.h"
+#import "NSObject+ParseHelpers.h"
+#import "NSString+Helpers.h"
+
+#import "NSArray+Helpers.h"
+#import "NSArray+ParseHelpers.h"
+#import "NSMutableArray+Helpers.h"
+#import "NSMutableDictionary+Helpers.h"
+#import "AdvancedList+ParseHelpers.h"
+
+#import "UIResponder+Helpers.h"
+
+#import "UIStoryboard+Helpers.h"
+#import "UIViewController+Helpers.h"
+#import "UIViewController+KeyboardHelpers.h"
+#import "UINavigationController+Helpers.h"
+
+#import "UIView+Helpers.h"
+#import "UITableView+Helpers.h"
+#import "UIScrollView+Helpers.h"
+#import "UIImageView+Helpers.h"
+#import "UIImage+Helpers.h"
+
+#import "UIColor+Helpers.h"
+
 #endif

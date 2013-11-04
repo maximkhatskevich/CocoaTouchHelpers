@@ -61,13 +61,27 @@
         _defaultReloadAnimation = UITableViewRowAnimationNone; // default for UITableView
         _shouldReloadTableView = YES;
         
-        _content = [AdvancedList new];
-        _content.delegate = self;
-        
         _initialCurrentItemIndex = NSNotFound; // do not autoselect by default
         
         _removeCellsBeforeReload = YES;
         _scrollToTopOnReload = YES;
+        
+        //===
+        
+        _content = [AdvancedList new];
+        
+        weakSelfMacro;
+        _content.onDidChangeCurrentItem = ^(AdvancedList *list){
+            
+            [weakSelf selectCurrentRow];
+            
+            //===
+            
+            if (weakSelf.parentCtrl)
+            {
+                [weakSelf.parentCtrl applyItem:list.currentItem];
+            }
+        };
     }
     return self;
 }
@@ -248,20 +262,6 @@
         {
             self.initialCurrentItemIndex = 0;
         }
-    }
-}
-
-#pragma mark - UIAdvancedListDelegate
-
-- (void)advancedListDidChangeCurrentItem:(AdvancedList *)list
-{
-    [self selectCurrentRow];
-    
-    //===
-    
-    if (self.parentCtrl)
-    {
-        [self.parentCtrl applyItem:list.currentItem];
     }
 }
 

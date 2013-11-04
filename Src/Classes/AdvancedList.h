@@ -10,29 +10,10 @@
 
 @class AdvancedList;
 
-#pragma mark - Protocol
+#pragma mark - Notification blocks
 
-@protocol AdvancedListDelegate <NSObject>
-
-@optional
-
-- (void)advancedList:(AdvancedList *)list willChange:(NSKeyValueChange)change
-     valuesAtIndexes:(NSIndexSet *)indexes;
-- (void)advancedList:(AdvancedList *)list didChange:(NSKeyValueChange)change
-     valuesAtIndexes:(NSIndexSet *)indexes;
-
-- (void)advancedList:(AdvancedList *)list willInsertValuesAtIndexes:(NSIndexSet *)indexes;
-- (void)advancedList:(AdvancedList *)list didInsertValuesAtIndexes:(NSIndexSet *)indexes;
-
-- (void)advancedList:(AdvancedList *)list willReplaceValuesAtIndexes:(NSIndexSet *)indexes;
-- (void)advancedList:(AdvancedList *)list didReplaceValuesAtIndexes:(NSIndexSet *)indexes;
-
-- (void)advancedList:(AdvancedList *)list willRemoveValuesAtIndexes:(NSIndexSet *)indexes;
-- (void)advancedList:(AdvancedList *)list didRemoveValuesAtIndexes:(NSIndexSet *)indexes;
-
-- (void)advancedListDidChangeCurrentItem:(AdvancedList *)list;
-
-@end
+typedef void (^ALChangeValuesAtIndexesBlock)(AdvancedList *list, NSIndexSet *indexes);
+typedef void (^ALBlock)(AdvancedList *list);
 
 #pragma mark - Class
 
@@ -46,7 +27,16 @@
 @property (readonly, nonatomic) id oldCurrentItem;
 @property (readonly) NSUInteger oldCurrentItemIndex;
 
-@property (nonatomic, weak) id<AdvancedListDelegate> delegate;
+@property (strong, nonatomic) ALChangeValuesAtIndexesBlock onWillInsertValuesAtIndexes;
+@property (strong, nonatomic) ALChangeValuesAtIndexesBlock onDidInsertValuesAtIndexes;
+
+@property (strong, nonatomic) ALChangeValuesAtIndexesBlock onWillReplaceValuesAtIndexes;
+@property (strong, nonatomic) ALChangeValuesAtIndexesBlock onDidReplaceValuesAtIndexes;
+
+@property (strong, nonatomic) ALChangeValuesAtIndexesBlock onWillRemoveValuesAtIndexes;
+@property (strong, nonatomic) ALChangeValuesAtIndexesBlock onDidRemoveValuesAtIndexes;
+
+@property (strong, nonatomic) ALBlock onDidChangeCurrentItem;
 
 - (void)resetCurrentItem;
 - (void)setItemCurrent:(id)newCurrentItem;

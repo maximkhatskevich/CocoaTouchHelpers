@@ -136,13 +136,10 @@
 
 - (void)didChangeValueForKey:(NSString *)key
 {
-    if ([key isEqualToString:@"currentItem"])
+    if ([key isEqualToString:@"currentItem"] &&
+        self.onDidChangeCurrentItem)
     {
-        if (self.delegate &&
-            [self.delegate respondsToSelector:@selector(advancedListDidChangeCurrentItem:)])
-        {
-            [self.delegate advancedListDidChangeCurrentItem:self];
-        }
+        self.onDidChangeCurrentItem(self);
     }
 }
 
@@ -152,41 +149,31 @@
 {
     if ([key isEqualToString:@"content"])
     {
-        if (self.delegate)
+        switch (change)
         {
-            switch (change)
-            {
-                case NSKeyValueChangeInsertion:
-                    if ([self.delegate respondsToSelector:@selector(advancedList:willInsertValuesAtIndexes:)])
-                    {
-                        [self.delegate advancedList:self willInsertValuesAtIndexes:indexes];
-                    }
-                    break;
-                    
-                case NSKeyValueChangeReplacement:
-                    if ([self.delegate respondsToSelector:@selector(advancedList:willReplaceValuesAtIndexes:)])
-                    {
-                        [self.delegate advancedList:self willReplaceValuesAtIndexes:indexes];
-                    }
-                    break;
-                    
-                case NSKeyValueChangeRemoval:
-                    if ([self.delegate respondsToSelector:@selector(advancedList:willRemoveValuesAtIndexes:)])
-                    {
-                        [self.delegate advancedList:self willRemoveValuesAtIndexes:indexes];
-                    }
-                    break;
-                    
-                default:
-                    break;
-            }
-            
-            //===
-            
-            if ([self.delegate respondsToSelector:@selector(advancedList:willChange:valuesAtIndexes:)])
-            {
-                [self.delegate advancedList:self willChange:change valuesAtIndexes:indexes];
-            }
+            case NSKeyValueChangeInsertion:
+                if (self.onWillInsertValuesAtIndexes)
+                {
+                    self.onWillInsertValuesAtIndexes(self, indexes);
+                }
+                break;
+                
+            case NSKeyValueChangeReplacement:
+                if (self.onWillReplaceValuesAtIndexes)
+                {
+                    self.onWillReplaceValuesAtIndexes(self, indexes);
+                }
+                break;
+                
+            case NSKeyValueChangeRemoval:
+                if (self.onWillRemoveValuesAtIndexes)
+                {
+                    self.onWillRemoveValuesAtIndexes(self, indexes);
+                }
+                break;
+                
+            default:
+                break;
         }
     }
 }
@@ -197,48 +184,38 @@
 {
     if ([key isEqualToString:@"content"])
     {
-        if (self.delegate)
+        switch (change)
         {
-            switch (change)
-            {
-                case NSKeyValueChangeInsertion:
-                    if ([self.delegate respondsToSelector:@selector(advancedList:didInsertValuesAtIndexes:)])
-                    {
-                        [self.delegate advancedList:self didInsertValuesAtIndexes:indexes];
-                    }
-                    break;
-                    
-                case NSKeyValueChangeReplacement:
-                    if ([self.delegate respondsToSelector:@selector(advancedList:didReplaceValuesAtIndexes:)])
-                    {
-                        [self.delegate advancedList:self didReplaceValuesAtIndexes:indexes];
-                    }
-                    break;
-                    
-                case NSKeyValueChangeRemoval:
-                    if ([self.delegate respondsToSelector:@selector(advancedList:didRemoveValuesAtIndexes:)])
-                    {
-                        [self.delegate advancedList:self didRemoveValuesAtIndexes:indexes];
-                    }
-                    break;
-                    
-                default:
-                    break;
-            }
-            
-            //===
-            
-            if ([self.delegate respondsToSelector:@selector(advancedList:didChange:valuesAtIndexes:)])
-            {
-                [self.delegate advancedList:self didChange:change valuesAtIndexes:indexes];
-            }
+            case NSKeyValueChangeInsertion:
+                if (self.onDidInsertValuesAtIndexes)
+                {
+                    self.onDidInsertValuesAtIndexes(self, indexes);
+                }
+                break;
+                
+            case NSKeyValueChangeReplacement:
+                if (self.onDidReplaceValuesAtIndexes)
+                {
+                    self.onDidReplaceValuesAtIndexes(self, indexes);
+                }
+                break;
+                
+            case NSKeyValueChangeRemoval:
+                if (self.onDidRemoveValuesAtIndexes)
+                {
+                    self.onDidRemoveValuesAtIndexes(self, indexes);
+                }
+                break;
+                
+            default:
+                break;
         }
         
         //===
         
         if (change == NSKeyValueChangeRemoval)
         {
-            // checkCurrentItem:
+            // re-set current item to validate it:
             [self setItemCurrent:self.currentItem];
         }
         else if (change == NSKeyValueChangeReplacement)

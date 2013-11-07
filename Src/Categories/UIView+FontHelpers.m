@@ -8,6 +8,12 @@
 
 #import "UIView+FontHelpers.h"
 
+//===
+
+NSString *defaultFontName = nil; // do not forget to define it before use!
+
+//===
+
 @implementation UIView (FontHelpers)
 
 - (void)applyFontWithName:(NSString *)fontName andSize:(CGFloat)fontSize

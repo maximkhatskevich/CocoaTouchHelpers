@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface AdvancedTableCtrl : NSObject
-<UITableViewDataSource, UITableViewDelegate, AdvancedListDelegate>
+<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) NSObject *parentCtrl;
 

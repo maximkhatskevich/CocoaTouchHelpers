@@ -7,7 +7,6 @@
 //
 
 #import "NSMutableArray+Helpers.h"
-#import "NSArray+ParseHelpers.h"
 
 @implementation NSMutableArray (Helpers)
 
@@ -23,15 +22,6 @@
 {
     if (object &&
         ![self containsObject:object])
-    {
-        [self addObject:object];
-    }
-}
-
-- (void)safeAddUniqueParseObject:(PFObject *)object
-{
-    if (object &&
-        ![self containsParseObject:object])
     {
         [self addObject:object];
     }

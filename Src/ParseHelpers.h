@@ -11,9 +11,9 @@
 
 #import <Parse/Parse.h>
 
-#import <SixHelpers/NSObject+ParseHelpers.h>
-#import <SixHelpers/NSArray+ParseHelpers.h>
-#import <SixHelpers/NSMutableArray+ParseHelpers.h>
-#import <SixHelpers/AdvancedList+ParseHelpers.h>
+#import <MyHelpers/NSObject+ParseHelpers.h>
+#import <MyHelpers/NSArray+ParseHelpers.h>
+#import <MyHelpers/NSMutableArray+ParseHelpers.h>
+#import <MyHelpers/AdvancedList+ParseHelpers.h>
 
 #endif

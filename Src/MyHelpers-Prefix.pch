@@ -28,14 +28,11 @@
 //=== categories
 
 #import "NSObject+Helpers.h"
-#import "NSObject+ParseHelpers.h"
 #import "NSString+Helpers.h"
 
 #import "NSArray+Helpers.h"
-#import "NSArray+ParseHelpers.h"
 #import "NSMutableArray+Helpers.h"
 #import "NSMutableDictionary+Helpers.h"
-#import "AdvancedList+ParseHelpers.h"
 
 #import "UIResponder+Helpers.h"
 

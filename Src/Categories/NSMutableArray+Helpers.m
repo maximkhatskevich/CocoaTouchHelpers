@@ -7,6 +7,7 @@
 //
 
 #import "NSMutableArray+Helpers.h"
+#import "NSArray+ParseHelpers.h"
 
 @implementation NSMutableArray (Helpers)
 
@@ -27,7 +28,7 @@
     }
 }
 
-- (void)safeAddUniqueParseObject:(id)object
+- (void)safeAddUniqueParseObject:(PFObject *)object
 {
     if (object &&
         ![self containsParseObject:object])

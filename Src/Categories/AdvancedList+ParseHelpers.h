@@ -7,6 +7,7 @@
 //
 
 #import "AdvancedList.h"
+#import <Parse/Parse.h>
 
 @interface AdvancedList (ParseHelpers)
 

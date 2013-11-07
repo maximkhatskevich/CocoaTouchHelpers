@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @interface NSMutableArray (Helpers)
 
 - (void)safeAddObject:(id)object;
 - (void)safeAddUniqueObject:(id)object;
-- (void)safeAddUniqueParseObject:(id)object;
+- (void)safeAddUniqueParseObject:(PFObject *)object;
 
 @end

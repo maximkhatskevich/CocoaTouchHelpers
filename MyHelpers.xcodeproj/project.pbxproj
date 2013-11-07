@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		501839E1182C3DC700F9594B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 501839E0182C3DC700F9594B /* CoreData.framework */; };
 		50F12B341827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
 		50F12B421827928C001C21DA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B411827928C001C21DA /* XCTest.framework */; };
 		50F12B431827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
@@ -130,6 +131,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		501839E0182C3DC700F9594B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		50F12B301827928C001C21DA /* libMyHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMyHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F12B331827928C001C21DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50F12B401827928C001C21DA /* MyHelpersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyHelpersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,6 +207,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				501839E1182C3DC700F9594B /* CoreData.framework in Frameworks */,
 				50F12BE21827DF07001C21DA /* UIKit.framework in Frameworks */,
 				50F12B721827D6B9001C21DA /* Parse.framework in Frameworks */,
 				50F12B341827928C001C21DA /* Foundation.framework in Frameworks */,
@@ -248,6 +251,7 @@
 		50F12B321827928C001C21DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				501839E0182C3DC700F9594B /* CoreData.framework */,
 				50F12BE11827DF07001C21DA /* UIKit.framework */,
 				50F12B331827928C001C21DA /* Foundation.framework */,
 				50F12B411827928C001C21DA /* XCTest.framework */,

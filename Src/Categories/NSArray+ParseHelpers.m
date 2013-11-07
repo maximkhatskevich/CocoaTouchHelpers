@@ -10,6 +10,8 @@
 #import "NSObject+ParseHelpers.h"
 #import <Parse/Parse.h>
 
+@class PFObject;
+
 @implementation NSArray (ParseHelpers)
 
 - (BOOL)containsParseObject:(id)object

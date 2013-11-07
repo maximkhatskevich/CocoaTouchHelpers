@@ -10,6 +10,8 @@
 #import "NSArray+ParseHelpers.h"
 #import <Parse/Parse.h>
 
+@class PFObject;
+
 @implementation NSMutableArray (ParseHelpers)
 
 - (void)safeAddUniqueParseObject:(id)object

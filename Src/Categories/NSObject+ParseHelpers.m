@@ -9,6 +9,8 @@
 #import "NSObject+ParseHelpers.h"
 #import <Parse/Parse.h>
 
+@class PFObject;
+
 @implementation NSObject (ParseHelpers)
 
 - (BOOL)isEqualToParseObject:(id)object

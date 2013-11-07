@@ -8,7 +8,6 @@
 
 #import "AdvancedList+ParseHelpers.h"
 #import "NSArray+ParseHelpers.h"
-#import <Parse/Parse.h>
 
 @implementation AdvancedList (ParseHelpers)
 

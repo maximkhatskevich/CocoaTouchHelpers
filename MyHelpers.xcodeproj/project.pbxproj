@@ -12,6 +12,7 @@
 		501839E5182C3FA500F9594B /* UIView+FontHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501839E2182C3F9000F9594B /* UIView+FontHelpers.h */; };
 		501839E8182C452A00F9594B /* NSMutableArray+ParseHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 501839E7182C452A00F9594B /* NSMutableArray+ParseHelpers.m */; };
 		501839E9182C457D00F9594B /* NSMutableArray+ParseHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501839E6182C452A00F9594B /* NSMutableArray+ParseHelpers.h */; };
+		501839ED182C4DA400F9594B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 501839EB182C4D9B00F9594B /* Parse.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		50F12B341827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
 		50F12B421827928C001C21DA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B411827928C001C21DA /* XCTest.framework */; };
 		50F12B431827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
@@ -22,7 +23,6 @@
 		50F12B6D18279804001C21DA /* MacrosBase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50F12B6B1827974A001C21DA /* MacrosBase.h */; };
 		50F12B6E18279808001C21DA /* GlobalBase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50F12B6C182797CE001C21DA /* GlobalBase.h */; };
 		50F12B701827D661001C21DA /* ParseHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50F12B6F1827D656001C21DA /* ParseHelpers.h */; };
-		50F12B721827D6B9001C21DA /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B711827D6B9001C21DA /* Parse.framework */; };
 		50F12B9C1827D7C5001C21DA /* NSObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F12B751827D7C5001C21DA /* NSObject+Helpers.m */; };
 		50F12B9D1827D7C5001C21DA /* NSObject+TwitterHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F12B771827D7C5001C21DA /* NSObject+TwitterHelpers.m */; };
 		50F12B9E1827D7C5001C21DA /* NSObject+ParseHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F12B791827D7C5001C21DA /* NSObject+ParseHelpers.m */; };
@@ -142,6 +142,7 @@
 		501839E3182C3F9000F9594B /* UIView+FontHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FontHelpers.m"; sourceTree = "<group>"; };
 		501839E6182C452A00F9594B /* NSMutableArray+ParseHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ParseHelpers.h"; sourceTree = "<group>"; };
 		501839E7182C452A00F9594B /* NSMutableArray+ParseHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ParseHelpers.m"; sourceTree = "<group>"; };
+		501839EB182C4D9B00F9594B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		50F12B301827928C001C21DA /* libMyHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMyHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F12B331827928C001C21DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50F12B401827928C001C21DA /* MyHelpersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyHelpersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,7 +155,6 @@
 		50F12B6B1827974A001C21DA /* MacrosBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacrosBase.h; sourceTree = "<group>"; };
 		50F12B6C182797CE001C21DA /* GlobalBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalBase.h; sourceTree = "<group>"; };
 		50F12B6F1827D656001C21DA /* ParseHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParseHelpers.h; sourceTree = "<group>"; };
-		50F12B711827D6B9001C21DA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		50F12B741827D7C5001C21DA /* NSObject+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Helpers.h"; sourceTree = "<group>"; };
 		50F12B751827D7C5001C21DA /* NSObject+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Helpers.m"; sourceTree = "<group>"; };
 		50F12B761827D7C5001C21DA /* NSObject+TwitterHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TwitterHelpers.h"; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 			files = (
 				501839E1182C3DC700F9594B /* CoreData.framework in Frameworks */,
 				50F12BE21827DF07001C21DA /* UIKit.framework in Frameworks */,
-				50F12B721827D6B9001C21DA /* Parse.framework in Frameworks */,
+				501839ED182C4DA400F9594B /* Parse.framework in Frameworks */,
 				50F12B341827928C001C21DA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,11 +238,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		501839EA182C4D9B00F9594B /* Third-party */ = {
+			isa = PBXGroup;
+			children = (
+				501839EB182C4D9B00F9594B /* Parse.framework */,
+			);
+			path = "Third-party";
+			sourceTree = "<group>";
+		};
 		50F12B271827928C001C21DA = {
 			isa = PBXGroup;
 			children = (
 				50F12B62182793BA001C21DA /* Src */,
-				50F12B6A182794AF001C21DA /* Third-party */,
+				501839EA182C4D9B00F9594B /* Third-party */,
 				50F12B321827928C001C21DA /* Frameworks */,
 				50F12B311827928C001C21DA /* Products */,
 				50F12B591827935E001C21DA /* Tests */,
@@ -307,14 +315,6 @@
 				50F12B63182793BA001C21DA /* MyHelpers-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		50F12B6A182794AF001C21DA /* Third-party */ = {
-			isa = PBXGroup;
-			children = (
-				50F12B711827D6B9001C21DA /* Parse.framework */,
-			);
-			path = "Third-party";
 			sourceTree = "<group>";
 		};
 		50F12B731827D7A7001C21DA /* Categories */ = {
@@ -644,6 +644,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"/Users/max/Dropbox/dev/MyHelpers/Third-party",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyHelpers/MyHelpers-Prefix.pch";
@@ -665,6 +666,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"/Users/max/Dropbox/dev/MyHelpers/Third-party",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MyHelpers/MyHelpers-Prefix.pch";

@@ -8,10 +8,11 @@
 
 #import "AdvancedList+ParseHelpers.h"
 #import "NSArray+ParseHelpers.h"
+#import <Parse/Parse.h>
 
 @implementation AdvancedList (ParseHelpers)
 
-- (void)setItemCurrentWithParseObject:(PFObject *)object
+- (void)setItemCurrentWithParseObject:(id)object
 {
     NSInteger targetIndex = [self.items indexOfParseObject:object];
     [self setItemCurrentByIndex:targetIndex];

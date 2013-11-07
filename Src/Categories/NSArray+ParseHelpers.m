@@ -7,20 +7,23 @@
 //
 
 #import "NSArray+ParseHelpers.h"
+#import "NSObject+ParseHelpers.h"
+#import <Parse/Parse.h>
 
 @implementation NSArray (ParseHelpers)
 
-- (BOOL)containsParseObject:(PFObject *)object
+- (BOOL)containsParseObject:(id)object
 {
     BOOL result = NO;
     
     //===
     
-    for (id item in self)
+    if (object &&
+        [object isKindOfClass:[PFObject class]])
     {
-        if ([item isKindOfClass:[PFObject class]])
+        for (id item in self)
         {
-            if ([((PFObject *)item).objectId isEqualToString:object.objectId])
+            if ([item isEqualToParseObject:object])
             {
                 result = YES;
                 break;
@@ -39,11 +42,12 @@
     
     //===
     
-    for (NSInteger i = 0; i < self.count; i++)
+    if (object &&
+        [object isKindOfClass:[PFObject class]])
     {
-        if ([self[i] isKindOfClass:[PFObject class]])
+        for (NSInteger i = 0; i < self.count; i++)
         {
-            if ([((PFObject *)self[i]).objectId isEqualToString:object.objectId])
+            if ([self[i] isEqualToParseObject:object])
             {
                 result = i;
                 break;

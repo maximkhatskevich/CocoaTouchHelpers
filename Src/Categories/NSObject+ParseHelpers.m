@@ -7,18 +7,21 @@
 //
 
 #import "NSObject+ParseHelpers.h"
+#import <Parse/Parse.h>
 
 @implementation NSObject (ParseHelpers)
 
-- (BOOL)isEqualToParseObject:(PFObject *)object
+- (BOOL)isEqualToParseObject:(id)object
 {
     BOOL result = NO;
     
     //===
     
-    if ([self isKindOfClass:[PFObject class]])
+    if ([self isKindOfClass:[PFObject class]] &&
+        [object isKindOfClass:[PFObject class]])
     {
-        result = [((PFObject *)self).objectId isEqualToString:object.objectId];
+        result = [((PFObject *)self).objectId
+                  isEqualToString:((PFObject *)object).objectId];
     }
     
     //===

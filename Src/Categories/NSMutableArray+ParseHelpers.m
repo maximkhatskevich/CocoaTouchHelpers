@@ -8,15 +8,19 @@
 
 #import "NSMutableArray+ParseHelpers.h"
 #import "NSArray+ParseHelpers.h"
+#import <Parse/Parse.h>
 
 @implementation NSMutableArray (ParseHelpers)
 
-- (void)safeAddUniqueParseObject:(PFObject *)object
+- (void)safeAddUniqueParseObject:(id)object
 {
     if (object &&
-        ![self containsParseObject:object])
+        [object isKindOfClass:[PFObject class]])
     {
-        [self addObject:object];
+        if (![self containsParseObject:object])
+        {
+            [self addObject:object];
+        }
     }
 }
 

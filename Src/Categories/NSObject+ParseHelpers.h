@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Parse/Parse.h>
 
 @interface NSObject (ParseHelpers)
 
-- (BOOL)isEqualToParseObject:(PFObject *)object;
+- (BOOL)isEqualToParseObject:(id)object;
 
 @end

@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Parse/Parse.h>
 
 @interface NSArray (ParseHelpers)
 
-- (BOOL)containsParseObject:(PFObject *)object;
-- (NSInteger)indexOfParseObject:(PFObject *)object;
+- (BOOL)containsParseObject:(id)object;
+- (NSInteger)indexOfParseObject:(id)object;
 
 @end

@@ -7,10 +7,9 @@
 //
 
 #import "AdvancedList.h"
-#import <Parse/Parse.h>
 
 @interface AdvancedList (ParseHelpers)
 
-- (void)setItemCurrentWithParseObject:(PFObject *)object;
+- (void)setItemCurrentWithParseObject:(id)object;
 
 @end

@@ -13,6 +13,7 @@
 
 #import <SixHelpers/NSObject+ParseHelpers.h>
 #import <SixHelpers/NSArray+ParseHelpers.h>
+#import <SixHelpers/NSMutableArray+ParseHelpers.h>
 #import <SixHelpers/AdvancedList+ParseHelpers.h>
 
 #endif

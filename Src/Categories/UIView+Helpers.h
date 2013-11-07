@@ -8,12 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-//===
-
-extern NSString *defaultFontName; // must be defined in an application
-
-//===
-
 @interface UIView (Helpers)
 
 @property BOOL isVisible;
@@ -48,12 +42,6 @@ extern NSString *defaultFontName; // must be defined in an application
 
 - (id)configureWithSuperview:(UIView *)targetSuperView;
 
-- (void)applyFontWithName:(NSString *)fontName andSize:(CGFloat)fontSize;
-- (void)applyFontWithName:(NSString *)fontName;
-- (void)applyDefaultFont;
-
 - (void)placeInCenterOfSuperview;
-
-//- (void)applyCustomAppearance;
 
 @end

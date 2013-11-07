@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		501839E1182C3DC700F9594B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 501839E0182C3DC700F9594B /* CoreData.framework */; };
+		501839E4182C3F9000F9594B /* UIView+FontHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 501839E3182C3F9000F9594B /* UIView+FontHelpers.m */; };
+		501839E5182C3FA500F9594B /* UIView+FontHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501839E2182C3F9000F9594B /* UIView+FontHelpers.h */; };
 		50F12B341827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
 		50F12B421827928C001C21DA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B411827928C001C21DA /* XCTest.framework */; };
 		50F12B431827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
@@ -94,6 +96,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				501839E5182C3FA500F9594B /* UIView+FontHelpers.h in CopyFiles */,
 				50F12BC61827D92B001C21DA /* NSObject+Helpers.h in CopyFiles */,
 				50F12BC71827D92B001C21DA /* NSObject+TwitterHelpers.h in CopyFiles */,
 				50F12BC81827D92B001C21DA /* NSObject+ParseHelpers.h in CopyFiles */,
@@ -132,6 +135,8 @@
 
 /* Begin PBXFileReference section */
 		501839E0182C3DC700F9594B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		501839E2182C3F9000F9594B /* UIView+FontHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FontHelpers.h"; sourceTree = "<group>"; };
+		501839E3182C3F9000F9594B /* UIView+FontHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FontHelpers.m"; sourceTree = "<group>"; };
 		50F12B301827928C001C21DA /* libMyHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMyHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F12B331827928C001C21DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50F12B401827928C001C21DA /* MyHelpersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyHelpersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -340,6 +345,8 @@
 				50F12B8F1827D7C5001C21DA /* UINavigationController+Helpers.m */,
 				50F12B901827D7C5001C21DA /* UIView+Helpers.h */,
 				50F12B911827D7C5001C21DA /* UIView+Helpers.m */,
+				501839E2182C3F9000F9594B /* UIView+FontHelpers.h */,
+				501839E3182C3F9000F9594B /* UIView+FontHelpers.m */,
 				50F12B921827D7C5001C21DA /* UITableView+Helpers.h */,
 				50F12B931827D7C5001C21DA /* UITableView+Helpers.m */,
 				50F12B941827D7C5001C21DA /* UIScrollView+Helpers.h */,
@@ -469,6 +476,7 @@
 				50F12BA71827D7C5001C21DA /* UIViewController+Helpers.m in Sources */,
 				50F12BA01827D7C5001C21DA /* NSArray+Helpers.m in Sources */,
 				50F12BC41827D84A001C21DA /* WebVisibilityCtrl.m in Sources */,
+				501839E4182C3F9000F9594B /* UIView+FontHelpers.m in Sources */,
 				50F12BC31827D84A001C21DA /* ViewVisibilityCtrl.m in Sources */,
 				50F12BA51827D7C5001C21DA /* UIResponder+Helpers.m in Sources */,
 				50F12B9D1827D7C5001C21DA /* NSObject+TwitterHelpers.m in Sources */,

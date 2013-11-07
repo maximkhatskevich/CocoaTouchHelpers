@@ -22,35 +22,6 @@
     self.hidden = !newValue;
 }
 
-//- (UIView *)firstResponder
-//{
-//    UIView *result = nil;
-//    
-//    //===
-//    
-//    if (self.isFirstResponder)
-//    {
-//        result = self;
-//    }
-//    else
-//    {
-//        for (UIView *subView in self.subviews)
-//        {
-//            UIView *firstResponder = subView.firstResponder;
-//            
-//            if (firstResponder != nil)
-//            {
-//                result = firstResponder;
-//                break; // further search is not needed
-//            }
-//        }
-//    }
-//    
-//    //===
-//    
-//    return result;
-//}
-
 #pragma mark - Helpers
 
 + (BOOL)isView:(UIView *)childView aSubviewOfView:(UIView *)superView
@@ -233,45 +204,6 @@
     return self;
 }
 
-- (void)applyFontWithName:(NSString *)fontName andSize:(CGFloat)fontSize
-{
-    __weak id targetView = nil;
-    
-    //===
-    
-    if ([self isKindOfClass:[UILabel class]] ||
-        [self isKindOfClass:[UITextView class]] ||
-        [self isKindOfClass:[UITextField class]])
-    {
-        targetView = self;
-    }
-    
-    //===
-    
-    if (targetView)
-    {
-        CGFloat targetFontSize =
-        (fontSize == 0.0 ?
-         [[targetView performSelector:@selector(font)] pointSize] :
-         fontSize);
-        
-        [targetView
-         performSelector:@selector(setFont:)
-         withObject:[UIFont fontWithName:fontName size:targetFontSize]];
-    }
-}
-
-- (void)applyFontWithName:(NSString *)fontName
-{
-    
-    [self applyFontWithName:fontName andSize:0.0];
-}
-
-- (void)applyDefaultFont
-{
-    [self applyFontWithName:defaultFontName];
-}
-
 - (void)placeInCenterOfSuperview
 {
     CGRect superBounds = self.superview.bounds;
@@ -289,11 +221,5 @@
     
     self.frame = targetFrame;
 }
-
-//- (void)applyCustomAppearance
-//{
-//    [self applyDefaultFont];
-//    [self.subviews makeObjectsPerformSelector:@selector(applyCustomAppearance)];
-//}
 
 @end

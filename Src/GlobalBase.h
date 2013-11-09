@@ -13,7 +13,8 @@
 
 typedef void (^SimpleBlock)(void);
 typedef void (^OperationCompletionBlock)(NSError *error);
-typedef void (^DataFetchCompletionBlock)(NSData *data);
+typedef void (^DataFetchCompletionBlock)(NSData *data, NSError *error);
+typedef void (^ItemsFetchCompletionBlock)(NSArray *items, NSError *error);
 
 //=== must be defined in an application which use this header:
 

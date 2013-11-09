@@ -46,7 +46,7 @@
 		50F12BBF1827D84A001C21DA /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F12BB21827D84A001C21DA /* Base64.m */; };
 		50F12BC01827D84A001C21DA /* CoreDataCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F12BB41827D84A001C21DA /* CoreDataCtrl.m */; };
 		50F12BC11827D84A001C21DA /* AdvancedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F12BB61827D84A001C21DA /* AdvancedList.m */; };
-		50F12BC21827D84A001C21DA /* AdvancedTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F12BB81827D84A001C21DA /* AdvancedTableCtrl.m */; };
+		50F12BC21827D84A001C21DA /* PlainTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F12BB81827D84A001C21DA /* PlainTableCtrl.m */; };
 		50F12BC31827D84A001C21DA /* ViewVisibilityCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F12BBA1827D84A001C21DA /* ViewVisibilityCtrl.m */; };
 		50F12BC41827D84A001C21DA /* WebVisibilityCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F12BBC1827D84A001C21DA /* WebVisibilityCtrl.m */; };
 		50F12BC51827D84A001C21DA /* RemoteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F12BBE1827D84A001C21DA /* RemoteImageView.m */; };
@@ -73,7 +73,7 @@
 		50F12BDA1827D92B001C21DA /* Base64.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50F12BB11827D84A001C21DA /* Base64.h */; };
 		50F12BDB1827D92B001C21DA /* CoreDataCtrl.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50F12BB31827D84A001C21DA /* CoreDataCtrl.h */; };
 		50F12BDC1827D92B001C21DA /* AdvancedList.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50F12BB51827D84A001C21DA /* AdvancedList.h */; };
-		50F12BDD1827D92B001C21DA /* AdvancedTableCtrl.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50F12BB71827D84A001C21DA /* AdvancedTableCtrl.h */; };
+		50F12BDD1827D92B001C21DA /* PlainTableCtrl.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50F12BB71827D84A001C21DA /* PlainTableCtrl.h */; };
 		50F12BDE1827D92B001C21DA /* ViewVisibilityCtrl.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50F12BB91827D84A001C21DA /* ViewVisibilityCtrl.h */; };
 		50F12BDF1827D92B001C21DA /* WebVisibilityCtrl.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50F12BBB1827D84A001C21DA /* WebVisibilityCtrl.h */; };
 		50F12BE01827D92B001C21DA /* RemoteImageView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50F12BBD1827D84A001C21DA /* RemoteImageView.h */; };
@@ -123,7 +123,7 @@
 				50F12BDA1827D92B001C21DA /* Base64.h in CopyFiles */,
 				50F12BDB1827D92B001C21DA /* CoreDataCtrl.h in CopyFiles */,
 				50F12BDC1827D92B001C21DA /* AdvancedList.h in CopyFiles */,
-				50F12BDD1827D92B001C21DA /* AdvancedTableCtrl.h in CopyFiles */,
+				50F12BDD1827D92B001C21DA /* PlainTableCtrl.h in CopyFiles */,
 				50F12BDE1827D92B001C21DA /* ViewVisibilityCtrl.h in CopyFiles */,
 				50F12BDF1827D92B001C21DA /* WebVisibilityCtrl.h in CopyFiles */,
 				50F12BE01827D92B001C21DA /* RemoteImageView.h in CopyFiles */,
@@ -201,8 +201,8 @@
 		50F12BB41827D84A001C21DA /* CoreDataCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCtrl.m; sourceTree = "<group>"; };
 		50F12BB51827D84A001C21DA /* AdvancedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedList.h; sourceTree = "<group>"; };
 		50F12BB61827D84A001C21DA /* AdvancedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedList.m; sourceTree = "<group>"; };
-		50F12BB71827D84A001C21DA /* AdvancedTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedTableCtrl.h; sourceTree = "<group>"; };
-		50F12BB81827D84A001C21DA /* AdvancedTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedTableCtrl.m; sourceTree = "<group>"; };
+		50F12BB71827D84A001C21DA /* PlainTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlainTableCtrl.h; sourceTree = "<group>"; };
+		50F12BB81827D84A001C21DA /* PlainTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlainTableCtrl.m; sourceTree = "<group>"; };
 		50F12BB91827D84A001C21DA /* ViewVisibilityCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewVisibilityCtrl.h; sourceTree = "<group>"; };
 		50F12BBA1827D84A001C21DA /* ViewVisibilityCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewVisibilityCtrl.m; sourceTree = "<group>"; };
 		50F12BBB1827D84A001C21DA /* WebVisibilityCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVisibilityCtrl.h; sourceTree = "<group>"; };
@@ -377,8 +377,8 @@
 				50F12BB41827D84A001C21DA /* CoreDataCtrl.m */,
 				50F12BB51827D84A001C21DA /* AdvancedList.h */,
 				50F12BB61827D84A001C21DA /* AdvancedList.m */,
-				50F12BB71827D84A001C21DA /* AdvancedTableCtrl.h */,
-				50F12BB81827D84A001C21DA /* AdvancedTableCtrl.m */,
+				50F12BB71827D84A001C21DA /* PlainTableCtrl.h */,
+				50F12BB81827D84A001C21DA /* PlainTableCtrl.m */,
 				50F12BB91827D84A001C21DA /* ViewVisibilityCtrl.h */,
 				50F12BBA1827D84A001C21DA /* ViewVisibilityCtrl.m */,
 				50F12BBB1827D84A001C21DA /* WebVisibilityCtrl.h */,
@@ -492,7 +492,7 @@
 				50F12BAF1827D7C5001C21DA /* UIColor+Helpers.m in Sources */,
 				50F12B9F1827D7C5001C21DA /* NSString+Helpers.m in Sources */,
 				50F12BA21827D7C5001C21DA /* NSMutableArray+Helpers.m in Sources */,
-				50F12BC21827D84A001C21DA /* AdvancedTableCtrl.m in Sources */,
+				50F12BC21827D84A001C21DA /* PlainTableCtrl.m in Sources */,
 				50F12BAD1827D7C5001C21DA /* UIImageView+Helpers.m in Sources */,
 				50F12BA41827D7C5001C21DA /* AdvancedList+ParseHelpers.m in Sources */,
 				50F12BA81827D7C5001C21DA /* UIViewController+KeyboardHelpers.m in Sources */,

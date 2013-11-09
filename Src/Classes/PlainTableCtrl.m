@@ -1,29 +1,29 @@
 //
-//  AdvancedTableViewCtrl.m
+//  PlainTableCtrl.m
 //  Spotlight-SE-iOS
 //
 //  Created by Maxim Khatskevich on 4/16/13.
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.
 //
 
-#import "AdvancedTableCtrl.h"
+#import "PlainTableCtrl.h"
 
 #define currentItemIndexPath [NSIndexPath indexPathForRow:self.content.currentItemIndex inSection:0]
 
-@interface AdvancedTableCtrl ()
+@interface PlainTableCtrl ()
 
 @property BOOL shouldReloadTableView;
 @property (weak, nonatomic) UITableView *tableView;
 
 @end
 
-@implementation AdvancedTableCtrl
+@implementation PlainTableCtrl
 
 #pragma mark - Creation
 
 + (id)ctrlWithTableView:(UITableView *)tableView
 {
-    AdvancedTableCtrl *result = nil;
+    PlainTableCtrl *result = nil;
     
     //===
     
@@ -202,7 +202,7 @@
     }
     else
     {
-        // just update rowCount: // TODO: test it
+        // just update rowCount and row params: // TODO: test it
         
         [self.tableView beginUpdates];
         [self.tableView endUpdates];
@@ -234,9 +234,9 @@
     return self.defaultCellIdentifier;
 }
 
-- (void)tableView:(UITableView *)tableView configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView configureCell:(UITableViewCell *)cell withItem:(id)item
 {
-    // configure cell here
+    // or configure cell here
 }
 
 - (void)reConfigureCurrentCell
@@ -279,7 +279,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cellIdentifier = [self tableView:tableView cellIdentifierForRowAtIndexPath:indexPath];
+    NSString *cellIdentifier =
+    [self tableView:tableView cellIdentifierForRowAtIndexPath:indexPath];
     
     //===
     
@@ -299,7 +300,12 @@
     
     //===
     
-    [self tableView:tableView configureCell:cell forRowAtIndexPath:indexPath];
+    id item = [self.content.items safeObjectAtIndex:indexPath.row];
+    
+    if (item)
+    {
+        [self tableView:tableView configureCell:cell withItem:item];
+    }
     
     //===
     

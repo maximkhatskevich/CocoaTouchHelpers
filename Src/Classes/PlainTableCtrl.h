@@ -1,14 +1,15 @@
 //
-//  AdvancedTableViewCtrl.h
+//  PlainTableCtrl.h
 //  Spotlight-SE-iOS
 //
 //  Created by Maxim Khatskevich on 4/16/13.
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.
 //
+// NOTE: "plain" menas that it consists of THE ONLY SECTION
 
 #import <Foundation/Foundation.h>
 
-@interface AdvancedTableCtrl : NSObject
+@interface PlainTableCtrl : NSObject
 <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) NSObject *parentCtrl;
@@ -57,7 +58,7 @@
 - (void)reloadTableView; // reload table view with default params, override to change default implementation, do not call directly!
 
 - (NSString *)tableView:(UITableView *)tableView cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath;
-- (void)tableView:(UITableView *)tableView configureCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)tableView:(UITableView *)tableView configureCell:(UITableViewCell *)cell withItem:(id)item;
 
 - (void)reConfigureCurrentCell;
 

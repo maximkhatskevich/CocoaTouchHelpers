@@ -18,7 +18,7 @@
 @property BOOL scrollToTopOnReload;
 
 @property (readonly, nonatomic) AdvancedList *content;
-@property (nonatomic, readonly) NSLock *itemsLoadingLock;
+@property (readonly, nonatomic) NSLock *itemsLoadingLock;
 @property NSUInteger initialCurrentItemIndex; // set an index for autoselect
 
 // pagination support:
@@ -27,23 +27,16 @@
 
 @property (readonly, nonatomic) UITableView *tableView;
 
-@property (nonatomic, copy) NSString *defaultCellIdentifier;
+@property (copy, nonatomic) NSString *defaultCellIdentifier;
 @property UITableViewRowAnimation defaultReloadAnimation;
 
-@property (nonatomic, strong) SimpleBlock reloadCompletionBlock;
+//===
 
-//=== Creation
-
-+ (id)ctrlWithTableView:(UITableView *)tableView;
-
-//=== Initialization
-
-- (void)configureWithTableView:(UITableView *)tableView;
 - (void)registerCellNibWithName:(NSString *)nibName;
 - (void)registerCellNibWithName:(NSString *)nibName
          forCellReuseIdentifier:(NSString *)reuseIdentifier;
 
-//=== Manage
+//===
 
 - (void)selectCurrentRow;
 
@@ -57,10 +50,14 @@
 
 - (void)reloadTableView; // reload table view with default params, override to change default implementation, do not call directly!
 
-- (NSString *)tableView:(UITableView *)tableView cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath;
-- (void)tableView:(UITableView *)tableView configureCell:(UITableViewCell *)cell withItem:(id)item;
+- (NSString *)cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath;
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withItem:(id)item;
+- (void)updateCellAtIndexPath:(NSIndexPath *)indexPath withItem:(id)item;
+- (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withItem:(id)item;
 
 - (void)reConfigureCurrentCell;
+- (void)reConfigureVisibleCells;
 
 - (void)selectFirstItemWhenReady;
 

@@ -15,7 +15,7 @@
 @property (readonly, nonatomic) UIStoryboard *currentStoryboard;
 @property (readonly, nonatomic) UIView *firstResponder;
 
-@property (nonatomic, weak) UIPopoverController *currentPopover;
+@property (weak, nonatomic) UIPopoverController *currentPopover;
 
 + (UIPopoverController *)currentPopover;
 

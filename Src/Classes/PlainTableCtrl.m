@@ -8,44 +8,20 @@
 
 #import "PlainTableCtrl.h"
 
-#define currentItemIndexPath [NSIndexPath indexPathForRow:self.content.currentItemIndex inSection:0]
+#define currentCellIndexPath [NSIndexPath indexPathForRow:self.content.currentItemIndex inSection:0]
 
 @interface PlainTableCtrl ()
 
 @property BOOL shouldReloadTableView;
 @property (weak, nonatomic) UITableView *tableView;
 
+@property (strong, nonatomic) SimpleBlock reloadCompletionBlock;
+
 @end
 
 @implementation PlainTableCtrl
 
-#pragma mark - Creation
-
-+ (id)ctrlWithTableView:(UITableView *)tableView
-{
-    PlainTableCtrl *result = nil;
-    
-    //===
-    
-    result = [[self class] new];
-    
-    [result configureWithTableView:tableView];
-    
-    [result reloadItems];
-    
-    //===
-    
-    return result;
-}
-
-#pragma mark - Clean Up
-
--(void)dealloc
-{
-    [self.itemsLoadingLock unlock];
-}
-
-#pragma mark - Initialization
+#pragma mark - Overrided methods
 
 - (id)init
 {
@@ -86,12 +62,26 @@
     return self;
 }
 
-- (void)configureWithTableView:(UITableView *)tableView
+- (void)configureWithObject:(id)object
 {
-    tableView.dataSource = self;
-    tableView.delegate = self;
-    self.tableView = tableView;
+    if ([object isKindOfClass:[UITableView class]])
+    {
+        UITableView *tableView = (UITableView *)object;
+        
+        //===
+        
+        tableView.dataSource = self;
+        tableView.delegate = self;
+        self.tableView = tableView;
+    }
 }
+
+-(void)dealloc
+{
+    [self.itemsLoadingLock unlock];
+}
+
+#pragma mark - Helpers
 
 - (void)registerCellNibWithName:(NSString *)nibName
 {
@@ -108,15 +98,14 @@
      forCellReuseIdentifier:reuseIdentifier];
 }
 
-#pragma mark - Helpers
-
 - (void)selectCurrentRow
 {
     if (self.content.currentItem)
     {
-        [self.tableView selectRowAtIndexPath:currentItemIndexPath
-                                    animated:NO
-                              scrollPosition:UITableViewScrollPositionNone]; // !!!
+        [self.tableView
+         selectRowAtIndexPath:currentCellIndexPath
+         animated:NO
+         scrollPosition:UITableViewScrollPositionNone]; // !!!
     }
     else
     {
@@ -152,7 +141,10 @@
     if ([self.itemsLoadingLock tryLock])
     {
         self.shouldReloadTableView = (self.content.items.count == 0);
-        [self loadMoreItemsWithOffset:self.content.items.count andLimit:self.itemsLimit];
+        
+        [self
+         loadMoreItemsWithOffset:self.content.items.count
+         andLimit:self.itemsLimit];
     }
 }
 
@@ -229,24 +221,86 @@
      withRowAnimation:self.defaultReloadAnimation];
 }
 
-- (NSString *)tableView:(UITableView *)tableView cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSString *)cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return self.defaultCellIdentifier;
 }
 
-- (void)tableView:(UITableView *)tableView configureCell:(UITableViewCell *)cell withItem:(id)item
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withItem:(id)item
 {
-    // or configure cell here
+    // override in subclass
+    
+    // configure cell here
+}
+
+- (BOOL)isIndexPathAmongVisible:(NSIndexPath *)indexPathToCheck
+{
+    BOOL result = NO;
+    
+    //===
+    
+    if (indexPathToCheck)
+    {
+        for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows])
+        {
+            if ((indexPathToCheck.section == indexPath.section) &&
+                (indexPathToCheck.row == indexPath.row))
+            {
+                result = YES;
+                break;
+            }
+        }
+    }
+    
+    //===
+    
+    return result;
+}
+
+- (void)updateCellAtIndexPath:(NSIndexPath *)indexPath withItem:(id)item
+{
+    // call it to notify that the cell at this indexpath needs to be updated
+    
+    if ([self isIndexPathAmongVisible:indexPath])
+    {
+        [self
+         updateCell:[self.tableView cellForRowAtIndexPath:indexPath]
+         atIndexPath:indexPath
+         withItem:item];
+    }
+}
+
+- (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withItem:(id)item
+{
+    // override in subclass
+    
+    // update/reconfigure cell here
+    // for example, apply async loaded image, etc.
 }
 
 - (void)reConfigureCurrentCell
 {
-    if (self.content.currentItem)
+    NSIndexPath *indexPath = currentCellIndexPath;
+    
+    // do it ONLY if currentCell is visible!
+    
+    if ([self isIndexPathAmongVisible:indexPath])
     {
-        UITableViewCell *currentCell =
-        [self.tableView cellForRowAtIndexPath:currentItemIndexPath];
-        
-        [currentCell reConfigure];
+        [self
+         configureCell:[self.tableView cellForRowAtIndexPath:indexPath]
+         atIndexPath:indexPath
+         withItem:[self.content.items safeObjectAtIndex:indexPath.row]];
+    }
+}
+
+- (void)reConfigureVisibleCells
+{
+    for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows])
+    {
+        [self
+         configureCell:[self.tableView cellForRowAtIndexPath:indexPath]
+         atIndexPath:indexPath
+         withItem:[self.content.items safeObjectAtIndex:indexPath.row]];
     }
 }
 
@@ -280,7 +334,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cellIdentifier =
-    [self tableView:tableView cellIdentifierForRowAtIndexPath:indexPath];
+    [self cellIdentifierForRowAtIndexPath:indexPath];
     
     //===
     
@@ -300,12 +354,10 @@
     
     //===
     
-    id item = [self.content.items safeObjectAtIndex:indexPath.row];
-    
-    if (item)
-    {
-        [self tableView:tableView configureCell:cell withItem:item];
-    }
+    [self
+     configureCell:cell
+     atIndexPath:indexPath
+     withItem:[self.content.items safeObjectAtIndex:indexPath.row]];
     
     //===
     

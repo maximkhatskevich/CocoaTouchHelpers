@@ -55,7 +55,7 @@
 
 - (void)configureWithObject:(id)object
 {
-    //
+    // any kind of initial configuration should be done here
 }
 
 - (void)reConfigure
@@ -65,7 +65,7 @@
 
 - (void)applyItem:(id)item
 {
-    //
+    // any item selection events should be processed here
 }
 
 - (NSString *)stringValueForKey:(NSString *)key

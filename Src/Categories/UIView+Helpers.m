@@ -8,6 +8,8 @@
 
 #import "UIView+Helpers.h"
 
+static UIView *sharedOverlayInstance = nil;
+
 @implementation UIView (Helpers)
 
 #pragma mark - Property accessors
@@ -220,6 +222,33 @@
     //===
     
     self.frame = targetFrame;
+}
+
+- (void)showOverlay
+{
+    if (!sharedOverlayInstance)
+    {
+        sharedOverlayInstance = [UIView new];
+        sharedOverlayInstance.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.6];
+        sharedOverlayInstance.alpha = 0.0;
+        
+        UIActivityIndicatorView *activityIndicator = [UIActivityIndicatorView new];
+        activityIndicator.autoresizingMask = 0;
+        activityIndicator.hidesWhenStopped = YES;
+        [activityIndicator startAnimating];
+        
+        [sharedOverlayInstance addSubview:activityIndicator];
+        [activityIndicator placeInCenterOfSuperview];
+    }
+    
+    //===
+    
+    [sharedOverlayInstance showAnimatedIfNeeded];
+}
+
+- (void)hideOverlay
+{
+    [sharedOverlayInstance hideAnimatedIfNeeded];
 }
 
 @end

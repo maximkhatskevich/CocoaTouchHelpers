@@ -13,4 +13,7 @@
 @property (readonly) BOOL isRootCtrlShown;
 @property (readonly, nonatomic) UIViewController *rootViewController;
 
+- (void)popViewControllerAnimated;
+- (void)popViewController;
+
 @end

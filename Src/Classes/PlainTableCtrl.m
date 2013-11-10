@@ -259,6 +259,9 @@
 
 - (void)updateCellAtIndexPath:(NSIndexPath *)indexPath withItem:(id)item
 {
+    // inspired by
+    // http://inessential.com/2012/12/31/uitableviewcell_is_not_a_controller
+    
     // call it to notify that the cell at this indexpath needs to be updated
     
     if ([self isIndexPathAmongVisible:indexPath])
@@ -272,6 +275,9 @@
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withItem:(id)item
 {
+    // inspired by
+    // http://inessential.com/2012/12/31/uitableviewcell_is_not_a_controller
+    
     // override in subclass
     
     // update/reconfigure cell here

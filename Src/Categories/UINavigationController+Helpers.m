@@ -20,4 +20,14 @@
     return (UIViewController *)self.viewControllers.firstObject;
 }
 
+- (void)popViewControllerAnimated
+{
+    [self popViewControllerAnimated:YES];
+}
+
+- (void)popViewController
+{
+    [self popViewControllerAnimated:NO];
+}
+
 @end

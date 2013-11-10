@@ -8,7 +8,7 @@
 
 #import "UIView+Helpers.h"
 
-static UIView *sharedOverlayInstance = nil;
+static __weak UIView *sharedOverlayInstance = nil;
 
 @implementation UIView (Helpers)
 

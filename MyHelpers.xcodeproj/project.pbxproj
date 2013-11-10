@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		50139A22182FAB4B0042DBDC /* StorageCtrlBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 50139A21182FAB4B0042DBDC /* StorageCtrlBase.m */; };
+		50139A23182FAF510042DBDC /* StorageCtrlBase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50139A20182FAB4B0042DBDC /* StorageCtrlBase.h */; };
 		501839E1182C3DC700F9594B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 501839E0182C3DC700F9594B /* CoreData.framework */; };
 		501839E4182C3F9000F9594B /* UIView+FontHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 501839E3182C3F9000F9594B /* UIView+FontHelpers.m */; };
 		501839E5182C3FA500F9594B /* UIView+FontHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501839E2182C3F9000F9594B /* UIView+FontHelpers.h */; };
@@ -99,6 +100,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				50139A23182FAF510042DBDC /* StorageCtrlBase.h in CopyFiles */,
 				501839E9182C457D00F9594B /* NSMutableArray+ParseHelpers.h in CopyFiles */,
 				501839E5182C3FA500F9594B /* UIView+FontHelpers.h in CopyFiles */,
 				50F12BC61827D92B001C21DA /* NSObject+Helpers.h in CopyFiles */,

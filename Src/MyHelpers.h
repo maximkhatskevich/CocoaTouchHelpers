@@ -17,6 +17,7 @@
 
 #import <MyHelpers/Base64.h>
 
+#import <MyHelpers/StorageCtrlBase.h>
 #import <MyHelpers/AdvancedList.h>
 #import <MyHelpers/AdvancedTableCtrl.h>
 

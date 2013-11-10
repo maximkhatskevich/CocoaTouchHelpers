@@ -228,17 +228,23 @@ static UIView *sharedOverlayInstance = nil;
 {
     if (!sharedOverlayInstance)
     {
-        sharedOverlayInstance = [UIView new];
-        sharedOverlayInstance.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.6];
-        sharedOverlayInstance.alpha = 0.0;
+        UIView *view = [UIView new];
+        view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.6];
+        view.alpha = 0.0;
         
         UIActivityIndicatorView *activityIndicator = [UIActivityIndicatorView new];
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
         activityIndicator.autoresizingMask = 0;
         activityIndicator.hidesWhenStopped = YES;
         [activityIndicator startAnimating];
         
-        [sharedOverlayInstance addSubview:activityIndicator];
+        [view addSubview:activityIndicator];
+        
+        [view configureWithSuperview:self];
+        
         [activityIndicator placeInCenterOfSuperview];
+        
+        sharedOverlayInstance = view;
     }
     
     //===
@@ -248,7 +254,7 @@ static UIView *sharedOverlayInstance = nil;
 
 - (void)hideOverlay
 {
-    [sharedOverlayInstance hideAnimatedIfNeeded];
+    [sharedOverlayInstance removeFromSuperviewAnimated];
 }
 
 @end

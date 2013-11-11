@@ -44,7 +44,8 @@
 
 - (void)placeInCenterOfSuperview;
 
-- (void)showOverlay;
+- (void)showOverlaySmall;
+- (void)showOverlayLarge;
 - (void)hideOverlay;
 
 @end

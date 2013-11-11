@@ -224,7 +224,35 @@ static __weak UIView *sharedOverlayInstance = nil;
     self.frame = targetFrame;
 }
 
-- (void)showOverlay
+- (void)showOverlaySmall
+{
+    if (!sharedOverlayInstance)
+    {
+        UIView *view = [UIView new];
+        view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.6];
+        view.alpha = 0.0;
+        
+        UIActivityIndicatorView *activityIndicator = [UIActivityIndicatorView new];
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+        activityIndicator.autoresizingMask = 0;
+        activityIndicator.hidesWhenStopped = YES;
+        [activityIndicator startAnimating];
+        
+        [view addSubview:activityIndicator];
+        
+        [view configureWithSuperview:self];
+        
+        [activityIndicator placeInCenterOfSuperview];
+        
+        sharedOverlayInstance = view;
+    }
+    
+    //===
+    
+    [sharedOverlayInstance showAnimatedIfNeeded];
+}
+
+- (void)showOverlayLarge
 {
     if (!sharedOverlayInstance)
     {

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50139A22182FAB4B0042DBDC /* StorageCtrlBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 50139A21182FAB4B0042DBDC /* StorageCtrlBase.m */; };
-		50139A23182FAF510042DBDC /* StorageCtrlBase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50139A20182FAB4B0042DBDC /* StorageCtrlBase.h */; };
 		501839E1182C3DC700F9594B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 501839E0182C3DC700F9594B /* CoreData.framework */; };
 		501839E4182C3F9000F9594B /* UIView+FontHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 501839E3182C3F9000F9594B /* UIView+FontHelpers.m */; };
 		501839E5182C3FA500F9594B /* UIView+FontHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501839E2182C3F9000F9594B /* UIView+FontHelpers.h */; };
@@ -100,7 +98,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				50139A23182FAF510042DBDC /* StorageCtrlBase.h in CopyFiles */,
 				501839E9182C457D00F9594B /* NSMutableArray+ParseHelpers.h in CopyFiles */,
 				501839E5182C3FA500F9594B /* UIView+FontHelpers.h in CopyFiles */,
 				50F12BC61827D92B001C21DA /* NSObject+Helpers.h in CopyFiles */,
@@ -140,8 +137,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		50139A20182FAB4B0042DBDC /* StorageCtrlBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageCtrlBase.h; sourceTree = "<group>"; };
-		50139A21182FAB4B0042DBDC /* StorageCtrlBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageCtrlBase.m; sourceTree = "<group>"; };
 		501839E0182C3DC700F9594B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		501839E2182C3F9000F9594B /* UIView+FontHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FontHelpers.h"; sourceTree = "<group>"; };
 		501839E3182C3F9000F9594B /* UIView+FontHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FontHelpers.m"; sourceTree = "<group>"; };
@@ -380,8 +375,6 @@
 				50F12BB21827D84A001C21DA /* Base64.m */,
 				50F12BB31827D84A001C21DA /* CoreDataCtrl.h */,
 				50F12BB41827D84A001C21DA /* CoreDataCtrl.m */,
-				50139A20182FAB4B0042DBDC /* StorageCtrlBase.h */,
-				50139A21182FAB4B0042DBDC /* StorageCtrlBase.m */,
 				50F12BB51827D84A001C21DA /* AdvancedList.h */,
 				50F12BB61827D84A001C21DA /* AdvancedList.m */,
 				50F12BB71827D84A001C21DA /* PlainTableCtrl.h */,
@@ -490,7 +483,6 @@
 				50F12BBF1827D84A001C21DA /* Base64.m in Sources */,
 				50F12BA71827D7C5001C21DA /* UIViewController+Helpers.m in Sources */,
 				50F12BA01827D7C5001C21DA /* NSArray+Helpers.m in Sources */,
-				50139A22182FAB4B0042DBDC /* StorageCtrlBase.m in Sources */,
 				50F12BC41827D84A001C21DA /* WebVisibilityCtrl.m in Sources */,
 				501839E4182C3F9000F9594B /* UIView+FontHelpers.m in Sources */,
 				50F12BC31827D84A001C21DA /* ViewVisibilityCtrl.m in Sources */,

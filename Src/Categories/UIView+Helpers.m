@@ -319,7 +319,23 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
 
 - (void)hideOverlay
 {
-    [sharedOverlay removeFromSuperviewAnimated];
+    [self hideOverlayWithCompetion:nil];
+}
+
+- (void)hideOverlayWithCompetion:(SimpleBlock)completionBlock
+{
+    if (completionBlock)
+    {
+        [sharedOverlay hideAnimatedWithCompletion:^{
+            
+            [sharedOverlay removeFromSuperview];
+            completionBlock();
+        }];
+    }
+    else
+    {
+        [sharedOverlay removeFromSuperviewAnimated];
+    }
 }
 
 @end

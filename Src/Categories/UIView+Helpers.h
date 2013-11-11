@@ -47,5 +47,6 @@
 - (void)showOverlaySmall;
 - (void)showOverlayLarge;
 - (void)hideOverlay;
+- (void)hideOverlayWithCompetion:(SimpleBlock)completionBlock;
 
 @end

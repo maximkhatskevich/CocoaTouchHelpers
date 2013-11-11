@@ -257,17 +257,6 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
         
         //===
         
-        UIActivityIndicatorView *indicator = [UIActivityIndicatorView new];
-        indicator.autoresizingMask = 0;
-        indicator.hidesWhenStopped = YES;
-        [indicator startAnimating];
-        
-        [indicatorBgView addSubview:indicator];
-        
-        sharedActivityIndicator = indicator;
-        
-        //===
-        
         result = YES;
     }
     
@@ -280,10 +269,21 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
 {
     if ([self showOverlay])
     {
-        sharedActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-        sharedActivityIndicator.superview.frame = sharedActivityIndicator.bounds;
-        [sharedActivityIndicator placeInCenterOfSuperview];
-        [sharedActivityIndicator.superview placeInCenterOfSuperview];
+        UIActivityIndicatorView *indicator =
+        [[UIActivityIndicatorView alloc]
+         initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        
+        indicator.autoresizingMask = 0;
+        indicator.hidesWhenStopped = YES;
+        [indicator startAnimating];
+        
+        [sharedOverlay.subviews.firstObject addSubview:indicator];
+        
+        //===
+        
+        indicator.superview.frame = indicator.bounds;
+        [indicator placeInCenterOfSuperview];
+        [indicator.superview placeInCenterOfSuperview];
         
         //===
         
@@ -295,10 +295,21 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
 {
     if ([self showOverlay])
     {
-        sharedActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-        sharedActivityIndicator.superview.frame = sharedActivityIndicator.bounds;
-        [sharedActivityIndicator placeInCenterOfSuperview];
-        [sharedActivityIndicator.superview placeInCenterOfSuperview];
+        UIActivityIndicatorView *indicator =
+        [[UIActivityIndicatorView alloc]
+         initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        
+        indicator.autoresizingMask = 0;
+        indicator.hidesWhenStopped = YES;
+        [indicator startAnimating];
+        
+        [sharedOverlay.subviews.firstObject addSubview:indicator];
+        
+        //===
+        
+        indicator.superview.frame = indicator.bounds;
+        [indicator placeInCenterOfSuperview];
+        [indicator.superview placeInCenterOfSuperview];
         
         //===
         

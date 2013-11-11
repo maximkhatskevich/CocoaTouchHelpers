@@ -152,28 +152,35 @@
         switch (change)
         {
             case NSKeyValueChangeInsertion:
-                if (self.onWillInsertValuesAtIndexes)
+                if (self.onWillInsertItems)
                 {
-                    self.onWillInsertValuesAtIndexes(self, indexes);
+                    self.onWillInsertItems(self, indexes);
                 }
                 break;
                 
             case NSKeyValueChangeReplacement:
-                if (self.onWillReplaceValuesAtIndexes)
+                if (self.onWillReplaceItems)
                 {
-                    self.onWillReplaceValuesAtIndexes(self, indexes);
+                    self.onWillReplaceItems(self, indexes);
                 }
                 break;
                 
             case NSKeyValueChangeRemoval:
-                if (self.onWillRemoveValuesAtIndexes)
+                if (self.onWillRemoveItems)
                 {
-                    self.onWillRemoveValuesAtIndexes(self, indexes);
+                    self.onWillRemoveItems(self, indexes);
                 }
                 break;
                 
             default:
                 break;
+        }
+        
+        //===
+        
+        if (self.onWillChangeItems)
+        {
+            self.onWillChangeItems(self, change, indexes);
         }
     }
 }
@@ -187,28 +194,35 @@
         switch (change)
         {
             case NSKeyValueChangeInsertion:
-                if (self.onDidInsertValuesAtIndexes)
+                if (self.onDidInsertItems)
                 {
-                    self.onDidInsertValuesAtIndexes(self, indexes);
+                    self.onDidInsertItems(self, indexes);
                 }
                 break;
                 
             case NSKeyValueChangeReplacement:
-                if (self.onDidReplaceValuesAtIndexes)
+                if (self.onDidReplaceItems)
                 {
-                    self.onDidReplaceValuesAtIndexes(self, indexes);
+                    self.onDidReplaceItems(self, indexes);
                 }
                 break;
                 
             case NSKeyValueChangeRemoval:
-                if (self.onDidRemoveValuesAtIndexes)
+                if (self.onDidRemoveItems)
                 {
-                    self.onDidRemoveValuesAtIndexes(self, indexes);
+                    self.onDidRemoveItems(self, indexes);
                 }
                 break;
                 
             default:
                 break;
+        }
+        
+        //===
+        
+        if (self.onDidChangeItems)
+        {
+            self.onDidChangeItems(self, change, indexes);
         }
         
         //===

@@ -12,7 +12,8 @@
 
 #pragma mark - Notification blocks
 
-typedef void (^ALChangeValuesAtIndexesBlock)(AdvancedList *list, NSIndexSet *indexes);
+typedef void (^ALIndexSetBlock)(AdvancedList *list, NSIndexSet *indexes);
+typedef void (^ALChangeItemsAtIndexesBlock)(AdvancedList *list, NSKeyValueChange change, NSIndexSet *indexes);
 typedef void (^ALBlock)(AdvancedList *list);
 
 #pragma mark - Class
@@ -27,14 +28,17 @@ typedef void (^ALBlock)(AdvancedList *list);
 @property (readonly, nonatomic) id oldCurrentItem;
 @property (readonly) NSUInteger oldCurrentItemIndex;
 
-@property (strong, nonatomic) ALChangeValuesAtIndexesBlock onWillInsertValuesAtIndexes;
-@property (strong, nonatomic) ALChangeValuesAtIndexesBlock onDidInsertValuesAtIndexes;
+@property (strong, nonatomic) ALIndexSetBlock onWillInsertItems;
+@property (strong, nonatomic) ALIndexSetBlock onDidInsertItems;
 
-@property (strong, nonatomic) ALChangeValuesAtIndexesBlock onWillReplaceValuesAtIndexes;
-@property (strong, nonatomic) ALChangeValuesAtIndexesBlock onDidReplaceValuesAtIndexes;
+@property (strong, nonatomic) ALIndexSetBlock onWillReplaceItems;
+@property (strong, nonatomic) ALIndexSetBlock onDidReplaceItems;
 
-@property (strong, nonatomic) ALChangeValuesAtIndexesBlock onWillRemoveValuesAtIndexes;
-@property (strong, nonatomic) ALChangeValuesAtIndexesBlock onDidRemoveValuesAtIndexes;
+@property (strong, nonatomic) ALIndexSetBlock onWillRemoveItems;
+@property (strong, nonatomic) ALIndexSetBlock onDidRemoveItems;
+
+@property (strong, nonatomic) ALChangeItemsAtIndexesBlock onWillChangeItems;
+@property (strong, nonatomic) ALChangeItemsAtIndexesBlock onDidChangeItems;
 
 @property (strong, nonatomic) ALBlock onDidChangeCurrentItem;
 

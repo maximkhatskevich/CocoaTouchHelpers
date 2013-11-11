@@ -9,6 +9,7 @@
 #import "UIView+Helpers.h"
 
 static __weak UIView *sharedOverlayInstance = nil;
+static __weak UIActivityIndicatorView *activityIndicator = nil;
 
 @implementation UIView (Helpers)
 
@@ -224,60 +225,73 @@ static __weak UIView *sharedOverlayInstance = nil;
     self.frame = targetFrame;
 }
 
-- (void)showOverlaySmall
+- (BOOL)showOverlay
 {
+    BOOL result = NO;
+    
+    //===
+    
     if (!sharedOverlayInstance)
     {
         UIView *view = [UIView new];
-        view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.6];
         view.alpha = 0.0;
         
-        UIActivityIndicatorView *activityIndicator = [UIActivityIndicatorView new];
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-        activityIndicator.autoresizingMask = 0;
-        activityIndicator.hidesWhenStopped = YES;
-        [activityIndicator startAnimating];
-        
-        [view addSubview:activityIndicator];
+        view.backgroundColor =
+        ([self isKindOfClass:[UIButton class]] ?
+         [UIColor clearColor] :
+         [UIColor colorWithWhite:0.0 alpha:0.6]);
         
         [view configureWithSuperview:self];
         
-        [activityIndicator placeInCenterOfSuperview];
-        
         sharedOverlayInstance = view;
+        
+        //===
+        
+        UIActivityIndicatorView *indicator = [UIActivityIndicatorView new];
+        indicator.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.6];
+        indicator.autoresizingMask = 0;
+        indicator.hidesWhenStopped = YES;
+        indicator.layer.cornerRadius = 3;
+        indicator.layer.masksToBounds = YES;
+        [indicator startAnimating];
+        
+        [sharedOverlayInstance addSubview:indicator];
+        [indicator placeInCenterOfSuperview];
+        
+        activityIndicator = indicator;
+        
+        //===
+        
+        result = YES;
     }
     
     //===
     
-    [sharedOverlayInstance showAnimatedIfNeeded];
+    return result;
+}
+
+- (void)showOverlaySmall
+{
+    if ([self showOverlay])
+    {
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+        
+        //===
+        
+        [sharedOverlayInstance showAnimatedIfNeeded];
+    }
 }
 
 - (void)showOverlayLarge
 {
-    if (!sharedOverlayInstance)
+    if ([self showOverlay])
     {
-        UIView *view = [UIView new];
-        view.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.6];
-        view.alpha = 0.0;
-        
-        UIActivityIndicatorView *activityIndicator = [UIActivityIndicatorView new];
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-        activityIndicator.autoresizingMask = 0;
-        activityIndicator.hidesWhenStopped = YES;
-        [activityIndicator startAnimating];
         
-        [view addSubview:activityIndicator];
+        //===
         
-        [view configureWithSuperview:self];
-        
-        [activityIndicator placeInCenterOfSuperview];
-        
-        sharedOverlayInstance = view;
+        [sharedOverlayInstance showAnimatedIfNeeded];
     }
-    
-    //===
-    
-    [sharedOverlayInstance showAnimatedIfNeeded];
 }
 
 - (void)hideOverlay

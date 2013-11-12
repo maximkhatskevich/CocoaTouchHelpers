@@ -75,7 +75,7 @@
 //===
 
 #define weakSelfMacro __weak typeof(self) weakSelf = self
-#define thisOperation __weak NSOperation *thisOperation = nil
+#define thisOperationMacro __weak NSOperation *thisOperation = nil
 #define errorMacro NSError *error = nil
 
 //===

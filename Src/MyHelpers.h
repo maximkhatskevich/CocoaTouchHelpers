@@ -18,7 +18,7 @@
 #import <MyHelpers/Base64.h>
 
 #import <MyHelpers/AdvancedList.h>
-#import <MyHelpers/AdvancedTableCtrl.h>
+#import <MyHelpers/PlainTableCtrl.h>
 
 #import <MyHelpers/ViewVisibilityCtrl.h>
 #import <MyHelpers/WebVisibilityCtrl.h>

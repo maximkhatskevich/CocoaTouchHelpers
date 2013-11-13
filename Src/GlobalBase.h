@@ -15,9 +15,11 @@ typedef void (^SimpleBlock)(void);
 
 typedef void (^OperationCompletionBlock)(NSError *error);
 
-typedef void (^DataResultBlock)(NSData *data, NSError *error);
-typedef void (^ArrayResultBlock)(NSArray *array, NSError *error);
-typedef void (^DictionaryResultBlock)(NSDictionary *dict, NSError *error);
+typedef void (^IdResultBlock)(id result, NSError *error);
+typedef void (^ObjectResultBlock)(NSObject *result, NSError *error);
+typedef void (^DataResultBlock)(NSData *result, NSError *error);
+typedef void (^ArrayResultBlock)(NSArray *result, NSError *error);
+typedef void (^DictionaryResultBlock)(NSDictionary *result, NSError *error);
 
 //=== must be defined in an application which use this header:
 

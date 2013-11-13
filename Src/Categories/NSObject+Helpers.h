@@ -26,4 +26,6 @@
 - (NSArray *)arrayFromJSONForKey:(NSString *)key;
 - (id)objectFromJSONForKey:(NSString *)key;
 
+- (NSString *)stringFromDateForKey:(NSString *)dateKey withFormat:(NSString *)format;
+
 @end

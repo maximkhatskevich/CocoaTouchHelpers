@@ -125,4 +125,37 @@
     return result;
 }
 
+- (NSString *)stringFromDateForKey:(NSString *)dateKey withFormat:(NSString *)format
+{
+    NSString *result = nil;
+    
+    //===
+    
+    if (isObjectForKeySupported(self))
+    {
+        NSDate *val = [(id)self objectForKey:dateKey];
+        
+        if (val)
+        {
+            static NSDateFormatter *dateFormatter = nil;
+            static dispatch_once_t onceToken;
+            
+            dispatch_once(&onceToken, ^{
+                
+                dateFormatter = [NSDateFormatter new];
+                dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+                [dateFormatter setDateFormat:format];
+            });
+            
+            //===
+            
+            result = [dateFormatter stringFromDate:val];
+        }
+    }
+    
+    //===
+    
+    return result;
+}
+
 @end

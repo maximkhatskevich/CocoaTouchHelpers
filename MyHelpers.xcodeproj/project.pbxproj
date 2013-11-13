@@ -12,7 +12,7 @@
 		501839E5182C3FA500F9594B /* UIView+FontHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501839E2182C3F9000F9594B /* UIView+FontHelpers.h */; };
 		501839E8182C452A00F9594B /* NSMutableArray+ParseHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 501839E7182C452A00F9594B /* NSMutableArray+ParseHelpers.m */; };
 		501839E9182C457D00F9594B /* NSMutableArray+ParseHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501839E6182C452A00F9594B /* NSMutableArray+ParseHelpers.h */; };
-		501839ED182C4DA400F9594B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 501839EB182C4D9B00F9594B /* Parse.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		501A4CE3183303DC009EA5DE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 501A4CE2183303DC009EA5DE /* Parse.framework */; };
 		50F12B341827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
 		50F12B421827928C001C21DA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B411827928C001C21DA /* XCTest.framework */; };
 		50F12B431827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
@@ -142,7 +142,7 @@
 		501839E3182C3F9000F9594B /* UIView+FontHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FontHelpers.m"; sourceTree = "<group>"; };
 		501839E6182C452A00F9594B /* NSMutableArray+ParseHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ParseHelpers.h"; sourceTree = "<group>"; };
 		501839E7182C452A00F9594B /* NSMutableArray+ParseHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ParseHelpers.m"; sourceTree = "<group>"; };
-		501839EB182C4D9B00F9594B /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		501A4CE2183303DC009EA5DE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		50F12B301827928C001C21DA /* libMyHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMyHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F12B331827928C001C21DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50F12B401827928C001C21DA /* MyHelpersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyHelpersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,7 +219,7 @@
 			files = (
 				501839E1182C3DC700F9594B /* CoreData.framework in Frameworks */,
 				50F12BE21827DF07001C21DA /* UIKit.framework in Frameworks */,
-				501839ED182C4DA400F9594B /* Parse.framework in Frameworks */,
+				501A4CE3183303DC009EA5DE /* Parse.framework in Frameworks */,
 				50F12B341827928C001C21DA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,7 +241,7 @@
 		501839EA182C4D9B00F9594B /* Third-party */ = {
 			isa = PBXGroup;
 			children = (
-				501839EB182C4D9B00F9594B /* Parse.framework */,
+				501A4CE2183303DC009EA5DE /* Parse.framework */,
 			);
 			path = "Third-party";
 			sourceTree = "<group>";

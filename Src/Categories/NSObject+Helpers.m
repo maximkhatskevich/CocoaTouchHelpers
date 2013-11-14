@@ -144,11 +144,11 @@
                 
                 dateFormatter = [NSDateFormatter new];
                 dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
-                [dateFormatter setDateFormat:format];
             });
             
             //===
             
+            [dateFormatter setDateFormat:format];
             result = [dateFormatter stringFromDate:val];
         }
     }

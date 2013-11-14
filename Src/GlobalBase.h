@@ -15,6 +15,7 @@ typedef void (^SimpleBlock)(void);
 
 typedef void (^OperationCompletionBlock)(NSError *error);
 
+typedef void (^BoolResultBlock)(BOOL successful, NSError *error);
 typedef void (^IdResultBlock)(id result, NSError *error);
 typedef void (^ObjectResultBlock)(NSObject *result, NSError *error);
 typedef void (^NumberResultBlock)(NSNumber *result, NSError *error);

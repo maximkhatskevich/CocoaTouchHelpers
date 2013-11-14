@@ -13,6 +13,8 @@
 		501839E8182C452A00F9594B /* NSMutableArray+ParseHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 501839E7182C452A00F9594B /* NSMutableArray+ParseHelpers.m */; };
 		501839E9182C457D00F9594B /* NSMutableArray+ParseHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501839E6182C452A00F9594B /* NSMutableArray+ParseHelpers.h */; };
 		501A4CE3183303DC009EA5DE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 501A4CE2183303DC009EA5DE /* Parse.framework */; };
+		50DEFF331835101000622FBA /* PFGeoPoint+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */; };
+		50DEFF341835104200622FBA /* PFGeoPoint+Helpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */; };
 		50F12B341827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
 		50F12B421827928C001C21DA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B411827928C001C21DA /* XCTest.framework */; };
 		50F12B431827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
@@ -98,6 +100,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				50DEFF341835104200622FBA /* PFGeoPoint+Helpers.h in CopyFiles */,
 				501839E9182C457D00F9594B /* NSMutableArray+ParseHelpers.h in CopyFiles */,
 				501839E5182C3FA500F9594B /* UIView+FontHelpers.h in CopyFiles */,
 				50F12BC61827D92B001C21DA /* NSObject+Helpers.h in CopyFiles */,
@@ -143,6 +146,8 @@
 		501839E6182C452A00F9594B /* NSMutableArray+ParseHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ParseHelpers.h"; sourceTree = "<group>"; };
 		501839E7182C452A00F9594B /* NSMutableArray+ParseHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ParseHelpers.m"; sourceTree = "<group>"; };
 		501A4CE2183303DC009EA5DE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFGeoPoint+Helpers.h"; sourceTree = "<group>"; };
+		50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFGeoPoint+Helpers.m"; sourceTree = "<group>"; };
 		50F12B301827928C001C21DA /* libMyHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMyHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F12B331827928C001C21DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50F12B401827928C001C21DA /* MyHelpersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyHelpersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -364,6 +369,8 @@
 				50F12B991827D7C5001C21DA /* UIImage+Helpers.m */,
 				50F12B9A1827D7C5001C21DA /* UIColor+Helpers.h */,
 				50F12B9B1827D7C5001C21DA /* UIColor+Helpers.m */,
+				50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */,
+				50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -480,6 +487,7 @@
 				50F12BA61827D7C5001C21DA /* UIStoryboard+Helpers.m in Sources */,
 				50F12BA11827D7C5001C21DA /* NSArray+ParseHelpers.m in Sources */,
 				50F12BC01827D84A001C21DA /* CoreDataCtrl.m in Sources */,
+				50DEFF331835101000622FBA /* PFGeoPoint+Helpers.m in Sources */,
 				50F12BBF1827D84A001C21DA /* Base64.m in Sources */,
 				50F12BA71827D7C5001C21DA /* UIViewController+Helpers.m in Sources */,
 				50F12BA01827D7C5001C21DA /* NSArray+Helpers.m in Sources */,

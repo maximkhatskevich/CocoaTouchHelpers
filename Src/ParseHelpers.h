@@ -15,5 +15,6 @@
 #import <MyHelpers/NSArray+ParseHelpers.h>
 #import <MyHelpers/NSMutableArray+ParseHelpers.h>
 #import <MyHelpers/AdvancedList+ParseHelpers.h>
+#import <MyHelpers/PFGeoPoint+Helpers.h>
 
 #endif

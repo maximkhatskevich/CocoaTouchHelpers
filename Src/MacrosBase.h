@@ -84,6 +84,9 @@
 
 #define isParseObjectReady(object) ([object isKindOfClass:[PFObject class]] && [(PFObject *)object isDataAvailable])
 
+#define notNull(object) (object ? object : [NSNull null])
+#define notNullIf(object, condition) (condition ? object : [NSNull null])
+
 //===
 
 #define randInt(min, max) randIntValueBeweenMinAndMax(min, max)

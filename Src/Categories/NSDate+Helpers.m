@@ -10,7 +10,14 @@
 
 @implementation NSDate (Helpers)
 
+
+
 + (NSDate *)currentDateForTimeZone:(NSTimeZone *)targetTimeZone
+{
+    return [[self class] dateForDate:[NSDate date] andTimeZone:targetTimeZone];
+}
+
++ (NSDate *)dateForDate:(NSDate *)sourceDateInUTC andTimeZone:(NSTimeZone *)targetTimeZone
 {
     NSDate *result= nil;
     
@@ -36,7 +43,7 @@
         NSDateComponents *targetComponents =
         [targetCalendar
          components:unitFlags
-         fromDate:[NSDate date]]; // current dateAndTime in UTC
+         fromDate:sourceDateInUTC]; // given dateAndTime in UTC
         
         // replace local TimeZone
         // (which is by default set for components)

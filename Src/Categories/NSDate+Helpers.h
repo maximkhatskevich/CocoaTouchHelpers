@@ -10,6 +10,10 @@
 
 @interface NSDate (Helpers)
 
+// returns local date/time for 'sourceDateInUTC' and 'targetTimeZone', NOT in UTC:
++ (NSDate *)dateForDate:(NSDate *)sourceDateInUTC andTimeZone:(NSTimeZone *)targetTimeZone;
+
+// returns local current date/time for 'targetTimeZone', NOT in UTC:
 + (NSDate *)currentDateForTimeZone:(NSTimeZone *)targetTimeZone;
 
 @end

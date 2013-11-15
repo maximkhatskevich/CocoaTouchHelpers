@@ -13,6 +13,8 @@
 		501839E8182C452A00F9594B /* NSMutableArray+ParseHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 501839E7182C452A00F9594B /* NSMutableArray+ParseHelpers.m */; };
 		501839E9182C457D00F9594B /* NSMutableArray+ParseHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501839E6182C452A00F9594B /* NSMutableArray+ParseHelpers.h */; };
 		501A4CE3183303DC009EA5DE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 501A4CE2183303DC009EA5DE /* Parse.framework */; };
+		5046534E1836639B002DB336 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046534D1836639B002DB336 /* NSDate+Helpers.m */; };
+		5046534F183663C4002DB336 /* NSDate+Helpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5046534C1836639B002DB336 /* NSDate+Helpers.h */; };
 		50DEFF331835101000622FBA /* PFGeoPoint+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */; };
 		50DEFF341835104200622FBA /* PFGeoPoint+Helpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */; };
 		50F12B341827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
@@ -100,6 +102,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				5046534F183663C4002DB336 /* NSDate+Helpers.h in CopyFiles */,
 				50DEFF341835104200622FBA /* PFGeoPoint+Helpers.h in CopyFiles */,
 				501839E9182C457D00F9594B /* NSMutableArray+ParseHelpers.h in CopyFiles */,
 				501839E5182C3FA500F9594B /* UIView+FontHelpers.h in CopyFiles */,
@@ -146,6 +149,8 @@
 		501839E6182C452A00F9594B /* NSMutableArray+ParseHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ParseHelpers.h"; sourceTree = "<group>"; };
 		501839E7182C452A00F9594B /* NSMutableArray+ParseHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ParseHelpers.m"; sourceTree = "<group>"; };
 		501A4CE2183303DC009EA5DE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		5046534C1836639B002DB336 /* NSDate+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helpers.h"; sourceTree = "<group>"; };
+		5046534D1836639B002DB336 /* NSDate+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helpers.m"; sourceTree = "<group>"; };
 		50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFGeoPoint+Helpers.h"; sourceTree = "<group>"; };
 		50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFGeoPoint+Helpers.m"; sourceTree = "<group>"; };
 		50F12B301827928C001C21DA /* libMyHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMyHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -333,6 +338,8 @@
 				50F12B791827D7C5001C21DA /* NSObject+ParseHelpers.m */,
 				50F12B7A1827D7C5001C21DA /* NSString+Helpers.h */,
 				50F12B7B1827D7C5001C21DA /* NSString+Helpers.m */,
+				5046534C1836639B002DB336 /* NSDate+Helpers.h */,
+				5046534D1836639B002DB336 /* NSDate+Helpers.m */,
 				50F12B7C1827D7C5001C21DA /* NSArray+Helpers.h */,
 				50F12B7D1827D7C5001C21DA /* NSArray+Helpers.m */,
 				50F12B7E1827D7C5001C21DA /* NSArray+ParseHelpers.h */,
@@ -477,6 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5046534E1836639B002DB336 /* NSDate+Helpers.m in Sources */,
 				50F12B9C1827D7C5001C21DA /* NSObject+Helpers.m in Sources */,
 				50F12B9E1827D7C5001C21DA /* NSObject+ParseHelpers.m in Sources */,
 				50F12BA91827D7C5001C21DA /* UINavigationController+Helpers.m in Sources */,

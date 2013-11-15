@@ -28,6 +28,7 @@
 
 #import <MyHelpers/NSObject+Helpers.h>
 #import <MyHelpers/NSString+Helpers.h>
+#import <MyHelpers/NSDate+Helpers.h>
 
 #import <MyHelpers/NSArray+Helpers.h>
 #import <MyHelpers/NSMutableArray+Helpers.h>

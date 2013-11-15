@@ -18,29 +18,38 @@ NSString *defaultFontName = nil; // do not forget to define it before use!
 
 - (void)applyFontWithName:(NSString *)fontName andSize:(CGFloat)fontSize
 {
-    __weak id targetView = nil;
-    
-    //===
-    
-    if ([self isKindOfClass:[UILabel class]] ||
-        [self isKindOfClass:[UITextView class]] ||
-        [self isKindOfClass:[UITextField class]])
+    if (fontName)
     {
-        targetView = self;
-    }
-    
-    //===
-    
-    if (targetView)
-    {
-        CGFloat targetFontSize =
-        (fontSize == 0.0 ?
-         [[targetView performSelector:@selector(font)] pointSize] :
-         fontSize);
+        __weak id targetView = nil;
         
-        [targetView
-         performSelector:@selector(setFont:)
-         withObject:[UIFont fontWithName:fontName size:targetFontSize]];
+        //===
+        
+        if ([self isKindOfClass:[UILabel class]] ||
+            [self isKindOfClass:[UITextView class]] ||
+            [self isKindOfClass:[UITextField class]])
+        {
+            targetView = self;
+        }
+        
+        //===
+        
+        if (targetView)
+        {
+            CGFloat targetFontSize =
+            (fontSize == 0.0 ?
+             [[targetView performSelector:@selector(font)] pointSize] :
+             fontSize);
+            
+            UIFont *targetFont =
+            [UIFont fontWithName:fontName size:targetFontSize];
+            
+            if (targetFont)
+            {
+                [targetView
+                 performSelector:@selector(setFont:)
+                 withObject:targetFont];
+            }
+        }
     }
 }
 

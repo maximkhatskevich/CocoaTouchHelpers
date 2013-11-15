@@ -10,8 +10,6 @@
 
 @implementation NSDate (Helpers)
 
-
-
 + (NSDate *)currentDateForTimeZone:(NSTimeZone *)targetTimeZone
 {
     return [[self class] dateForDate:[NSDate date] andTimeZone:targetTimeZone];
@@ -45,9 +43,9 @@
          components:unitFlags
          fromDate:sourceDateInUTC]; // given dateAndTime in UTC
         
-        // replace local TimeZone
-        // (which is by default set for components)
-        // with UTC (GMT +0000)
+        // lets re-set time zone to avoid
+        // back date and time conversion when we
+        // will convert components into NSDate instance
         
         targetComponents.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
         

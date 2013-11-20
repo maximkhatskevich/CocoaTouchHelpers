@@ -53,6 +53,7 @@
 - (NSString *)cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withItem:(id)item;
+- (void)updateVisibleCells;
 - (void)updateCellAtIndexPath:(NSIndexPath *)indexPath withItem:(id)item;
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withItem:(id)item;
 

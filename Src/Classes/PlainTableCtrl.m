@@ -257,6 +257,17 @@
     return result;
 }
 
+- (void)updateVisibleCells
+{
+    for (NSIndexPath *indexPath in [self.tableView indexPathsForVisibleRows])
+    {
+        [self
+         updateCell:[self.tableView cellForRowAtIndexPath:indexPath]
+         atIndexPath:indexPath
+         withItem:[self.content.items safeObjectAtIndex:indexPath.row]];
+    }
+}
+
 - (void)updateCellAtIndexPath:(NSIndexPath *)indexPath withItem:(id)item
 {
     // inspired by

@@ -34,7 +34,7 @@
         //===
         
         NSCalendar *targetCalendar = [NSCalendar currentCalendar];
-        targetCalendar.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+        targetCalendar.timeZone = targetTimeZone;
         
         //===
         
@@ -43,7 +43,11 @@
          components:unitFlags
          fromDate:sourceDateInUTC]; // given dateAndTime in UTC
         
-        targetComponents.timeZone = targetTimeZone;
+        // lets re-set time zone to avoid
+        // back date and time conversion when we
+        // will convert components into NSDate instance
+        
+        targetComponents.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
         
         //===
         

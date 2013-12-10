@@ -78,7 +78,8 @@
     {
         id obj = [(id)self objectForKey:key];
         
-        if ([obj isKindOfClass:[NSString class]]) // not til & string
+        if (obj &&
+            [obj isKindOfClass:[NSString class]]) // not nil & string
         {
             result = (NSString *)obj;
         }

@@ -20,6 +20,7 @@
     //===
     
     if ([self isKindOfClass:[PFObject class]] &&
+        object &&
         [object isKindOfClass:[PFObject class]])
     {
         result = [((PFObject *)self).objectId

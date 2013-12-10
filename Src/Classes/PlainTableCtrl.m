@@ -64,7 +64,8 @@
 
 - (void)configureWithObject:(id)object
 {
-    if ([object isKindOfClass:[UITableView class]])
+    if (object &&
+        [object isKindOfClass:[UITableView class]])
     {
         UITableView *tableView = (UITableView *)object;
         

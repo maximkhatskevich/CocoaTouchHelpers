@@ -1,9 +1,9 @@
 //
 //  NSObject+Observers.m
-//  Rezzie
+//  MyHelpers
 //
 //  Created by Maxim Khatskevich on 12/10/13.
-//  Copyright (c) 2013 SixAgency. All rights reserved.
+//  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.
 //
 
 #import "NSObject+Observers.h"

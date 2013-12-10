@@ -48,3 +48,5 @@
 #import <MyHelpers/UIImage+Helpers.h>
 
 #import <MyHelpers/UIColor+Helpers.h>
+
+#import <MyHelpers/NSObject+Observers.h>

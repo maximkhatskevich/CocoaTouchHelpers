@@ -13,6 +13,9 @@
 		501839E8182C452A00F9594B /* NSMutableArray+ParseHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 501839E7182C452A00F9594B /* NSMutableArray+ParseHelpers.m */; };
 		501839E9182C457D00F9594B /* NSMutableArray+ParseHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501839E6182C452A00F9594B /* NSMutableArray+ParseHelpers.h */; };
 		501A4CE3183303DC009EA5DE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 501A4CE2183303DC009EA5DE /* Parse.framework */; };
+		504651FA1856D8E600C1DF70 /* libTHObserversAndBinders.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 505733471856D89400D6C4A0 /* libTHObserversAndBinders.a */; };
+		504652011856DC5400C1DF70 /* NSObject+Observers.m in Sources */ = {isa = PBXBuildFile; fileRef = 504652001856DC5400C1DF70 /* NSObject+Observers.m */; };
+		504652021856DC6700C1DF70 /* NSObject+Observers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 504651FF1856DC5400C1DF70 /* NSObject+Observers.h */; };
 		5046534E1836639B002DB336 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046534D1836639B002DB336 /* NSDate+Helpers.m */; };
 		5046534F183663C4002DB336 /* NSDate+Helpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5046534C1836639B002DB336 /* NSDate+Helpers.h */; };
 		50DEFF331835101000622FBA /* PFGeoPoint+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */; };
@@ -86,6 +89,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		504651F61856D8DE00C1DF70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 505733411856D89400D6C4A0 /* THObserversAndBinders.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7D7830141667A93600F83BC7;
+			remoteInfo = THObserversAndBinders;
+		};
+		505733461856D89400D6C4A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 505733411856D89400D6C4A0 /* THObserversAndBinders.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D7830151667A93600F83BC7;
+			remoteInfo = THObserversAndBinders;
+		};
+		505733481856D89400D6C4A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 505733411856D89400D6C4A0 /* THObserversAndBinders.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D7830261667A93600F83BC7;
+			remoteInfo = THObserversAndBindersTests;
+		};
 		50F12B461827928C001C21DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 50F12B281827928C001C21DA /* Project object */;
@@ -102,6 +126,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				504652021856DC6700C1DF70 /* NSObject+Observers.h in CopyFiles */,
 				5046534F183663C4002DB336 /* NSDate+Helpers.h in CopyFiles */,
 				50DEFF341835104200622FBA /* PFGeoPoint+Helpers.h in CopyFiles */,
 				501839E9182C457D00F9594B /* NSMutableArray+ParseHelpers.h in CopyFiles */,
@@ -149,8 +174,11 @@
 		501839E6182C452A00F9594B /* NSMutableArray+ParseHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+ParseHelpers.h"; sourceTree = "<group>"; };
 		501839E7182C452A00F9594B /* NSMutableArray+ParseHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ParseHelpers.m"; sourceTree = "<group>"; };
 		501A4CE2183303DC009EA5DE /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		504651FF1856DC5400C1DF70 /* NSObject+Observers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Observers.h"; sourceTree = "<group>"; };
+		504652001856DC5400C1DF70 /* NSObject+Observers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Observers.m"; sourceTree = "<group>"; };
 		5046534C1836639B002DB336 /* NSDate+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helpers.h"; sourceTree = "<group>"; };
 		5046534D1836639B002DB336 /* NSDate+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helpers.m"; sourceTree = "<group>"; };
+		505733411856D89400D6C4A0 /* THObserversAndBinders.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = THObserversAndBinders.xcodeproj; path = THObserversAndBinders/THObserversAndBinders.xcodeproj; sourceTree = "<group>"; };
 		50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFGeoPoint+Helpers.h"; sourceTree = "<group>"; };
 		50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFGeoPoint+Helpers.m"; sourceTree = "<group>"; };
 		50F12B301827928C001C21DA /* libMyHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMyHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,6 +255,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				504651FA1856D8E600C1DF70 /* libTHObserversAndBinders.a in Frameworks */,
 				501839E1182C3DC700F9594B /* CoreData.framework in Frameworks */,
 				50F12BE21827DF07001C21DA /* UIKit.framework in Frameworks */,
 				501A4CE3183303DC009EA5DE /* Parse.framework in Frameworks */,
@@ -252,8 +281,18 @@
 			isa = PBXGroup;
 			children = (
 				501A4CE2183303DC009EA5DE /* Parse.framework */,
+				505733411856D89400D6C4A0 /* THObserversAndBinders.xcodeproj */,
 			);
 			path = "Third-party";
+			sourceTree = "<group>";
+		};
+		505733421856D89400D6C4A0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				505733471856D89400D6C4A0 /* libTHObserversAndBinders.a */,
+				505733491856D89400D6C4A0 /* THObserversAndBindersTests.octest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		50F12B271827928C001C21DA = {
@@ -378,6 +417,8 @@
 				50F12B9B1827D7C5001C21DA /* UIColor+Helpers.m */,
 				50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */,
 				50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */,
+				504651FF1856DC5400C1DF70 /* NSObject+Observers.h */,
+				504652001856DC5400C1DF70 /* NSObject+Observers.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -417,6 +458,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				504651F71856D8DE00C1DF70 /* PBXTargetDependency */,
 			);
 			name = MyHelpers;
 			productName = MyHelpers;
@@ -460,6 +502,12 @@
 			mainGroup = 50F12B271827928C001C21DA;
 			productRefGroup = 50F12B311827928C001C21DA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 505733421856D89400D6C4A0 /* Products */;
+					ProjectRef = 505733411856D89400D6C4A0 /* THObserversAndBinders.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				50F12B2F1827928C001C21DA /* MyHelpers */,
@@ -467,6 +515,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		505733471856D89400D6C4A0 /* libTHObserversAndBinders.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTHObserversAndBinders.a;
+			remoteRef = 505733461856D89400D6C4A0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		505733491856D89400D6C4A0 /* THObserversAndBindersTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = THObserversAndBindersTests.octest;
+			remoteRef = 505733481856D89400D6C4A0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		50F12B3E1827928C001C21DA /* Resources */ = {
@@ -497,6 +562,7 @@
 				50F12BC01827D84A001C21DA /* CoreDataCtrl.m in Sources */,
 				50DEFF331835101000622FBA /* PFGeoPoint+Helpers.m in Sources */,
 				50F12BBF1827D84A001C21DA /* Base64.m in Sources */,
+				504652011856DC5400C1DF70 /* NSObject+Observers.m in Sources */,
 				50F12BA71827D7C5001C21DA /* UIViewController+Helpers.m in Sources */,
 				50F12BA01827D7C5001C21DA /* NSArray+Helpers.m in Sources */,
 				50F12BC41827D84A001C21DA /* WebVisibilityCtrl.m in Sources */,
@@ -529,6 +595,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		504651F71856D8DE00C1DF70 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = THObserversAndBinders;
+			targetProxy = 504651F61856D8DE00C1DF70 /* PBXContainerItemProxy */;
+		};
 		50F12B471827928C001C21DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 50F12B2F1827928C001C21DA /* MyHelpers */;
@@ -628,6 +699,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Src/MyHelpers-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+					"\"$(OBJROOT)/UninstalledProducts/include\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(TARGET_NAME)";
@@ -645,6 +721,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Src/MyHelpers-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+					"\"$(OBJROOT)/UninstalledProducts/include\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(TARGET_NAME)";

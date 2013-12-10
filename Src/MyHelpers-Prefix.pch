@@ -50,4 +50,6 @@
 
 #import "UIColor+Helpers.h"
 
+#import "NSObject+Observers.h"
+
 #endif

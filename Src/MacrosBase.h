@@ -80,9 +80,9 @@
 
 //===
 
-#define isObjectForKeySupported(object) ([object isKindOfClass:[NSObject class]] && [object respondsToSelector:@selector(objectForKey:)])
+#define isObjectForKeySupported(object) (object && [object isKindOfClass:[NSObject class]] && [object respondsToSelector:@selector(objectForKey:)])
 
-#define isParseObjectReady(object) ([object isKindOfClass:[PFObject class]] && [(PFObject *)object isDataAvailable])
+#define isParseObjectReady(object) (object && [object isKindOfClass:[PFObject class]] && [(PFObject *)object isDataAvailable])
 
 #define notNull(object) (object ? object : [NSNull null])
 #define notNullIf(object, condition) (condition ? object : [NSNull null])

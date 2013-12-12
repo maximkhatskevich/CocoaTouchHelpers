@@ -15,17 +15,269 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
 
 #pragma mark - Property accessors
 
-- (BOOL)isVisible
+- (BOOL)visible
 {
     return !self.hidden;
 }
 
-- (void)setIsVisible:(BOOL)newValue
+- (void)setVisible:(BOOL)newValue
 {
     self.hidden = !newValue;
 }
 
+-(CGFloat)originX
+{
+    return self.frame.origin.x;
+}
+
+- (void)setOriginX:(CGFloat)newValue
+{
+    CGRect frame = self.frame;
+    
+    //===
+    
+    if (frame.origin.x != newValue)
+    {
+        frame.origin.x = newValue;
+        
+        //===
+        
+        self.frame = frame;
+    }
+}
+
+- (CGFloat)originY
+{
+    return self.frame.origin.y;
+}
+
+- (void)setOriginY:(CGFloat)newValue
+{
+    CGRect frame = self.frame;
+    
+    //===
+    
+    if (frame.origin.y != newValue)
+    {
+        frame.origin.y = newValue;
+        
+        //===
+        
+        self.frame = frame;
+    }
+}
+
+- (CGPoint)origin
+{
+    return self.frame.origin;
+}
+
+- (void)setOrigin:(CGPoint)newValue
+{
+    CGRect frame = self.frame;
+    
+    //===
+    
+    if (!CGPointEqualToPoint(frame.origin, newValue))
+    {
+        frame.origin = newValue;
+        
+        //===
+        
+        self.frame = frame;
+    }
+}
+
+- (CGFloat)height
+{
+    return self.frame.size.height;
+}
+
+- (void)setHeight:(CGFloat)newValue
+{
+    CGRect frame = self.frame;
+    
+    //===
+    
+    if (frame.size.height != newValue)
+    {
+        frame.size.height = newValue;
+        
+        //===
+        
+        self.frame = frame;
+    }
+}
+
+- (CGFloat)width
+{
+    return self.frame.size.width;
+}
+
+- (void)setWidth:(CGFloat)newValue
+{
+    CGRect frame = self.frame;
+    
+    //===
+    
+    if (frame.size.width != newValue)
+    {
+        frame.size.width = newValue;
+        
+        //===
+        
+        self.frame = frame;
+    }
+}
+
+- (CGSize)size
+{
+    return self.frame.size;
+}
+
+- (void)setSize:(CGSize)newValue
+{
+    CGRect frame = self.frame;
+    
+    //===
+    
+    if (!CGSizeEqualToSize(frame.size, newValue))
+    {
+        frame.size = newValue;
+        
+        //===
+        
+        self.frame = frame;
+    }
+}
+
 #pragma mark - Helpers
+
+- (void)setOriginX:(CGFloat)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
+{
+    [UIView
+     animateWithDuration:defaultAnimationDuration
+     delay:0.0
+     options:UIViewAnimationOptionCurveEaseInOut
+     animations:^{
+         
+         self.originX = newValue;
+     }
+     completion:completionBlock];
+}
+
+- (void)setOriginY:(CGFloat)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
+{
+    [UIView
+     animateWithDuration:defaultAnimationDuration
+     delay:0.0
+     options:UIViewAnimationOptionCurveEaseInOut
+     animations:^{
+         
+         self.originY = newValue;
+     }
+     completion:completionBlock];
+}
+
+- (void)setOrigin:(CGPoint)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
+{
+    [UIView
+     animateWithDuration:defaultAnimationDuration
+     delay:0.0
+     options:UIViewAnimationOptionCurveEaseInOut
+     animations:^{
+         
+         self.origin = newValue;
+     }
+     completion:completionBlock];
+}
+
+- (void)setHeight:(CGFloat)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
+{
+    [UIView
+     animateWithDuration:defaultAnimationDuration
+     delay:0.0
+     options:UIViewAnimationOptionCurveEaseInOut
+     animations:^{
+         
+         self.height = newValue;
+     }
+     completion:completionBlock];
+}
+
+- (void)setWidth:(CGFloat)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
+{
+    [UIView
+     animateWithDuration:defaultAnimationDuration
+     delay:0.0
+     options:UIViewAnimationOptionCurveEaseInOut
+     animations:^{
+         
+         self.width = newValue;
+     }
+     completion:completionBlock];
+}
+
+- (void)setSize:(CGSize)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
+{
+    [UIView
+     animateWithDuration:defaultAnimationDuration
+     delay:0.0
+     options:UIViewAnimationOptionCurveEaseInOut
+     animations:^{
+         
+         self.size = newValue;
+     }
+     completion:completionBlock];
+}
+
+- (void)setFrame:(CGRect)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
+{
+    [UIView
+     animateWithDuration:defaultAnimationDuration
+     delay:0.0
+     options:UIViewAnimationOptionCurveEaseInOut
+     animations:^{
+         
+         self.frame = newValue;
+     }
+     completion:completionBlock];
+}
+
+- (void)setOriginX:(CGFloat)newValue animated:(BOOL)animated
+{
+    [self setOriginX:newValue animated:animated withCompletion:nil];
+}
+
+- (void)setOriginY:(CGFloat)newValue animated:(BOOL)animated
+{
+    [self setOriginY:newValue animated:animated withCompletion:nil];
+}
+
+- (void)setOrigin:(CGPoint)newValue animated:(BOOL)animated
+{
+    [self setOrigin:newValue animated:animated withCompletion:nil];
+}
+
+- (void)setHeight:(CGFloat)newValue animated:(BOOL)animated
+{
+    [self setHeight:newValue animated:animated withCompletion:nil];
+}
+
+- (void)setWidth:(CGFloat)newValue animated:(BOOL)animated
+{
+    [self setWidth:newValue animated:animated withCompletion:nil];
+}
+
+- (void)setSize:(CGSize)newValue animated:(BOOL)animated
+{
+    [self setSize:newValue animated:animated withCompletion:nil];
+}
+
+- (void)setFrame:(CGRect)newValue animated:(BOOL)animated
+{
+    [self setFrame:newValue animated:animated withCompletion:nil];
+}
 
 + (BOOL)isView:(UIView *)childView aSubviewOfView:(UIView *)superView
 {
@@ -127,7 +379,7 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
 
 - (void)hideAnimatedIfNeededWithCompletion:(SimpleBlock)completionBlock
 {
-    if (self.isVisible &&
+    if (self.visible &&
         (self.alpha > 0.0))
     {
         [self hideAnimatedWithCompletion:completionBlock];

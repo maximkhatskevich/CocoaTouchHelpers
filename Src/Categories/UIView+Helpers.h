@@ -8,11 +8,41 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^AnimationCompletionBlock)(BOOL finished);
+
 @interface UIView (Helpers)
 
-@property BOOL isVisible;
+@property BOOL visible;
 
-//@property (readonly, nonatomic) UIView *firstResponder;
+@property CGFloat originX;
+@property CGFloat originY;
+@property CGPoint origin;
+@property CGFloat height;
+@property CGFloat width;
+@property CGSize size;
+
+- (void)setOriginX:(CGFloat)newValue animated:(BOOL)animated
+    withCompletion:(AnimationCompletionBlock)completionBlock;
+- (void)setOriginY:(CGFloat)newValue animated:(BOOL)animated
+    withCompletion:(AnimationCompletionBlock)completionBlock;
+- (void)setOrigin:(CGPoint)newValue animated:(BOOL)animated
+   withCompletion:(AnimationCompletionBlock)completionBlock;
+- (void)setHeight:(CGFloat)newValue animated:(BOOL)animated
+   withCompletion:(AnimationCompletionBlock)completionBlock;
+- (void)setWidth:(CGFloat)newValue animated:(BOOL)animated
+  withCompletion:(AnimationCompletionBlock)completionBlock;
+- (void)setSize:(CGSize)newValue animated:(BOOL)animated
+ withCompletion:(AnimationCompletionBlock)completionBlock;
+- (void)setFrame:(CGRect)newValue animated:(BOOL)animated
+  withCompletion:(AnimationCompletionBlock)completionBlock;
+
+- (void)setOriginX:(CGFloat)newValue animated:(BOOL)animated;
+- (void)setOriginY:(CGFloat)newValue animated:(BOOL)animated;
+- (void)setOrigin:(CGPoint)newValue animated:(BOOL)animated;
+- (void)setHeight:(CGFloat)newValue animated:(BOOL)animated;
+- (void)setWidth:(CGFloat)newValue animated:(BOOL)animated;
+- (void)setSize:(CGSize)newValue animated:(BOOL)animated;
+- (void)setFrame:(CGRect)newValue animated:(BOOL)animated;
 
 //=== Helpers
 

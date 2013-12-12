@@ -27,10 +27,10 @@ typedef void (^AnimationCompletionBlock)(BOOL finished);
     withCompletion:(AnimationCompletionBlock)completionBlock;
 - (void)setOrigin:(CGPoint)newValue animated:(BOOL)animated
    withCompletion:(AnimationCompletionBlock)completionBlock;
-- (void)setHeight:(CGFloat)newValue animated:(BOOL)animated
-   withCompletion:(AnimationCompletionBlock)completionBlock;
 - (void)setWidth:(CGFloat)newValue animated:(BOOL)animated
   withCompletion:(AnimationCompletionBlock)completionBlock;
+- (void)setHeight:(CGFloat)newValue animated:(BOOL)animated
+   withCompletion:(AnimationCompletionBlock)completionBlock;
 - (void)setSize:(CGSize)newValue animated:(BOOL)animated
  withCompletion:(AnimationCompletionBlock)completionBlock;
 - (void)setFrame:(CGRect)newValue animated:(BOOL)animated
@@ -39,8 +39,8 @@ typedef void (^AnimationCompletionBlock)(BOOL finished);
 - (void)setOriginX:(CGFloat)newValue animated:(BOOL)animated;
 - (void)setOriginY:(CGFloat)newValue animated:(BOOL)animated;
 - (void)setOrigin:(CGPoint)newValue animated:(BOOL)animated;
-- (void)setHeight:(CGFloat)newValue animated:(BOOL)animated;
 - (void)setWidth:(CGFloat)newValue animated:(BOOL)animated;
+- (void)setHeight:(CGFloat)newValue animated:(BOOL)animated;
 - (void)setSize:(CGSize)newValue animated:(BOOL)animated;
 - (void)setFrame:(CGRect)newValue animated:(BOOL)animated;
 

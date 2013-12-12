@@ -155,93 +155,177 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
 
 - (void)setOriginX:(CGFloat)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
 {
-    [UIView
-     animateWithDuration:defaultAnimationDuration
-     delay:0.0
-     options:UIViewAnimationOptionCurveEaseInOut
-     animations:^{
-         
-         self.originX = newValue;
-     }
-     completion:completionBlock];
+    SimpleBlock executionBlock = ^{
+        
+        self.originX = newValue;
+    };
+    
+    if (animated)
+    {
+        [UIView
+         animateWithDuration:defaultAnimationDuration
+         delay:0.0
+         options:UIViewAnimationOptionCurveEaseInOut
+         animations:^{
+             
+             executionBlock();
+         }
+         completion:completionBlock];
+    }
+    else
+    {
+        executionBlock();
+    }
 }
 
 - (void)setOriginY:(CGFloat)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
 {
-    [UIView
-     animateWithDuration:defaultAnimationDuration
-     delay:0.0
-     options:UIViewAnimationOptionCurveEaseInOut
-     animations:^{
-         
-         self.originY = newValue;
-     }
-     completion:completionBlock];
+    SimpleBlock executionBlock = ^{
+        
+        self.originY = newValue;
+    };
+    
+    if (animated)
+    {
+        [UIView
+         animateWithDuration:defaultAnimationDuration
+         delay:0.0
+         options:UIViewAnimationOptionCurveEaseInOut
+         animations:^{
+             
+             executionBlock();
+         }
+         completion:completionBlock];
+    }
+    else
+    {
+        executionBlock();
+    }
 }
 
 - (void)setOrigin:(CGPoint)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
 {
-    [UIView
-     animateWithDuration:defaultAnimationDuration
-     delay:0.0
-     options:UIViewAnimationOptionCurveEaseInOut
-     animations:^{
-         
-         self.origin = newValue;
-     }
-     completion:completionBlock];
-}
-
-- (void)setHeight:(CGFloat)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
-{
-    [UIView
-     animateWithDuration:defaultAnimationDuration
-     delay:0.0
-     options:UIViewAnimationOptionCurveEaseInOut
-     animations:^{
-         
-         self.height = newValue;
-     }
-     completion:completionBlock];
+    SimpleBlock executionBlock = ^{
+        
+        self.origin = newValue;
+    };
+    
+    if (animated)
+    {
+        [UIView
+         animateWithDuration:defaultAnimationDuration
+         delay:0.0
+         options:UIViewAnimationOptionCurveEaseInOut
+         animations:^{
+             
+             executionBlock();
+         }
+         completion:completionBlock];
+    }
+    else
+    {
+        executionBlock();
+    }
 }
 
 - (void)setWidth:(CGFloat)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
 {
-    [UIView
-     animateWithDuration:defaultAnimationDuration
-     delay:0.0
-     options:UIViewAnimationOptionCurveEaseInOut
-     animations:^{
-         
-         self.width = newValue;
-     }
-     completion:completionBlock];
+    SimpleBlock executionBlock = ^{
+        
+        self.width = newValue;
+    };
+    
+    if (animated)
+    {
+        [UIView
+         animateWithDuration:defaultAnimationDuration
+         delay:0.0
+         options:UIViewAnimationOptionCurveEaseInOut
+         animations:^{
+             
+             executionBlock();
+         }
+         completion:completionBlock];
+    }
+    else
+    {
+        executionBlock();
+    }
+}
+
+- (void)setHeight:(CGFloat)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
+{
+    SimpleBlock executionBlock = ^{
+        
+        self.height = newValue;
+    };
+    
+    if (animated)
+    {
+        [UIView
+         animateWithDuration:defaultAnimationDuration
+         delay:0.0
+         options:UIViewAnimationOptionCurveEaseInOut
+         animations:^{
+             
+             executionBlock();
+         }
+         completion:completionBlock];
+    }
+    else
+    {
+        executionBlock();
+    }
 }
 
 - (void)setSize:(CGSize)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
 {
-    [UIView
-     animateWithDuration:defaultAnimationDuration
-     delay:0.0
-     options:UIViewAnimationOptionCurveEaseInOut
-     animations:^{
-         
-         self.size = newValue;
-     }
-     completion:completionBlock];
+    SimpleBlock executionBlock = ^{
+        
+        self.size = newValue;
+    };
+    
+    if (animated)
+    {
+        [UIView
+         animateWithDuration:defaultAnimationDuration
+         delay:0.0
+         options:UIViewAnimationOptionCurveEaseInOut
+         animations:^{
+             
+             executionBlock();
+         }
+         completion:completionBlock];
+    }
+    else
+    {
+        executionBlock();
+    }
 }
 
 - (void)setFrame:(CGRect)newValue animated:(BOOL)animated withCompletion:(AnimationCompletionBlock)completionBlock
 {
-    [UIView
-     animateWithDuration:defaultAnimationDuration
-     delay:0.0
-     options:UIViewAnimationOptionCurveEaseInOut
-     animations:^{
-         
-         self.frame = newValue;
-     }
-     completion:completionBlock];
+    SimpleBlock executionBlock = ^{
+        
+        self.frame = newValue;
+    };
+    
+    if (animated)
+    {
+        [UIView
+         animateWithDuration:defaultAnimationDuration
+         delay:0.0
+         options:UIViewAnimationOptionCurveEaseInOut
+         animations:^{
+             
+             executionBlock();
+         }
+         completion:completionBlock];
+    }
+    else
+    {
+        executionBlock();
+    }
 }
 
 - (void)setOriginX:(CGFloat)newValue animated:(BOOL)animated
@@ -259,14 +343,14 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
     [self setOrigin:newValue animated:animated withCompletion:nil];
 }
 
-- (void)setHeight:(CGFloat)newValue animated:(BOOL)animated
-{
-    [self setHeight:newValue animated:animated withCompletion:nil];
-}
-
 - (void)setWidth:(CGFloat)newValue animated:(BOOL)animated
 {
     [self setWidth:newValue animated:animated withCompletion:nil];
+}
+
+- (void)setHeight:(CGFloat)newValue animated:(BOOL)animated
+{
+    [self setHeight:newValue animated:animated withCompletion:nil];
 }
 
 - (void)setSize:(CGSize)newValue animated:(BOOL)animated

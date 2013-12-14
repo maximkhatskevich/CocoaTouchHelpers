@@ -84,6 +84,8 @@
 
 #define isParseObjectReady(object) (object && [object isKindOfClass:[PFObject class]] && [(PFObject *)object isDataAvailable])
 
+#define isParseObjectOfClassReady(object, className) (isParseObjectReady(object) && [((PFObject *)object).parseClassName isEqualToString:className])
+
 #define notNull(object) (object ? object : [NSNull null])
 #define notNullIf(object, condition) (condition ? object : [NSNull null])
 

@@ -1,6 +1,6 @@
 //
 //  PlainTableCtrl.m
-//  Spotlight-SE-iOS
+//  MyHelpers
 //
 //  Created by Maxim Khatskevich on 4/16/13.
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.
@@ -64,8 +64,7 @@
 
 - (void)configureWithObject:(id)object
 {
-    if (object &&
-        [object isKindOfClass:[UITableView class]])
+    if ([object isKindOfClass:[UITableView class]])
     {
         UITableView *tableView = (UITableView *)object;
         

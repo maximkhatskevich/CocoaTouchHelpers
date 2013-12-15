@@ -1,6 +1,6 @@
 //
 //  NSObject+Helpers.m
-//  Spotlight-SE-iOS
+//  MyHelpers
 //
 //  Created by Maxim Khatskevich on 4/16/13.
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.
@@ -78,8 +78,7 @@
     {
         id obj = [(id)self objectForKey:key];
         
-        if (obj &&
-            [obj isKindOfClass:[NSString class]]) // not nil & string
+        if ([obj isKindOfClass:[NSString class]]) // not nil & string
         {
             result = (NSString *)obj;
         }

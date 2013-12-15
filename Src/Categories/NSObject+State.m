@@ -32,8 +32,7 @@ static void *OnStateDidChangeKey;
         id state =
         objc_getAssociatedObject(self, &StateKey);
         
-        if (state &&
-            [state isKindOfClass:[NSNumber class]])
+        if ([state isKindOfClass:[NSNumber class]])
         {
             result = ((NSNumber *)state).integerValue;
         }

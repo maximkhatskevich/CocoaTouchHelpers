@@ -16,8 +16,7 @@
 
 - (void)safeAddUniqueParseObject:(id)object
 {
-    if (object &&
-        [object isKindOfClass:[PFObject class]])
+    if ([object isKindOfClass:[PFObject class]])
     {
         if (![self containsParseObject:object])
         {

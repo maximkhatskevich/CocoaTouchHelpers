@@ -20,8 +20,7 @@
     
     //===
     
-    if (object &&
-        [object isKindOfClass:[PFObject class]])
+    if ([object isKindOfClass:[PFObject class]])
     {
         for (id item in self)
         {
@@ -44,8 +43,7 @@
     
     //===
     
-    if (object &&
-        [object isKindOfClass:[PFObject class]])
+    if ([object isKindOfClass:[PFObject class]])
     {
         for (NSInteger i = 0; i < self.count; i++)
         {

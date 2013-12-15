@@ -1,6 +1,6 @@
 //
 //  NSMutableDictionary+Helpers.h
-//  Spotlight-SE-iOS
+//  MyHelpers
 //
 //  Created by Maxim Khatskevich on 5/9/13.
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.

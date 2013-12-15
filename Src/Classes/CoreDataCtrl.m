@@ -1,6 +1,6 @@
 //
 //  CoreDataController.m
-//  Toni&Guy-SE-iOS
+//  MyHelpers
 //
 //  Created by Max on 5/30/13.
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.

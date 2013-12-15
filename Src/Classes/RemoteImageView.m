@@ -1,6 +1,6 @@
 //
 //  RemoteImageView.m
-//  Toni&Guy-SE-iOS
+//  MyHelpers
 //
 //  Created by Maxim Khatskevich on 6/16/13.
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.

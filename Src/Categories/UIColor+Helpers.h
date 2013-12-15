@@ -1,6 +1,6 @@
 //
 //  UIColor+Helpers.h
-//  Spotlight-SE-iOS
+//  MyHelpers
 //
 //  Created by Maxim Khatskevich on 4/23/13.
 //  Based on http://stackoverflow.com/questions/6207329/how-to-set-hex-color-code-for-background/8855057#8855057

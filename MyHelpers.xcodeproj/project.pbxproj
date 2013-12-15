@@ -21,6 +21,7 @@
 		5060F897185E302E004F490E /* NSObject+State.m in Sources */ = {isa = PBXBuildFile; fileRef = 5060F896185E302E004F490E /* NSObject+State.m */; };
 		5060F898185E3246004F490E /* NSObject+State.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5060F895185E302E004F490E /* NSObject+State.h */; };
 		5060F8B6185E5E0C004F490E /* GenericPFSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 5060F8B5185E5E0C004F490E /* GenericPFSubclass.m */; };
+		5060F8BA185E5F83004F490E /* GenericPFSubclass.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5060F8B4185E5E0C004F490E /* GenericPFSubclass.h */; };
 		50DEFF331835101000622FBA /* PFGeoPoint+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */; };
 		50DEFF341835104200622FBA /* PFGeoPoint+Helpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */; };
 		50F12B341827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
@@ -129,6 +130,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				5060F8BA185E5F83004F490E /* GenericPFSubclass.h in CopyFiles */,
 				5060F898185E3246004F490E /* NSObject+State.h in CopyFiles */,
 				504652021856DC6700C1DF70 /* NSObject+Observers.h in CopyFiles */,
 				5046534F183663C4002DB336 /* NSDate+Helpers.h in CopyFiles */,

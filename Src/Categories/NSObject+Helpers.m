@@ -12,12 +12,6 @@
 
 #pragma mark - Helpers
 
-+ (BOOL)isObjectOfClassNotNull:(id)objectToCheck
-{
-    return (objectToCheck &&
-            [objectToCheck isKindOfClass:[self class]]);
-}
-
 + (id)objectWithProperties:(NSDictionary *)properties
 {
     id result = nil;

@@ -10,8 +10,6 @@
 
 @interface NSObject (Helpers)
 
-+ (BOOL)isObjectOfClassNotNull:(id)objectToCheck;
-
 + (id)objectWithProperties:(NSDictionary *)properties;
 - (void)configureWithProperties:(NSDictionary *)properties;
 

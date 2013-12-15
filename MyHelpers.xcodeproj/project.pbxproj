@@ -20,6 +20,7 @@
 		5046534F183663C4002DB336 /* NSDate+Helpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5046534C1836639B002DB336 /* NSDate+Helpers.h */; };
 		5060F897185E302E004F490E /* NSObject+State.m in Sources */ = {isa = PBXBuildFile; fileRef = 5060F896185E302E004F490E /* NSObject+State.m */; };
 		5060F898185E3246004F490E /* NSObject+State.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5060F895185E302E004F490E /* NSObject+State.h */; };
+		5060F8B6185E5E0C004F490E /* GenericPFSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 5060F8B5185E5E0C004F490E /* GenericPFSubclass.m */; };
 		50DEFF331835101000622FBA /* PFGeoPoint+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */; };
 		50DEFF341835104200622FBA /* PFGeoPoint+Helpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */; };
 		50F12B341827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
@@ -184,6 +185,8 @@
 		505733411856D89400D6C4A0 /* THObserversAndBinders.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = THObserversAndBinders.xcodeproj; path = THObserversAndBinders/THObserversAndBinders.xcodeproj; sourceTree = "<group>"; };
 		5060F895185E302E004F490E /* NSObject+State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+State.h"; sourceTree = "<group>"; };
 		5060F896185E302E004F490E /* NSObject+State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+State.m"; sourceTree = "<group>"; };
+		5060F8B4185E5E0C004F490E /* GenericPFSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericPFSubclass.h; sourceTree = "<group>"; };
+		5060F8B5185E5E0C004F490E /* GenericPFSubclass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericPFSubclass.m; sourceTree = "<group>"; };
 		50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFGeoPoint+Helpers.h"; sourceTree = "<group>"; };
 		50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFGeoPoint+Helpers.m"; sourceTree = "<group>"; };
 		50F12B301827928C001C21DA /* libMyHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMyHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -447,6 +450,8 @@
 				50F12BBC1827D84A001C21DA /* WebVisibilityCtrl.m */,
 				50F12BBD1827D84A001C21DA /* RemoteImageView.h */,
 				50F12BBE1827D84A001C21DA /* RemoteImageView.m */,
+				5060F8B4185E5E0C004F490E /* GenericPFSubclass.h */,
+				5060F8B5185E5E0C004F490E /* GenericPFSubclass.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -585,6 +590,7 @@
 				50F12BC21827D84A001C21DA /* PlainTableCtrl.m in Sources */,
 				50F12BAD1827D7C5001C21DA /* UIImageView+Helpers.m in Sources */,
 				50F12BA41827D7C5001C21DA /* AdvancedList+ParseHelpers.m in Sources */,
+				5060F8B6185E5E0C004F490E /* GenericPFSubclass.m in Sources */,
 				50F12BA81827D7C5001C21DA /* UIViewController+KeyboardHelpers.m in Sources */,
 				50F12BA31827D7C5001C21DA /* NSMutableDictionary+Helpers.m in Sources */,
 				50F12BAB1827D7C5001C21DA /* UITableView+Helpers.m in Sources */,

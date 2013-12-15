@@ -18,6 +18,8 @@
 		504652021856DC6700C1DF70 /* NSObject+Observers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 504651FF1856DC5400C1DF70 /* NSObject+Observers.h */; };
 		5046534E1836639B002DB336 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046534D1836639B002DB336 /* NSDate+Helpers.m */; };
 		5046534F183663C4002DB336 /* NSDate+Helpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5046534C1836639B002DB336 /* NSDate+Helpers.h */; };
+		5060F897185E302E004F490E /* NSObject+State.m in Sources */ = {isa = PBXBuildFile; fileRef = 5060F896185E302E004F490E /* NSObject+State.m */; };
+		5060F898185E3246004F490E /* NSObject+State.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5060F895185E302E004F490E /* NSObject+State.h */; };
 		50DEFF331835101000622FBA /* PFGeoPoint+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */; };
 		50DEFF341835104200622FBA /* PFGeoPoint+Helpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */; };
 		50F12B341827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
@@ -126,6 +128,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				5060F898185E3246004F490E /* NSObject+State.h in CopyFiles */,
 				504652021856DC6700C1DF70 /* NSObject+Observers.h in CopyFiles */,
 				5046534F183663C4002DB336 /* NSDate+Helpers.h in CopyFiles */,
 				50DEFF341835104200622FBA /* PFGeoPoint+Helpers.h in CopyFiles */,
@@ -179,6 +182,8 @@
 		5046534C1836639B002DB336 /* NSDate+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helpers.h"; sourceTree = "<group>"; };
 		5046534D1836639B002DB336 /* NSDate+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helpers.m"; sourceTree = "<group>"; };
 		505733411856D89400D6C4A0 /* THObserversAndBinders.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = THObserversAndBinders.xcodeproj; path = THObserversAndBinders/THObserversAndBinders.xcodeproj; sourceTree = "<group>"; };
+		5060F895185E302E004F490E /* NSObject+State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+State.h"; sourceTree = "<group>"; };
+		5060F896185E302E004F490E /* NSObject+State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+State.m"; sourceTree = "<group>"; };
 		50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFGeoPoint+Helpers.h"; sourceTree = "<group>"; };
 		50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFGeoPoint+Helpers.m"; sourceTree = "<group>"; };
 		50F12B301827928C001C21DA /* libMyHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMyHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -371,6 +376,10 @@
 			children = (
 				50F12B741827D7C5001C21DA /* NSObject+Helpers.h */,
 				50F12B751827D7C5001C21DA /* NSObject+Helpers.m */,
+				504651FF1856DC5400C1DF70 /* NSObject+Observers.h */,
+				504652001856DC5400C1DF70 /* NSObject+Observers.m */,
+				5060F895185E302E004F490E /* NSObject+State.h */,
+				5060F896185E302E004F490E /* NSObject+State.m */,
 				50F12B761827D7C5001C21DA /* NSObject+TwitterHelpers.h */,
 				50F12B771827D7C5001C21DA /* NSObject+TwitterHelpers.m */,
 				50F12B781827D7C5001C21DA /* NSObject+ParseHelpers.h */,
@@ -417,8 +426,6 @@
 				50F12B9B1827D7C5001C21DA /* UIColor+Helpers.m */,
 				50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */,
 				50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */,
-				504651FF1856DC5400C1DF70 /* NSObject+Observers.h */,
-				504652001856DC5400C1DF70 /* NSObject+Observers.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -574,6 +581,7 @@
 				50F12BAF1827D7C5001C21DA /* UIColor+Helpers.m in Sources */,
 				50F12B9F1827D7C5001C21DA /* NSString+Helpers.m in Sources */,
 				50F12BA21827D7C5001C21DA /* NSMutableArray+Helpers.m in Sources */,
+				5060F897185E302E004F490E /* NSObject+State.m in Sources */,
 				50F12BC21827D84A001C21DA /* PlainTableCtrl.m in Sources */,
 				50F12BAD1827D7C5001C21DA /* UIImageView+Helpers.m in Sources */,
 				50F12BA41827D7C5001C21DA /* AdvancedList+ParseHelpers.m in Sources */,

@@ -44,8 +44,18 @@ static void *ObserverListKey;
 
 - (void)removeObservers
 {
-    [self.observerList makeObjectsPerformSelector:@selector(stopObserving)];
-    [self.observerList removeAllObjects];
+    @synchronized(self)
+    {
+        [self.observerList makeObjectsPerformSelector:@selector(stopObserving)];
+        [self.observerList removeAllObjects];
+        
+        //===
+        
+        objc_setAssociatedObject(self,
+                                 &ObserverListKey,
+                                 nil,
+                                 OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
 }
 
 @end

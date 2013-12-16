@@ -29,6 +29,23 @@
     return result;
 }
 
+- (BOOL)isNavigationTopCtrl
+{
+    BOOL result = NO;
+    
+    //===
+    
+    if (self.navigationController)
+    {
+        result = [self isEqual:
+                  self.navigationController.topViewController];
+    }
+    
+    //===
+    
+    return result;
+}
+
 - (UIViewController *)selfOrNavigationRoot
 {
     return ([self isKindOfClass:[UINavigationController class]] ?

@@ -11,6 +11,7 @@
 @interface UIViewController (Helpers)
 
 @property (readonly) BOOL isNavigationRootCtrl;
+@property (readonly) BOOL isNavigationTopCtrl;
 @property (readonly, nonatomic) UIViewController *selfOrNavigationRoot;
 
 + (id)instantiate;

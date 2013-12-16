@@ -25,7 +25,7 @@
 #import <MyHelpers/RemoteImageView.h>
 
 #import <MyHelpers/LoadingIndicatorView.h>
-#import <MyHelpers/PassthroughtView.h>
+#import <MyHelpers/PassthroughView.h>
 
 //=== categories
 

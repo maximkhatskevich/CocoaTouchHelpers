@@ -24,6 +24,9 @@
 #import <MyHelpers/WebVisibilityCtrl.h>
 #import <MyHelpers/RemoteImageView.h>
 
+#import <MyHelpers/LoadingIndicatorView.h>
+#import <MyHelpers/PassthroughtView.h>
+
 //=== categories
 
 #import <MyHelpers/NSObject+Helpers.h>

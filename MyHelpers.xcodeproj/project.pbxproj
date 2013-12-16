@@ -22,6 +22,10 @@
 		5060F898185E3246004F490E /* NSObject+State.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5060F895185E302E004F490E /* NSObject+State.h */; };
 		5060F8B6185E5E0C004F490E /* GenericPFSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 5060F8B5185E5E0C004F490E /* GenericPFSubclass.m */; };
 		5060F8BA185E5F83004F490E /* GenericPFSubclass.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5060F8B4185E5E0C004F490E /* GenericPFSubclass.h */; };
+		50C5C5A4185EC88400AABC2F /* LoadingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5A1185EC88400AABC2F /* LoadingIndicatorView.m */; };
+		50C5C5A5185EC88400AABC2F /* PassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5A3185EC88400AABC2F /* PassthroughView.m */; };
+		50C5C5A7185EC8CA00AABC2F /* LoadingIndicatorView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5C5A0185EC88400AABC2F /* LoadingIndicatorView.h */; };
+		50C5C5A8185EC8CA00AABC2F /* PassthroughView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5C5A2185EC88400AABC2F /* PassthroughView.h */; };
 		50DEFF331835101000622FBA /* PFGeoPoint+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */; };
 		50DEFF341835104200622FBA /* PFGeoPoint+Helpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */; };
 		50F12B341827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
@@ -130,6 +134,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				50C5C5A7185EC8CA00AABC2F /* LoadingIndicatorView.h in CopyFiles */,
+				50C5C5A8185EC8CA00AABC2F /* PassthroughView.h in CopyFiles */,
 				5060F8BA185E5F83004F490E /* GenericPFSubclass.h in CopyFiles */,
 				5060F898185E3246004F490E /* NSObject+State.h in CopyFiles */,
 				504652021856DC6700C1DF70 /* NSObject+Observers.h in CopyFiles */,
@@ -189,6 +195,10 @@
 		5060F896185E302E004F490E /* NSObject+State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+State.m"; sourceTree = "<group>"; };
 		5060F8B4185E5E0C004F490E /* GenericPFSubclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericPFSubclass.h; sourceTree = "<group>"; };
 		5060F8B5185E5E0C004F490E /* GenericPFSubclass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericPFSubclass.m; sourceTree = "<group>"; };
+		50C5C5A0185EC88400AABC2F /* LoadingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingIndicatorView.h; sourceTree = "<group>"; };
+		50C5C5A1185EC88400AABC2F /* LoadingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingIndicatorView.m; sourceTree = "<group>"; };
+		50C5C5A2185EC88400AABC2F /* PassthroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassthroughView.h; sourceTree = "<group>"; };
+		50C5C5A3185EC88400AABC2F /* PassthroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassthroughView.m; sourceTree = "<group>"; };
 		50DEFF311835101000622FBA /* PFGeoPoint+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFGeoPoint+Helpers.h"; sourceTree = "<group>"; };
 		50DEFF321835101000622FBA /* PFGeoPoint+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFGeoPoint+Helpers.m"; sourceTree = "<group>"; };
 		50F12B301827928C001C21DA /* libMyHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMyHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -454,6 +464,10 @@
 				50F12BBE1827D84A001C21DA /* RemoteImageView.m */,
 				5060F8B4185E5E0C004F490E /* GenericPFSubclass.h */,
 				5060F8B5185E5E0C004F490E /* GenericPFSubclass.m */,
+				50C5C5A0185EC88400AABC2F /* LoadingIndicatorView.h */,
+				50C5C5A1185EC88400AABC2F /* LoadingIndicatorView.m */,
+				50C5C5A2185EC88400AABC2F /* PassthroughView.h */,
+				50C5C5A3185EC88400AABC2F /* PassthroughView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -566,9 +580,11 @@
 				5046534E1836639B002DB336 /* NSDate+Helpers.m in Sources */,
 				50F12B9C1827D7C5001C21DA /* NSObject+Helpers.m in Sources */,
 				50F12B9E1827D7C5001C21DA /* NSObject+ParseHelpers.m in Sources */,
+				50C5C5A5185EC88400AABC2F /* PassthroughView.m in Sources */,
 				50F12BA91827D7C5001C21DA /* UINavigationController+Helpers.m in Sources */,
 				50F12BC51827D84A001C21DA /* RemoteImageView.m in Sources */,
 				50F12BAE1827D7C5001C21DA /* UIImage+Helpers.m in Sources */,
+				50C5C5A4185EC88400AABC2F /* LoadingIndicatorView.m in Sources */,
 				501839E8182C452A00F9594B /* NSMutableArray+ParseHelpers.m in Sources */,
 				50F12BAA1827D7C5001C21DA /* UIView+Helpers.m in Sources */,
 				50F12BA61827D7C5001C21DA /* UIStoryboard+Helpers.m in Sources */,

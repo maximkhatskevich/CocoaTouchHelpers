@@ -1,6 +1,6 @@
 //
 //  ViewVisibilityCtrl.m
-//  MyHelpers
+//  CocoaTouchHelpers
 //
 //  Created by Maxim Khatskevich on 4/25/13.
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.

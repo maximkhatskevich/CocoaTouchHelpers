@@ -1,6 +1,6 @@
 //
 //  CoreDataController.h
-//  MyHelpers
+//  CocoaTouchHelpers
 //
 //  Created by Max on 5/30/13.
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  Base64.h
-//  MyHelpers
+//  CocoaTouchHelpers
 //
 //  Created by Maxim Khatskevich on 6/26/13.
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.

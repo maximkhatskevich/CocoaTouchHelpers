@@ -1,6 +1,6 @@
 //
 //  UIResponder+Helpers.m
-//  MyHelpers
+//  CocoaTouchHelpers
 //
 //  Created by Maxim Khatskevich on 5/27/13.
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.

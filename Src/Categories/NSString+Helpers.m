@@ -1,6 +1,6 @@
 //
 //  NSString+Helpers.m
-//  MyHelpers
+//  CocoaTouchHelpers
 //
 //  Created by Maxim Khatskevich on 5/25/13.
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.

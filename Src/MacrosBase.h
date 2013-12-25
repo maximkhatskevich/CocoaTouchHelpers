@@ -1,13 +1,13 @@
 //
 //  MacrosBase.h
-//  MyHelpers
+//  CocoaTouchHelpers
 //
 //  Created by Maxim Khatskevich on 11/4/13.
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.
 //
 
-#ifndef MyHelpers_MacrosBase_h
-#define MyHelpers_MacrosBase_h
+#ifndef CocoaTouchHelpers_MacrosBase_h
+#define CocoaTouchHelpers_MacrosBase_h
 
 //===
 
@@ -81,10 +81,6 @@
 //===
 
 #define isObjectForKeySupported(object) ([object isKindOfClass:[NSObject class]] && [object respondsToSelector:@selector(objectForKey:)])
-
-#define isParseObjectReady(object) ([object isKindOfClass:[PFObject class]] && [(PFObject *)object isDataAvailable])
-
-#define isParseObjectOfClassReady(object, className) (isParseObjectReady(object) && [((PFObject *)object).parseClassName isEqualToString:className])
 
 #define notNull(object) (object ? object : [NSNull null])
 #define notNullIf(object, condition) (condition ? object : [NSNull null])

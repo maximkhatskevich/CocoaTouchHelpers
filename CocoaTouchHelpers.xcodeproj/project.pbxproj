@@ -671,7 +671,7 @@
 				DSTROOT = /tmp/CocoaTouchHelpers.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/Third-party",
+					"$(SRCROOT)/Third-party/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Src/CocoaTouchHelpers-Prefix.pch";
@@ -693,7 +693,7 @@
 				DSTROOT = /tmp/CocoaTouchHelpers.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/Third-party",
+					"$(SRCROOT)/Third-party/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Src/CocoaTouchHelpers-Prefix.pch";

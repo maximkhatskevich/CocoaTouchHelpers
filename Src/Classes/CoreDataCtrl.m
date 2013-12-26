@@ -2,7 +2,7 @@
 //  CoreDataController.m
 //  CocoaTouchHelpers
 //
-//  Created by Max on 5/30/13.
+//  Created by Maxim Khatskevich on 5/30/13.
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.
 //
 //  Based on: http://stackoverflow.com/questions/14043384/core-data-locks-in-background-threads

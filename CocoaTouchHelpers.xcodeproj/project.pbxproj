@@ -668,6 +668,7 @@
 		50F12B541827928C001C21DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				DSTROOT = /tmp/CocoaTouchHelpers.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -679,17 +680,24 @@
 					"$(inherited)",
 					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
 					"\"$(OBJROOT)/UninstalledProducts/include\"",
+					"$(SRCROOT)/Third-party/**",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Third-party/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = CocoaTouchHelpers;
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/Third-party/**";
 			};
 			name = Debug;
 		};
 		50F12B551827928C001C21DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				DSTROOT = /tmp/CocoaTouchHelpers.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -701,11 +709,17 @@
 					"$(inherited)",
 					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
 					"\"$(OBJROOT)/UninstalledProducts/include\"",
+					"$(SRCROOT)/Third-party/**",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Third-party/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = CocoaTouchHelpers;
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/Third-party/**";
 			};
 			name = Release;
 		};

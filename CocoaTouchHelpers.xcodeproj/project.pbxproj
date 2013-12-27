@@ -10,13 +10,10 @@
 		501839E1182C3DC700F9594B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 501839E0182C3DC700F9594B /* CoreData.framework */; };
 		501839E4182C3F9000F9594B /* UIView+FontHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 501839E3182C3F9000F9594B /* UIView+FontHelpers.m */; };
 		501839E5182C3FA500F9594B /* UIView+FontHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 501839E2182C3F9000F9594B /* UIView+FontHelpers.h */; };
-		504652011856DC5400C1DF70 /* NSObject+Observers.m in Sources */ = {isa = PBXBuildFile; fileRef = 504652001856DC5400C1DF70 /* NSObject+Observers.m */; };
-		504652021856DC6700C1DF70 /* NSObject+Observers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 504651FF1856DC5400C1DF70 /* NSObject+Observers.h */; };
 		5046534E1836639B002DB336 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046534D1836639B002DB336 /* NSDate+Helpers.m */; };
 		5046534F183663C4002DB336 /* NSDate+Helpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5046534C1836639B002DB336 /* NSDate+Helpers.h */; };
 		5060F897185E302E004F490E /* NSObject+State.m in Sources */ = {isa = PBXBuildFile; fileRef = 5060F896185E302E004F490E /* NSObject+State.m */; };
 		5060F898185E3246004F490E /* NSObject+State.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5060F895185E302E004F490E /* NSObject+State.h */; };
-		5085FED0186A6169007B1CCD /* libTHObserversAndBinders.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5085FECB186A5F4D007B1CCD /* libTHObserversAndBinders.a */; };
 		50C5C5A4185EC88400AABC2F /* LoadingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5A1185EC88400AABC2F /* LoadingIndicatorView.m */; };
 		50C5C5A5185EC88400AABC2F /* PassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5A3185EC88400AABC2F /* PassthroughView.m */; };
 		50C5C5A7185EC8CA00AABC2F /* LoadingIndicatorView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5C5A0185EC88400AABC2F /* LoadingIndicatorView.h */; };
@@ -83,27 +80,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5085FECA186A5F4D007B1CCD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5085FEC5186A5F4D007B1CCD /* THObserversAndBinders.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7D7830151667A93600F83BC7;
-			remoteInfo = THObserversAndBinders;
-		};
-		5085FECC186A5F4D007B1CCD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5085FEC5186A5F4D007B1CCD /* THObserversAndBinders.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7D7830261667A93600F83BC7;
-			remoteInfo = THObserversAndBindersTests;
-		};
-		5085FECE186A6153007B1CCD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5085FEC5186A5F4D007B1CCD /* THObserversAndBinders.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7D7830141667A93600F83BC7;
-			remoteInfo = THObserversAndBinders;
-		};
 		50F12B461827928C001C21DA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 50F12B281827928C001C21DA /* Project object */;
@@ -123,7 +99,6 @@
 				50C5C5A7185EC8CA00AABC2F /* LoadingIndicatorView.h in CopyFiles */,
 				50C5C5A8185EC8CA00AABC2F /* PassthroughView.h in CopyFiles */,
 				5060F898185E3246004F490E /* NSObject+State.h in CopyFiles */,
-				504652021856DC6700C1DF70 /* NSObject+Observers.h in CopyFiles */,
 				5046534F183663C4002DB336 /* NSDate+Helpers.h in CopyFiles */,
 				501839E5182C3FA500F9594B /* UIView+FontHelpers.h in CopyFiles */,
 				50F12BC61827D92B001C21DA /* NSObject+Helpers.h in CopyFiles */,
@@ -162,13 +137,10 @@
 		501839E0182C3DC700F9594B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		501839E2182C3F9000F9594B /* UIView+FontHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FontHelpers.h"; sourceTree = "<group>"; };
 		501839E3182C3F9000F9594B /* UIView+FontHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FontHelpers.m"; sourceTree = "<group>"; };
-		504651FF1856DC5400C1DF70 /* NSObject+Observers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Observers.h"; sourceTree = "<group>"; };
-		504652001856DC5400C1DF70 /* NSObject+Observers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Observers.m"; sourceTree = "<group>"; };
 		5046534C1836639B002DB336 /* NSDate+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helpers.h"; sourceTree = "<group>"; };
 		5046534D1836639B002DB336 /* NSDate+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helpers.m"; sourceTree = "<group>"; };
 		5060F895185E302E004F490E /* NSObject+State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+State.h"; sourceTree = "<group>"; };
 		5060F896185E302E004F490E /* NSObject+State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+State.m"; sourceTree = "<group>"; };
-		5085FEC5186A5F4D007B1CCD /* THObserversAndBinders.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = THObserversAndBinders.xcodeproj; path = THObserversAndBinders/THObserversAndBinders.xcodeproj; sourceTree = "<group>"; };
 		50C5C5A0185EC88400AABC2F /* LoadingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingIndicatorView.h; sourceTree = "<group>"; };
 		50C5C5A1185EC88400AABC2F /* LoadingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingIndicatorView.m; sourceTree = "<group>"; };
 		50C5C5A2185EC88400AABC2F /* PassthroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassthroughView.h; sourceTree = "<group>"; };
@@ -240,7 +212,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5085FED0186A6169007B1CCD /* libTHObserversAndBinders.a in Frameworks */,
 				501839E1182C3DC700F9594B /* CoreData.framework in Frameworks */,
 				50F12BE21827DF07001C21DA /* UIKit.framework in Frameworks */,
 				50F12B341827928C001C21DA /* Foundation.framework in Frameworks */,
@@ -261,28 +232,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		501839EA182C4D9B00F9594B /* Third-party */ = {
-			isa = PBXGroup;
-			children = (
-				5085FEC5186A5F4D007B1CCD /* THObserversAndBinders.xcodeproj */,
-			);
-			path = "Third-party";
-			sourceTree = "<group>";
-		};
-		5085FEC6186A5F4D007B1CCD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5085FECB186A5F4D007B1CCD /* libTHObserversAndBinders.a */,
-				5085FECD186A5F4D007B1CCD /* THObserversAndBindersTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		50F12B271827928C001C21DA = {
 			isa = PBXGroup;
 			children = (
 				50F12B62182793BA001C21DA /* Src */,
-				501839EA182C4D9B00F9594B /* Third-party */,
 				50F12B321827928C001C21DA /* Frameworks */,
 				50F12B311827928C001C21DA /* Products */,
 				50F12B591827935E001C21DA /* Tests */,
@@ -353,8 +306,6 @@
 			children = (
 				50F12B741827D7C5001C21DA /* NSObject+Helpers.h */,
 				50F12B751827D7C5001C21DA /* NSObject+Helpers.m */,
-				504651FF1856DC5400C1DF70 /* NSObject+Observers.h */,
-				504652001856DC5400C1DF70 /* NSObject+Observers.m */,
 				5060F895185E302E004F490E /* NSObject+State.h */,
 				5060F896185E302E004F490E /* NSObject+State.m */,
 				50F12B761827D7C5001C21DA /* NSObject+TwitterHelpers.h */,
@@ -436,7 +387,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				5085FECF186A6153007B1CCD /* PBXTargetDependency */,
 			);
 			name = CocoaTouchHelpers;
 			productName = MyHelpers;
@@ -480,12 +430,6 @@
 			mainGroup = 50F12B271827928C001C21DA;
 			productRefGroup = 50F12B311827928C001C21DA /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 5085FEC6186A5F4D007B1CCD /* Products */;
-					ProjectRef = 5085FEC5186A5F4D007B1CCD /* THObserversAndBinders.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				50F12B2F1827928C001C21DA /* CocoaTouchHelpers */,
@@ -493,23 +437,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		5085FECB186A5F4D007B1CCD /* libTHObserversAndBinders.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libTHObserversAndBinders.a;
-			remoteRef = 5085FECA186A5F4D007B1CCD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5085FECD186A5F4D007B1CCD /* THObserversAndBindersTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = THObserversAndBindersTests.octest;
-			remoteRef = 5085FECC186A5F4D007B1CCD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		50F12B3E1827928C001C21DA /* Resources */ = {
@@ -538,7 +465,6 @@
 				50F12BA61827D7C5001C21DA /* UIStoryboard+Helpers.m in Sources */,
 				50F12BC01827D84A001C21DA /* CoreDataCtrl.m in Sources */,
 				50F12BBF1827D84A001C21DA /* Base64.m in Sources */,
-				504652011856DC5400C1DF70 /* NSObject+Observers.m in Sources */,
 				50F12BA71827D7C5001C21DA /* UIViewController+Helpers.m in Sources */,
 				50F12BA01827D7C5001C21DA /* NSArray+Helpers.m in Sources */,
 				50F12BC41827D84A001C21DA /* WebVisibilityCtrl.m in Sources */,
@@ -571,11 +497,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5085FECF186A6153007B1CCD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = THObserversAndBinders;
-			targetProxy = 5085FECE186A6153007B1CCD /* PBXContainerItemProxy */;
-		};
 		50F12B471827928C001C21DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 50F12B2F1827928C001C21DA /* CocoaTouchHelpers */;

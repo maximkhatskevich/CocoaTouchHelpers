@@ -10,7 +10,7 @@
 
 //===
 
-extern NSString *defaultFontName; // must be defined in an application
+extern NSString *defaultFontName; // should be defined in the application
 
 //===
 

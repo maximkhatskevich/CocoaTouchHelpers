@@ -10,7 +10,7 @@
 
 //===
 
-NSString *defaultFontName = nil; // do not forget to define it before use!
+NSString *defaultFontName = nil; // do not forget override value before use!
 
 //===
 

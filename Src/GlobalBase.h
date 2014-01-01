@@ -23,8 +23,9 @@ typedef void (^DataResultBlock)(NSData *result, NSError *error);
 typedef void (^ArrayResultBlock)(NSArray *result, NSError *error);
 typedef void (^DictionaryResultBlock)(NSDictionary *result, NSError *error);
 
-//=== must be defined in an application which use this header:
+//===
 
+// must be defined in the application
 extern NSTimeInterval defaultAnimationDuration;
 
 //===

@@ -10,10 +10,11 @@
 
 //===
 
-typedef void (^FetchCompletionBlock)(NSArray *objects, NSError *error);
+/*!
+ @abstract CoreData interaction controller class.
+ @discussion A helper class for interaction with custom (app specific) CoreData data model.
 
-//===
-
+ */
 @interface CoreDataCtrl : NSObject
 
 @property (readonly, nonatomic) NSString *modelName;
@@ -38,7 +39,7 @@ typedef void (^FetchCompletionBlock)(NSArray *objects, NSError *error);
                         andError:(NSError **)error;
 - (void)executeFetchRequest:(NSFetchRequest *)request
                 withContext:(NSManagedObjectContext *)context
-              andCompletion:(FetchCompletionBlock)completionBlock;
+              andCompletion:(ArrayResultBlock)completionBlock;
 
 - (NSError *)saveInContext:(NSManagedObjectContext *)context;
 - (void)saveInContext:(NSManagedObjectContext *)context

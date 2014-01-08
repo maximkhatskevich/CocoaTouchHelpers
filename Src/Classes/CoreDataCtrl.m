@@ -279,7 +279,7 @@
 
 - (void)executeFetchRequest:(NSFetchRequest *)request
                 withContext:(NSManagedObjectContext *)context
-              andCompletion:(FetchCompletionBlock)completionBlock
+              andCompletion:(ArrayResultBlock)completionBlock
 {
     if (!context)
     {

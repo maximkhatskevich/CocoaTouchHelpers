@@ -20,10 +20,6 @@
 #import <CocoaTouchHelpers/AdvancedList.h>
 #import <CocoaTouchHelpers/PlainTableCtrl.h>
 
-#import <CocoaTouchHelpers/ViewVisibilityCtrl.h>
-#import <CocoaTouchHelpers/WebVisibilityCtrl.h>
-#import <CocoaTouchHelpers/RemoteImageView.h>
-
 #import <CocoaTouchHelpers/LoadingIndicatorView.h>
 #import <CocoaTouchHelpers/PassthroughView.h>
 

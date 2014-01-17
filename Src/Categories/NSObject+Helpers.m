@@ -111,7 +111,7 @@
         
         NSString *definitionStr = [(id)self objectForKey:key];
         
-        if (definitionStr)
+        if ([definitionStr isKindOfClass:[NSString class]])
         {
             result =
             [NSJSONSerialization

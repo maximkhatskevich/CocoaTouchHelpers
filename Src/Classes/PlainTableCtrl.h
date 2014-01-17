@@ -32,9 +32,6 @@
 
 //===
 
-// prior iOS 6.0 compatibility
-+ (Class)cellClass;
-
 - (void)registerCellNibWithName:(NSString *)nibName;
 - (void)registerCellNibWithName:(NSString *)nibName
          forCellReuseIdentifier:(NSString *)reuseIdentifier;
@@ -54,6 +51,9 @@
 - (void)reloadTableView; // reload table view with default params, override to change default implementation, do not call directly!
 
 - (NSString *)cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath;
+
+// prior iOS 6.0 compatibility
+- (Class)cellClassForCellIdentifier:(NSString *)cellIdentifier;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withItem:(id)item;
 - (void)updateVisibleCells;

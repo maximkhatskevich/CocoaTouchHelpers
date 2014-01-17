@@ -83,13 +83,6 @@
 
 #pragma mark - Helpers
 
-+ (Class)cellClass
-{
-    // override in subclass in order to return custom cell class
-    // for use in iOS < 6.0
-    return [UITableViewCell class];
-}
-
 - (void)registerCellNibWithName:(NSString *)nibName
 {
     [self.tableView
@@ -231,6 +224,14 @@
 - (NSString *)cellIdentifierForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return self.defaultCellIdentifier;
+}
+
+// prior iOS 6.0 compatibility
+- (Class)cellClassForCellIdentifier:(NSString *)cellIdentifier
+{
+    // override in subclass in order to return custom cell class
+    // for use in iOS < 6.0
+    return [UITableViewCell class];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withItem:(id)item
@@ -376,7 +377,7 @@
         
         if (!cell)
         {
-            cell = [[[[self class] cellClass] alloc] init];
+            cell = [[[self cellClassForCellIdentifier:cellIdentifier] alloc] init];
         }
     }
     

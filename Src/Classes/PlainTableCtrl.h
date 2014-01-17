@@ -32,6 +32,9 @@
 
 //===
 
+// prior iOS 6.0 compatibility
++ (Class)cellClass;
+
 - (void)registerCellNibWithName:(NSString *)nibName;
 - (void)registerCellNibWithName:(NSString *)nibName
          forCellReuseIdentifier:(NSString *)reuseIdentifier;

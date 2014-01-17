@@ -83,6 +83,13 @@
 
 #pragma mark - Helpers
 
++ (Class)cellClass
+{
+    // override in subclass in order to return custom cell class
+    // for use in iOS < 6.0
+    return [UITableViewCell class];
+}
+
 - (void)registerCellNibWithName:(NSString *)nibName
 {
     [self.tableView
@@ -355,8 +362,23 @@
     
     //===
     
-    UITableViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    UITableViewCell *cell = nil;
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
+    {
+        cell = [tableView
+                dequeueReusableCellWithIdentifier:cellIdentifier
+                forIndexPath:indexPath];
+    }
+    else
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        
+        if (!cell)
+        {
+            cell = [[[[self class] cellClass] alloc] init];
+        }
+    }
     
     //===
     

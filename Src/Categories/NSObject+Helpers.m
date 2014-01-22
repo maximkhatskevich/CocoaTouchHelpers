@@ -158,9 +158,9 @@
     return result;
 }
 
-+ (BOOL)isObjectOfClass:(id)objectToCheck
++ (BOOL)isClassOfObject:(id)objectToCheck
 {
-    return isObjectOfClass(objectToCheck, [self class]);
+    return isClassOfObject([self class], objectToCheck);
 }
 
 @end

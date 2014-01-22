@@ -81,7 +81,7 @@
 
 #define isObjectForKeySupported(object) ([object isKindOfClass:[NSObject class]] && [object respondsToSelector:@selector(objectForKey:)])
 
-#define isObjectOfClass(object, class) [object isKindOfClass:class]
+#define isClassOfObject(class, object) [object isKindOfClass:class]
 
 #define notNull(object) (object ? object : [NSNull null])
 #define notNullIf(object, condition) (condition ? object : [NSNull null])

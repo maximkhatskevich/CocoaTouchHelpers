@@ -158,4 +158,9 @@
     return result;
 }
 
++ (BOOL)isObjectOfClass:(id)objectToCheck
+{
+    return isObjectOfClass(objectToCheck, [self class]);
+}
+
 @end

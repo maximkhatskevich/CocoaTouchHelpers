@@ -28,4 +28,6 @@
 
 - (NSString *)stringFromDateForKey:(NSString *)dateKey withFormat:(NSString *)format;
 
++ (BOOL)isObjectOfClass:(id)objectToCheck;
+
 @end

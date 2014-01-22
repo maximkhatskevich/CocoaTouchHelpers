@@ -83,6 +83,8 @@
 
 #define isClassOfObject(class, object) [object isKindOfClass:class]
 
+#define isNotZeroLength(object) ([object respondsToSelector:@selector(length)] && (object.length > 0))
+
 #define notNull(object) (object ? object : [NSNull null])
 #define notNullIf(object, condition) (condition ? object : [NSNull null])
 

@@ -71,6 +71,9 @@
 
 #define bgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
+#define runBg(simpleBlock) dispatch_async(bgQueue, simpleBlock)
+#define runMain(simpleBlock) dispatch_async(dispatch_get_main_queue(), simpleBlock)
+
 //===
 
 #define weakSelfMacro __weak typeof(self) weakSelf = self

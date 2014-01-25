@@ -60,7 +60,6 @@
                   options:(NSKeyValueObservingOptionNew |
                            NSKeyValueObservingOptionOld)
                   context:nil];
-        
     }
     return self;
 }

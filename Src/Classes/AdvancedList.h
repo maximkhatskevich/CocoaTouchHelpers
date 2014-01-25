@@ -10,12 +10,6 @@
 
 @class AdvancedList;
 
-#pragma mark - Notification blocks
-
-typedef void (^ALIndexSetBlock)(AdvancedList *list, NSIndexSet *indexes);
-typedef void (^ALChangeItemsAtIndexesBlock)(AdvancedList *list, NSKeyValueChange change, NSIndexSet *indexes);
-typedef void (^ALBlock)(AdvancedList *list);
-
 #pragma mark - Class
 
 @interface AdvancedList : NSObject
@@ -28,19 +22,19 @@ typedef void (^ALBlock)(AdvancedList *list);
 @property (readonly, nonatomic) id oldCurrentItem;
 @property (readonly) NSUInteger oldCurrentItemIndex;
 
-@property (strong, nonatomic) ALIndexSetBlock onWillInsertItems;
-@property (strong, nonatomic) ALIndexSetBlock onDidInsertItems;
+@property (strong, nonatomic) void (^onWillInsertItems)(AdvancedList *, NSIndexSet *);
+@property (strong, nonatomic) void (^onDidInsertItems)(AdvancedList *, NSIndexSet *);
 
-@property (strong, nonatomic) ALIndexSetBlock onWillReplaceItems;
-@property (strong, nonatomic) ALIndexSetBlock onDidReplaceItems;
+@property (strong, nonatomic) void (^onWillReplaceItems)(AdvancedList *, NSIndexSet *);
+@property (strong, nonatomic) void (^onDidReplaceItems)(AdvancedList *, NSIndexSet *);
 
-@property (strong, nonatomic) ALIndexSetBlock onWillRemoveItems;
-@property (strong, nonatomic) ALIndexSetBlock onDidRemoveItems;
+@property (strong, nonatomic) void (^onWillRemoveItems)(AdvancedList *, NSIndexSet *);
+@property (strong, nonatomic) void (^onDidRemoveItems)(AdvancedList *, NSIndexSet *);
 
-@property (strong, nonatomic) ALChangeItemsAtIndexesBlock onWillChangeItems;
-@property (strong, nonatomic) ALChangeItemsAtIndexesBlock onDidChangeItems;
+@property (strong, nonatomic) void (^onWillChangeItems)(AdvancedList *, NSKeyValueChange, NSIndexSet *);
+@property (strong, nonatomic) void (^onDidChangeItems)(AdvancedList *, NSKeyValueChange, NSIndexSet *);
 
-@property (strong, nonatomic) ALBlock onDidChangeCurrentItem;
+@property (nonatomic, copy) void (^onDidChangeCurrentItem)(AdvancedList *list);
 
 - (void)resetCurrentItem;
 - (void)setItemCurrent:(id)newCurrentItem;

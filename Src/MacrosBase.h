@@ -88,7 +88,7 @@
 
 #define isClassOfObject(class, object) [object isKindOfClass:class]
 
-#define isNonZeroLength(object) ([object respondsToSelector:@selector(length)] && (object.length > 0))
+#define isNonZeroLength(object) ([object respondsToSelector:@selector(length)] && ([object length] > 0))
 #define isNonZeroData(object) (isClassOfObject([NSData class], object) && isNonZeroLength(object))
 #define isNonZeroString(object) (isClassOfObject([NSString class], object) && isNonZeroLength(object))
 

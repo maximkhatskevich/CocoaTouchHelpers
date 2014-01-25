@@ -66,7 +66,11 @@
 - (void)fillWithContent:(id)content andError:(NSError *)error
 {
     self.content = content;
-    self.error = error;
+    
+    if (error)
+    {
+        self.error = error;
+    }
     
     self.isFilled = YES;
 }

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define resultContainerMacro ResultContainer *result = [ResultContainer new];
+
 @interface ResultContainer : NSObject
 
 @property (readonly, nonatomic) id content;

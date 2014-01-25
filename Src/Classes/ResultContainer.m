@@ -11,7 +11,6 @@
 @interface ResultContainer ()
 
 @property (strong, nonatomic) id content;
-@property (strong, nonatomic) NSError *error;
 
 @property BOOL isFilled;
 
@@ -46,11 +45,8 @@
 
 - (void)configureWithObject:(id)object
 {
-    // optionally you can call this method,
-    // it means that no error occured,
-    // just return result content
-    
-    [self fillWithContent:object andError:nil];
+    self.content = object;
+    self.isFilled = YES;
 }
 
 #pragma mark - Generic
@@ -63,24 +59,10 @@
     }
 }
 
-- (void)fillWithContent:(id)content andError:(NSError *)error
-{
-    self.content = content;
-    
-    if (error)
-    {
-        self.error = error;
-    }
-    
-    self.isFilled = YES;
-}
-
 - (void)reset
 {
     self.isFilled = NO;
-    
     self.content = nil;
-    self.error = nil;
 }
 
 @end

@@ -13,13 +13,11 @@
 @interface ResultContainer : NSObject
 
 @property (readonly, nonatomic) id content;
-@property (readonly, nonatomic) NSError *error;
 
 @property (readonly) BOOL isFilled;
 @property (readonly) BOOL shouldWait;
 
 - (void)wait;
-- (void)fillWithContent:(id)content andError:(NSError *)error;
 - (void)reset; // for re-use
 
 @end

@@ -14,6 +14,8 @@
 		5046534F183663C4002DB336 /* NSDate+Helpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5046534C1836639B002DB336 /* NSDate+Helpers.h */; };
 		5060F897185E302E004F490E /* NSObject+State.m in Sources */ = {isa = PBXBuildFile; fileRef = 5060F896185E302E004F490E /* NSObject+State.m */; };
 		5060F898185E3246004F490E /* NSObject+State.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5060F895185E302E004F490E /* NSObject+State.h */; };
+		50A41DF31893627F00CAC050 /* ResultContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A41DF21893627F00CAC050 /* ResultContainer.m */; };
+		50A41DF4189362F900CAC050 /* ResultContainer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50A41DF11893627F00CAC050 /* ResultContainer.h */; };
 		50C5C5A4185EC88400AABC2F /* LoadingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5A1185EC88400AABC2F /* LoadingIndicatorView.m */; };
 		50C5C5A5185EC88400AABC2F /* PassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5A3185EC88400AABC2F /* PassthroughView.m */; };
 		50C5C5A7185EC8CA00AABC2F /* LoadingIndicatorView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5C5A0185EC88400AABC2F /* LoadingIndicatorView.h */; };
@@ -90,6 +92,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				50A41DF4189362F900CAC050 /* ResultContainer.h in CopyFiles */,
 				50C5C5A7185EC8CA00AABC2F /* LoadingIndicatorView.h in CopyFiles */,
 				50C5C5A8185EC8CA00AABC2F /* PassthroughView.h in CopyFiles */,
 				5060F898185E3246004F490E /* NSObject+State.h in CopyFiles */,
@@ -132,6 +135,8 @@
 		5046534D1836639B002DB336 /* NSDate+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helpers.m"; sourceTree = "<group>"; };
 		5060F895185E302E004F490E /* NSObject+State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+State.h"; sourceTree = "<group>"; };
 		5060F896185E302E004F490E /* NSObject+State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+State.m"; sourceTree = "<group>"; };
+		50A41DF11893627F00CAC050 /* ResultContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultContainer.h; sourceTree = "<group>"; };
+		50A41DF21893627F00CAC050 /* ResultContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultContainer.m; sourceTree = "<group>"; };
 		50C5C5A0185EC88400AABC2F /* LoadingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingIndicatorView.h; sourceTree = "<group>"; };
 		50C5C5A1185EC88400AABC2F /* LoadingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingIndicatorView.m; sourceTree = "<group>"; };
 		50C5C5A2185EC88400AABC2F /* PassthroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassthroughView.h; sourceTree = "<group>"; };
@@ -348,6 +353,8 @@
 				50C5C5A1185EC88400AABC2F /* LoadingIndicatorView.m */,
 				50C5C5A2185EC88400AABC2F /* PassthroughView.h */,
 				50C5C5A3185EC88400AABC2F /* PassthroughView.m */,
+				50A41DF11893627F00CAC050 /* ResultContainer.h */,
+				50A41DF21893627F00CAC050 /* ResultContainer.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -433,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50A41DF31893627F00CAC050 /* ResultContainer.m in Sources */,
 				5046534E1836639B002DB336 /* NSDate+Helpers.m in Sources */,
 				50F12B9C1827D7C5001C21DA /* NSObject+Helpers.m in Sources */,
 				50C5C5A5185EC88400AABC2F /* PassthroughView.m in Sources */,

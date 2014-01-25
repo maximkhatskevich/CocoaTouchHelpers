@@ -80,6 +80,8 @@
 #define thisOperationMacro __weak NSBlockOperation *thisOperation = nil
 #define errorMacro NSError *error = nil
 
+#define waitFor(condition) while (condition) {}
+
 //===
 
 #define isObjectForKeySupported(object) ([object isKindOfClass:[NSObject class]] && [object respondsToSelector:@selector(objectForKey:)])

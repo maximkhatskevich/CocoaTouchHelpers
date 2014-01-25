@@ -23,6 +23,8 @@
 #import <CocoaTouchHelpers/LoadingIndicatorView.h>
 #import <CocoaTouchHelpers/PassthroughView.h>
 
+#import <CocoaTouchHelpers/ResultContainer.h>
+
 //=== categories
 
 #import <CocoaTouchHelpers/NSObject+Helpers.h>

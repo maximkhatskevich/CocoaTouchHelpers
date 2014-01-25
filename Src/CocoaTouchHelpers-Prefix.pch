@@ -20,6 +20,7 @@
 
 #import "AdvancedList.h"
 #import "PlainTableCtrl.h"
+#import "ResultContainer.h"
 
 //=== categories
 

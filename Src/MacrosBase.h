@@ -68,6 +68,7 @@
 //===
 
 #define zeroView [[UIView alloc] initWithFrame:CGRectZero]
+#define animate(simpleBlock) [UIView animateWithDuration:defaultAnimationDuration animations:simpleBlock]
 
 //===
 

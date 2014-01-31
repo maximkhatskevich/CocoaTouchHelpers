@@ -15,7 +15,6 @@
 - (CGSize)defaultContentSizeWithMargins:(CGPoint)margins;
 - (void)applyDefaultContentSize;
 
-- (void)adjustWithKeyboard;
 - (void)adjustWithFirstResponder; // adjust contentOffset while keyboard is visible
 - (void)resetInsets;
 

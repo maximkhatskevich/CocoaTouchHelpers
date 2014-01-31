@@ -72,37 +72,6 @@
     [self defaultContentSizeWithMargins:CGPointMake(0.0, 20.0)];
 }
 
-- (void)adjustWithKeyboard
-{
-    if ([UIViewController keyboardIsShown])
-    {
-        UIScrollView *scrollView = self;
-        
-        //===
-        
-        UIView *rootView = self.window.rootViewController.view;
-        
-        CGSize rootSize = rootView.bounds.size; // origin is always (0;0)
-        CGRect ownFrame = [rootView convertRect:scrollView.frame
-                                       fromView:scrollView.superview];
-        
-        CGSize kbSize = [UIViewController realKeyboardSize];
-        CGRect kbFrame = CGRectMake(0,
-                                    rootSize.height - kbSize.height,
-                                    kbSize.width,
-                                    kbSize.height);
-        
-        CGRect interFrame = CGRectIntersection(ownFrame, kbFrame);
-        
-        //===
-        
-        scrollView.contentInset =
-        UIEdgeInsetsMake(0, 0, interFrame.size.height, 0);
-        
-        scrollView.scrollIndicatorInsets = scrollView.contentInset;
-    }
-}
-
 - (void)adjustWithFirstResponder
 {
     if ([UIViewController keyboardIsShown])

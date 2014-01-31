@@ -32,6 +32,8 @@ static float _keyboardAnimationDuration = 0.0;
 
 @end
 
+//===
+
 @implementation UIViewController (KeyboardHelpers)
 
 #pragma mark - Property accessors
@@ -140,11 +142,8 @@ static float _keyboardAnimationDuration = 0.0;
     
     __weak UIScrollView *scrollView = self.keyboardScrollView;
     
-    if (scrollView && self.keyboardIsShown) // just to make sure
-    {
-        scrollView.bounces = YES;
-        [scrollView adjustWithKeyboard];
-    }
+    scrollView.bounces = YES;
+    [scrollView adjustWithKeyboard];
     
     //===
     
@@ -193,6 +192,43 @@ static float _keyboardAnimationDuration = 0.0;
 - (IBAction)defaultDidBeginEditingHandler:(id)sender
 {
     [self adjustInterfaceWithKeyboard];
+}
+
+@end
+
+//===
+
+@implementation UIScrollView (KeyboardHelpers)
+
+- (void)adjustWithKeyboard
+{
+    if ([UIViewController keyboardIsShown])
+    {
+        UIScrollView *scrollView = self;
+        
+        //===
+        
+        UIView *rootView = self.window.rootViewController.view;
+        
+        CGSize rootSize = rootView.bounds.size; // origin is always (0;0)
+        CGRect ownFrame = [rootView convertRect:scrollView.frame
+                                       fromView:scrollView.superview];
+        
+        CGSize kbSize = [UIViewController realKeyboardSize];
+        CGRect kbFrame = CGRectMake(0,
+                                    rootSize.height - kbSize.height,
+                                    kbSize.width,
+                                    kbSize.height);
+        
+        CGRect interFrame = CGRectIntersection(ownFrame, kbFrame);
+        
+        //===
+        
+        scrollView.contentInset =
+        UIEdgeInsetsMake(0, 0, interFrame.size.height, 0);
+        
+        scrollView.scrollIndicatorInsets = scrollView.contentInset;
+    }
 }
 
 @end

@@ -36,3 +36,11 @@
 - (IBAction)defaultDidBeginEditingHandler:(id)sender;
 
 @end
+
+//===
+
+@interface UIScrollView (KeyboardHelpers)
+
+- (void)adjustWithKeyboard;
+
+@end

@@ -49,3 +49,5 @@
 #import <CocoaTouchHelpers/UIImage+Helpers.h>
 
 #import <CocoaTouchHelpers/UIColor+Helpers.h>
+
+#import <CocoaTouchHelpers/FlexiblePageControl.h>

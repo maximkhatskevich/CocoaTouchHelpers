@@ -18,8 +18,7 @@ NSString *defaultFontName = nil; // do not forget override value before use!
 
 - (void)applyFontWithName:(NSString *)fontName andSize:(CGFloat)fontSize
 {
-    if ([self respondsToSelector:@selector(setFont:)] &&
-        isNonZeroString(fontName))
+    if (isNonZeroString(fontName))
     {
         __weak id targetView = nil;
         
@@ -38,7 +37,7 @@ NSString *defaultFontName = nil; // do not forget override value before use!
         
         //===
         
-        if (targetView)
+        if ([targetView respondsToSelector:@selector(setFont:)])
         {
             CGFloat targetFontSize =
             (fontSize == 0.0 ?

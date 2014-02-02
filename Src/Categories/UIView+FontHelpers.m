@@ -18,7 +18,8 @@ NSString *defaultFontName = nil; // do not forget override value before use!
 
 - (void)applyFontWithName:(NSString *)fontName andSize:(CGFloat)fontSize
 {
-    if (fontName)
+    if ([self respondsToSelector:@selector(setFont:)] &&
+        isNonZeroString(fontName))
     {
         __weak id targetView = nil;
         
@@ -29,6 +30,10 @@ NSString *defaultFontName = nil; // do not forget override value before use!
             [self isKindOfClass:[UITextField class]])
         {
             targetView = self;
+        }
+        else if ([UIButton isClassOfObject:self])
+        {
+            targetView = [(UIButton *)self titleLabel];
         }
         
         //===

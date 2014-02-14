@@ -70,12 +70,14 @@ typedef void (^AnimationCompletionBlock)(BOOL finished);
 - (void)showAnimatedWithCompletion:(SimpleBlock)completionBlock;
 - (void)showAnimatedIfNeeded;
 
+- (void)appear;
 - (void)appearWithDuration:(NSTimeInterval)duration
                      delay:(NSTimeInterval)delay
                    options:(UIViewAnimationOptions)options
                   ifNeeded:(BOOL)ifNeeded
                 completion:(void (^)(BOOL finished))completionBlock;
 
+- (void)disappear;
 - (void)disappearWithDuration:(NSTimeInterval)duration
                         delay:(NSTimeInterval)delay
                       options:(UIViewAnimationOptions)options

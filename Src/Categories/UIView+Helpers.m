@@ -542,6 +542,12 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
     }
 }
 
+- (void)appear
+{
+    self.alpha = 1.0;
+    [self show];
+}
+
 - (void)appearWithDuration:(NSTimeInterval)duration
                      delay:(NSTimeInterval)delay
                    options:(UIViewAnimationOptions)options
@@ -587,6 +593,12 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
 //{
 //    //
 //}
+
+- (void)disappear
+{
+    self.alpha = 0.0;
+    [self hide];
+}
 
 - (void)disappearWithDuration:(NSTimeInterval)duration
                         delay:(NSTimeInterval)delay

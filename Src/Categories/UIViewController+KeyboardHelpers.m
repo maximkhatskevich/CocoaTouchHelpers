@@ -8,8 +8,11 @@
 
 #import "UIViewController+KeyboardHelpers.h"
 
-static CGSize _keyboardSize;
-static float _keyboardAnimationDuration = 0.0;
+static CGSize __keyboardSize;
+static float __keyboardAnimationDuration = 0.0;
+static KeyboardState __keyboardState = kUnknownKeyboardState;
+
+//===
 
 @implementation UIView (KeyboardHelpers)
 
@@ -40,12 +43,7 @@ static float _keyboardAnimationDuration = 0.0;
 
 - (CGSize)keyboardSize
 {
-    return _keyboardSize;
-}
-
-- (void)setKeyboardSize:(CGSize)currentKeyboardSize
-{
-    _keyboardSize = currentKeyboardSize;
+    return __keyboardSize;
 }
 
 - (CGSize)realKeyboardSize
@@ -55,17 +53,12 @@ static float _keyboardAnimationDuration = 0.0;
 
 - (float)keyboardAnimationDuration
 {
-    return _keyboardAnimationDuration;
+    return __keyboardAnimationDuration;
 }
 
-- (void)setKeyboardAnimationDuration:(float)keyboardAnimationDuration
+- (KeyboardState)keyboardState
 {
-    _keyboardAnimationDuration = keyboardAnimationDuration;
-}
-
-- (BOOL)keyboardIsShown
-{
-    return [[self class] keyboardIsShown];
+    return __keyboardState;
 }
 
 - (UIScrollView *)keyboardScrollView
@@ -78,43 +71,63 @@ static float _keyboardAnimationDuration = 0.0;
 
 + (CGSize)keyboardSize
 {
-    return _keyboardSize;
+    return __keyboardSize;
 }
 
 + (CGSize)realKeyboardSize
 {
     return (isUILandscape ?
-            CGSizeMake(_keyboardSize.height, _keyboardSize.width) :
-            CGSizeMake(_keyboardSize.width, _keyboardSize.height));
+            CGSizeMake(__keyboardSize.height, __keyboardSize.width) :
+            CGSizeMake(__keyboardSize.width, __keyboardSize.height));
 }
 
 + (float)keyboardAnimationDuration
 {
-    return _keyboardAnimationDuration;
+    return __keyboardAnimationDuration;
 }
 
-+ (BOOL)keyboardIsShown
++ (KeyboardState)keyboardState
 {
-    return (self.keyboardSize.height != 0);
+    return __keyboardState;
 }
 
 - (void)trackKeyboardEvents
 {
-    self.keyboardSize = CGSizeZero;
+    __keyboardSize = CGSizeZero;
+    __keyboardState = kHiddenKeyboardState;
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self
-     selector:@selector(keyboardWasShown:)
-     name:UIKeyboardDidShowNotification object:nil];
+     selector:@selector(keyboardWillShow:)
+     name:UIKeyboardWillShowNotification
+     object:nil];
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self
-     selector:@selector(keyboardWillBeHidden:)
-     name:UIKeyboardWillHideNotification object:nil];
+     selector:@selector(keyboardDidShow:)
+     name:UIKeyboardDidShowNotification
+     object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(keyboardWillHide:)
+     name:UIKeyboardWillHideNotification
+     object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(keyboardDidHide:)
+     name:UIKeyboardDidHideNotification
+     object:nil];
 }
 
 - (void)stopTrackingKeyboardEvents
 {
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:UIKeyboardWillShowNotification
+     object:nil];
+    
     [[NSNotificationCenter defaultCenter]
      removeObserver:self
      name:UIKeyboardDidShowNotification
@@ -124,37 +137,53 @@ static float _keyboardAnimationDuration = 0.0;
      removeObserver:self
      name:UIKeyboardWillHideNotification
      object:nil];
+    
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self
+     name:UIKeyboardDidHideNotification
+     object:nil];
+    
+    __keyboardSize = CGSizeZero;
+    __keyboardState = kUnknownKeyboardState;
 }
 
-- (void)keyboardWasShown:(NSNotification*)aNotification
+- (void)keyboardWillShow:(NSNotification *)aNotification
 {
     NSDictionary* info = [aNotification userInfo];
     
-    CGSize kbSize =
+    __keyboardSize =
     [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    self.keyboardSize = kbSize;
     
-    float kbAnimDuration =
+    __keyboardAnimationDuration =
     [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-    self.keyboardAnimationDuration = kbAnimDuration;
+    
+    __keyboardState = kAnimatingUpKeyboardState;
     
     //===
     
     __weak UIScrollView *scrollView = self.keyboardScrollView;
     
-    scrollView.bounces = YES;
-    [scrollView adjustWithKeyboard];
+    if (scrollView)
+    {
+        scrollView.bounces = YES;
+        [scrollView adjustWithKeyboard];
+    }
     
     //===
     
     [self adjustInterfaceWithKeyboard];
 }
 
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+- (void)keyboardDidShow:(NSNotification *)aNotification
+{
+    __keyboardState = kShownKeyboardState;
+}
+
+- (void)keyboardWillHide:(NSNotification *)aNotification
 {
     __weak UIScrollView *scrollView = self.keyboardScrollView;
     
-    if (scrollView && self.keyboardIsShown) // just to make sure
+    if (scrollView)
     {
         [UIView
          animateWithDuration:self.keyboardAnimationDuration
@@ -170,8 +199,14 @@ static float _keyboardAnimationDuration = 0.0;
     
     //===
     
-    self.keyboardSize = CGSizeZero;
-    self.keyboardAnimationDuration = 0.0;
+    __keyboardSize = CGSizeZero;
+    __keyboardAnimationDuration = 0.0;
+    __keyboardState = kAnimatingDownKeyboardState;
+}
+
+- (void)keyboardDidHide:(NSNotification *)aNotification
+{
+    __keyboardState = kHiddenKeyboardState;
 }
 
 - (void)adjustInterfaceWithKeyboard
@@ -181,12 +216,7 @@ static float _keyboardAnimationDuration = 0.0;
     
     //===
     
-    __weak UIScrollView *scrollView = self.keyboardScrollView;
-    
-    if (scrollView && self.keyboardIsShown) // just to make sure
-    {
-        [scrollView adjustWithFirstResponder];
-    }
+    [self.keyboardScrollView adjustWithFirstResponder];
 }
 
 - (IBAction)defaultDidBeginEditingHandler:(id)sender
@@ -202,7 +232,7 @@ static float _keyboardAnimationDuration = 0.0;
 
 - (void)adjustWithKeyboard
 {
-    if ([UIViewController keyboardIsShown])
+    if ([UIViewController keyboardState] > kHiddenKeyboardState)
     {
         UIScrollView *scrollView = self;
         

@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+//===
+
+typedef enum
+{
+    kUnknownKeyboardState = 0,
+    kHiddenKeyboardState,
+    kAnimatingUpKeyboardState,
+    kShownKeyboardState,
+    kAnimatingDownKeyboardState
+}
+KeyboardState;
+
+//===
+
 @interface UIView (KeyboardHelpers)
 
 - (CGRect)intersectionWithKeyboardFrame;
@@ -16,21 +30,24 @@
 
 @interface UIViewController (KeyboardHelpers)
 
-@property CGSize keyboardSize;
+@property (readonly) CGSize keyboardSize;
 @property (readonly) CGSize realKeyboardSize;
-@property float keyboardAnimationDuration;
-@property (readonly) BOOL keyboardIsShown;
+@property (readonly) float keyboardAnimationDuration;
+@property (readonly) KeyboardState keyboardState;
 @property (readonly, nonatomic) UIScrollView *keyboardScrollView;
 
 + (CGSize)keyboardSize;
 + (CGSize)realKeyboardSize;
 + (float)keyboardAnimationDuration;
-+ (BOOL)keyboardIsShown;
++ (KeyboardState)keyboardState;
 
 - (void)trackKeyboardEvents;
 - (void)stopTrackingKeyboardEvents; // call it in dealloc or earlier!
-- (void)keyboardWasShown:(NSNotification*)aNotification;
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification;
+
+- (void)keyboardWillShow:(NSNotification*)aNotification;
+- (void)keyboardDidShow:(NSNotification*)aNotification;
+- (void)keyboardWillHide:(NSNotification*)aNotification;
+- (void)keyboardDidHide:(NSNotification*)aNotification;
 - (void)adjustInterfaceWithKeyboard;
 
 - (IBAction)defaultDidBeginEditingHandler:(id)sender;

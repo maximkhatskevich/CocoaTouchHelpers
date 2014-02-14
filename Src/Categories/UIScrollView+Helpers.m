@@ -74,7 +74,7 @@
 
 - (void)adjustWithFirstResponder
 {
-    if ([UIViewController keyboardIsShown])
+    if ([UIViewController keyboardState] > kHiddenKeyboardState)
     {
         UIView *rootView = self.window.rootViewController.view;
         UIScrollView *scrollView = self;

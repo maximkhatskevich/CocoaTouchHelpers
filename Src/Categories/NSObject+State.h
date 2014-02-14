@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 typedef enum {
     kObjectStateUnknown = 0 // "unset"
 }

@@ -564,6 +564,8 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
     
     if (shouldProceed)
     {
+        [self show];
+        
         [UIView
          animateWithDuration:duration
          delay:delay
@@ -616,7 +618,15 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
              
              self.alpha = 0.0;
          }
-         completion:completionBlock];
+         completion:^(BOOL finished) {
+             
+             [self hide];
+             
+             if (completionBlock)
+             {
+                 completionBlock(finished);
+             }
+         }];
     }
 }
 

@@ -527,6 +527,12 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
                      andCompletion:nil];
 }
 
+- (void)showAnimatedWithCompletion:(SimpleBlock)completionBlock
+{
+    [self showAnimatedWithDuration:defaultAnimationDuration
+                     andCompletion:completionBlock];
+}
+
 - (void)showAnimatedIfNeeded
 {
     if (self.isHidden ||
@@ -536,10 +542,82 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
     }
 }
 
-- (void)showAnimatedWithCompletion:(SimpleBlock)completionBlock
+- (void)appearWithDuration:(NSTimeInterval)duration
+                     delay:(NSTimeInterval)delay
+                   options:(UIViewAnimationOptions)options
+                  ifNeeded:(BOOL)ifNeeded
+                completion:(void (^)(BOOL finished))completionBlock
 {
-    [self showAnimatedWithDuration:defaultAnimationDuration
-                     andCompletion:completionBlock];
+    BOOL shouldProceed;
+    
+    if (ifNeeded)
+    {
+        shouldProceed = (self.alpha < 1.0);
+    }
+    else
+    {
+        shouldProceed = YES;
+        self.alpha = 0.0;
+    }
+    
+    //===
+    
+    if (shouldProceed)
+    {
+        [UIView
+         animateWithDuration:duration
+         delay:delay
+         options:options
+         animations:^{
+             
+             self.alpha = 1.0;
+         }
+         completion:completionBlock];
+    }
+}
+
+//- (void)dimToAlpha:(CGFloat)targetAlpha
+//      withDuration:(NSTimeInterval)duration
+//             delay:(NSTimeInterval)delay
+//           options:(UIViewAnimationOptions)options
+//          ifNeeded:(BOOL)ifNeeded
+//        completion:(void (^)(BOOL finished))completionBlock
+//{
+//    //
+//}
+
+- (void)disappearWithDuration:(NSTimeInterval)duration
+                        delay:(NSTimeInterval)delay
+                      options:(UIViewAnimationOptions)options
+                     ifNeeded:(BOOL)ifNeeded
+                   completion:(void (^)(BOOL finished))completionBlock
+{
+    BOOL shouldProceed;
+    
+    if (ifNeeded)
+    {
+        shouldProceed = (self.alpha > 0.0);
+    }
+    else
+    {
+        shouldProceed = YES;
+        self.alpha = 1.0;
+    }
+    
+    //===
+    
+    if (shouldProceed)
+    {
+        [UIView
+         animateWithDuration:duration
+         delay:delay
+         options:options
+         animations:^{
+             
+             self.alpha = 0.0;
+         }
+         completion:completionBlock];
+    }
 }
 
 - (void)bringToFront

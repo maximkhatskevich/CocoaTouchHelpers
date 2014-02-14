@@ -55,6 +55,7 @@
 	//===
     
     [self prepareUI];
+    [self applyCustomAppearance];
 }
 
 #pragma mark - Generic

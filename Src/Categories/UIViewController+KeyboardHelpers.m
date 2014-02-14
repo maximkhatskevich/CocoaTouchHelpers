@@ -202,6 +202,10 @@ static KeyboardState __keyboardState = kUnknownKeyboardState;
     __keyboardSize = CGSizeZero;
     __keyboardAnimationDuration = 0.0;
     __keyboardState = kAnimatingDownKeyboardState;
+    
+    //===
+    
+    [self adjustInterfaceWithKeyboard];
 }
 
 - (void)keyboardDidHide:(NSNotification *)aNotification

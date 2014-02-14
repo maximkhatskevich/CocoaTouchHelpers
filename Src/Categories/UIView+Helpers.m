@@ -416,6 +416,17 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
     self.hidden = YES;
 }
 
+- (void)makeTransparent
+{
+    self.alpha = 0.0;
+}
+
+- (void)hideAndMakeTransparent
+{
+    [self hide];
+    [self makeTransparent];
+}
+
 - (void)hideAnimatedWithDuration:(NSTimeInterval)duration
                    andCompletion:(SimpleBlock)completionBlock
 {
@@ -478,6 +489,12 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
 - (void)show
 {
     self.hidden = NO;
+}
+
+- (void)prepareToShow
+{
+    [self show];
+    self.alpha = 0.0;
 }
 
 - (void)showAnimatedWithDuration:(NSTimeInterval)duration

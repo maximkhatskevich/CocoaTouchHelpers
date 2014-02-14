@@ -53,6 +53,8 @@ typedef void (^AnimationCompletionBlock)(BOOL finished);
 - (void)removeFromSuperviewAnimated;
 
 - (void)hide;
+- (void)makeTransparent;
+- (void)hideAndMakeTransparent;
 - (void)hideAnimatedWithDuration:(NSTimeInterval)duration
                    andCompletion:(SimpleBlock)completionBlock;
 - (void)hideAnimated;
@@ -61,6 +63,7 @@ typedef void (^AnimationCompletionBlock)(BOOL finished);
 - (void)hideAnimatedIfNeeded;
 
 - (void)show;
+- (void)prepareToShow;
 - (void)showAnimatedWithDuration:(NSTimeInterval)duration
                    andCompletion:(SimpleBlock)completionBlock;
 - (void)showAnimated;

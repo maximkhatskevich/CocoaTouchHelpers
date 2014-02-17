@@ -83,7 +83,8 @@
 #define thisOperationMacro __weak NSBlockOperation *thisOperation = nil
 #define errorMacro NSError *error = nil
 
-#define waitFor(condition) while (condition) {}
+#define waitFor(condition) while (!condition) { /* NSLog(@"Waiting for condition..."); */ }
+#define waitWhile(condition) while (condition) { /* NSLog(@"Waiting..."); */ }
 
 //===
 

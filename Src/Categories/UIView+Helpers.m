@@ -548,6 +548,24 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
     [self show];
 }
 
+- (void)appearAnimated
+{
+    [self appearWithDuration:defaultAnimationDuration
+                       delay:0.0
+                     options:UIViewAnimationOptionCurveEaseInOut
+                    ifNeeded:NO
+                  completion:nil];
+}
+
+- (void)appearAnimatedWithCompletion:(void (^)(BOOL finished))completionBlock
+{
+    [self appearWithDuration:defaultAnimationDuration
+                       delay:0.0
+                     options:UIViewAnimationOptionCurveEaseInOut
+                    ifNeeded:NO
+                  completion:completionBlock];
+}
+
 - (void)appearWithDuration:(NSTimeInterval)duration
                      delay:(NSTimeInterval)delay
                    options:(UIViewAnimationOptions)options
@@ -598,6 +616,24 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
 {
     self.alpha = 0.0;
     [self hide];
+}
+
+- (void)disappearAnimated
+{
+    [self disappearWithDuration:defaultAnimationDuration
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                       ifNeeded:NO
+                     completion:nil];
+}
+
+- (void)disappearAnimatedWithCompletion:(void (^)(BOOL finished))completionBlock
+{
+    [self disappearWithDuration:defaultAnimationDuration
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                       ifNeeded:NO
+                     completion:completionBlock];
 }
 
 - (void)disappearWithDuration:(NSTimeInterval)duration

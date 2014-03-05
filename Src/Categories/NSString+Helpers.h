@@ -12,6 +12,10 @@ extern NSString *retina4postfix;
 
 @interface NSString (Helpers)
 
+@property (readonly) BOOL isValidEmail;
+
++ (BOOL)stringIsValidEmail:(NSString *)stringToCheck;
+
 + (NSString *)md5:(NSString *)str;
 - (NSString *)retina4NameIfNeeded;
 -(NSString *)encodeURL;

@@ -53,6 +53,11 @@ NSString *defaultFontName = nil; // do not forget override value before use!
                  performSelector:@selector(setFont:)
                  withObject:targetFont];
             }
+            else
+            {
+                NSLog(@"WARNING: Custom font '%@' not found.",
+                      fontName);
+            }
         }
     }
 }

@@ -76,7 +76,7 @@ static void *SelectionKey;
     return result;
 }
 
-- (BOOL)addObjectWithIndexToSelection:(NSUInteger)index
+- (BOOL)addObjectAtIndexToSelection:(NSUInteger)index
 {
     return [self addObjectToSelection:
             [self safeObjectAtIndex:index]];
@@ -121,7 +121,7 @@ static void *SelectionKey;
     return [self addObjectToSelection:object];
 }
 
-- (BOOL)setObjectWithIndexSelected:(NSUInteger)index
+- (BOOL)setObjectAtIndexSelected:(NSUInteger)index
 {
     return [self setObjectSelected:
             [self safeObjectAtIndex:index]];
@@ -141,6 +141,12 @@ static void *SelectionKey;
 - (void)removeObjectFromSelection:(id)object
 {
     [[self selectionStorage] removeObject:object];
+}
+
+- (void)removeObjectAtIndexFromSelection:(NSUInteger)index
+{
+    [self removeObjectFromSelection:
+     [self safeObjectAtIndex:index]];
 }
 
 - (void)removeObjectsFromSelection:(NSArray *)objectList

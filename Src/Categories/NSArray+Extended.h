@@ -14,14 +14,15 @@
 @property (readonly, nonatomic) id selectedObject;
 
 - (BOOL)setObjectSelected:(id)object;
-- (BOOL)setObjectWithIndexSelected:(NSUInteger)index;
+- (BOOL)setObjectAtIndexSelected:(NSUInteger)index;
 - (BOOL)setObjectsSelected:(NSArray *)objectList;
 
 - (BOOL)addObjectToSelection:(id)object;
-- (BOOL)addObjectWithIndexToSelection:(NSUInteger)index;
+- (BOOL)addObjectAtIndexToSelection:(NSUInteger)index;
 - (BOOL)addObjectsToSelection:(NSArray *)objectList;
 
 - (void)removeObjectFromSelection:(id)object;
+- (void)removeObjectAtIndexFromSelection:(NSUInteger)index;
 - (void)removeObjectsFromSelection:(NSArray *)objectList;
 
 - (void)resetSelection;

@@ -150,8 +150,8 @@
 
 - (NSHashTable *)selectionStorage
 {
-    @synchronized(self)
-    {
+//    @synchronized(self)
+//    {
         if (!_selectionStorage)
         {
             _selectionStorage =
@@ -162,7 +162,7 @@
         //===
         
         return _selectionStorage;
-    }
+//    }
 }
 
 #pragma mark - Add
@@ -175,8 +175,20 @@
     
     if ([self indexOfObject:object] != NSNotFound)
     {
+        NSArray *previousSelection = self.selection;
+        
+        //===
+        
         [[self selectionStorage] addObject:object];
         result = YES;
+        
+        //===
+        
+        if ((self.selection.count != previousSelection.count) &&
+            self.onDidChangeSelection)
+        {
+            self.onDidChangeSelection(self, previousSelection);
+        }
     }
     
     //===
@@ -248,7 +260,19 @@
 
 - (void)removeObjectFromSelection:(id)object
 {
+    NSArray *previousSelection = self.selection;
+    
+    //===
+    
     [[self selectionStorage] removeObject:object];
+    
+    //===
+    
+    if ((self.selection.count != previousSelection.count) &&
+        self.onDidChangeSelection)
+    {
+        self.onDidChangeSelection(self, previousSelection);
+    }
 }
 
 - (void)removeObjectAtIndexFromSelection:(NSUInteger)index
@@ -269,7 +293,19 @@
 
 - (void)resetSelection
 {
+    NSArray *previousSelection = self.selection;
+    
+    //===
+    
     [[self selectionStorage] removeAllObjects];
+    
+    //===
+    
+    if ((self.selection.count != previousSelection.count) &&
+        self.onDidChangeSelection)
+    {
+        self.onDidChangeSelection(self, previousSelection);
+    }
 }
 
 @end

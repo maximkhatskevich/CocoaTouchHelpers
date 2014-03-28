@@ -20,7 +20,31 @@ static void *SelectionKey;
 
 - (NSArray *)selection
 {
-    return [[self selectionStorage] allObjects];
+    @synchronized(self)
+    {
+        NSMutableArray *result = [NSMutableArray array];
+        
+        //===
+        
+        NSArray *selectionObjects =
+        [[self selectionStorage] allObjects];
+        
+        for (id selectedObject in selectionObjects)
+        {
+            if ([self indexOfObject:selectedObject] == NSNotFound)
+            {
+                [[self selectionStorage] removeObject:selectedObject];
+            }
+            else
+            {
+                [result addObject:selectedObject];
+            }
+        }
+        
+        //===
+        
+        return [NSArray arrayWithArray:result];
+    }
 }
 
 - (id)selectedObject

@@ -33,4 +33,6 @@ typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, NSArray *previ
 
 - (void)resetSelection;
 
+- (void)setOnDidChangeSelection:(ExtArrayDidChangeSelection)onDidChangeSelection;
+
 @end

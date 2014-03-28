@@ -10,7 +10,7 @@
 
 @interface ExtMutableArray ()
 
-@property (strong, nonatomic) NSMutableArray *selection;
+@property (readonly, nonatomic) NSMutableArray *mutableSelection;
 
 // backing store
 @property (readonly, nonatomic) NSMutableArray *store;
@@ -21,9 +21,14 @@
 
 #pragma mark - Property accessors
 
+- (NSMutableArray *)mutableSelection
+{
+    return (NSMutableArray *)_selection;
+}
+
 - (id)selectedObject
 {
-    return self.selection.firstObject;
+    return self.mutableSelection.firstObject;
 }
 
 #pragma mark - Overrided methods
@@ -118,6 +123,113 @@
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
 {
     [self.store replaceObjectAtIndex:index withObject:anObject];
+}
+
+#pragma mark - Add
+
+- (BOOL)addObjectToSelection:(id)object
+{
+    BOOL result = NO;
+    
+    //===
+    
+    if ([self indexOfObject:object] != NSNotFound)
+    {
+        [self.mutableSelection addObject:object];
+        result = YES;
+    }
+    
+    //===
+    
+    return result;
+}
+
+- (BOOL)addObjectAtIndexToSelection:(NSUInteger)index
+{
+    return [self addObjectToSelection:
+            [self safeObjectAtIndex:index]];
+}
+
+- (BOOL)addObjectsToSelection:(NSArray *)objectList
+{
+    BOOL result = NO;
+    
+    //===
+    
+    if (objectList.count)
+    {
+        result = YES;
+        
+        for (id object in objectList)
+        {
+            if (![self addObjectToSelection:object])
+            {
+                result = NO;
+            }
+        }
+    }
+    else
+    {
+        NSLog(@"Nothing to add to selection list.");
+    }
+    
+    //===
+    
+    return result;
+}
+
+#pragma mark - Set
+
+- (BOOL)setObjectSelected:(id)object
+{
+    [self resetSelection];
+    
+    //===
+    
+    return [self addObjectToSelection:object];
+}
+
+- (BOOL)setObjectAtIndexSelected:(NSUInteger)index
+{
+    return [self setObjectSelected:
+            [self safeObjectAtIndex:index]];
+}
+
+- (BOOL)setObjectsSelected:(NSArray *)objectList
+{
+    [self resetSelection];
+    
+    //===
+    
+    return [self addObjectsToSelection:objectList];
+}
+
+#pragma mark - Remove
+
+- (void)removeObjectFromSelection:(id)object
+{
+    [self.mutableSelection removeObject:object];
+}
+
+- (void)removeObjectAtIndexFromSelection:(NSUInteger)index
+{
+    [self removeObjectFromSelection:
+     [self safeObjectAtIndex:index]];
+}
+
+- (void)removeObjectsFromSelection:(NSArray *)objectList
+{
+    for (id object in objectList)
+    {
+        [self removeObjectFromSelection:object];
+    }
+}
+
+#pragma mark - Reset
+
+- (void)resetSelection
+{
+    [self.mutableSelection removeAllObjects];
 }
 
 @end

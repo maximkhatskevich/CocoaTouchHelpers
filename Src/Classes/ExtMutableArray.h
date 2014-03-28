@@ -13,18 +13,18 @@
 @property (readonly, nonatomic) NSArray *selection;
 @property (readonly, nonatomic) id selectedObject;
 
-//- (BOOL)setObjectSelected:(id)object;
-//- (BOOL)setObjectAtIndexSelected:(NSUInteger)index;
-//- (BOOL)setObjectsSelected:(NSArray *)objectList;
-//
-//- (BOOL)addObjectToSelection:(id)object;
-//- (BOOL)addObjectAtIndexToSelection:(NSUInteger)index;
-//- (BOOL)addObjectsToSelection:(NSArray *)objectList;
-//
-//- (void)removeObjectFromSelection:(id)object;
-//- (void)removeObjectAtIndexFromSelection:(NSUInteger)index;
-//- (void)removeObjectsFromSelection:(NSArray *)objectList;
-//
-//- (void)resetSelection;
+- (BOOL)setObjectSelected:(id)object;
+- (BOOL)setObjectAtIndexSelected:(NSUInteger)index;
+- (BOOL)setObjectsSelected:(NSArray *)objectList;
+
+- (BOOL)addObjectToSelection:(id)object;
+- (BOOL)addObjectAtIndexToSelection:(NSUInteger)index;
+- (BOOL)addObjectsToSelection:(NSArray *)objectList;
+
+- (void)removeObjectFromSelection:(id)object;
+- (void)removeObjectAtIndexFromSelection:(NSUInteger)index;
+- (void)removeObjectsFromSelection:(NSArray *)objectList;
+
+- (void)resetSelection;
 
 @end

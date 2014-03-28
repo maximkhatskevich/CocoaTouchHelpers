@@ -40,21 +40,56 @@
 
 - (instancetype)initWithCapacity:(NSUInteger)numItems
 {
-    self = [super initWithCapacity:numItems];
-    
-    //===
-    
     if (self)
     {
         if (!_store)
         {
-            _store = [NSMutableArray array];
+            _store = [NSMutableArray arrayWithCapacity:numItems];
         }
     }
     
     //===
     
     return self;
+}
+
+#pragma mark - NSArray
+
+- (NSUInteger)count
+{
+    return self.store.count;
+}
+
+- (id)objectAtIndex:(NSUInteger)index
+{
+    return [self.store objectAtIndex:index];
+}
+
+#pragma mark - NSMutableArray
+
+- (void)addObject:(id)anObject
+{
+    [self.store addObject:anObject];
+}
+
+- (void)insertObject:(id)anObject atIndex:(NSUInteger)index
+{
+    [self.store insertObject:anObject atIndex:index];
+}
+
+- (void)removeLastObject
+{
+    [self.store removeLastObject];
+}
+
+- (void)removeObjectAtIndex:(NSUInteger)index
+{
+    [self.store removeObjectAtIndex:index];
+}
+
+- (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
+{
+    [self.store replaceObjectAtIndex:index withObject:anObject];
 }
 
 @end

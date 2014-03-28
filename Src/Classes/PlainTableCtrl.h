@@ -25,7 +25,7 @@
 @property NSUInteger itemsLimit; // if == 0 -> NO limit
 @property NSUInteger preloadOffset;
 
-@property (readonly, nonatomic) UITableView *tableView;
+@property (readonly, weak, nonatomic) UITableView *tableView;
 
 @property (copy, nonatomic) NSString *defaultCellIdentifier;
 @property UITableViewRowAnimation defaultReloadAnimation;

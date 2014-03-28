@@ -24,6 +24,8 @@
 		50C5C5A5185EC88400AABC2F /* PassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5A3185EC88400AABC2F /* PassthroughView.m */; };
 		50C5C5A7185EC8CA00AABC2F /* LoadingIndicatorView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5C5A0185EC88400AABC2F /* LoadingIndicatorView.h */; };
 		50C5C5A8185EC8CA00AABC2F /* PassthroughView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5C5A2185EC88400AABC2F /* PassthroughView.h */; };
+		50D7723C18E4D52400B30DE6 /* NSArray+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D7723B18E4D52400B30DE6 /* NSArray+Extended.m */; };
+		50D7723D18E5A84A00B30DE6 /* NSArray+Extended.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50D7723A18E4D52400B30DE6 /* NSArray+Extended.h */; };
 		50F12B341827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
 		50F12B421827928C001C21DA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B411827928C001C21DA /* XCTest.framework */; };
 		50F12B431827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
@@ -96,6 +98,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				50D7723D18E5A84A00B30DE6 /* NSArray+Extended.h in CopyFiles */,
 				5096FE3818AE6DEC004CEE1A /* GenericCtrlBase.h in CopyFiles */,
 				504886FC189EC03D000F7043 /* FlexiblePageControl.h in CopyFiles */,
 				50A41DF4189362F900CAC050 /* ResultContainer.h in CopyFiles */,
@@ -151,6 +154,8 @@
 		50C5C5A1185EC88400AABC2F /* LoadingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingIndicatorView.m; sourceTree = "<group>"; };
 		50C5C5A2185EC88400AABC2F /* PassthroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassthroughView.h; sourceTree = "<group>"; };
 		50C5C5A3185EC88400AABC2F /* PassthroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassthroughView.m; sourceTree = "<group>"; };
+		50D7723A18E4D52400B30DE6 /* NSArray+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Extended.h"; sourceTree = "<group>"; };
+		50D7723B18E4D52400B30DE6 /* NSArray+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Extended.m"; sourceTree = "<group>"; };
 		50F12B301827928C001C21DA /* libCocoaTouchHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaTouchHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F12B331827928C001C21DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50F12B401827928C001C21DA /* CocoaTouchHelpersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoaTouchHelpersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -314,6 +319,8 @@
 				50F12B7B1827D7C5001C21DA /* NSString+Helpers.m */,
 				5046534C1836639B002DB336 /* NSDate+Helpers.h */,
 				5046534D1836639B002DB336 /* NSDate+Helpers.m */,
+				50D7723A18E4D52400B30DE6 /* NSArray+Extended.h */,
+				50D7723B18E4D52400B30DE6 /* NSArray+Extended.m */,
 				50F12B7C1827D7C5001C21DA /* NSArray+Helpers.h */,
 				50F12B7D1827D7C5001C21DA /* NSArray+Helpers.m */,
 				50F12B801827D7C5001C21DA /* NSMutableArray+Helpers.h */,
@@ -417,7 +424,7 @@
 		50F12B281827928C001C21DA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Maxim Khatskevich";
 			};
 			buildConfigurationList = 50F12B2B1827928C001C21DA /* Build configuration list for PBXProject "CocoaTouchHelpers" */;
@@ -456,6 +463,7 @@
 			files = (
 				50A41DF31893627F00CAC050 /* ResultContainer.m in Sources */,
 				5046534E1836639B002DB336 /* NSDate+Helpers.m in Sources */,
+				50D7723C18E4D52400B30DE6 /* NSArray+Extended.m in Sources */,
 				50F12B9C1827D7C5001C21DA /* NSObject+Helpers.m in Sources */,
 				50C5C5A5185EC88400AABC2F /* PassthroughView.m in Sources */,
 				50F12BA91827D7C5001C21DA /* UINavigationController+Helpers.m in Sources */,
@@ -520,7 +528,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -558,7 +565,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -647,7 +653,6 @@
 		50F12B571827928C001C21DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -674,7 +679,6 @@
 		50F12B581827928C001C21DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

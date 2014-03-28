@@ -33,6 +33,7 @@
 #import <CocoaTouchHelpers/NSString+Helpers.h>
 #import <CocoaTouchHelpers/NSDate+Helpers.h>
 
+#import <CocoaTouchHelpers/NSArray+Extended.h>
 #import <CocoaTouchHelpers/NSArray+Helpers.h>
 #import <CocoaTouchHelpers/NSMutableArray+Helpers.h>
 #import <CocoaTouchHelpers/NSMutableDictionary+Helpers.h>

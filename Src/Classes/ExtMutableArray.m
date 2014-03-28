@@ -16,25 +16,45 @@
 @end
 
 @implementation ExtMutableArray
-{
-    NSMutableArray *_store;
-}
-
-- (NSMutableArray *)store
-{
-    @synchronized(self)
-    {
-        if (_store)
-        {
-            _store = [NSMutableArray array];
-        }
-        
-        return _store;
-    }
-}
 
 #pragma mark - Overrided methods
 
+- (instancetype)init
+{
+    self = [super init];
+    
+    //===
+    
+    if (self)
+    {
+        if (!_store)
+        {
+            _store = [NSMutableArray array];
+        }
+    }
+    
+    //===
+    
+    return self;
+}
 
+- (instancetype)initWithCapacity:(NSUInteger)numItems
+{
+    self = [super initWithCapacity:numItems];
+    
+    //===
+    
+    if (self)
+    {
+        if (!_store)
+        {
+            _store = [NSMutableArray array];
+        }
+    }
+    
+    //===
+    
+    return self;
+}
 
 @end

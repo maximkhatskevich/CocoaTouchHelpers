@@ -10,25 +10,47 @@
 
 @interface ExtMutableArray ()
 
-@property (readonly, nonatomic) NSMutableArray *mutableSelection;
-
 // backing store
 @property (readonly, nonatomic) NSMutableArray *store;
 
 @end
 
 @implementation ExtMutableArray
+{
+    NSHashTable *_selectionStorage;
+}
 
 #pragma mark - Property accessors
 
-- (NSMutableArray *)mutableSelection
+- (NSArray *)selection
 {
-    return (NSMutableArray *)_selection;
+    NSMutableArray *result = [NSMutableArray array];
+    
+    //===
+    
+    NSArray *selectionObjects =
+    [[self selectionStorage] allObjects];
+    
+    for (id selectedObject in selectionObjects)
+    {
+        if ([self indexOfObject:selectedObject] == NSNotFound)
+        {
+            [[self selectionStorage] removeObject:selectedObject];
+        }
+        else
+        {
+            [result addObject:selectedObject];
+        }
+    }
+    
+    //===
+    
+    return [NSArray arrayWithArray:result];
 }
 
 - (id)selectedObject
 {
-    return self.mutableSelection.firstObject;
+    return self.selection.firstObject;
 }
 
 #pragma mark - Overrided methods
@@ -42,7 +64,6 @@
     if (self)
     {
         _store = [NSMutableArray array];
-        _selection = [NSMutableArray array];
     }
     
     //===
@@ -59,7 +80,6 @@
     if (self)
     {
         _store = [NSMutableArray arrayWithCapacity:numItems];
-        _selection = [NSMutableArray array];
     }
     
     //===
@@ -78,7 +98,6 @@
     {
         _store = [NSMutableArray arrayWithObjects:objects
                                             count:count];
-        _selection = [NSMutableArray array];
     }
     
     //===
@@ -86,7 +105,7 @@
     return self;
 }
 
-#pragma mark - NSArray
+#pragma mark - Overrided methods - NSArray
 
 - (NSUInteger)count
 {
@@ -98,7 +117,7 @@
     return [self.store objectAtIndex:index];
 }
 
-#pragma mark - NSMutableArray
+#pragma mark - Overrided methods - NSMutableArray
 
 - (void)addObject:(id)anObject
 {
@@ -117,12 +136,33 @@
 
 - (void)removeObjectAtIndex:(NSUInteger)index
 {
+    [self removeObjectAtIndexFromSelection:index];
     [self.store removeObjectAtIndex:index];
 }
 
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
 {
+    [self removeObjectAtIndexFromSelection:index];
     [self.store replaceObjectAtIndex:index withObject:anObject];
+}
+
+#pragma mark - Internal
+
+- (NSHashTable *)selectionStorage
+{
+    @synchronized(self)
+    {
+        if (!_selectionStorage)
+        {
+            _selectionStorage =
+            [NSHashTable
+             hashTableWithOptions:NSPointerFunctionsWeakMemory];
+        }
+        
+        //===
+        
+        return _selectionStorage;
+    }
 }
 
 #pragma mark - Add
@@ -135,7 +175,7 @@
     
     if ([self indexOfObject:object] != NSNotFound)
     {
-        [self.mutableSelection addObject:object];
+        [[self selectionStorage] addObject:object];
         result = YES;
     }
     
@@ -208,7 +248,7 @@
 
 - (void)removeObjectFromSelection:(id)object
 {
-    [self.mutableSelection removeObject:object];
+    [[self selectionStorage] removeObject:object];
 }
 
 - (void)removeObjectAtIndexFromSelection:(NSUInteger)index
@@ -229,7 +269,7 @@
 
 - (void)resetSelection
 {
-    [self.mutableSelection removeAllObjects];
+    [[self selectionStorage] removeAllObjects];
 }
 
 @end

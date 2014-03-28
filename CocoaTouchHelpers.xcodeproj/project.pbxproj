@@ -26,6 +26,8 @@
 		50C5C5A8185EC8CA00AABC2F /* PassthroughView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5C5A2185EC88400AABC2F /* PassthroughView.h */; };
 		50D7723C18E4D52400B30DE6 /* NSArray+Extended.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D7723B18E4D52400B30DE6 /* NSArray+Extended.m */; };
 		50D7723D18E5A84A00B30DE6 /* NSArray+Extended.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50D7723A18E4D52400B30DE6 /* NSArray+Extended.h */; };
+		50D7724018E5C17A00B30DE6 /* ExtMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D7723F18E5C17A00B30DE6 /* ExtMutableArray.m */; };
+		50D7724118E5C67800B30DE6 /* ExtMutableArray.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50D7723E18E5C17A00B30DE6 /* ExtMutableArray.h */; };
 		50F12B341827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
 		50F12B421827928C001C21DA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B411827928C001C21DA /* XCTest.framework */; };
 		50F12B431827928C001C21DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12B331827928C001C21DA /* Foundation.framework */; };
@@ -98,6 +100,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				50D7724118E5C67800B30DE6 /* ExtMutableArray.h in CopyFiles */,
 				50D7723D18E5A84A00B30DE6 /* NSArray+Extended.h in CopyFiles */,
 				5096FE3818AE6DEC004CEE1A /* GenericCtrlBase.h in CopyFiles */,
 				504886FC189EC03D000F7043 /* FlexiblePageControl.h in CopyFiles */,
@@ -156,6 +159,8 @@
 		50C5C5A3185EC88400AABC2F /* PassthroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassthroughView.m; sourceTree = "<group>"; };
 		50D7723A18E4D52400B30DE6 /* NSArray+Extended.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Extended.h"; sourceTree = "<group>"; };
 		50D7723B18E4D52400B30DE6 /* NSArray+Extended.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Extended.m"; sourceTree = "<group>"; };
+		50D7723E18E5C17A00B30DE6 /* ExtMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtMutableArray.h; sourceTree = "<group>"; };
+		50D7723F18E5C17A00B30DE6 /* ExtMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtMutableArray.m; sourceTree = "<group>"; };
 		50F12B301827928C001C21DA /* libCocoaTouchHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaTouchHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F12B331827928C001C21DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50F12B401827928C001C21DA /* CocoaTouchHelpersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoaTouchHelpersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -376,6 +381,8 @@
 				505C584A189EB22D000CC821 /* FlexiblePageControl.m */,
 				5096FE3518AE6D2B004CEE1A /* GenericCtrlBase.h */,
 				5096FE3618AE6D2B004CEE1A /* GenericCtrlBase.m */,
+				50D7723E18E5C17A00B30DE6 /* ExtMutableArray.h */,
+				50D7723F18E5C17A00B30DE6 /* ExtMutableArray.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -479,6 +486,7 @@
 				501839E4182C3F9000F9594B /* UIView+FontHelpers.m in Sources */,
 				50F12BA51827D7C5001C21DA /* UIResponder+Helpers.m in Sources */,
 				50F12B9D1827D7C5001C21DA /* NSObject+TwitterHelpers.m in Sources */,
+				50D7724018E5C17A00B30DE6 /* ExtMutableArray.m in Sources */,
 				5096FE3718AE6D2B004CEE1A /* GenericCtrlBase.m in Sources */,
 				50F12BC11827D84A001C21DA /* AdvancedList.m in Sources */,
 				50F12BAF1827D7C5001C21DA /* UIColor+Helpers.m in Sources */,

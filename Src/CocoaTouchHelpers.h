@@ -27,6 +27,8 @@
 
 #import <CocoaTouchHelpers/GenericCtrlBase.h>
 
+#import <CocoaTouchHelpers/ExtMutableArray.h>
+
 //=== categories
 
 #import <CocoaTouchHelpers/NSObject+Helpers.h>

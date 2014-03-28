@@ -8,14 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-//@class ExtMutableArray;
+@class ExtMutableArray;
+
+typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, NSArray *previousSelection);
 
 @interface ExtMutableArray : NSMutableArray
 
 @property (readonly, nonatomic) NSArray *selection;
 @property (readonly, nonatomic) id selectedObject;
 
-@property (nonatomic, copy) void (^onDidChangeSelection)(ExtMutableArray *list, NSArray *previousSelection);
+@property (nonatomic, copy) ExtArrayDidChangeSelection onDidChangeSelection;
 
 - (BOOL)setObjectSelected:(id)object;
 - (BOOL)setObjectAtIndexSelected:(NSUInteger)index;

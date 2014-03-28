@@ -40,11 +40,36 @@
 
 - (instancetype)initWithCapacity:(NSUInteger)numItems
 {
+    self = [super init];
+    
+    //===
+    
     if (self)
     {
         if (!_store)
         {
             _store = [NSMutableArray arrayWithCapacity:numItems];
+        }
+    }
+    
+    //===
+    
+    return self;
+}
+
+- (instancetype)initWithObjects:(const id [])objects
+                          count:(NSUInteger)count
+{
+    self = [super init];
+    
+    //===
+    
+    if (self)
+    {
+        if (!_store)
+        {
+            _store = [NSMutableArray arrayWithObjects:objects
+                                                count:count];
         }
     }
     

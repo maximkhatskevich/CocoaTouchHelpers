@@ -10,12 +10,21 @@
 
 @interface ExtMutableArray ()
 
+@property (strong, nonatomic) NSMutableArray *selection;
+
 // backing store
 @property (readonly, nonatomic) NSMutableArray *store;
 
 @end
 
 @implementation ExtMutableArray
+
+#pragma mark - Property accessors
+
+- (id)selectedObject
+{
+    return self.selection.firstObject;
+}
 
 #pragma mark - Overrided methods
 
@@ -27,10 +36,8 @@
     
     if (self)
     {
-        if (!_store)
-        {
-            _store = [NSMutableArray array];
-        }
+        _store = [NSMutableArray array];
+        _selection = [NSMutableArray array];
     }
     
     //===
@@ -46,10 +53,8 @@
     
     if (self)
     {
-        if (!_store)
-        {
-            _store = [NSMutableArray arrayWithCapacity:numItems];
-        }
+        _store = [NSMutableArray arrayWithCapacity:numItems];
+        _selection = [NSMutableArray array];
     }
     
     //===
@@ -66,11 +71,9 @@
     
     if (self)
     {
-        if (!_store)
-        {
-            _store = [NSMutableArray arrayWithObjects:objects
-                                                count:count];
-        }
+        _store = [NSMutableArray arrayWithObjects:objects
+                                            count:count];
+        _selection = [NSMutableArray array];
     }
     
     //===

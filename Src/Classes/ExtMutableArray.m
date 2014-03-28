@@ -13,8 +13,6 @@
 // backing store
 @property (readonly, nonatomic) NSMutableArray *store;
 
-@property BOOL selectionChanged;
-
 @end
 
 @implementation ExtMutableArray
@@ -138,14 +136,21 @@
 
 - (void)removeObjectAtIndex:(NSUInteger)index
 {
-    [self removeObjectAtIndexFromSelection:index];
-    [self.store removeObjectAtIndex:index];
+    if ([self isValidIndex:index])
+    {
+        [self removeObjectAtIndexFromSelection:index];
+        [self.store removeObjectAtIndex:index];
+    }
 }
 
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
 {
-    [self removeObjectAtIndexFromSelection:index];
-    [self.store replaceObjectAtIndex:index withObject:anObject];
+    if ([self isValidIndex:index])
+    {
+        [self removeObjectAtIndexFromSelection:index];
+        [self.store replaceObjectAtIndex:index
+                              withObject:anObject];
+    }
 }
 
 #pragma mark - Service
@@ -159,22 +164,12 @@
             _selectionStorage =
             [NSHashTable
              hashTableWithOptions:NSPointerFunctionsWeakMemory];
-            
-            //===
-            
-            _selectionChanged = NO;
         }
         
         //===
         
         return _selectionStorage;
 //    }
-}
-
-- (void)notifySelectionChanged
-{
-    self.selectionChanged = YES;
-    _selectionChanged = NO;
 }
 
 #pragma mark - Add
@@ -198,10 +193,6 @@
         
         if ((self.selection.count != previousSelection.count))
         {
-            [self notifySelectionChanged];
-            
-            //===
-            
             if (self.onDidChangeSelection)
             {
                 self.onDidChangeSelection(self, previousSelection);
@@ -288,10 +279,6 @@
     
     if ((self.selection.count != previousSelection.count))
     {
-        [self notifySelectionChanged];
-        
-        //===
-        
         if (self.onDidChangeSelection)
         {
             self.onDidChangeSelection(self, previousSelection);
@@ -327,10 +314,6 @@
     
     if ((self.selection.count != previousSelection.count))
     {
-        [self notifySelectionChanged];
-        
-        //===
-        
         if (self.onDidChangeSelection)
         {
             self.onDidChangeSelection(self, previousSelection);

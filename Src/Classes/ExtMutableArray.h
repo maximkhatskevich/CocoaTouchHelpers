@@ -17,6 +17,8 @@ typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, NSArray *previ
 @property (readonly, nonatomic) NSArray *selection;
 @property (readonly, nonatomic) id selectedObject;
 
+@property (readonly) BOOL selectionChanged;
+
 @property (nonatomic, copy) ExtArrayDidChangeSelection onDidChangeSelection;
 
 - (BOOL)setObjectSelected:(id)object;

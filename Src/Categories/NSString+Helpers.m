@@ -52,7 +52,9 @@ NSString *retina4postfix = @"-568h";
     
     //===
     
-    if (isNonZeroString(self))
+    BOOL plural = ([self hasSuffix:@"S"] || [self hasSuffix:@"s"]);
+    
+    if ((self.length > 1) && !plural)
     {
         if (self.firstCharacterIsVowel)
         {
@@ -62,6 +64,26 @@ NSString *retina4postfix = @"-568h";
         {
             result = @"AN";
         }
+    }
+    
+    //===
+    
+    return result;
+}
+
+- (NSString *)withRecommendedArticle
+{
+    NSString *result = self.recommendedArticle;
+    
+    //===
+    
+    if (isNonZeroString(result))
+    {
+        result = [NSString stringWithFormat:@"%@ %@", result, self];
+    }
+    else
+    {
+        result = self;
     }
     
     //===

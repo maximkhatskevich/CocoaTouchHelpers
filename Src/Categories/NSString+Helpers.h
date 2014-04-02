@@ -15,6 +15,7 @@ extern NSString *retina4postfix;
 @property (readonly) BOOL isValidEmail;
 @property (readonly) BOOL firstCharacterIsVowel;
 @property (readonly) NSString *recommendedArticle;
+@property (readonly) NSString *withRecommendedArticle;
 
 + (BOOL)stringIsValidEmail:(NSString *)stringToCheck;
 

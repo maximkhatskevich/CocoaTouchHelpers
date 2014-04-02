@@ -21,6 +21,54 @@ NSString *retina4postfix = @"-568h";
     return [[self class] stringIsValidEmail:self];
 }
 
+- (BOOL)firstCharacterIsVowel
+{
+    BOOL result = NO;
+    
+    //===
+    
+    if (isNonZeroString(self))
+    {
+        NSString *vowelsStr = @"aeiouàèìòùáéíóúAEIOUÀÈÌÒÙÁÉÍÓÚ";
+        NSString *firstCharStr =
+        [self substringWithRange:NSMakeRange(0, 1)];
+        
+        // lets try to find first letter in vowels str
+        
+        if (((NSRange)[vowelsStr rangeOfString:firstCharStr]).length)
+        {
+            result = YES;
+        }
+    }
+    
+    //===
+    
+    return result;
+}
+
+- (NSString *)recommendedArticle
+{
+    NSString *result = nil;
+    
+    //===
+    
+    if (isNonZeroString(self))
+    {
+        if (self.firstCharacterIsVowel)
+        {
+            result = @"A";
+        }
+        else
+        {
+            result = @"AN";
+        }
+    }
+    
+    //===
+    
+    return result;
+}
+
 #pragma mark - Generic
 
 + (BOOL)stringIsValidEmail:(NSString *)stringToCheck

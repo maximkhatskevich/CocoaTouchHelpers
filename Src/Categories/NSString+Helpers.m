@@ -58,11 +58,11 @@ NSString *retina4postfix = @"-568h";
     {
         if (self.firstCharacterIsVowel)
         {
-            result = @"A";
+            result = @"AN";
         }
         else
         {
-            result = @"AN";
+            result = @"A";
         }
     }
     

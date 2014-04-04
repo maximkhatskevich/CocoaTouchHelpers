@@ -16,22 +16,6 @@
 
 #pragma mark - Overrided methods
 
-- (id)init
-{
-    self = [super init];
-    
-    //===
-    
-    if (self)
-    {
-        [self prepare];
-    }
-    
-    //===
-    
-    return self;
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

@@ -52,9 +52,9 @@ NSString *retina4postfix = @"-568h";
     
     //===
     
-    BOOL plural = ([self hasSuffix:@"S"] || [self hasSuffix:@"s"]);
+//    BOOL plural = ([self hasSuffix:@"S"] || [self hasSuffix:@"s"]);
     
-    if ((self.length > 1) && !plural)
+    if ((self.length > 1) /* && !plural */)
     {
         if (self.firstCharacterIsVowel)
         {

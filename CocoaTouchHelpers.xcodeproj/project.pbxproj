@@ -16,8 +16,8 @@
 		505C584B189EB22D000CC821 /* FlexiblePageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 505C584A189EB22D000CC821 /* FlexiblePageControl.m */; };
 		5060F897185E302E004F490E /* NSObject+State.m in Sources */ = {isa = PBXBuildFile; fileRef = 5060F896185E302E004F490E /* NSObject+State.m */; };
 		5060F898185E3246004F490E /* NSObject+State.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5060F895185E302E004F490E /* NSObject+State.h */; };
-		5096FE3718AE6D2B004CEE1A /* GenericCtrlBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5096FE3618AE6D2B004CEE1A /* GenericCtrlBase.m */; };
-		5096FE3818AE6DEC004CEE1A /* GenericCtrlBase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5096FE3518AE6D2B004CEE1A /* GenericCtrlBase.h */; };
+		5096FE3718AE6D2B004CEE1A /* BaseGenericCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5096FE3618AE6D2B004CEE1A /* BaseGenericCtrl.m */; };
+		5096FE3818AE6DEC004CEE1A /* BaseGenericCtrl.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5096FE3518AE6D2B004CEE1A /* BaseGenericCtrl.h */; };
 		50A41DF31893627F00CAC050 /* ResultContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A41DF21893627F00CAC050 /* ResultContainer.m */; };
 		50A41DF4189362F900CAC050 /* ResultContainer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50A41DF11893627F00CAC050 /* ResultContainer.h */; };
 		50C5C5A4185EC88400AABC2F /* LoadingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5A1185EC88400AABC2F /* LoadingIndicatorView.m */; };
@@ -99,7 +99,7 @@
 			dstSubfolderSpec = 16;
 			files = (
 				50D7724118E5C67800B30DE6 /* ExtMutableArray.h in CopyFiles */,
-				5096FE3818AE6DEC004CEE1A /* GenericCtrlBase.h in CopyFiles */,
+				5096FE3818AE6DEC004CEE1A /* BaseGenericCtrl.h in CopyFiles */,
 				504886FC189EC03D000F7043 /* FlexiblePageControl.h in CopyFiles */,
 				50A41DF4189362F900CAC050 /* ResultContainer.h in CopyFiles */,
 				50C5C5A7185EC8CA00AABC2F /* LoadingIndicatorView.h in CopyFiles */,
@@ -146,8 +146,8 @@
 		505C584A189EB22D000CC821 /* FlexiblePageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexiblePageControl.m; sourceTree = "<group>"; };
 		5060F895185E302E004F490E /* NSObject+State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+State.h"; sourceTree = "<group>"; };
 		5060F896185E302E004F490E /* NSObject+State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+State.m"; sourceTree = "<group>"; };
-		5096FE3518AE6D2B004CEE1A /* GenericCtrlBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericCtrlBase.h; sourceTree = "<group>"; };
-		5096FE3618AE6D2B004CEE1A /* GenericCtrlBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericCtrlBase.m; sourceTree = "<group>"; };
+		5096FE3518AE6D2B004CEE1A /* BaseGenericCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseGenericCtrl.h; sourceTree = "<group>"; };
+		5096FE3618AE6D2B004CEE1A /* BaseGenericCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseGenericCtrl.m; sourceTree = "<group>"; };
 		50A41DF11893627F00CAC050 /* ResultContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultContainer.h; sourceTree = "<group>"; };
 		50A41DF21893627F00CAC050 /* ResultContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultContainer.m; sourceTree = "<group>"; };
 		50C5C5A0185EC88400AABC2F /* LoadingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingIndicatorView.h; sourceTree = "<group>"; };
@@ -372,8 +372,8 @@
 				50A41DF21893627F00CAC050 /* ResultContainer.m */,
 				505C5849189EB22D000CC821 /* FlexiblePageControl.h */,
 				505C584A189EB22D000CC821 /* FlexiblePageControl.m */,
-				5096FE3518AE6D2B004CEE1A /* GenericCtrlBase.h */,
-				5096FE3618AE6D2B004CEE1A /* GenericCtrlBase.m */,
+				5096FE3518AE6D2B004CEE1A /* BaseGenericCtrl.h */,
+				5096FE3618AE6D2B004CEE1A /* BaseGenericCtrl.m */,
 				50D7723E18E5C17A00B30DE6 /* ExtMutableArray.h */,
 				50D7723F18E5C17A00B30DE6 /* ExtMutableArray.m */,
 			);
@@ -479,7 +479,7 @@
 				50F12BA51827D7C5001C21DA /* UIResponder+Helpers.m in Sources */,
 				50F12B9D1827D7C5001C21DA /* NSObject+TwitterHelpers.m in Sources */,
 				50D7724018E5C17A00B30DE6 /* ExtMutableArray.m in Sources */,
-				5096FE3718AE6D2B004CEE1A /* GenericCtrlBase.m in Sources */,
+				5096FE3718AE6D2B004CEE1A /* BaseGenericCtrl.m in Sources */,
 				50F12BC11827D84A001C21DA /* AdvancedList.m in Sources */,
 				50F12BAF1827D7C5001C21DA /* UIColor+Helpers.m in Sources */,
 				50F12B9F1827D7C5001C21DA /* NSString+Helpers.m in Sources */,

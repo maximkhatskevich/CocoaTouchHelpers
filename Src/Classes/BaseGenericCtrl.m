@@ -1,18 +1,18 @@
 //
-//  GenericCtrlBase.m
+//  BaseGenericCtrl.m
 //  CocoaTouchHelpers
 //
 //  Created by Maxim Khatskevich on 2/14/14.
 //  Copyright (c) 2014 Maxim Khatskevich. All rights reserved.
 //
 
-#import "GenericCtrlBase.h"
+#import "BaseGenericCtrl.h"
 
-@interface GenericCtrlBase ()
+@interface BaseGenericCtrl ()
 
 @end
 
-@implementation GenericCtrlBase
+@implementation BaseGenericCtrl
 
 #pragma mark - Overrided methods
 

@@ -1,5 +1,5 @@
 //
-//  GenericCtrlBase.h
+//  BaseGenericCtrl.h
 //  CocoaTouchHelpers
 //
 //  Created by Maxim Khatskevich on 2/14/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GenericCtrlBase : UIViewController
+@interface BaseGenericCtrl : UIViewController
 
 - (void)prepare;
 - (void)prepareUI;

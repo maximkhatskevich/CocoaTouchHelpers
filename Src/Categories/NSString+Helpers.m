@@ -27,7 +27,7 @@ NSString *retina4postfix = @"-568h";
     
     //===
     
-    if (isNonZeroString(self))
+    if (self.length)
     {
         NSString *vowelsStr = @"aeiouàèìòùáéíóúAEIOUÀÈÌÒÙÁÉÍÓÚ";
         NSString *firstCharStr =
@@ -46,15 +46,40 @@ NSString *retina4postfix = @"-568h";
     return result;
 }
 
+- (BOOL)isPlural
+{
+    BOOL result = NO;
+    
+    //===
+    
+    if (self.length > 1)
+    {
+        NSString *selfInUpperCase = [self uppercaseString];
+        
+        NSUInteger count = self.length;
+        
+        NSString *preLastChar =
+        [selfInUpperCase substringWithRange:NSMakeRange((count - 2), 1)];
+        
+        if ([selfInUpperCase hasSuffix:@"S"] &&
+            ![preLastChar isEqualToString:@"S"])
+        {
+            result = YES;
+        }
+    }
+    
+    //===
+    
+    return result;
+}
+
 - (NSString *)recommendedArticle
 {
     NSString *result = nil;
     
     //===
     
-//    BOOL plural = ([self hasSuffix:@"S"] || [self hasSuffix:@"s"]);
-    
-    if ((self.length > 1) /* && !plural */)
+    if ((self.length > 1) && !self.isPlural)
     {
         if (self.firstCharacterIsVowel)
         {

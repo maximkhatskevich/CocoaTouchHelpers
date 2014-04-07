@@ -12,8 +12,9 @@ extern NSString *retina4postfix;
 
 @interface NSString (Helpers)
 
-@property (readonly) BOOL isValidEmail;
+@property (readonly, getter = isValidEmail) BOOL validEmail;
 @property (readonly) BOOL firstCharacterIsVowel;
+@property (readonly, getter = isPlural) BOOL plural;
 @property (readonly) NSString *recommendedArticle;
 @property (readonly) NSString *withRecommendedArticle;
 

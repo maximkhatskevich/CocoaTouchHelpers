@@ -25,7 +25,7 @@
 
 #import <CocoaTouchHelpers/ResultContainer.h>
 
-#import <CocoaTouchHelpers/GenericCtrlBase.h>
+#import <CocoaTouchHelpers/BaseGenericCtrl.h>
 
 #import <CocoaTouchHelpers/ExtMutableArray.h>
 

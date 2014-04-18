@@ -70,10 +70,14 @@
         [[NSPersistentStoreCoordinator alloc]
          initWithManagedObjectModel:[self model]];
         
+        NSDictionary *options =
+        @{NSMigratePersistentStoresAutomaticallyOption: @YES,
+          NSInferMappingModelAutomaticallyOption: @YES};
+        
         if (![_coordinator addPersistentStoreWithType:NSSQLiteStoreType
                                         configuration:nil
                                                   URL:storeURL
-                                              options:nil
+                                              options:options
                                                 error:&error])
         {
             /*

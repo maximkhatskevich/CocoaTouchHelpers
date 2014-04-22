@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 //=== global level headers
 
 #import "MacrosBase.h"

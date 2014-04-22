@@ -10,48 +10,48 @@
 
 //=== global level headers
 
-#import <CocoaTouchHelpers/MacrosBase.h>
-#import <CocoaTouchHelpers/GlobalBase.h>
+#import "MacrosBase.h"
+#import "GlobalBase.h"
 
 //=== classes
 
-#import <CocoaTouchHelpers/Base64.h>
+#import "Base64.h"
 
-#import <CocoaTouchHelpers/AdvancedList.h>
-#import <CocoaTouchHelpers/PlainTableCtrl.h>
+#import "AdvancedList.h"
+#import "PlainTableCtrl.h"
 
-#import <CocoaTouchHelpers/LoadingIndicatorView.h>
-#import <CocoaTouchHelpers/PassthroughView.h>
+#import "LoadingIndicatorView.h"
+#import "PassthroughView.h"
 
-#import <CocoaTouchHelpers/ResultContainer.h>
+#import "ResultContainer.h"
 
-#import <CocoaTouchHelpers/BaseGenericCtrl.h>
+#import "BaseGenericCtrl.h"
 
-#import <CocoaTouchHelpers/ExtMutableArray.h>
+#import "ExtMutableArray.h"
 
 //=== categories
 
-#import <CocoaTouchHelpers/NSObject+Helpers.h>
-#import <CocoaTouchHelpers/NSString+Helpers.h>
-#import <CocoaTouchHelpers/NSDate+Helpers.h>
+#import "NSObject+Helpers.h"
+#import "NSString+Helpers.h"
+#import "NSDate+Helpers.h"
 
-#import <CocoaTouchHelpers/NSArray+Helpers.h>
-#import <CocoaTouchHelpers/NSMutableArray+Helpers.h>
-#import <CocoaTouchHelpers/NSMutableDictionary+Helpers.h>
+#import "NSArray+Helpers.h"
+#import "NSMutableArray+Helpers.h"
+#import "NSMutableDictionary+Helpers.h"
 
-#import <CocoaTouchHelpers/UIResponder+Helpers.h>
+#import "UIResponder+Helpers.h"
 
-#import <CocoaTouchHelpers/UIStoryboard+Helpers.h>
-#import <CocoaTouchHelpers/UIViewController+Helpers.h>
-#import <CocoaTouchHelpers/UIViewController+KeyboardHelpers.h>
-#import <CocoaTouchHelpers/UINavigationController+Helpers.h>
+#import "UIStoryboard+Helpers.h"
+#import "UIViewController+Helpers.h"
+#import "UIViewController+KeyboardHelpers.h"
+#import "UINavigationController+Helpers.h"
 
-#import <CocoaTouchHelpers/UIView+Helpers.h>
-#import <CocoaTouchHelpers/UITableView+Helpers.h>
-#import <CocoaTouchHelpers/UIScrollView+Helpers.h>
-#import <CocoaTouchHelpers/UIImageView+Helpers.h>
-#import <CocoaTouchHelpers/UIImage+Helpers.h>
+#import "UIView+Helpers.h"
+#import "UITableView+Helpers.h"
+#import "UIScrollView+Helpers.h"
+#import "UIImageView+Helpers.h"
+#import "UIImage+Helpers.h"
 
-#import <CocoaTouchHelpers/UIColor+Helpers.h>
+#import "UIColor+Helpers.h"
 
-#import <CocoaTouchHelpers/FlexiblePageControl.h>
+#import "FlexiblePageControl.h"

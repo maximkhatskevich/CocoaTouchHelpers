@@ -8,6 +8,8 @@
 
 #import "NSObject+Helpers.h"
 
+#import "MacrosBase.h"
+
 @implementation NSObject (Helpers)
 
 #pragma mark - Helpers

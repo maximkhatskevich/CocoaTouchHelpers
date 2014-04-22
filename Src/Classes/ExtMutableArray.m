@@ -8,6 +8,8 @@
 
 #import "ExtMutableArray.h"
 
+#import "NSArray+Helpers.h"
+
 @interface ExtMutableArray ()
 
 // backing store

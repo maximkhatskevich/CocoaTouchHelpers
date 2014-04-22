@@ -8,6 +8,9 @@
 
 #import "UIView+FontHelpers.h"
 
+#import "MacrosBase.h"
+#import "NSObject+Helpers.h"
+
 //===
 
 NSString *defaultFontName = nil; // do not forget override value before use!

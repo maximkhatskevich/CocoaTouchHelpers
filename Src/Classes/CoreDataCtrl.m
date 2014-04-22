@@ -9,6 +9,8 @@
 
 #import "CoreDataCtrl.h"
 
+#import "UIResponder+Helpers.h"
+
 @interface CoreDataCtrl ()
 {
     NSManagedObjectModel *_model;

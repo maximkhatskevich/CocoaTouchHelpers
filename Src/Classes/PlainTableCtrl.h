@@ -9,6 +9,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import "AdvancedList.h"
+#import "GlobalBase.h"
+
 @interface PlainTableCtrl : NSObject
 <UITableViewDataSource, UITableViewDelegate>
 

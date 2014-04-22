@@ -8,6 +8,8 @@
 
 #import "BaseGenericCtrl.h"
 
+#import "UIViewController+Helpers.h"
+
 @interface BaseGenericCtrl ()
 
 @end

@@ -8,6 +8,7 @@
 
 #import "NSString+Helpers.h"
 
+#import "MacrosBase.h"
 #import <CommonCrypto/CommonDigest.h>
 
 NSString *retina4postfix = @"-568h";

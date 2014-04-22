@@ -8,6 +8,12 @@
 
 #import "UIViewController+Helpers.h"
 
+#import "UINavigationController+Helpers.h"
+#import "UIStoryboard+Helpers.h"
+#import "UIView+Helpers.h"
+#import "NSString+Helpers.h"
+#import "UIResponder+Helpers.h"
+
 @implementation UIViewController (Helpers)
 
 #pragma mark - Property accessors

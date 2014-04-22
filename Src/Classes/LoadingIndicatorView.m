@@ -8,6 +8,9 @@
 
 #import "LoadingIndicatorView.h"
 
+#import "MacrosBase.h"
+#import "UIView+Helpers.h"
+
 #define progressUpdateInterval 0.1f
 #define progressUpdateDelta 0.03f // 3%
 

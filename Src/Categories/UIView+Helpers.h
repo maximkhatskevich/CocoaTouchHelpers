@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "GlobalBase.h"
+
 typedef void (^AnimationCompletionBlock)(BOOL finished);
 
 @interface UIView (Helpers)

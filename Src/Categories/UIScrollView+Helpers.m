@@ -8,6 +8,10 @@
 
 #import "UIScrollView+Helpers.h"
 
+#import "UIResponder+Helpers.h"
+#import "UIViewController+KeyboardHelpers.h"
+#import "UIView+Helpers.h"
+
 @implementation UIScrollView (Helpers)
 
 - (NSUInteger)currentHorizontalPageNumber

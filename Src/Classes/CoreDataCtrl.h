@@ -8,6 +8,8 @@
 
 #import <CoreData/CoreData.h>
 
+#import "GlobalBase.h"
+
 //===
 
 /*!

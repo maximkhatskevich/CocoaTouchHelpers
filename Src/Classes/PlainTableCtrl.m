@@ -8,6 +8,11 @@
 
 #import "PlainTableCtrl.h"
 
+#import "MacrosBase.h"
+#import "NSObject+Helpers.h"
+#import "UITableView+Helpers.h"
+#import "NSArray+Helpers.h"
+
 #define currentCellIndexPath [NSIndexPath indexPathForRow:self.content.currentItemIndex inSection:0]
 
 @interface PlainTableCtrl ()

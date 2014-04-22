@@ -8,6 +8,8 @@
 
 #import "AdvancedList.h"
 
+#import "NSArray+Helpers.h"
+
 @interface AdvancedList ()
 
 @property (readonly, nonatomic) NSMutableArray *content;

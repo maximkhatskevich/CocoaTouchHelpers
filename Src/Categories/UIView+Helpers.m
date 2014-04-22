@@ -8,6 +8,8 @@
 
 #import "UIView+Helpers.h"
 
+#import "MacrosBase.h"
+
 static __weak UIView *sharedOverlay = nil;
 static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
 

@@ -8,6 +8,7 @@
 
 #import "UIResponder+Helpers.h"
 
+#import "UIStoryboard+Helpers.h"
 #import "mach/mach.h"
 
 static UIPopoverController *_currentPopover = nil;

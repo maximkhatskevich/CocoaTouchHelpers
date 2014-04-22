@@ -8,6 +8,9 @@
 
 #import "UIViewController+KeyboardHelpers.h"
 
+#import "MacrosBase.h"
+#import "UIScrollView+Helpers.h"
+
 static CGSize __keyboardSize;
 static float __keyboardAnimationDuration = 0.0;
 static KeyboardState __keyboardState = kUnknownKeyboardState;

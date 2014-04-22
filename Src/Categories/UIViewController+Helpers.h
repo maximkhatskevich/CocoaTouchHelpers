@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "GlobalBase.h"
+
 @interface UIViewController (Helpers)
 
 @property (readonly) BOOL isNavigationRootCtrl;

@@ -159,19 +159,14 @@
 
 - (NSHashTable *)selectionStorage
 {
-//    @synchronized(self)
-//    {
-        if (!_selectionStorage)
-        {
-            _selectionStorage =
-            [NSHashTable
-             hashTableWithOptions:NSPointerFunctionsWeakMemory];
-        }
-        
-        //===
-        
-        return _selectionStorage;
-//    }
+    if (!_selectionStorage)
+    {
+        _selectionStorage =
+        [NSHashTable
+         hashTableWithOptions:NSPointerFunctionsWeakMemory];
+    }
+    
+    return _selectionStorage;
 }
 
 #pragma mark - Add
@@ -182,22 +177,28 @@
     
     //===
     
-    if ([self indexOfObject:object] != NSNotFound)
+    if ([self containsObject:object])
     {
-        NSArray *previousSelection = self.selection;
-        
-        //===
-        
-        [[self selectionStorage] addObject:object];
         result = YES;
         
         //===
         
-        if ((self.selection.count != previousSelection.count))
+        if (self.onWillChangeSelection)
         {
+            result = self.onWillChangeSelection(self, object, kAddEMAChangeType);
+        }
+        
+        //===
+        
+        if (result)
+        {
+            [[self selectionStorage] addObject:object];
+            
+            //===
+            
             if (self.onDidChangeSelection)
             {
-                self.onDidChangeSelection(self, previousSelection);
+                self.onDidChangeSelection(self, object, kAddEMAChangeType);
             }
         }
     }
@@ -271,19 +272,24 @@
 
 - (void)removeObjectFromSelection:(id)object
 {
-    NSArray *previousSelection = self.selection;
+    BOOL canProceed = YES;
     
-    //===
-    
-    [[self selectionStorage] removeObject:object];
-    
-    //===
-    
-    if ((self.selection.count != previousSelection.count))
+    if (self.onWillChangeSelection)
     {
+        canProceed = self.onWillChangeSelection(self, object, kRemoveEMAChangeType);
+    }
+    
+    //===
+    
+    if (canProceed)
+    {
+        [[self selectionStorage] removeObject:object];
+        
+        //===
+        
         if (self.onDidChangeSelection)
         {
-            self.onDidChangeSelection(self, previousSelection);
+            self.onDidChangeSelection(self, object, kRemoveEMAChangeType);
         }
     }
 }
@@ -306,20 +312,11 @@
 
 - (void)resetSelection
 {
-    NSArray *previousSelection = self.selection;
+    NSArray *objectsToRemove = [[self selectionStorage] allObjects];
     
-    //===
-    
-    [[self selectionStorage] removeAllObjects];
-    
-    //===
-    
-    if ((self.selection.count != previousSelection.count))
+    for (id object in objectsToRemove)
     {
-        if (self.onDidChangeSelection)
-        {
-            self.onDidChangeSelection(self, previousSelection);
-        }
+        [self removeObjectFromSelection:object];
     }
 }
 

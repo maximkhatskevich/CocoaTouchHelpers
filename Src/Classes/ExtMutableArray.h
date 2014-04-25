@@ -10,7 +10,13 @@
 
 @class ExtMutableArray;
 
-typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, NSArray *previousSelection);
+typedef enum {
+    kAddEMAChangeType,
+    kRemoveEMAChangeType
+} EMAChangeType;
+
+typedef BOOL(^ExtArrayWillChangeSelection)(ExtMutableArray *array, id newObject, EMAChangeType changeType);
+typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, id newObject, EMAChangeType changeType);
 
 @interface ExtMutableArray : NSMutableArray
 
@@ -19,6 +25,7 @@ typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, NSArray *previ
 
 @property (readonly) BOOL selectionChanged;
 
+@property (nonatomic, copy) ExtArrayWillChangeSelection onWillChangeSelection;
 @property (nonatomic, copy) ExtArrayDidChangeSelection onDidChangeSelection;
 
 - (BOOL)setObjectSelected:(id)object;
@@ -35,6 +42,7 @@ typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, NSArray *previ
 
 - (void)resetSelection;
 
+- (void)setOnWillChangeSelection:(ExtArrayWillChangeSelection)onWillChangeSelection;
 - (void)setOnDidChangeSelection:(ExtArrayDidChangeSelection)onDidChangeSelection;
 
 @end

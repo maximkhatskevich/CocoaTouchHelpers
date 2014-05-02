@@ -15,11 +15,12 @@ ExtMutableArray class
 
 Public class interface is pretty much self-descriptive, but there are couple of important notes:
 
-- `selectedObjects` read-only property of `NSArray` class returns array of "selected" objects that are in the array at the moment;
-- use special methods to add/replace/remove objects to/at/from `selectedObjects`;
-- only an object from the array can be added to `selectedObjects`;
-- if you remove an object from `selectedObjects`, this object will NOT be removed from the array, you have to do it explicitly;
-- if you remove an object from the array, this object WILL be removed from `selectedObjects` automatically, you do not need to do it manually/explicilty.
+- `selection` read-only property of `NSArray` class returns array of "selected" objects that are in the array at the moment;
+- use special methods to add/replace/remove objects to/at/from `selection`;
+- only an object from the array can be added to `selection`;
+- if you remove an object from `selection`, this object will NOT be removed from the array, you have to do it explicitly;
+- if you remove an object from the array, this object WILL be removed from `selection` automatically, you do not need to do it manually/explicitly;
+- there is read-only property `selectedObject` of `id` type that returns first object from `selection` list, so it is the same as call `selection.firstObject`.
 
 
 > NOTE:

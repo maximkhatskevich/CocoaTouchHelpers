@@ -8,6 +8,8 @@
 
 #import "UITableView+Helpers.h"
 
+#import "MacrosBase.h"
+
 @implementation UITableView (Helpers)
 
 - (void)selectFirstRow
@@ -23,7 +25,7 @@
 
 - (void)registerNibWithName:(NSString *)nibName forCellReuseIdentifier:(NSString *)reuseIdentifier
 {
-    if (nibName.length)
+    if (isNonZeroString(nibName))
     {
         [self
          registerNib:[UINib nibWithNibName:nibName bundle:nil]

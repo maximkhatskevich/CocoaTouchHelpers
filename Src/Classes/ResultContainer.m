@@ -9,21 +9,15 @@
 #import "ResultContainer.h"
 
 @interface ResultContainer ()
+{
+    dispatch_semaphore_t _semaphore;
+}
 
 @property (strong, nonatomic) id content;
-
-@property BOOL isFilled;
 
 @end
 
 @implementation ResultContainer
-
-#pragma mark - Property accessors
-
-- (BOOL)shouldWait
-{
-    return !self.isFilled;
-}
 
 #pragma mark - Overrided methods
 
@@ -35,7 +29,7 @@
     
     if (self)
     {
-        _isFilled = NO;
+        [self reset];
     }
     
     //===
@@ -46,23 +40,20 @@
 - (void)configureWithObject:(id)object
 {
     self.content = object;
-    self.isFilled = YES;
+    dispatch_semaphore_signal(_semaphore);
 }
 
-#pragma mark - Generic
-
-- (void)wait
-{
-    while (self.shouldWait)
-    {
-        // NSLog(@"Waiting...");
-    }
-}
+#pragma mark - Custom
 
 - (void)reset
 {
-    self.isFilled = NO;
-    self.content = nil;
+    _content = nil;
+    _semaphore = dispatch_semaphore_create(0);
+}
+
+- (void)wait
+{
+    dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
 }
 
 @end

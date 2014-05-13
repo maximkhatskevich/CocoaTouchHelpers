@@ -14,10 +14,7 @@
 
 @property (readonly, nonatomic) id content;
 
-@property (readonly) BOOL isFilled;
-@property (readonly) BOOL shouldWait;
-
+- (void)reset;
 - (void)wait;
-- (void)reset; // for re-use
 
 @end

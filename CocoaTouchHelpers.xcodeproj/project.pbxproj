@@ -20,6 +20,7 @@
 		5096FE3818AE6DEC004CEE1A /* BaseGenericCtrl.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5096FE3518AE6D2B004CEE1A /* BaseGenericCtrl.h */; };
 		50A41DF31893627F00CAC050 /* ResultContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A41DF21893627F00CAC050 /* ResultContainer.m */; };
 		50A41DF4189362F900CAC050 /* ResultContainer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50A41DF11893627F00CAC050 /* ResultContainer.h */; };
+		50ADF2D4194BC257004F5985 /* ArrayItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 50ADF2D3194BC257004F5985 /* ArrayItemWrapper.m */; };
 		50C5C5A4185EC88400AABC2F /* LoadingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5A1185EC88400AABC2F /* LoadingIndicatorView.m */; };
 		50C5C5A5185EC88400AABC2F /* PassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C5C5A3185EC88400AABC2F /* PassthroughView.m */; };
 		50C5C5A7185EC8CA00AABC2F /* LoadingIndicatorView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 50C5C5A0185EC88400AABC2F /* LoadingIndicatorView.h */; };
@@ -150,6 +151,8 @@
 		5096FE3618AE6D2B004CEE1A /* BaseGenericCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseGenericCtrl.m; sourceTree = "<group>"; };
 		50A41DF11893627F00CAC050 /* ResultContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultContainer.h; sourceTree = "<group>"; };
 		50A41DF21893627F00CAC050 /* ResultContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultContainer.m; sourceTree = "<group>"; };
+		50ADF2D2194BC257004F5985 /* ArrayItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayItemWrapper.h; sourceTree = "<group>"; };
+		50ADF2D3194BC257004F5985 /* ArrayItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayItemWrapper.m; sourceTree = "<group>"; };
 		50C5C5A0185EC88400AABC2F /* LoadingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingIndicatorView.h; sourceTree = "<group>"; };
 		50C5C5A1185EC88400AABC2F /* LoadingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingIndicatorView.m; sourceTree = "<group>"; };
 		50C5C5A2185EC88400AABC2F /* PassthroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassthroughView.h; sourceTree = "<group>"; };
@@ -376,6 +379,8 @@
 				5096FE3618AE6D2B004CEE1A /* BaseGenericCtrl.m */,
 				50D7723E18E5C17A00B30DE6 /* ExtMutableArray.h */,
 				50D7723F18E5C17A00B30DE6 /* ExtMutableArray.m */,
+				50ADF2D2194BC257004F5985 /* ArrayItemWrapper.h */,
+				50ADF2D3194BC257004F5985 /* ArrayItemWrapper.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -477,6 +482,7 @@
 				50F12BA01827D7C5001C21DA /* NSArray+Helpers.m in Sources */,
 				501839E4182C3F9000F9594B /* UIView+FontHelpers.m in Sources */,
 				50F12BA51827D7C5001C21DA /* UIResponder+Helpers.m in Sources */,
+				50ADF2D4194BC257004F5985 /* ArrayItemWrapper.m in Sources */,
 				50F12B9D1827D7C5001C21DA /* NSObject+TwitterHelpers.m in Sources */,
 				50D7724018E5C17A00B30DE6 /* ExtMutableArray.m in Sources */,
 				5096FE3718AE6D2B004CEE1A /* BaseGenericCtrl.m in Sources */,

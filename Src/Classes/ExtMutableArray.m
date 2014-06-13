@@ -9,6 +9,7 @@
 #import "ExtMutableArray.h"
 
 #import "NSArray+Helpers.h"
+#import "ArrayItemWrapper.h"
 
 @interface ExtMutableArray ()
 
@@ -20,9 +21,6 @@
 @end
 
 @implementation ExtMutableArray
-{
-    NSHashTable *_selectionStorage;
-}
 
 #pragma mark - Property accessors
 
@@ -32,18 +30,11 @@
     
     //===
     
-    NSArray *selectionObjects =
-    [_selectionStorage allObjects];
-    
-    for (id selectedObject in selectionObjects)
+    for (ArrayItemWrapper *wrapper in _store)
     {
-        if ([self indexOfObject:selectedObject] == NSNotFound)
+        if (wrapper.selected)
         {
-            [_selectionStorage removeObject:selectedObject];
-        }
-        else
-        {
-            [result addObject:selectedObject];
+            [result addObject:wrapper.content];
         }
     }
     
@@ -69,10 +60,6 @@
     {
         _store = [NSMutableArray array];
         _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
-        
-        _selectionStorage =
-        [NSHashTable
-         hashTableWithOptions:NSPointerFunctionsWeakMemory];
     }
     
     //===
@@ -88,12 +75,8 @@
     
     if (self)
     {
-        _store = [NSMutableArray arrayWithCapacity:numItems];
+        _store = [NSMutableArray array];
         _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
-        
-        _selectionStorage =
-        [NSHashTable
-         hashTableWithOptions:NSPointerFunctionsWeakMemory];
     }
     
     //===
@@ -110,13 +93,8 @@
     
     if (self)
     {
-        _store = [NSMutableArray arrayWithObjects:objects
-                                            count:count];
+        _store = [NSMutableArray array];
         _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
-        
-        _selectionStorage =
-        [NSHashTable
-         hashTableWithOptions:NSPointerFunctionsWeakMemory];
     }
     
     //===
@@ -134,7 +112,7 @@
     
     dispatch_sync(_queue, ^{
         
-        result = self.store.count;
+        result = _store.count;
     });
     
     //===
@@ -150,10 +128,7 @@
     
     dispatch_sync(_queue, ^{
         
-        if ([self isValidIndex:index])
-        {
-            result = [self.store objectAtIndex:index];
-        }
+        result = ((ArrayItemWrapper *)_store[index]).content;
     });
     
     //===
@@ -167,7 +142,8 @@
 {
     dispatch_barrier_async(_queue, ^{
         
-        [self.store addObject:anObject];
+        [_store addObject:
+         [ArrayItemWrapper wrapperWithContent:anObject]];
     });
 }
 
@@ -175,7 +151,8 @@
 {
     dispatch_barrier_async(_queue, ^{
         
-        [self.store insertObject:anObject atIndex:index];
+        [_store insertObject:[ArrayItemWrapper wrapperWithContent:anObject]
+                     atIndex:index];
     });
 }
 
@@ -183,7 +160,7 @@
 {
     dispatch_barrier_async(_queue, ^{
         
-        [self.store removeLastObject];
+        [_store removeLastObject];
     });
 }
 
@@ -191,10 +168,9 @@
 {
     dispatch_barrier_async(_queue, ^{
         
-        if ([self isValidIndex:index])
+        if ([_store isValidIndex:index])
         {
-            [self removeObjectAtIndexFromSelection:index];
-            [self.store removeObjectAtIndex:index];
+            [_store removeObjectAtIndex:index];
         }
     });
 }
@@ -203,11 +179,10 @@
 {
     dispatch_barrier_async(_queue, ^{
         
-        if ([self isValidIndex:index])
+        if ([_store isValidIndex:index])
         {
-            [self removeObjectAtIndexFromSelection:index];
-            [self.store replaceObjectAtIndex:index
-                                  withObject:anObject];
+            [_store replaceObjectAtIndex:index
+                              withObject:[ArrayItemWrapper wrapperWithContent:anObject]];
         }
     });
 }
@@ -216,7 +191,22 @@
 
 - (void)addObjectToSelection:(id)object
 {
-    if ([self.store containsObject:object])
+    ArrayItemWrapper *targetWrapper = nil;
+    
+    //===
+    
+    for (ArrayItemWrapper *wrapper in _store)
+    {
+        if (wrapper.selected)
+        {
+            targetWrapper = wrapper;
+            break;
+        }
+    }
+    
+    //===
+    
+    if (targetWrapper)
     {
         BOOL canProceed = YES;
         
@@ -231,7 +221,7 @@
         
         if (canProceed)
         {
-            [_selectionStorage addObject:object];
+            targetWrapper.selected = YES;
             
             //===
             
@@ -294,24 +284,42 @@
 
 - (void)removeObjectFromSelection:(id)object
 {
-    BOOL canProceed = YES;
+    ArrayItemWrapper *targetWrapper = nil;
     
-    if (self.onWillChangeSelection)
+    //===
+    
+    for (ArrayItemWrapper *wrapper in _store)
     {
-        canProceed = self.onWillChangeSelection(self, object, kRemoveEMAChangeType);
+        if (wrapper.selected)
+        {
+            targetWrapper = wrapper;
+            break;
+        }
     }
     
     //===
     
-    if (canProceed)
+    if (targetWrapper)
     {
-        [_selectionStorage removeObject:object];
+        BOOL canProceed = YES;
+        
+        if (self.onWillChangeSelection)
+        {
+            canProceed = self.onWillChangeSelection(self, object, kRemoveEMAChangeType);
+        }
         
         //===
         
-        if (self.onDidChangeSelection)
+        if (canProceed)
         {
-            self.onDidChangeSelection(self, object, kRemoveEMAChangeType);
+            targetWrapper.selected = NO;
+            
+            //===
+            
+            if (self.onDidChangeSelection)
+            {
+                self.onDidChangeSelection(self, object, kRemoveEMAChangeType);
+            }
         }
     }
 }
@@ -334,11 +342,9 @@
 
 - (void)resetSelection
 {
-    NSArray *objectsToRemove = [_selectionStorage allObjects];
-    
-    for (id object in objectsToRemove)
+    for (ArrayItemWrapper *wrapper in _store)
     {
-        [self removeObjectFromSelection:object];
+        wrapper.selected = NO;
     }
 }
 

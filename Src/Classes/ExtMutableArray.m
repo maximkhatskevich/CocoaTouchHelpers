@@ -12,6 +12,8 @@
 
 @interface ExtMutableArray ()
 
+@property (readwrite, nonatomic) dispatch_queue_t queue;
+
 // backing store
 @property (readonly, nonatomic) NSMutableArray *store;
 
@@ -26,24 +28,29 @@
 
 - (NSArray *)selection
 {
-    NSMutableArray *result = [NSMutableArray array];
+    __block NSMutableArray *result = nil;
     
     //===
     
-    NSArray *selectionObjects =
-    [[self selectionStorage] allObjects];
-    
-    for (id selectedObject in selectionObjects)
-    {
-        if ([self indexOfObject:selectedObject] == NSNotFound)
+    dispatch_barrier_sync(_queue, ^{
+        
+        NSArray *selectionObjects =
+        [_selectionStorage allObjects];
+        
+        result = [NSMutableArray array];
+        
+        for (id selectedObject in selectionObjects)
         {
-            [[self selectionStorage] removeObject:selectedObject];
+            if ([self indexOfObject:selectedObject] == NSNotFound)
+            {
+                [_selectionStorage removeObject:selectedObject];
+            }
+            else
+            {
+                [result addObject:selectedObject];
+            }
         }
-        else
-        {
-            [result addObject:selectedObject];
-        }
-    }
+    });
     
     //===
     
@@ -66,6 +73,11 @@
     if (self)
     {
         _store = [NSMutableArray array];
+        _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
+        
+        _selectionStorage =
+        [NSHashTable
+         hashTableWithOptions:NSPointerFunctionsWeakMemory];
     }
     
     //===
@@ -82,6 +94,11 @@
     if (self)
     {
         _store = [NSMutableArray arrayWithCapacity:numItems];
+        _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
+        
+        _selectionStorage =
+        [NSHashTable
+         hashTableWithOptions:NSPointerFunctionsWeakMemory];
     }
     
     //===
@@ -100,6 +117,11 @@
     {
         _store = [NSMutableArray arrayWithObjects:objects
                                             count:count];
+        _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
+        
+        _selectionStorage =
+        [NSHashTable
+         hashTableWithOptions:NSPointerFunctionsWeakMemory];
     }
     
     //===
@@ -111,62 +133,88 @@
 
 - (NSUInteger)count
 {
-    return self.store.count;
+    __block NSUInteger result = 0;
+    
+    //===
+    
+    dispatch_sync(_queue, ^{
+        
+        result = self.store.count;
+    });
+    
+    //===
+    
+    return result;
 }
 
 - (id)objectAtIndex:(NSUInteger)index
 {
-    return [self.store objectAtIndex:index];
+    __block id result = nil;
+    
+    //===
+    
+    dispatch_sync(_queue, ^{
+        
+        if ([self isValidIndex:index])
+        {
+            result = [self.store objectAtIndex:index];
+        }
+    });
+    
+    //===
+    
+    return result;
 }
 
 #pragma mark - Overrided methods - NSMutableArray
 
 - (void)addObject:(id)anObject
 {
-    [self.store addObject:anObject];
+    dispatch_barrier_async(_queue, ^{
+        
+        [self.store addObject:anObject];
+    });
 }
 
 - (void)insertObject:(id)anObject atIndex:(NSUInteger)index
 {
-    [self.store insertObject:anObject atIndex:index];
+    dispatch_barrier_async(_queue, ^{
+        
+        [self.store insertObject:anObject atIndex:index];
+    });
 }
 
 - (void)removeLastObject
 {
-    [self.store removeLastObject];
+    dispatch_barrier_async(_queue, ^{
+        
+        [self.store removeLastObject];
+    });
 }
 
 - (void)removeObjectAtIndex:(NSUInteger)index
 {
-    if ([self isValidIndex:index])
-    {
-        [self removeObjectAtIndexFromSelection:index];
-        [self.store removeObjectAtIndex:index];
-    }
+    dispatch_barrier_async(_queue, ^{
+        
+        if ([self isValidIndex:index])
+        {
+            [self removeObjectAtIndexFromSelection:index];
+            [self.store removeObjectAtIndex:index];
+        }
+    });
 }
 
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
 {
-    if ([self isValidIndex:index])
-    {
-        [self removeObjectAtIndexFromSelection:index];
-        [self.store replaceObjectAtIndex:index
-                              withObject:anObject];
-    }
-}
-
-#pragma mark - Service
-
-- (NSHashTable *)selectionStorage
-{
-    if (!_selectionStorage)
-    {
-        _selectionStorage =
-        [NSHashTable
-         hashTableWithOptions:NSPointerFunctionsWeakMemory];
-    }
-    
-    return _selectionStorage;
+    dispatch_barrier_async(_queue, ^{
+        
+        if ([self isValidIndex:index])
+        {
+            [self removeObjectAtIndexFromSelection:index];
+            [self.store replaceObjectAtIndex:index
+                                  withObject:anObject];
+        }
+    });
 }
 
 #pragma mark - Add
@@ -192,7 +240,7 @@
         
         if (result)
         {
-            [[self selectionStorage] addObject:object];
+            [_selectionStorage addObject:object];
             
             //===
             
@@ -283,7 +331,7 @@
     
     if (canProceed)
     {
-        [[self selectionStorage] removeObject:object];
+        [_selectionStorage removeObject:object];
         
         //===
         
@@ -312,7 +360,7 @@
 
 - (void)resetSelection
 {
-    NSArray *objectsToRemove = [[self selectionStorage] allObjects];
+    NSArray *objectsToRemove = [_selectionStorage allObjects];
     
     for (id object in objectsToRemove)
     {

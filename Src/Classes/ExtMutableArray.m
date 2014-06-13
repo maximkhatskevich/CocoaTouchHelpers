@@ -223,7 +223,7 @@
 {
     dispatch_barrier_async(_queue, ^{
         
-        if ([self containsObject:object])
+        if ([self.store containsObject:object])
         {
             BOOL canProceed = YES;
             

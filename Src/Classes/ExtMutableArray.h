@@ -28,13 +28,13 @@ typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, id newObject, 
 @property (nonatomic, copy) ExtArrayWillChangeSelection onWillChangeSelection;
 @property (nonatomic, copy) ExtArrayDidChangeSelection onDidChangeSelection;
 
-- (BOOL)setObjectSelected:(id)object;
-- (BOOL)setObjectAtIndexSelected:(NSUInteger)index;
-- (BOOL)setObjectsSelected:(NSArray *)objectList;
+- (void)setObjectSelected:(id)object;
+- (void)setObjectAtIndexSelected:(NSUInteger)index;
+- (void)setObjectsSelected:(NSArray *)objectList;
 
-- (BOOL)addObjectToSelection:(id)object;
-- (BOOL)addObjectAtIndexToSelection:(NSUInteger)index;
-- (BOOL)addObjectsToSelection:(NSArray *)objectList;
+- (void)addObjectToSelection:(id)object;
+- (void)addObjectAtIndexToSelection:(NSUInteger)index;
+- (void)addObjectsToSelection:(NSArray *)objectList;
 
 - (void)removeObjectFromSelection:(id)object;
 - (void)removeObjectAtIndexFromSelection:(NSUInteger)index;

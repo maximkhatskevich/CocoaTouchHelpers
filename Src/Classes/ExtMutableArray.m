@@ -32,7 +32,7 @@
     
     //===
     
-    dispatch_barrier_sync(_queue, ^{
+    dispatch_sync(_queue, ^{
         
         NSArray *selectionObjects =
         [_selectionStorage allObjects];
@@ -219,127 +219,112 @@
 
 #pragma mark - Add
 
-- (BOOL)addObjectToSelection:(id)object
+- (void)addObjectToSelection:(id)object
 {
-    BOOL result = NO;
-    
-    //===
-    
-    if ([self containsObject:object])
-    {
-        result = YES;
+    dispatch_barrier_async(_queue, ^{
         
-        //===
-        
-        if (self.onWillChangeSelection)
+        if ([self containsObject:object])
         {
-            result = self.onWillChangeSelection(self, object, kAddEMAChangeType);
-        }
-        
-        //===
-        
-        if (result)
-        {
-            [_selectionStorage addObject:object];
+            BOOL canProceed = YES;
             
             //===
             
-            if (self.onDidChangeSelection)
+            if (self.onWillChangeSelection)
             {
-                self.onDidChangeSelection(self, object, kAddEMAChangeType);
+                canProceed = self.onWillChangeSelection(self, object, kAddEMAChangeType);
+            }
+            
+            //===
+            
+            if (canProceed)
+            {
+                [_selectionStorage addObject:object];
+                
+                //===
+                
+                if (self.onDidChangeSelection)
+                {
+                    self.onDidChangeSelection(self, object, kAddEMAChangeType);
+                }
             }
         }
-    }
-    
-    //===
-    
-    return result;
+    });
 }
 
-- (BOOL)addObjectAtIndexToSelection:(NSUInteger)index
+- (void)addObjectAtIndexToSelection:(NSUInteger)index
 {
-    return [self addObjectToSelection:
-            [self safeObjectAtIndex:index]];
+    [self addObjectToSelection:
+     [self safeObjectAtIndex:index]];
 }
 
-- (BOOL)addObjectsToSelection:(NSArray *)objectList
+- (void)addObjectsToSelection:(NSArray *)objectList
 {
-    BOOL result = NO;
-    
-    //===
-    
     if (objectList.count)
     {
-        result = YES;
-        
         for (id object in objectList)
         {
-            if (![self addObjectToSelection:object])
-            {
-                result = NO;
-            }
+            [self addObjectToSelection:object];
         }
     }
     else
     {
         NSLog(@"Nothing to add to selection list.");
     }
-    
-    //===
-    
-    return result;
 }
 
 #pragma mark - Set
 
-- (BOOL)setObjectSelected:(id)object
+- (void)setObjectSelected:(id)object
 {
     [self resetSelection];
     
     //===
     
-    return [self addObjectToSelection:object];
+    [self addObjectToSelection:object];
 }
 
-- (BOOL)setObjectAtIndexSelected:(NSUInteger)index
+- (void)setObjectAtIndexSelected:(NSUInteger)index
 {
-    return [self setObjectSelected:
-            [self safeObjectAtIndex:index]];
+    [self setObjectSelected:
+     [self safeObjectAtIndex:index]];
 }
 
-- (BOOL)setObjectsSelected:(NSArray *)objectList
+- (void)setObjectsSelected:(NSArray *)objectList
 {
     [self resetSelection];
     
     //===
     
-    return [self addObjectsToSelection:objectList];
+    [self addObjectsToSelection:objectList];
 }
 
 #pragma mark - Remove
 
 - (void)removeObjectFromSelection:(id)object
 {
-    BOOL canProceed = YES;
-    
-    if (self.onWillChangeSelection)
-    {
-        canProceed = self.onWillChangeSelection(self, object, kRemoveEMAChangeType);
-    }
-    
-    //===
-    
-    if (canProceed)
-    {
-        [_selectionStorage removeObject:object];
+    dispatch_barrier_async(_queue, ^{
+        
+        BOOL canProceed = YES;
+        
+        if (self.onWillChangeSelection)
+        {
+            canProceed = self.onWillChangeSelection(self, object, kRemoveEMAChangeType);
+        }
         
         //===
         
-        if (self.onDidChangeSelection)
+        if (canProceed)
         {
-            self.onDidChangeSelection(self, object, kRemoveEMAChangeType);
+            [_selectionStorage removeObject:object];
+            
+            //===
+            
+            if (self.onDidChangeSelection)
+            {
+                self.onDidChangeSelection(self, object, kRemoveEMAChangeType);
+            }
         }
-    }
+    });
 }
 
 - (void)removeObjectAtIndexFromSelection:(NSUInteger)index

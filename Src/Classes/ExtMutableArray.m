@@ -197,7 +197,7 @@
     
     for (ArrayItemWrapper *wrapper in _store)
     {
-        if (wrapper.selected)
+        if ([wrapper.content isEqual:object])
         {
             targetWrapper = wrapper;
             break;
@@ -290,7 +290,7 @@
     
     for (ArrayItemWrapper *wrapper in _store)
     {
-        if (wrapper.selected)
+        if ([wrapper.content isEqual:object])
         {
             targetWrapper = wrapper;
             break;

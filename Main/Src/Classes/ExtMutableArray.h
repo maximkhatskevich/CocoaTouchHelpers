@@ -18,14 +18,14 @@ typedef enum {
 typedef BOOL(^ExtArrayWillChangeSelection)(ExtMutableArray *array, id targetObject, EMAChangeType changeType);
 typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, id targetObject, EMAChangeType changeType);
 
+typedef void(^ExtArrayNotificationBlock)(ExtMutableArray *array);
+
 //===
 
 @interface ExtMutableArray : NSMutableArray
 
 @property (readonly, nonatomic) NSArray *selection;
 @property (readonly, nonatomic) id selectedObject;
-
-@property BOOL selectionChanged;
 
 @property (nonatomic, copy) ExtArrayWillChangeSelection onWillChangeSelection;
 @property (nonatomic, copy) ExtArrayDidChangeSelection onDidChangeSelection;
@@ -46,5 +46,11 @@ typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, id targetObjec
 
 - (void)setOnWillChangeSelection:(ExtArrayWillChangeSelection)onWillChangeSelection;
 - (void)setOnDidChangeSelection:(ExtArrayDidChangeSelection)onDidChangeSelection;
+
+- (void)subscribe:(id)object forContentUpdates:(ExtArrayNotificationBlock)notificationBlock;
+- (void)unsubscribeFromContentUpdates:(id)object;
+
+- (void)subscribe:(id)object forSelectionUpdates:(ExtArrayNotificationBlock)notificationBlock;
+- (void)unsubscribeFromSelectionUpdates:(id)object;
 
 @end

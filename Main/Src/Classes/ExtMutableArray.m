@@ -18,6 +18,9 @@
 // backing store
 @property (readonly, nonatomic) NSMutableArray *store;
 
+@property (strong, nonatomic) NSMapTable *contentNotifications;
+@property (strong, nonatomic) NSMapTable *selectionNotifications;
+
 @end
 
 @implementation ExtMutableArray
@@ -60,6 +63,12 @@
     {
         _store = [NSMutableArray array];
         _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
+        
+        _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+                                                      valueOptions:NSPointerFunctionsStrongMemory];
+        
+        _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+                                                        valueOptions:NSPointerFunctionsStrongMemory];
     }
     
     //===
@@ -77,6 +86,12 @@
     {
         _store = [NSMutableArray array];
         _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
+        
+        _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+                                                      valueOptions:NSPointerFunctionsStrongMemory];
+        
+        _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+                                                        valueOptions:NSPointerFunctionsStrongMemory];
     }
     
     //===
@@ -95,6 +110,12 @@
     {
         _store = [NSMutableArray array];
         _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
+        
+        _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+                                                      valueOptions:NSPointerFunctionsStrongMemory];
+        
+        _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+                                                        valueOptions:NSPointerFunctionsStrongMemory];
     }
     
     //===
@@ -211,14 +232,32 @@
     {
         self.onDidChangeSelection(self, targetObject, changeType);
     }
-    
-    //===
-    
-    // lets notify KVO observers about selection change
-    
-    _selectionChanged = NO;
-    self.selectionChanged = YES;
-    _selectionChanged = NO;
+}
+
+- (void)notifyAboutContentChange
+{
+    for (id key in [[self.contentNotifications keyEnumerator] allObjects])
+    {
+        ExtArrayNotificationBlock block = [self.contentNotifications objectForKey:key];
+        
+        if (block)
+        {
+            block(self);
+        }
+    }
+}
+
+- (void)notifyAboutSelectionChange
+{
+    for (id key in [[self.selectionNotifications keyEnumerator] allObjects])
+    {
+        ExtArrayNotificationBlock block = [self.selectionNotifications objectForKey:key];
+        
+        if (block)
+        {
+            block(self);
+        }
+    }
 }
 
 #pragma mark - Add to selection
@@ -366,6 +405,36 @@
     {
         wrapper.selected = NO;
     }
+}
+
+#pragma mark - Track selection
+
+- (void)subscribe:(id)object forContentUpdates:(ExtArrayNotificationBlock)notificationBlock
+{
+    if (object && notificationBlock)
+    {
+        [self.contentNotifications setObject:notificationBlock
+                                      forKey:object];
+    }
+}
+
+- (void)unsubscribeFromContentUpdates:(id)object
+{
+    [self.contentNotifications removeObjectForKey:object];
+}
+
+- (void)subscribe:(id)object forSelectionUpdates:(ExtArrayNotificationBlock)notificationBlock
+{
+    if (object && notificationBlock)
+    {
+        [self.selectionNotifications setObject:notificationBlock
+                                        forKey:object];
+    }
+}
+
+- (void)unsubscribeFromSelectionUpdates:(id)object
+{
+    [self.selectionNotifications removeObjectForKey:object];
 }
 
 @end

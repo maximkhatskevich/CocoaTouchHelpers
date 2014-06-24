@@ -15,8 +15,10 @@ typedef enum {
     kRemoveEMAChangeType
 } EMAChangeType;
 
-typedef BOOL(^ExtArrayWillChangeSelection)(ExtMutableArray *array, id newObject, EMAChangeType changeType);
-typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, id newObject, EMAChangeType changeType);
+typedef BOOL(^ExtArrayWillChangeSelection)(ExtMutableArray *array, id targetObject, EMAChangeType changeType);
+typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, id targetObject, EMAChangeType changeType);
+
+//===
 
 @interface ExtMutableArray : NSMutableArray
 

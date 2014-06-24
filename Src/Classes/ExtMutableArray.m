@@ -18,6 +18,8 @@
 // backing store
 @property (readonly, nonatomic) NSMutableArray *store;
 
+@property (readwrite) BOOL selectionChanged;
+
 @end
 
 @implementation ExtMutableArray
@@ -187,6 +189,40 @@
     });
 }
 
+#pragma mark - Service
+
+- (BOOL)willChangeSelectionWithObject:(id)targetObject changeType:(EMAChangeType)changeType
+{
+    BOOL result = YES;
+    
+    //===
+    
+    if (self.onWillChangeSelection)
+    {
+        result = self.onWillChangeSelection(self, targetObject, changeType);
+    }
+    
+    //===
+    
+    return result;
+}
+
+- (void)didChangeSelectionWithObject:(id)targetObject changeType:(EMAChangeType)changeType
+{
+    if (self.onDidChangeSelection)
+    {
+        self.onDidChangeSelection(self, targetObject, changeType);
+    }
+    
+    //===
+    
+    // lets notify KVO observers about selection change
+    
+    _selectionChanged = NO;
+    self.selectionChanged = YES;
+    _selectionChanged = NO;
+}
+
 #pragma mark - Add to selection
 
 - (void)addObjectToSelection:(id)object
@@ -208,14 +244,8 @@
     
     if (targetWrapper)
     {
-        BOOL canProceed = YES;
-        
-        //===
-        
-        if (self.onWillChangeSelection)
-        {
-            canProceed = self.onWillChangeSelection(self, object, kAddEMAChangeType);
-        }
+        BOOL canProceed = [self willChangeSelectionWithObject:object
+                                                   changeType:kAddEMAChangeType];
         
         //===
         
@@ -225,10 +255,8 @@
             
             //===
             
-            if (self.onDidChangeSelection)
-            {
-                self.onDidChangeSelection(self, object, kAddEMAChangeType);
-            }
+            [self didChangeSelectionWithObject:object
+                                    changeType:kAddEMAChangeType];
         }
     }
 }
@@ -301,12 +329,8 @@
     
     if (targetWrapper)
     {
-        BOOL canProceed = YES;
-        
-        if (self.onWillChangeSelection)
-        {
-            canProceed = self.onWillChangeSelection(self, object, kRemoveEMAChangeType);
-        }
+        BOOL canProceed = [self willChangeSelectionWithObject:object
+                                                   changeType:kRemoveEMAChangeType];
         
         //===
         
@@ -316,10 +340,8 @@
             
             //===
             
-            if (self.onDidChangeSelection)
-            {
-                self.onDidChangeSelection(self, object, kRemoveEMAChangeType);
-            }
+            [self didChangeSelectionWithObject:object
+                                    changeType:kRemoveEMAChangeType];
         }
     }
 }

@@ -185,7 +185,7 @@
         
         //===
         
-        [self notifyAboutContentChange];
+        [self notifyAboutContentChangeWithObject:anObject changeType:kAddEMAChangeType];
     }
 }
 
@@ -198,7 +198,7 @@
         
         //===
         
-        [self notifyAboutContentChange];
+        [self notifyAboutContentChangeWithObject:anObject changeType:kInsertEMAChangeType];
     }
 }
 
@@ -216,7 +216,7 @@
         
         if (targetObject)
         {
-            [self notifyAboutContentChange];
+            [self notifyAboutContentChangeWithObject:targetObject changeType:kRemoveEMAChangeType];
         }
     }
 }
@@ -237,7 +237,7 @@
             
             if (targetObject)
             {
-                [self notifyAboutContentChange];
+                [self notifyAboutContentChangeWithObject:targetObject changeType:kRemoveEMAChangeType];
             }
         }
     }
@@ -260,7 +260,7 @@
             
             if (targetObject)
             {
-                [self notifyAboutContentChange];
+                [self notifyAboutContentChangeWithObject:targetObject changeType:kReplaceEMAChangeType];
             }
         }
     }
@@ -293,31 +293,31 @@
     
     //===
     
-    [self notifyAboutSelectionChange];
+    [self notifyAboutSelectionChangeWithObject:targetObject changeType:changeType];
 }
 
-- (void)notifyAboutContentChange
+- (void)notifyAboutContentChangeWithObject:(id)targetObject changeType:(EMAChangeType)changeType
 {
     for (id key in [[self.contentNotifications keyEnumerator] allObjects])
     {
-        SimpleBlock block = [self.contentNotifications objectForKey:key];
+        ExtArrayNotificationBlock block = [self.contentNotifications objectForKey:key];
         
         if (block)
         {
-            block();
+            block(key, self, targetObject, changeType);
         }
     }
 }
 
-- (void)notifyAboutSelectionChange
+- (void)notifyAboutSelectionChangeWithObject:(id)targetObject changeType:(EMAChangeType)changeType
 {
     for (id key in [[self.selectionNotifications keyEnumerator] allObjects])
     {
-        SimpleBlock block = [self.selectionNotifications objectForKey:key];
+        ExtArrayNotificationBlock block = [self.selectionNotifications objectForKey:key];
         
         if (block)
         {
-            block();
+            block(key, self, targetObject, changeType);
         }
     }
 }
@@ -471,7 +471,7 @@
 
 #pragma mark - Track selection
 
-- (void)subscribe:(id)object forContentUpdates:(SimpleBlock)notificationBlock
+- (void)subscribe:(id)object forContentUpdates:(ExtArrayNotificationBlock)notificationBlock
 {
     if (object && notificationBlock)
     {
@@ -485,7 +485,7 @@
     [self.contentNotifications removeObjectForKey:object];
 }
 
-- (void)subscribe:(id)object forSelectionUpdates:(SimpleBlock)notificationBlock
+- (void)subscribe:(id)object forSelectionUpdates:(ExtArrayNotificationBlock)notificationBlock
 {
     if (object && notificationBlock)
     {

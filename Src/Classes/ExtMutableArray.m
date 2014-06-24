@@ -18,8 +18,6 @@
 // backing store
 @property (readonly, nonatomic) NSMutableArray *store;
 
-@property (readwrite) BOOL selectionChanged;
-
 @end
 
 @implementation ExtMutableArray

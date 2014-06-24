@@ -10,7 +10,6 @@
 
 #import "NSArray+Helpers.h"
 #import "ArrayItemWrapper.h"
-#import <Block-KVO/MTKObserving.h>
 
 @interface ExtMutableArray ()
 
@@ -70,25 +69,6 @@
         
         _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
                                                         valueOptions:NSPointerFunctionsStrongMemory];
-        
-        [self
-         observeRelationship:@"store"
-         changeBlock:^(__weak id self, id old, id new) {
-             
-             //
-         }
-         insertionBlock:^(__weak id self, id new, NSIndexSet *indexes) {
-             
-             [self notifyAboutContentChange];
-         }
-         removalBlock:^(__weak id self, id old, NSIndexSet *indexes) {
-             
-             [self notifyAboutContentChange];
-         }
-         replacementBlock:^(__weak id self, id old, id new, NSIndexSet *indexes) {
-             
-             [self notifyAboutContentChange];
-         }];
     }
     
     //===
@@ -112,25 +92,6 @@
         
         _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
                                                         valueOptions:NSPointerFunctionsStrongMemory];
-        
-        [self
-         observeRelationship:@"store"
-         changeBlock:^(__weak id self, id old, id new) {
-             
-             //
-         }
-         insertionBlock:^(__weak id self, id new, NSIndexSet *indexes) {
-             
-             [self notifyAboutContentChange];
-         }
-         removalBlock:^(__weak id self, id old, NSIndexSet *indexes) {
-             
-             [self notifyAboutContentChange];
-         }
-         replacementBlock:^(__weak id self, id old, id new, NSIndexSet *indexes) {
-             
-             [self notifyAboutContentChange];
-         }];
     }
     
     //===
@@ -155,25 +116,6 @@
         
         _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
                                                         valueOptions:NSPointerFunctionsStrongMemory];
-        
-        [self
-         observeRelationship:@"store"
-         changeBlock:^(__weak id self, id old, id new) {
-             
-             //
-         }
-         insertionBlock:^(__weak id self, id new, NSIndexSet *indexes) {
-             
-             [self notifyAboutContentChange];
-         }
-         removalBlock:^(__weak id self, id old, NSIndexSet *indexes) {
-             
-             [self notifyAboutContentChange];
-         }
-         replacementBlock:^(__weak id self, id old, id new, NSIndexSet *indexes) {
-             
-             [self notifyAboutContentChange];
-         }];
     }
     
     //===
@@ -248,7 +190,7 @@
         
         //===
         
-//        [self notifyAboutContentChange];
+        [self notifyAboutContentChange];
     });
 }
 
@@ -261,7 +203,7 @@
         
         //===
         
-//        [self notifyAboutContentChange];
+        [self notifyAboutContentChange];
     });
 }
 
@@ -269,7 +211,7 @@
 {
     dispatch_barrier_async(_queue, ^{
         
-//        id targetObject = ((ArrayItemWrapper *)_store.lastObject).content;
+        id targetObject = ((ArrayItemWrapper *)_store.lastObject).content;
         
         //===
         
@@ -277,10 +219,10 @@
         
         //===
         
-//        if (targetObject)
-//        {
-//            [self notifyAboutContentChange];
-//        }
+        if (targetObject)
+        {
+            [self notifyAboutContentChange];
+        }
     });
 }
 
@@ -290,7 +232,7 @@
         
         if ([_store isValidIndex:index])
         {
-//            id targetObject = ((ArrayItemWrapper *)_store[index]).content;
+            id targetObject = ((ArrayItemWrapper *)_store[index]).content;
             
             //===
             
@@ -298,10 +240,10 @@
             
             //===
             
-//            if (targetObject)
-//            {
-//                [self notifyAboutContentChange];
-//            }
+            if (targetObject)
+            {
+                [self notifyAboutContentChange];
+            }
         }
     });
 }
@@ -312,7 +254,7 @@
         
         if ([_store isValidIndex:index])
         {
-//            id targetObject = ((ArrayItemWrapper *)_store[index]).content;
+            id targetObject = ((ArrayItemWrapper *)_store[index]).content;
             
             //===
             
@@ -321,10 +263,10 @@
             
             //===
             
-//            if (targetObject)
-//            {
-//                [self notifyAboutContentChange];
-//            }
+            if (targetObject)
+            {
+                [self notifyAboutContentChange];
+            }
         }
     });
 }

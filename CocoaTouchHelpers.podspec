@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
   s.source_files  = "Main/Src/**/*.{h,m}"
   s.requires_arc = true
 
-  s.dependency 'Block-KVO'
+  #s.dependency 'Block-KVO'
 
 end

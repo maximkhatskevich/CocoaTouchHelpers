@@ -96,38 +96,90 @@
     return self;
 }
 
-//- (instancetype)initWithCapacity:(NSUInteger)numItems
-//{
-//    self = [super init];
-//    
-//    //===
-//    
-//    if (self)
-//    {
-//        
-//    }
-//    
-//    //===
-//    
-//    return self;
-//}
+- (instancetype)initWithCapacity:(NSUInteger)numItems
+{
+    self = [super init];
+    
+    //===
+    
+    if (self)
+    {
+        _store = [NSMutableArray arrayWithCapacity:numItems];
+        _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
+        
+        _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+                                                      valueOptions:NSPointerFunctionsStrongMemory];
+        
+        _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+                                                        valueOptions:NSPointerFunctionsStrongMemory];
+        
+        [self
+         observeRelationship:@"store"
+         changeBlock:^(__weak id self, id old, id new) {
+             
+             //
+         }
+         insertionBlock:^(__weak id self, id new, NSIndexSet *indexes) {
+             
+             [self notifyAboutContentChange];
+         }
+         removalBlock:^(__weak id self, id old, NSIndexSet *indexes) {
+             
+             [self notifyAboutContentChange];
+         }
+         replacementBlock:^(__weak id self, id old, id new, NSIndexSet *indexes) {
+             
+             [self notifyAboutContentChange];
+         }];
+    }
+    
+    //===
+    
+    return self;
+}
 
-//- (instancetype)initWithObjects:(const id [])objects
-//                          count:(NSUInteger)count
-//{
-//    self = [super init];
-//    
-//    //===
-//    
-//    if (self)
-//    {
-//        
-//    }
-//    
-//    //===
-//    
-//    return self;
-//}
+- (instancetype)initWithObjects:(const id [])objects
+                          count:(NSUInteger)count
+{
+    self = [super init];
+    
+    //===
+    
+    if (self)
+    {
+        _store = [NSMutableArray array];
+        _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
+        
+        _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+                                                      valueOptions:NSPointerFunctionsStrongMemory];
+        
+        _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+                                                        valueOptions:NSPointerFunctionsStrongMemory];
+        
+        [self
+         observeRelationship:@"store"
+         changeBlock:^(__weak id self, id old, id new) {
+             
+             //
+         }
+         insertionBlock:^(__weak id self, id new, NSIndexSet *indexes) {
+             
+             [self notifyAboutContentChange];
+         }
+         removalBlock:^(__weak id self, id old, NSIndexSet *indexes) {
+             
+             [self notifyAboutContentChange];
+         }
+         replacementBlock:^(__weak id self, id old, id new, NSIndexSet *indexes) {
+             
+             [self notifyAboutContentChange];
+         }];
+    }
+    
+    //===
+    
+    return self;
+}
 
 #pragma mark - Overrided methods - NSArray
 

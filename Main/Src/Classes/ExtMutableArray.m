@@ -159,6 +159,28 @@
 
 #pragma mark - Overrided methods - NSMutableArray
 
+- (NSString *)description
+{
+    NSString *result = @"";
+    
+    //===
+    
+    for (ArrayItemWrapper *item in self.store)
+    {
+        if (result.length != 0)
+        {
+            result = [result stringByAppendingFormat:@", "];
+        }
+        
+        result = [result stringByAppendingFormat:@"[%@]%@",
+                  (item.selected ? @"v" : @" "), item.content];
+    }
+    
+    //===
+    
+    return result;
+}
+
 - (void)addObject:(id)anObject
 {
     dispatch_barrier_async(_queue, ^{

@@ -13,8 +13,6 @@
 
 @interface ExtMutableArray ()
 
-@property (readwrite, nonatomic) dispatch_queue_t queue;
-
 // backing store
 @property (readonly, nonatomic) NSMutableArray *store;
 
@@ -62,7 +60,6 @@
     if (self)
     {
         _store = [NSMutableArray array];
-        _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
         
         _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
                                                       valueOptions:NSPointerFunctionsStrongMemory];
@@ -85,7 +82,6 @@
     if (self)
     {
         _store = [NSMutableArray arrayWithCapacity:numItems];
-        _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
         
         _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
                                                       valueOptions:NSPointerFunctionsStrongMemory];
@@ -109,7 +105,6 @@
     if (self)
     {
         _store = [NSMutableArray array];
-        _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
         
         _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
                                                       valueOptions:NSPointerFunctionsStrongMemory];
@@ -131,10 +126,10 @@
     
     //===
     
-    dispatch_sync(_queue, ^{
-        
+    @synchronized(self)
+    {
         result = _store.count;
-    });
+    }
     
     //===
     
@@ -147,10 +142,10 @@
     
     //===
     
-    dispatch_sync(_queue, ^{
-        
+    @synchronized(self)
+    {
         result = ((ArrayItemWrapper *)_store[index]).content;
-    });
+    }
     
     //===
     
@@ -183,34 +178,34 @@
 
 - (void)addObject:(id)anObject
 {
-    dispatch_barrier_async(_queue, ^{
-        
+    @synchronized(self)
+    {
         [_store addObject:
          [ArrayItemWrapper wrapperWithContent:anObject]];
         
         //===
         
         [self notifyAboutContentChange];
-    });
+    }
 }
 
 - (void)insertObject:(id)anObject atIndex:(NSUInteger)index
 {
-    dispatch_barrier_async(_queue, ^{
-        
+    @synchronized(self)
+    {
         [_store insertObject:[ArrayItemWrapper wrapperWithContent:anObject]
                      atIndex:index];
         
         //===
         
         [self notifyAboutContentChange];
-    });
+    }
 }
 
 - (void)removeLastObject
 {
-    dispatch_barrier_async(_queue, ^{
-        
+    @synchronized(self)
+    {
         id targetObject = ((ArrayItemWrapper *)_store.lastObject).content;
         
         //===
@@ -223,13 +218,13 @@
         {
             [self notifyAboutContentChange];
         }
-    });
+    }
 }
 
 - (void)removeObjectAtIndex:(NSUInteger)index
 {
-    dispatch_barrier_async(_queue, ^{
-        
+    @synchronized(self)
+    {
         if ([_store isValidIndex:index])
         {
             id targetObject = ((ArrayItemWrapper *)_store[index]).content;
@@ -245,13 +240,13 @@
                 [self notifyAboutContentChange];
             }
         }
-    });
+    }
 }
 
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
 {
-    dispatch_barrier_async(_queue, ^{
-        
+    @synchronized(self)
+    {
         if ([_store isValidIndex:index])
         {
             id targetObject = ((ArrayItemWrapper *)_store[index]).content;
@@ -268,7 +263,7 @@
                 [self notifyAboutContentChange];
             }
         }
-    });
+    }
 }
 
 #pragma mark - Service

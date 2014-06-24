@@ -165,6 +165,10 @@
         
         [_store addObject:
          [ArrayItemWrapper wrapperWithContent:anObject]];
+        
+        //===
+        
+        [self notifyAboutContentChangeWithObject:anObject changeType:kAddEMAChangeType];
     });
 }
 
@@ -174,6 +178,10 @@
         
         [_store insertObject:[ArrayItemWrapper wrapperWithContent:anObject]
                      atIndex:index];
+        
+        //===
+        
+        [self notifyAboutContentChangeWithObject:anObject changeType:kInsertEMAChangeType];
     });
 }
 
@@ -181,7 +189,18 @@
 {
     dispatch_barrier_async(_queue, ^{
         
+        id targetObject = ((ArrayItemWrapper *)_store.lastObject).content;
+        
+        //===
+        
         [_store removeLastObject];
+        
+        //===
+        
+        if (targetObject)
+        {
+            [self notifyAboutContentChangeWithObject:targetObject changeType:kRemoveEMAChangeType];
+        }
     });
 }
 
@@ -191,7 +210,18 @@
         
         if ([_store isValidIndex:index])
         {
+            id targetObject = ((ArrayItemWrapper *)_store[index]).content;
+            
+            //===
+            
             [_store removeObjectAtIndex:index];
+            
+            //===
+            
+            if (targetObject)
+            {
+                [self notifyAboutContentChangeWithObject:targetObject changeType:kRemoveEMAChangeType];
+            }
         }
     });
 }
@@ -202,8 +232,19 @@
         
         if ([_store isValidIndex:index])
         {
+            id targetObject = ((ArrayItemWrapper *)_store[index]).content;
+            
+            //===
+            
             [_store replaceObjectAtIndex:index
                               withObject:[ArrayItemWrapper wrapperWithContent:anObject]];
+            
+            //===
+            
+            if (targetObject)
+            {
+                [self notifyAboutContentChangeWithObject:targetObject changeType:kReplaceEMAChangeType];
+            }
         }
     });
 }
@@ -232,9 +273,13 @@
     {
         self.onDidChangeSelection(self, targetObject, changeType);
     }
+    
+    //===
+    
+    [self notifyAboutSelectionChangeWithObject:targetObject changeType:changeType];
 }
 
-- (void)notifyAboutContentChange
+- (void)notifyAboutContentChangeWithObject:(id)targetObject changeType:(EMAChangeType)changeType
 {
     for (id key in [[self.contentNotifications keyEnumerator] allObjects])
     {
@@ -242,12 +287,12 @@
         
         if (block)
         {
-            block(self);
+            block(key, self, targetObject, changeType);
         }
     }
 }
 
-- (void)notifyAboutSelectionChange
+- (void)notifyAboutSelectionChangeWithObject:(id)targetObject changeType:(EMAChangeType)changeType
 {
     for (id key in [[self.selectionNotifications keyEnumerator] allObjects])
     {
@@ -255,7 +300,7 @@
         
         if (block)
         {
-            block(self);
+            block(key, self, targetObject, changeType);
         }
     }
 }

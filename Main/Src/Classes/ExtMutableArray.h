@@ -12,13 +12,15 @@
 
 typedef enum {
     kAddEMAChangeType,
+    kInsertEMAChangeType,
+    kReplaceEMAChangeType,
     kRemoveEMAChangeType
 } EMAChangeType;
 
 typedef BOOL(^ExtArrayWillChangeSelection)(ExtMutableArray *array, id targetObject, EMAChangeType changeType);
 typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, id targetObject, EMAChangeType changeType);
 
-typedef void(^ExtArrayNotificationBlock)(ExtMutableArray *array);
+typedef void(^ExtArrayNotificationBlock)(id observer, ExtMutableArray *array, id targetObject, EMAChangeType changeType);
 
 //===
 

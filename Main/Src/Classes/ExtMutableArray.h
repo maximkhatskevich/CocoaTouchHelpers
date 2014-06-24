@@ -8,19 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+#import "GlobalBase.h"
+
 @class ExtMutableArray;
 
 typedef enum {
     kAddEMAChangeType,
-    kInsertEMAChangeType,
-    kReplaceEMAChangeType,
     kRemoveEMAChangeType
 } EMAChangeType;
 
 typedef BOOL(^ExtArrayWillChangeSelection)(ExtMutableArray *array, id targetObject, EMAChangeType changeType);
 typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, id targetObject, EMAChangeType changeType);
-
-typedef void(^ExtArrayNotificationBlock)(id observer, ExtMutableArray *array, id targetObject, EMAChangeType changeType);
 
 //===
 
@@ -49,10 +47,10 @@ typedef void(^ExtArrayNotificationBlock)(id observer, ExtMutableArray *array, id
 - (void)setOnWillChangeSelection:(ExtArrayWillChangeSelection)onWillChangeSelection;
 - (void)setOnDidChangeSelection:(ExtArrayDidChangeSelection)onDidChangeSelection;
 
-- (void)subscribe:(id)object forContentUpdates:(ExtArrayNotificationBlock)notificationBlock;
+- (void)subscribe:(id)object forContentUpdates:(SimpleBlock)notificationBlock;
 - (void)unsubscribeFromContentUpdates:(id)object;
 
-- (void)subscribe:(id)object forSelectionUpdates:(ExtArrayNotificationBlock)notificationBlock;
+- (void)subscribe:(id)object forSelectionUpdates:(SimpleBlock)notificationBlock;
 - (void)unsubscribeFromSelectionUpdates:(id)object;
 
 @end

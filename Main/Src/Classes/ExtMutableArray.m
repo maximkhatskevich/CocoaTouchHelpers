@@ -10,6 +10,7 @@
 
 #import "NSArray+Helpers.h"
 #import "ArrayItemWrapper.h"
+#import <Block-KVO/MTKObserving.h>
 
 @interface ExtMutableArray ()
 
@@ -69,6 +70,25 @@
         
         _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
                                                         valueOptions:NSPointerFunctionsStrongMemory];
+        
+        [self
+         observeRelationship:@"store"
+         changeBlock:^(__weak id self, id old, id new) {
+             
+             //
+         }
+         insertionBlock:^(__weak id self, id new, NSIndexSet *indexes) {
+             
+             [self notifyAboutContentChange];
+         }
+         removalBlock:^(__weak id self, id old, NSIndexSet *indexes) {
+             
+             [self notifyAboutContentChange];
+         }
+         replacementBlock:^(__weak id self, id old, id new, NSIndexSet *indexes) {
+             
+             [self notifyAboutContentChange];
+         }];
     }
     
     //===
@@ -76,52 +96,38 @@
     return self;
 }
 
-- (instancetype)initWithCapacity:(NSUInteger)numItems
-{
-    self = [super init];
-    
-    //===
-    
-    if (self)
-    {
-        _store = [NSMutableArray array];
-        _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
-        
-        _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
-                                                      valueOptions:NSPointerFunctionsStrongMemory];
-        
-        _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
-                                                        valueOptions:NSPointerFunctionsStrongMemory];
-    }
-    
-    //===
-    
-    return self;
-}
+//- (instancetype)initWithCapacity:(NSUInteger)numItems
+//{
+//    self = [super init];
+//    
+//    //===
+//    
+//    if (self)
+//    {
+//        
+//    }
+//    
+//    //===
+//    
+//    return self;
+//}
 
-- (instancetype)initWithObjects:(const id [])objects
-                          count:(NSUInteger)count
-{
-    self = [super init];
-    
-    //===
-    
-    if (self)
-    {
-        _store = [NSMutableArray array];
-        _queue = dispatch_queue_create("ExtMutableArrayQueue", DISPATCH_QUEUE_CONCURRENT);
-        
-        _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
-                                                      valueOptions:NSPointerFunctionsStrongMemory];
-        
-        _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
-                                                        valueOptions:NSPointerFunctionsStrongMemory];
-    }
-    
-    //===
-    
-    return self;
-}
+//- (instancetype)initWithObjects:(const id [])objects
+//                          count:(NSUInteger)count
+//{
+//    self = [super init];
+//    
+//    //===
+//    
+//    if (self)
+//    {
+//        
+//    }
+//    
+//    //===
+//    
+//    return self;
+//}
 
 #pragma mark - Overrided methods - NSArray
 
@@ -190,7 +196,7 @@
         
         //===
         
-        [self notifyAboutContentChangeWithObject:anObject changeType:kAddEMAChangeType];
+//        [self notifyAboutContentChange];
     });
 }
 
@@ -203,7 +209,7 @@
         
         //===
         
-        [self notifyAboutContentChangeWithObject:anObject changeType:kInsertEMAChangeType];
+//        [self notifyAboutContentChange];
     });
 }
 
@@ -211,7 +217,7 @@
 {
     dispatch_barrier_async(_queue, ^{
         
-        id targetObject = ((ArrayItemWrapper *)_store.lastObject).content;
+//        id targetObject = ((ArrayItemWrapper *)_store.lastObject).content;
         
         //===
         
@@ -219,10 +225,10 @@
         
         //===
         
-        if (targetObject)
-        {
-            [self notifyAboutContentChangeWithObject:targetObject changeType:kRemoveEMAChangeType];
-        }
+//        if (targetObject)
+//        {
+//            [self notifyAboutContentChange];
+//        }
     });
 }
 
@@ -232,7 +238,7 @@
         
         if ([_store isValidIndex:index])
         {
-            id targetObject = ((ArrayItemWrapper *)_store[index]).content;
+//            id targetObject = ((ArrayItemWrapper *)_store[index]).content;
             
             //===
             
@@ -240,10 +246,10 @@
             
             //===
             
-            if (targetObject)
-            {
-                [self notifyAboutContentChangeWithObject:targetObject changeType:kRemoveEMAChangeType];
-            }
+//            if (targetObject)
+//            {
+//                [self notifyAboutContentChange];
+//            }
         }
     });
 }
@@ -254,7 +260,7 @@
         
         if ([_store isValidIndex:index])
         {
-            id targetObject = ((ArrayItemWrapper *)_store[index]).content;
+//            id targetObject = ((ArrayItemWrapper *)_store[index]).content;
             
             //===
             
@@ -263,10 +269,10 @@
             
             //===
             
-            if (targetObject)
-            {
-                [self notifyAboutContentChangeWithObject:targetObject changeType:kReplaceEMAChangeType];
-            }
+//            if (targetObject)
+//            {
+//                [self notifyAboutContentChange];
+//            }
         }
     });
 }
@@ -298,31 +304,31 @@
     
     //===
     
-    [self notifyAboutSelectionChangeWithObject:targetObject changeType:changeType];
+    [self notifyAboutSelectionChange];
 }
 
-- (void)notifyAboutContentChangeWithObject:(id)targetObject changeType:(EMAChangeType)changeType
+- (void)notifyAboutContentChange
 {
     for (id key in [[self.contentNotifications keyEnumerator] allObjects])
     {
-        ExtArrayNotificationBlock block = [self.contentNotifications objectForKey:key];
+        SimpleBlock block = [self.contentNotifications objectForKey:key];
         
         if (block)
         {
-            block(key, self, targetObject, changeType);
+            block();
         }
     }
 }
 
-- (void)notifyAboutSelectionChangeWithObject:(id)targetObject changeType:(EMAChangeType)changeType
+- (void)notifyAboutSelectionChange
 {
     for (id key in [[self.selectionNotifications keyEnumerator] allObjects])
     {
-        ExtArrayNotificationBlock block = [self.selectionNotifications objectForKey:key];
+        SimpleBlock block = [self.selectionNotifications objectForKey:key];
         
         if (block)
         {
-            block(key, self, targetObject, changeType);
+            block();
         }
     }
 }
@@ -476,7 +482,7 @@
 
 #pragma mark - Track selection
 
-- (void)subscribe:(id)object forContentUpdates:(ExtArrayNotificationBlock)notificationBlock
+- (void)subscribe:(id)object forContentUpdates:(SimpleBlock)notificationBlock
 {
     if (object && notificationBlock)
     {
@@ -490,7 +496,7 @@
     [self.contentNotifications removeObjectForKey:object];
 }
 
-- (void)subscribe:(id)object forSelectionUpdates:(ExtArrayNotificationBlock)notificationBlock
+- (void)subscribe:(id)object forSelectionUpdates:(SimpleBlock)notificationBlock
 {
     if (object && notificationBlock)
     {

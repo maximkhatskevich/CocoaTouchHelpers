@@ -120,4 +120,8 @@ isIntValueInRangeBetweenMinAndMax(int value, int min, int max)
 
 //===
 
+#define mainInfoDict [NSBundle mainBundle].infoDictionary
+
+//===
+
 #endif

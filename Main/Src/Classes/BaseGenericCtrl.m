@@ -40,8 +40,8 @@
     
 	//===
     
-    [self prepareUI];
     [self applyCustomAppearance];
+    [self prepareUI];
 }
 
 #pragma mark - Generic

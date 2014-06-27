@@ -27,6 +27,7 @@ typedef void (^DictionaryResultBlock)(NSDictionary *result, NSError *error);
 
 // must be defined in the application
 extern NSTimeInterval defaultAnimationDuration;
+extern UIViewAnimationOptions defaultAnimationOptions;
 
 //===
 

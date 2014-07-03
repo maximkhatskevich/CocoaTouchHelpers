@@ -75,16 +75,17 @@
     
     //===
     
-    NSDateComponents *diffComps =
-    [[NSCalendar currentCalendar]
-     components:NSCalendarCalendarUnit
-     fromDate:[NSDate date]
-     toDate:self
-     options:0];
+    NSDate *currentDate = [NSDate date];
+    NSTimeInterval diff;
+    
+    diff = [self timeIntervalSinceDate:currentDate];
+    double secondsInAnHour = 3600;
+    
+    NSInteger daysBetweenDates = diff / (secondsInAnHour * 24);
     
     //===
     
-    switch (diffComps.day)
+    switch (daysBetweenDates)
     {
         case -1:
             result = @"Yesterday";

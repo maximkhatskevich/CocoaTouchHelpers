@@ -16,4 +16,7 @@
 // returns local current date/time for 'targetTimeZone', NOT in UTC:
 + (NSDate *)currentDateForTimeZone:(NSTimeZone *)targetTimeZone;
 
+- (NSString *)dayOfWeek;
+- (NSString *)relativeDayName;
+
 @end

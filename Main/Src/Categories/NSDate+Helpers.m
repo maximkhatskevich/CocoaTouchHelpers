@@ -59,4 +59,57 @@
     return result;
 }
 
+- (NSString *)dayOfWeek
+{
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"EEEE"];
+    
+    //===
+    
+    return [dateFormatter stringFromDate:self];
+}
+
+- (NSString *)relativeDayName
+{
+    NSString *result = nil;
+    
+    //===
+    
+    NSDateComponents *diffComps =
+    [[NSCalendar currentCalendar]
+     components:NSCalendarCalendarUnit
+     fromDate:[NSDate date]
+     toDate:self
+     options:0];
+    
+    //===
+    
+    switch (diffComps.day)
+    {
+        case -1:
+            result = @"Yesterday";
+            break;
+            
+        case 0:
+            result = @"Today";
+            break;
+            
+        case 1:
+            result = @"Tomorrow";
+            break;
+            
+        case 2:
+            result = @"Day after";
+            break;
+            
+        default:
+            break;
+    }
+    
+    //===
+    
+    return result;
+
+}
+
 @end

@@ -113,4 +113,18 @@
 
 }
 
+- (NSDateComponents *)defaultComponents
+{
+    NSCalendarUnit unitFlags = (NSCalendarUnitSecond |
+                                NSCalendarUnitMinute |
+                                NSCalendarUnitHour |
+                                NSCalendarUnitDay |
+                                NSCalendarUnitMonth |
+                                NSCalendarUnitYear);
+    
+    return
+    [[NSCalendar currentCalendar] components:unitFlags
+                                    fromDate:self];
+}
+
 @end

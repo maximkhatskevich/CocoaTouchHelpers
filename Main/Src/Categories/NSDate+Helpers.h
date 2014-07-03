@@ -19,4 +19,6 @@
 - (NSString *)dayOfWeek;
 - (NSString *)relativeDayName;
 
+- (NSDateComponents *)defaultComponents;
+
 @end

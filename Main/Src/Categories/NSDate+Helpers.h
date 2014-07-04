@@ -21,4 +21,6 @@
 
 - (NSDateComponents *)defaultComponents;
 
+- (NSString *)stringInUTCWithFormat:(NSString *)format;
+
 @end

@@ -127,4 +127,29 @@
                                     fromDate:self];
 }
 
+- (NSString *)stringInUTCWithFormat:(NSString *)format
+{
+    NSString *result = nil;
+    
+    //===
+    
+    static NSDateFormatter *dateFormatter = nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    });
+    
+    //===
+    
+    [dateFormatter setDateFormat:format];
+    result = [dateFormatter stringFromDate:self];
+
+    //===
+    
+    return result;
+}
+
 @end

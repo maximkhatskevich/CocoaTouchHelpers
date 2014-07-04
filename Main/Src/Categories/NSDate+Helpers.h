@@ -23,6 +23,6 @@
 
 - (NSString *)stringInUTCWithFormat:(NSString *)format;
 
-- (NSCalendarUnit)defaultCalendarUnits;
++ (NSCalendarUnit)defaultCalendarUnits;
 
 @end

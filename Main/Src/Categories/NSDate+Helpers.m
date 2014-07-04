@@ -152,7 +152,7 @@
     return result;
 }
 
-- (NSCalendarUnit)defaultCalendarUnits
++ (NSCalendarUnit)defaultCalendarUnits
 {
     return (NSCalendarUnitTimeZone |
             NSCalendarUnitYear |

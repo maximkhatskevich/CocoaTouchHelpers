@@ -152,4 +152,15 @@
     return result;
 }
 
+- (NSCalendarUnit)defaultCalendarUnits
+{
+    return (NSCalendarUnitTimeZone |
+            NSCalendarUnitYear |
+            NSCalendarUnitMonth |
+            NSCalendarUnitDay |
+            NSCalendarUnitHour |
+            NSCalendarUnitMinute |
+            NSCalendarUnitSecond);
+}
+
 @end

@@ -70,6 +70,11 @@ static KeyboardState __keyboardState = kUnknownKeyboardState;
     return nil;
 }
 
+- (BOOL)allowScrollViewBounce
+{
+    return NO;
+}
+
 #pragma mark - Helpers
 
 + (CGSize)keyboardSize
@@ -196,7 +201,7 @@ static KeyboardState __keyboardState = kUnknownKeyboardState;
          }
          completion:^(BOOL finished) {
              
-             scrollView.bounces = NO;
+             scrollView.bounces = self.allowScrollViewBounce;
          }];
     }
     

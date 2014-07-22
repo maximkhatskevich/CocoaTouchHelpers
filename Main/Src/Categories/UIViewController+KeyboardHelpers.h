@@ -35,6 +35,7 @@ KeyboardState;
 @property (readonly) float keyboardAnimationDuration;
 @property (readonly) KeyboardState keyboardState;
 @property (readonly, nonatomic) UIScrollView *keyboardScrollView;
+@property (readonly) BOOL allowScrollViewBounce;
 
 + (CGSize)keyboardSize;
 + (CGSize)realKeyboardSize;

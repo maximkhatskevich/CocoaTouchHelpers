@@ -97,6 +97,7 @@
 #define isNonZeroString(object) (isClassOfObject([NSString class], object) && isNonZeroLength(object))
 
 #define notNull(object) (object ? object : [NSNull null])
+#define notNullAlter(primaryValue, alterValue) (primaryValue ? primaryValue : alterValue)
 #define notNullIf(object, condition) (condition ? object : [NSNull null])
 
 //===

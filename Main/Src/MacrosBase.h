@@ -55,7 +55,7 @@
 
 #define isRetina ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0))
 
-#define screenSize [UIScreen mainScreen].bounds.size
+#define mainScreenSize [UIScreen mainScreen].bounds.size
 
 //===
 

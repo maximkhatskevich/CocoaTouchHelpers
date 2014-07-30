@@ -8,6 +8,8 @@
 
 #import "NSDate+Helpers.h"
 
+#import "MacrosBase.h"
+
 @implementation NSDate (Helpers)
 
 + (NSDate *)currentDateForTimeZone:(NSTimeZone *)targetTimeZone
@@ -161,6 +163,25 @@
             NSCalendarUnitHour |
             NSCalendarUnitMinute |
             NSCalendarUnitSecond);
+}
+
++ (NSDate *)dateFromString:(NSString *)dateStr withFormat:(NSString *)dateFormat
+{
+    NSDate *result = nil;
+    
+    //===
+    
+    if (isNonZeroString(dateStr) && isNonZeroString(dateFormat))
+    {
+        NSDateFormatter *formatter = [NSDateFormatter new];
+        formatter.dateFormat = dateFormat;
+        
+        result = [formatter dateFromString:dateStr];
+    }
+    
+    //===
+    
+    return result;
 }
 
 @end

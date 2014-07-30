@@ -25,4 +25,6 @@
 
 + (NSCalendarUnit)defaultCalendarUnits;
 
++ (NSDate *)dateFromString:(NSString *)dateStr withFormat:(NSString *)dateFormat;
+
 @end

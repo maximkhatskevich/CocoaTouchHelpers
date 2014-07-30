@@ -61,26 +61,28 @@
     return result;
 }
 
-- (NSString *)dayOfWeek
+- (NSString *)dayOfWeekWithTimeZone:(NSTimeZone *)targetTimeZone
 {
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     [dateFormatter setDateFormat:@"EEEE"];
+    
+    dateFormatter.timeZone =
+    (targetTimeZone ? targetTimeZone : [NSTimeZone timeZoneWithAbbreviation:@"UTC"]);
     
     //===
     
     return [dateFormatter stringFromDate:self];
 }
 
-- (NSString *)relativeDayName
+- (NSString *)relativeDayNameWithBaseDate:(NSDate *)baseDate
 {
     NSString *result = nil;
     
     //===
     
-    NSDate *currentDate = [NSDate date];
     NSTimeInterval diff;
     
-    diff = [self timeIntervalSinceDate:currentDate];
+    diff = [self timeIntervalSinceDate:baseDate];
     double secondsInAnHour = 3600;
     
     NSInteger daysBetweenDates = diff / (secondsInAnHour * 24);
@@ -129,20 +131,16 @@
                                     fromDate:self];
 }
 
-- (NSString *)stringInUTCWithFormat:(NSString *)format
+- (NSString *)stringWithFormat:(NSString *)format timeZone:(NSTimeZone *)targetTimeZone
 {
     NSString *result = nil;
     
     //===
     
-    static NSDateFormatter *dateFormatter = nil;
-    static dispatch_once_t onceToken;
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
     
-    dispatch_once(&onceToken, ^{
-        
-        dateFormatter = [NSDateFormatter new];
-        dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
-    });
+    dateFormatter.timeZone =
+    (targetTimeZone ? targetTimeZone : [NSTimeZone timeZoneWithAbbreviation:@"UTC"]);
     
     //===
     

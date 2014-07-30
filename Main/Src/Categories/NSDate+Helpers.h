@@ -11,17 +11,17 @@
 @interface NSDate (Helpers)
 
 // returns local date/time for 'sourceDateInUTC' and 'targetTimeZone', NOT in UTC:
-+ (NSDate *)dateForDate:(NSDate *)sourceDateInUTC andTimeZone:(NSTimeZone *)targetTimeZone;
+//+ (NSDate *)dateForDate:(NSDate *)sourceDateInUTC andTimeZone:(NSTimeZone *)targetTimeZone;
 
 // returns local current date/time for 'targetTimeZone', NOT in UTC:
-+ (NSDate *)currentDateForTimeZone:(NSTimeZone *)targetTimeZone;
+//+ (NSDate *)currentDateForTimeZone:(NSTimeZone *)targetTimeZone;
 
-- (NSString *)dayOfWeek;
-- (NSString *)relativeDayName;
+- (NSString *)dayOfWeekWithTimeZone:(NSTimeZone *)targetTimeZone;
+- (NSString *)relativeDayNameWithBaseDate:(NSDate *)baseDate;
 
 - (NSDateComponents *)defaultComponents;
 
-- (NSString *)stringInUTCWithFormat:(NSString *)format;
+- (NSString *)stringWithFormat:(NSString *)format timeZone:(NSTimeZone *)targetTimeZone;
 
 + (NSCalendarUnit)defaultCalendarUnits;
 

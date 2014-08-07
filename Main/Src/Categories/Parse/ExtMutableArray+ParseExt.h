@@ -10,6 +10,6 @@
 
 @interface ExtMutableArray (ParseExt)
 
-+ (instancetype)newWithParseSupport;
++ (instancetype)arrayWithParseSupport;
 
 @end

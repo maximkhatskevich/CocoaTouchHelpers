@@ -12,9 +12,9 @@
 
 @implementation ExtMutableArray (ParseExt)
 
-+ (instancetype)newWithParseSupport
++ (instancetype)arrayWithParseSupport
 {
-    ExtMutableArray *result = [[self class] new];
+    ExtMutableArray *result = [[self class] array];
     
     //===
     

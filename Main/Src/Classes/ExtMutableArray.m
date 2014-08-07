@@ -347,7 +347,7 @@
     
     for (ArrayItemWrapper *wrapper in _store)
     {
-        if ([wrapper.content isEqual:object])
+        if (_onEqualityCheck(wrapper.content, object))
         {
             targetWrapper = wrapper;
             break;
@@ -432,7 +432,7 @@
     
     for (ArrayItemWrapper *wrapper in _store)
     {
-        if ([wrapper.content isEqual:object])
+        if (_onEqualityCheck(wrapper.content, object))
         {
             targetWrapper = wrapper;
             break;

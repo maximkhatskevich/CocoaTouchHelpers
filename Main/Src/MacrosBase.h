@@ -98,7 +98,7 @@
 
 #define notNull(object) (object ? object : [NSNull null])
 #define notNullAlter(primaryValue, alterValue) (primaryValue ? primaryValue : alterValue)
-#define notNullIf(object, condition) (condition ? object : [NSNull null])
+#define notNullIf(object, condition) (condition && object ? object : [NSNull null])
 
 //===
 

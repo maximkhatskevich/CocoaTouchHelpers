@@ -246,6 +246,7 @@
             
             //===
             
+            [self removeObjectAtIndexFromSelection:index];
             [_store removeObjectAtIndex:index];
             
             //===
@@ -268,6 +269,7 @@
             
             //===
             
+            [self removeObjectAtIndexFromSelection:index];
             [_store replaceObjectAtIndex:index
                               withObject:[ArrayItemWrapper wrapperWithContent:anObject]];
             

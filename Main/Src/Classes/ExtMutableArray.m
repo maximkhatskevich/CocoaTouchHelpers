@@ -66,6 +66,11 @@
         
         _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
                                                         valueOptions:NSPointerFunctionsStrongMemory];
+        
+        _onEqualityCheck = ^(id firstObject, id secondObject) {
+            
+            return [firstObject isEqual:secondObject];
+        };
     }
     
     //===
@@ -88,6 +93,11 @@
         
         _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
                                                         valueOptions:NSPointerFunctionsStrongMemory];
+        
+        _onEqualityCheck = ^(id firstObject, id secondObject) {
+            
+            return [firstObject isEqual:secondObject];
+        };
     }
     
     //===
@@ -111,6 +121,11 @@
         
         _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
                                                         valueOptions:NSPointerFunctionsStrongMemory];
+        
+        _onEqualityCheck = ^(id firstObject, id secondObject) {
+            
+            return [firstObject isEqual:secondObject];
+        };
     }
     
     //===

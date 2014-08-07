@@ -1,0 +1,24 @@
+PODS:
+  - Bolts (1.1.1)
+  - Facebook-iOS-SDK (3.16.2):
+    - Bolts
+  - Parse-iOS-SDK (1.2.19):
+    - Facebook-iOS-SDK (~> 3.7)
+  - Parse-SDK-Helpers/Core (1.1.1):
+    - Parse-iOS-SDK (~> 1.2.19)
+    - Parse-OSX-SDK (~> 1.2.18)
+
+DEPENDENCIES:
+  - Parse-SDK-Helpers/Core (from `https://github.com/maximkhatskevich/ParseHelpers.git`)
+
+EXTERNAL SOURCES:
+  Parse-SDK-Helpers:
+    :git: https://github.com/maximkhatskevich/ParseHelpers.git
+
+SPEC CHECKSUMS:
+  Bolts: 0ca796081c3e7c139bd86d6903c27f1b83036a5d
+  Facebook-iOS-SDK: 34eef640c2cc4c8618ba0f574ad2b290e07f1b4e
+  Parse-iOS-SDK: 5e1f7e649a02f1cc19e73cc95bd43d7778848314
+  Parse-SDK-Helpers: c3873b970e0d955aecc89b27ed55230cb5750b86
+
+COCOAPODS: 0.33.1

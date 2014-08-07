@@ -12,9 +12,18 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/maximkhatskevich/CocoaTouchHelpers.git", :tag => "1.1.0" }
 
-  s.source_files  = "Main/Src/**/*.{h,m}"
   s.requires_arc = true
+  s.source_files  = "Main/Src/**/*.{h,m}"
 
-  #s.dependency 'Block-KVO'
+  s.default_subspec = 'Core'
+
+  s.subspec 'Core' do |cs|
+    cs.exclude_files = "Main/Src/Categories/Parse/*.{h,m}"
+  end
+
+  s.subspec 'ParseExt' do |ps|
+    ps.dependency 'Parse-SDK-Helpers/Core', :git => 'https://github.com/maximkhatskevich/ParseHelpers.git'
+    ps.source_files  = "Main/Src/Categories/Parse/*.{h,m}"
+  end
 
 end

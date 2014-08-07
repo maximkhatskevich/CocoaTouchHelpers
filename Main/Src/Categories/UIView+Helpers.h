@@ -74,6 +74,8 @@ typedef void (^AnimationCompletionBlock)(BOOL finished);
 
 - (void)appear;
 - (void)appearAnimated;
+- (void)appearAnimatedIfNeeded;
+- (void)appearAnimatedIfNeededWithCompletion:(void (^)(BOOL finished))completionBlock;
 - (void)appearAnimatedWithCompletion:(void (^)(BOOL finished))completionBlock;
 - (void)appearWithDuration:(NSTimeInterval)duration
                      delay:(NSTimeInterval)delay
@@ -83,6 +85,8 @@ typedef void (^AnimationCompletionBlock)(BOOL finished);
 
 - (void)disappear;
 - (void)disappearAnimated;
+- (void)disappearAnimatedIfNeeded;
+- (void)disappearAnimatedIfNeededWithCompletion:(void (^)(BOOL finished))completionBlock;
 - (void)disappearAnimatedWithCompletion:(void (^)(BOOL finished))completionBlock;
 - (void)disappearWithDuration:(NSTimeInterval)duration
                         delay:(NSTimeInterval)delay

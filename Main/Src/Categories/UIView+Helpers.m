@@ -559,6 +559,24 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
                   completion:nil];
 }
 
+- (void)appearAnimatedIfNeeded
+{
+    [self appearWithDuration:defaultAnimationDuration
+                       delay:0.0
+                     options:UIViewAnimationOptionCurveEaseInOut
+                    ifNeeded:YES
+                  completion:nil];
+}
+
+- (void)appearAnimatedIfNeededWithCompletion:(void (^)(BOOL finished))completionBlock
+{
+    [self appearWithDuration:defaultAnimationDuration
+                       delay:0.0
+                     options:UIViewAnimationOptionCurveEaseInOut
+                    ifNeeded:YES
+                  completion:completionBlock];
+}
+
 - (void)appearAnimatedWithCompletion:(void (^)(BOOL finished))completionBlock
 {
     [self appearWithDuration:defaultAnimationDuration
@@ -567,7 +585,6 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
                     ifNeeded:NO
                   completion:completionBlock];
 }
-
 - (void)appearWithDuration:(NSTimeInterval)duration
                      delay:(NSTimeInterval)delay
                    options:(UIViewAnimationOptions)options
@@ -627,6 +644,24 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
                         options:UIViewAnimationOptionCurveEaseInOut
                        ifNeeded:NO
                      completion:nil];
+}
+
+- (void)disappearAnimatedIfNeeded
+{
+    [self disappearWithDuration:defaultAnimationDuration
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                       ifNeeded:YES
+                     completion:nil];
+}
+
+- (void)disappearAnimatedIfNeededWithCompletion:(void (^)(BOOL finished))completionBlock
+{
+    [self disappearWithDuration:defaultAnimationDuration
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseInOut
+                       ifNeeded:YES
+                     completion:completionBlock];
 }
 
 - (void)disappearAnimatedWithCompletion:(void (^)(BOOL finished))completionBlock

@@ -13,6 +13,7 @@
 		5046534E1836639B002DB336 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5046534D1836639B002DB336 /* NSDate+Helpers.m */; };
 		5046534F183663C4002DB336 /* NSDate+Helpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5046534C1836639B002DB336 /* NSDate+Helpers.h */; };
 		504886FC189EC03D000F7043 /* FlexiblePageControl.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 505C5849189EB22D000CC821 /* FlexiblePageControl.h */; };
+		505758D81994012000FAB475 /* ExtMutableArray+ParseExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 505758D71994012000FAB475 /* ExtMutableArray+ParseExt.m */; };
 		505C584B189EB22D000CC821 /* FlexiblePageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 505C584A189EB22D000CC821 /* FlexiblePageControl.m */; };
 		5060F897185E302E004F490E /* NSObject+State.m in Sources */ = {isa = PBXBuildFile; fileRef = 5060F896185E302E004F490E /* NSObject+State.m */; };
 		5060F898185E3246004F490E /* NSObject+State.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5060F895185E302E004F490E /* NSObject+State.h */; };
@@ -81,6 +82,7 @@
 		50F12BE21827DF07001C21DA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12BE11827DF07001C21DA /* UIKit.framework */; };
 		50F12BE31827DF14001C21DA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F12BE11827DF07001C21DA /* UIKit.framework */; };
 		50F74BF319742155004C8F46 /* CTHListCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F74BF219742155004C8F46 /* CTHListCtrl.m */; };
+		6EA3D08BC4094116A4804DC2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C57554A1BFB641F2A0D1E5CB /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +146,8 @@
 		501839E3182C3F9000F9594B /* UIView+FontHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FontHelpers.m"; sourceTree = "<group>"; };
 		5046534C1836639B002DB336 /* NSDate+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helpers.h"; sourceTree = "<group>"; };
 		5046534D1836639B002DB336 /* NSDate+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helpers.m"; sourceTree = "<group>"; };
+		505758D61994012000FAB475 /* ExtMutableArray+ParseExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ExtMutableArray+ParseExt.h"; path = "Parse/ExtMutableArray+ParseExt.h"; sourceTree = "<group>"; };
+		505758D71994012000FAB475 /* ExtMutableArray+ParseExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ExtMutableArray+ParseExt.m"; path = "Parse/ExtMutableArray+ParseExt.m"; sourceTree = "<group>"; };
 		505C5849189EB22D000CC821 /* FlexiblePageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexiblePageControl.h; sourceTree = "<group>"; };
 		505C584A189EB22D000CC821 /* FlexiblePageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexiblePageControl.m; sourceTree = "<group>"; };
 		5060F895185E302E004F490E /* NSObject+State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+State.h"; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 		50F12BE11827DF07001C21DA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		50F74BF119742155004C8F46 /* CTHListCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHListCtrl.h; sourceTree = "<group>"; };
 		50F74BF219742155004C8F46 /* CTHListCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHListCtrl.m; sourceTree = "<group>"; };
+		7A06BF331A464A5EA083A5C6 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		C57554A1BFB641F2A0D1E5CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -227,6 +232,7 @@
 				501839E1182C3DC700F9594B /* CoreData.framework in Frameworks */,
 				50F12BE21827DF07001C21DA /* UIKit.framework in Frameworks */,
 				50F12B341827928C001C21DA /* Foundation.framework in Frameworks */,
+				6EA3D08BC4094116A4804DC2 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +250,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		505758D91994012500FAB475 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				505758D61994012000FAB475 /* ExtMutableArray+ParseExt.h */,
+				505758D71994012000FAB475 /* ExtMutableArray+ParseExt.m */,
+			);
+			name = Parse;
+			sourceTree = "<group>";
+		};
 		50F12B271827928C001C21DA = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +266,7 @@
 				50F12B321827928C001C21DA /* Frameworks */,
 				50F12B311827928C001C21DA /* Products */,
 				50F12B591827935E001C21DA /* Tests */,
+				7A06BF331A464A5EA083A5C6 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -357,6 +373,7 @@
 				50F12B991827D7C5001C21DA /* UIImage+Helpers.m */,
 				50F12B9A1827D7C5001C21DA /* UIColor+Helpers.h */,
 				50F12B9B1827D7C5001C21DA /* UIColor+Helpers.m */,
+				505758D91994012500FAB475 /* Parse */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -407,9 +424,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50F12B531827928C001C21DA /* Build configuration list for PBXNativeTarget "CocoaTouchHelpers" */;
 			buildPhases = (
+				904BC136765E4F409EE08E9F /* Check Pods Manifest.lock */,
 				50F12B2C1827928C001C21DA /* Sources */,
 				50F12B2D1827928C001C21DA /* Frameworks */,
 				50F12B2E1827928C001C21DA /* CopyFiles */,
+				9834FA89C5E745AA87369556 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -477,11 +496,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		904BC136765E4F409EE08E9F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9834FA89C5E745AA87369556 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		50F12B2C1827928C001C21DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				505758D81994012000FAB475 /* ExtMutableArray+ParseExt.m in Sources */,
 				50A41DF31893627F00CAC050 /* ResultContainer.m in Sources */,
 				5046534E1836639B002DB336 /* NSDate+Helpers.m in Sources */,
 				50F12B9C1827D7C5001C21DA /* NSObject+Helpers.m in Sources */,
@@ -617,6 +670,7 @@
 		};
 		50F12B541827928C001C21DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A06BF331A464A5EA083A5C6 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				DSTROOT = /tmp/CocoaTouchHelpers.dst;
@@ -636,7 +690,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/Third-party/**",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited -ObjC";
 				PRODUCT_NAME = CocoaTouchHelpers;
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -646,6 +700,7 @@
 		};
 		50F12B551827928C001C21DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A06BF331A464A5EA083A5C6 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				DSTROOT = /tmp/CocoaTouchHelpers.dst;
@@ -665,7 +720,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/Third-party/**",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited -ObjC";
 				PRODUCT_NAME = CocoaTouchHelpers;
 				PUBLIC_HEADERS_FOLDER_PATH = "include/$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

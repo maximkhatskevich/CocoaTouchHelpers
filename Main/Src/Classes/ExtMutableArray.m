@@ -31,7 +31,9 @@
     
     //===
     
-    for (ArrayItemWrapper *wrapper in _store)
+    NSArray *storeCopy = _store;
+    
+    for (ArrayItemWrapper *wrapper in storeCopy)
     {
         if (wrapper.selected)
         {
@@ -175,7 +177,9 @@
     
     //===
     
-    for (ArrayItemWrapper *item in self.store)
+    NSArray *storeCopy = _store;
+    
+    for (ArrayItemWrapper *item in storeCopy)
     {
         if (result.length != 0)
         {
@@ -230,9 +234,11 @@
 
 - (void)removeObjectAtIndex:(NSUInteger)index
 {
-    if ([_store isValidIndex:index])
+    NSArray *storeCopy = _store;
+    
+    if ([storeCopy isValidIndex:index])
     {
-        id targetObject = ((ArrayItemWrapper *)_store[index]).content;
+        id targetObject = ((ArrayItemWrapper *)storeCopy[index]).content;
         
         //===
         
@@ -250,9 +256,11 @@
 
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
 {
-    if ([_store isValidIndex:index])
+    NSArray *storeCopy = _store;
+    
+    if ([storeCopy isValidIndex:index])
     {
-        id targetObject = ((ArrayItemWrapper *)_store[index]).content;
+        id targetObject = ((ArrayItemWrapper *)storeCopy[index]).content;
         
         //===
         
@@ -301,9 +309,11 @@
 
 - (void)notifyAboutContentChangeWithObject:(id)targetObject changeType:(EMAChangeType)changeType
 {
-    for (id key in [[self.contentNotifications keyEnumerator] allObjects])
+    NSMapTable *notificationsCopy = self.contentNotifications;
+    
+    for (id key in [[notificationsCopy keyEnumerator] allObjects])
     {
-        ExtArrayNotificationBlock block = [self.contentNotifications objectForKey:key];
+        ExtArrayNotificationBlock block = [notificationsCopy objectForKey:key];
         
         if (block)
         {
@@ -317,9 +327,11 @@
 
 - (void)notifyAboutSelectionChangeWithObject:(id)targetObject changeType:(EMAChangeType)changeType
 {
-    for (id key in [[self.selectionNotifications keyEnumerator] allObjects])
+    NSMapTable *notificationsCopy = self.selectionNotifications;
+    
+    for (id key in [[notificationsCopy keyEnumerator] allObjects])
     {
-        ExtArrayNotificationBlock block = [self.selectionNotifications objectForKey:key];
+        ExtArrayNotificationBlock block = [notificationsCopy objectForKey:key];
         
         if (block)
         {
@@ -339,7 +351,9 @@
     
     //===
     
-    for (ArrayItemWrapper *wrapper in _store)
+    NSArray *storeCopy = _store;
+    
+    for (ArrayItemWrapper *wrapper in storeCopy)
     {
         if (_onEqualityCheck(wrapper.content, object))
         {
@@ -424,7 +438,9 @@
     
     //===
     
-    for (ArrayItemWrapper *wrapper in _store)
+    NSArray *storeCopy = _store;
+    
+    for (ArrayItemWrapper *wrapper in storeCopy)
     {
         if (_onEqualityCheck(wrapper.content, object))
         {
@@ -472,7 +488,9 @@
 
 - (void)resetSelection
 {
-    for (ArrayItemWrapper *wrapper in _store)
+    NSArray *storeCopy = _store;
+    
+    for (ArrayItemWrapper *wrapper in storeCopy)
     {
         wrapper.selected = NO;
     }

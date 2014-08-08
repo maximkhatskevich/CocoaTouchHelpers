@@ -71,6 +71,8 @@
             
             return [firstObject isEqual:secondObject];
         };
+        
+        _notificationQueue = [NSOperationQueue mainQueue];
     }
     
     //===
@@ -98,6 +100,8 @@
             
             return [firstObject isEqual:secondObject];
         };
+        
+        _notificationQueue = [NSOperationQueue mainQueue];
     }
     
     //===
@@ -126,6 +130,8 @@
             
             return [firstObject isEqual:secondObject];
         };
+        
+        _notificationQueue = [NSOperationQueue mainQueue];
     }
     
     //===
@@ -301,7 +307,10 @@
         
         if (block)
         {
-            block(key, self, targetObject, changeType);
+            [self.notificationQueue addOperationWithBlock:^{
+                
+                block(key, self, targetObject, changeType);
+            }];
         }
     }
 }
@@ -314,7 +323,10 @@
         
         if (block)
         {
-            block(key, self, targetObject, changeType);
+            [self.notificationQueue addOperationWithBlock:^{
+                
+                block(key, self, targetObject, changeType);
+            }];
         }
     }
 }

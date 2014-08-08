@@ -8,7 +8,7 @@
 
 #import "ExtMutableArray+ParseExt.h"
 
-#import "ParseHelpers.h"
+#import "NSObject+ParseHelpers.h"
 
 @implementation ExtMutableArray (ParseExt)
 

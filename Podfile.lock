@@ -4,12 +4,16 @@ PODS:
     - Bolts
   - Parse-iOS-SDK (1.2.19):
     - Facebook-iOS-SDK (~> 3.7)
+  - Parse-SDK-Helpers (1.1.1):
+    - Parse-iOS-SDK (~> 1.2.19)
+    - Parse-OSX-SDK (~> 1.2.18)
+    - Parse-SDK-Helpers/Core
   - Parse-SDK-Helpers/Core (1.1.1):
     - Parse-iOS-SDK (~> 1.2.19)
     - Parse-OSX-SDK (~> 1.2.18)
 
 DEPENDENCIES:
-  - Parse-SDK-Helpers/Core (from `https://github.com/maximkhatskevich/ParseHelpers.git`)
+  - Parse-SDK-Helpers (from `https://github.com/maximkhatskevich/ParseHelpers.git`)
 
 EXTERNAL SOURCES:
   Parse-SDK-Helpers:

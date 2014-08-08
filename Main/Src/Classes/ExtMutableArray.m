@@ -141,10 +141,7 @@
     
     //===
     
-    @synchronized(self)
-    {
-        result = _store.count;
-    }
+    result = _store.count;
     
     //===
     
@@ -157,10 +154,7 @@
     
     //===
     
-    @synchronized(self)
-    {
-        result = ((ArrayItemWrapper *)_store[index]).content;
-    }
+    result = ((ArrayItemWrapper *)_store[index]).content;
     
     //===
     
@@ -193,39 +187,51 @@
 
 - (void)addObject:(id)anObject
 {
-    @synchronized(self)
-    {
-        [_store addObject:
-         [ArrayItemWrapper wrapperWithContent:anObject]];
-        
-        //===
-        
-        [self notifyAboutContentChangeWithObject:anObject changeType:kAddEMAChangeType];
-    }
+    [_store addObject:
+     [ArrayItemWrapper wrapperWithContent:anObject]];
+    
+    //===
+    
+    [self notifyAboutContentChangeWithObject:anObject changeType:kAddEMAChangeType];
 }
 
 - (void)insertObject:(id)anObject atIndex:(NSUInteger)index
 {
-    @synchronized(self)
-    {
-        [_store insertObject:[ArrayItemWrapper wrapperWithContent:anObject]
-                     atIndex:index];
-        
-        //===
-        
-        [self notifyAboutContentChangeWithObject:anObject changeType:kInsertEMAChangeType];
-    }
+    [_store
+     insertObject:[ArrayItemWrapper wrapperWithContent:anObject]
+     atIndex:index];
+    
+    //===
+    
+    [self notifyAboutContentChangeWithObject:anObject changeType:kInsertEMAChangeType];
 }
 
 - (void)removeLastObject
 {
-    @synchronized(self)
+    id targetObject = ((ArrayItemWrapper *)_store.lastObject).content;
+    
+    //===
+    
+    [_store removeLastObject];
+    
+    //===
+    
+    if (targetObject)
     {
-        id targetObject = ((ArrayItemWrapper *)_store.lastObject).content;
+        [self notifyAboutContentChangeWithObject:targetObject changeType:kRemoveEMAChangeType];
+    }
+}
+
+- (void)removeObjectAtIndex:(NSUInteger)index
+{
+    if ([_store isValidIndex:index])
+    {
+        id targetObject = ((ArrayItemWrapper *)_store[index]).content;
         
         //===
         
-        [_store removeLastObject];
+        [self removeObjectAtIndexFromSelection:index];
+        [_store removeObjectAtIndex:index];
         
         //===
         
@@ -236,49 +242,23 @@
     }
 }
 
-- (void)removeObjectAtIndex:(NSUInteger)index
-{
-    @synchronized(self)
-    {
-        if ([_store isValidIndex:index])
-        {
-            id targetObject = ((ArrayItemWrapper *)_store[index]).content;
-            
-            //===
-            
-            [self removeObjectAtIndexFromSelection:index];
-            [_store removeObjectAtIndex:index];
-            
-            //===
-            
-            if (targetObject)
-            {
-                [self notifyAboutContentChangeWithObject:targetObject changeType:kRemoveEMAChangeType];
-            }
-        }
-    }
-}
-
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
 {
-    @synchronized(self)
+    if ([_store isValidIndex:index])
     {
-        if ([_store isValidIndex:index])
+        id targetObject = ((ArrayItemWrapper *)_store[index]).content;
+        
+        //===
+        
+        [self removeObjectAtIndexFromSelection:index];
+        [_store replaceObjectAtIndex:index
+                          withObject:[ArrayItemWrapper wrapperWithContent:anObject]];
+        
+        //===
+        
+        if (targetObject)
         {
-            id targetObject = ((ArrayItemWrapper *)_store[index]).content;
-            
-            //===
-            
-            [self removeObjectAtIndexFromSelection:index];
-            [_store replaceObjectAtIndex:index
-                              withObject:[ArrayItemWrapper wrapperWithContent:anObject]];
-            
-            //===
-            
-            if (targetObject)
-            {
-                [self notifyAboutContentChangeWithObject:targetObject changeType:kReplaceEMAChangeType];
-            }
+            [self notifyAboutContentChangeWithObject:targetObject changeType:kReplaceEMAChangeType];
         }
     }
 }

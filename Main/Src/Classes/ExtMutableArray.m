@@ -31,7 +31,7 @@
     
     //===
     
-    NSArray *storeCopy = _store;
+    NSArray *storeCopy = [NSArray arrayWithArray:_store];
     
     for (ArrayItemWrapper *wrapper in storeCopy)
     {
@@ -177,7 +177,7 @@
     
     //===
     
-    NSArray *storeCopy = _store;
+    NSArray *storeCopy = [NSArray arrayWithArray:_store];
     
     for (ArrayItemWrapper *item in storeCopy)
     {
@@ -234,7 +234,7 @@
 
 - (void)removeObjectAtIndex:(NSUInteger)index
 {
-    NSArray *storeCopy = _store;
+    NSArray *storeCopy = [NSArray arrayWithArray:_store];
     
     if ([storeCopy isValidIndex:index])
     {
@@ -256,7 +256,7 @@
 
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
 {
-    NSArray *storeCopy = _store;
+    NSArray *storeCopy = [NSArray arrayWithArray:_store];
     
     if ([storeCopy isValidIndex:index])
     {
@@ -309,11 +309,9 @@
 
 - (void)notifyAboutContentChangeWithObject:(id)targetObject changeType:(EMAChangeType)changeType
 {
-    NSMapTable *notificationsCopy = self.contentNotifications;
-    
-    for (id key in [[notificationsCopy keyEnumerator] allObjects])
+    for (id key in [[self.contentNotifications keyEnumerator] allObjects])
     {
-        ExtArrayNotificationBlock block = [notificationsCopy objectForKey:key];
+        ExtArrayNotificationBlock block = [self.contentNotifications objectForKey:key];
         
         if (block)
         {
@@ -327,11 +325,9 @@
 
 - (void)notifyAboutSelectionChangeWithObject:(id)targetObject changeType:(EMAChangeType)changeType
 {
-    NSMapTable *notificationsCopy = self.selectionNotifications;
-    
-    for (id key in [[notificationsCopy keyEnumerator] allObjects])
+    for (id key in [[self.selectionNotifications keyEnumerator] allObjects])
     {
-        ExtArrayNotificationBlock block = [notificationsCopy objectForKey:key];
+        ExtArrayNotificationBlock block = [self.selectionNotifications objectForKey:key];
         
         if (block)
         {
@@ -351,7 +347,7 @@
     
     //===
     
-    NSArray *storeCopy = _store;
+    NSArray *storeCopy = [NSArray arrayWithArray:_store];
     
     for (ArrayItemWrapper *wrapper in storeCopy)
     {
@@ -438,7 +434,7 @@
     
     //===
     
-    NSArray *storeCopy = _store;
+    NSArray *storeCopy = [NSArray arrayWithArray:_store];
     
     for (ArrayItemWrapper *wrapper in storeCopy)
     {
@@ -488,7 +484,7 @@
 
 - (void)resetSelection
 {
-    NSArray *storeCopy = _store;
+    NSArray *storeCopy = [NSArray arrayWithArray:_store];
     
     for (ArrayItemWrapper *wrapper in storeCopy)
     {

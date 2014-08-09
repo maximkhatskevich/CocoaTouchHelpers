@@ -33,13 +33,13 @@
 		509D7CFF19949E7600D9D168 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CD119949E7600D9D168 /* Base64.m */; };
 		509D7D0019949E7600D9D168 /* BaseGenericCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CD319949E7600D9D168 /* BaseGenericCtrl.m */; };
 		509D7D0119949E7600D9D168 /* CoreDataCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CD519949E7600D9D168 /* CoreDataCtrl.m */; };
-		509D7D0219949E7600D9D168 /* CTHListCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CD719949E7600D9D168 /* CTHListCtrl.m */; };
 		509D7D0319949E7600D9D168 /* ExtMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CD919949E7600D9D168 /* ExtMutableArray.m */; };
 		509D7D0419949E7600D9D168 /* FlexiblePageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CDB19949E7600D9D168 /* FlexiblePageControl.m */; };
 		509D7D0519949E7600D9D168 /* LoadingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CDD19949E7600D9D168 /* LoadingIndicatorView.m */; };
 		509D7D0619949E7600D9D168 /* PassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CDF19949E7600D9D168 /* PassthroughView.m */; };
 		509D7D0719949E7600D9D168 /* PlainTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CE119949E7600D9D168 /* PlainTableCtrl.m */; };
 		509D7D0819949E7600D9D168 /* ResultContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CE319949E7600D9D168 /* ResultContainer.m */; };
+		50F18E9219956AB700781A09 /* CTHListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F18E9119956AB700781A09 /* CTHListModel.m */; };
 		7166FCC2F0644F3489648D8B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DDD03A0F5704286BDC8410F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -112,8 +112,6 @@
 		509D7CD319949E7600D9D168 /* BaseGenericCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseGenericCtrl.m; sourceTree = "<group>"; };
 		509D7CD419949E7600D9D168 /* CoreDataCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataCtrl.h; sourceTree = "<group>"; };
 		509D7CD519949E7600D9D168 /* CoreDataCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCtrl.m; sourceTree = "<group>"; };
-		509D7CD619949E7600D9D168 /* CTHListCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHListCtrl.h; sourceTree = "<group>"; };
-		509D7CD719949E7600D9D168 /* CTHListCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHListCtrl.m; sourceTree = "<group>"; };
 		509D7CD819949E7600D9D168 /* ExtMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtMutableArray.h; sourceTree = "<group>"; };
 		509D7CD919949E7600D9D168 /* ExtMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtMutableArray.m; sourceTree = "<group>"; };
 		509D7CDA19949E7600D9D168 /* FlexiblePageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexiblePageControl.h; sourceTree = "<group>"; };
@@ -130,6 +128,8 @@
 		509D7CE519949E7600D9D168 /* CocoaTouchHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaTouchHelpers.h; sourceTree = "<group>"; };
 		509D7CE619949E7600D9D168 /* GlobalBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalBase.h; sourceTree = "<group>"; };
 		509D7CE719949E7600D9D168 /* MacrosBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacrosBase.h; sourceTree = "<group>"; };
+		50F18E9019956AB700781A09 /* CTHListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHListModel.h; sourceTree = "<group>"; };
+		50F18E9119956AB700781A09 /* CTHListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHListModel.m; sourceTree = "<group>"; };
 		8DDD03A0F5704286BDC8410F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B74E2A572AB64D68BCE1219F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -259,8 +259,6 @@
 				509D7CD319949E7600D9D168 /* BaseGenericCtrl.m */,
 				509D7CD419949E7600D9D168 /* CoreDataCtrl.h */,
 				509D7CD519949E7600D9D168 /* CoreDataCtrl.m */,
-				509D7CD619949E7600D9D168 /* CTHListCtrl.h */,
-				509D7CD719949E7600D9D168 /* CTHListCtrl.m */,
 				509D7CD819949E7600D9D168 /* ExtMutableArray.h */,
 				509D7CD919949E7600D9D168 /* ExtMutableArray.m */,
 				509D7CDA19949E7600D9D168 /* FlexiblePageControl.h */,
@@ -273,6 +271,8 @@
 				509D7CE119949E7600D9D168 /* PlainTableCtrl.m */,
 				509D7CE219949E7600D9D168 /* ResultContainer.h */,
 				509D7CE319949E7600D9D168 /* ResultContainer.m */,
+				50F18E9019956AB700781A09 /* CTHListModel.h */,
+				50F18E9119956AB700781A09 /* CTHListModel.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -313,6 +313,7 @@
 		509D7C6D19949E0500D9D168 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = CTH;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Maxim Khatskevich";
 			};
@@ -380,7 +381,6 @@
 				509D7D0119949E7600D9D168 /* CoreDataCtrl.m in Sources */,
 				509D7CF219949E7600D9D168 /* UIImage+Helpers.m in Sources */,
 				509D7CEC19949E7600D9D168 /* NSObject+Helpers.m in Sources */,
-				509D7D0219949E7600D9D168 /* CTHListCtrl.m in Sources */,
 				509D7CED19949E7600D9D168 /* NSObject+State.m in Sources */,
 				509D7CF719949E7600D9D168 /* UIStoryboard+Helpers.m in Sources */,
 				509D7CE919949E7600D9D168 /* NSDate+Helpers.m in Sources */,
@@ -395,6 +395,7 @@
 				509D7CF819949E7600D9D168 /* UITableView+Helpers.m in Sources */,
 				509D7D0519949E7600D9D168 /* LoadingIndicatorView.m in Sources */,
 				509D7CEF19949E7600D9D168 /* NSString+Helpers.m in Sources */,
+				50F18E9219956AB700781A09 /* CTHListModel.m in Sources */,
 				509D7CE819949E7600D9D168 /* NSArray+Helpers.m in Sources */,
 				509D7CFB19949E7600D9D168 /* UIViewController+Helpers.m in Sources */,
 				509D7D0419949E7600D9D168 /* FlexiblePageControl.m in Sources */,

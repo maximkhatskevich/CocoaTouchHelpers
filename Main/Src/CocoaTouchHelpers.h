@@ -26,6 +26,7 @@
 #import "BaseGenericCtrl.h"
 
 #import "ExtMutableArray.h"
+#import "CTHListModel.h"
 
 //=== categories
 

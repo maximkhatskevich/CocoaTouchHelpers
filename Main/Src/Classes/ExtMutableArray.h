@@ -37,6 +37,7 @@ typedef void(^ExtArrayNotificationBlock)(id observer, ExtMutableArray *array, id
 @property (nonatomic, copy) ExtArrayWillChangeSelection onWillChangeSelection;
 @property (nonatomic, copy) ExtArrayDidChangeSelection onDidChangeSelection;
 
+@property (strong, nonatomic) dispatch_queue_t operationQueue;
 @property (strong, nonatomic) NSOperationQueue *notificationQueue;
 
 - (void)addObjectToSelection:(id)object;

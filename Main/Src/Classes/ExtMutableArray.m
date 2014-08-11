@@ -11,6 +11,8 @@
 #import "NSArray+Helpers.h"
 #import "ArrayItemWrapper.h"
 
+//===
+
 @interface ExtMutableArray ()
 
 // backing store
@@ -27,19 +29,22 @@
 
 - (NSArray *)selection
 {
-    NSMutableArray *result = [NSMutableArray array];
+    __block NSMutableArray *result = [NSMutableArray array];
     
     //===
     
-    NSArray *storeCopy = [NSArray arrayWithArray:_store];
-    
-    for (ArrayItemWrapper *wrapper in storeCopy)
-    {
-        if (wrapper.selected)
+    dispatch_sync(_operationQueue, ^{
+        
+        NSArray *storeCopy = [NSArray arrayWithArray:_store];
+        
+        for (ArrayItemWrapper *wrapper in storeCopy)
         {
-            [result addObject:wrapper.content];
+            if (wrapper.selected)
+            {
+                [result addObject:wrapper.content];
+            }
         }
-    }
+    });
     
     //===
     
@@ -48,7 +53,18 @@
 
 - (id)selectedObject
 {
-    return self.selection.firstObject;
+    __block id result = nil;
+    
+    //===
+    
+    dispatch_sync(_operationQueue, ^{
+        
+        result = self.selection.firstObject;
+    });
+    
+    //===
+    
+    return result;
 }
 
 #pragma mark - Overrided methods
@@ -63,18 +79,7 @@
     {
         _store = [NSMutableArray array];
         
-        _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
-                                                      valueOptions:NSPointerFunctionsStrongMemory];
-        
-        _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
-                                                        valueOptions:NSPointerFunctionsStrongMemory];
-        
-        _onEqualityCheck = ^(id firstObject, id secondObject) {
-            
-            return [firstObject isEqual:secondObject];
-        };
-        
-        _notificationQueue = [NSOperationQueue mainQueue];
+        [self setup];
     }
     
     //===
@@ -92,18 +97,7 @@
     {
         _store = [NSMutableArray arrayWithCapacity:numItems];
         
-        _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
-                                                      valueOptions:NSPointerFunctionsStrongMemory];
-        
-        _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
-                                                        valueOptions:NSPointerFunctionsStrongMemory];
-        
-        _onEqualityCheck = ^(id firstObject, id secondObject) {
-            
-            return [firstObject isEqual:secondObject];
-        };
-        
-        _notificationQueue = [NSOperationQueue mainQueue];
+        [self setup];
     }
     
     //===
@@ -122,18 +116,7 @@
     {
         _store = [NSMutableArray array];
         
-        _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
-                                                      valueOptions:NSPointerFunctionsStrongMemory];
-        
-        _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
-                                                        valueOptions:NSPointerFunctionsStrongMemory];
-        
-        _onEqualityCheck = ^(id firstObject, id secondObject) {
-            
-            return [firstObject isEqual:secondObject];
-        };
-        
-        _notificationQueue = [NSOperationQueue mainQueue];
+        [self setup];
     }
     
     //===
@@ -149,7 +132,10 @@
     
     //===
     
-    result = _store.count;
+    dispatch_sync(_operationQueue, ^{
+        
+        result = _store.count;
+    });
     
     //===
     
@@ -162,7 +148,10 @@
     
     //===
     
-    result = ((ArrayItemWrapper *)_store[index]).content;
+    dispatch_sync(_operationQueue, ^{
+        
+        result = ((ArrayItemWrapper *)_store[index]).content;
+    });
     
     //===
     
@@ -171,113 +160,133 @@
 
 #pragma mark - Overrided methods - NSMutableArray
 
-- (NSString *)description
-{
-    NSString *result = @"";
-    
-    //===
-    
-    NSArray *storeCopy = [NSArray arrayWithArray:_store];
-    
-    for (ArrayItemWrapper *item in storeCopy)
-    {
-        if (result.length != 0)
-        {
-            result = [result stringByAppendingFormat:@", "];
-        }
-        
-        result = [result stringByAppendingFormat:@"[%@]%@",
-                  (item.selected ? @"v" : @" "), item.content];
-    }
-    
-    //===
-    
-    return result;
-}
-
 - (void)addObject:(id)anObject
 {
-    [_store addObject:
-     [ArrayItemWrapper wrapperWithContent:anObject]];
-    
-    //===
-    
-    [self notifyAboutContentChangeWithObject:anObject changeType:kAddEMAChangeType];
+    dispatch_barrier_async(_operationQueue, ^{
+        
+        [_store addObject:
+         [ArrayItemWrapper wrapperWithContent:anObject]];
+        
+        //===
+        
+        [self notifyAboutContentChangeWithObject:anObject
+                                      changeType:kAddEMAChangeType];
+    });
 }
 
 - (void)insertObject:(id)anObject atIndex:(NSUInteger)index
 {
-    [_store
-     insertObject:[ArrayItemWrapper wrapperWithContent:anObject]
-     atIndex:index];
-    
-    //===
-    
-    [self notifyAboutContentChangeWithObject:anObject changeType:kInsertEMAChangeType];
+    dispatch_barrier_async(_operationQueue, ^{
+        
+        [_store
+         insertObject:[ArrayItemWrapper wrapperWithContent:anObject]
+         atIndex:index];
+        
+        //===
+        
+        [self notifyAboutContentChangeWithObject:anObject
+                                      changeType:kInsertEMAChangeType];
+    });
 }
 
 - (void)removeLastObject
 {
-    id targetObject = ((ArrayItemWrapper *)_store.lastObject).content;
-    
-    //===
-    
-    [_store removeLastObject];
-    
-    //===
-    
-    if (targetObject)
-    {
-        [self notifyAboutContentChangeWithObject:targetObject changeType:kRemoveEMAChangeType];
-    }
+    dispatch_barrier_async(_operationQueue, ^{
+        
+        id targetObject = ((ArrayItemWrapper *)_store.lastObject).content;
+        
+        //===
+        
+        [_store removeLastObject];
+        
+        //===
+        
+        if (targetObject)
+        {
+            [self notifyAboutContentChangeWithObject:targetObject
+                                          changeType:kRemoveEMAChangeType];
+        }
+    });
 }
 
 - (void)removeObjectAtIndex:(NSUInteger)index
 {
-    NSArray *storeCopy = [NSArray arrayWithArray:_store];
+    [self removeObjectAtIndexFromSelection:index];
     
-    if ([storeCopy isValidIndex:index])
-    {
-        id targetObject = ((ArrayItemWrapper *)storeCopy[index]).content;
+    //===
+    
+    dispatch_barrier_async(_operationQueue, ^{
         
-        //===
+        NSArray *storeCopy = [NSArray arrayWithArray:_store];
         
-        [self removeObjectAtIndexFromSelection:index];
-        [_store removeObjectAtIndex:index];
-        
-        //===
-        
-        if (targetObject)
+        if ([storeCopy isValidIndex:index])
         {
-            [self notifyAboutContentChangeWithObject:targetObject changeType:kRemoveEMAChangeType];
+            id targetObject = ((ArrayItemWrapper *)storeCopy[index]).content;
+            
+            //===
+            
+            [_store removeObjectAtIndex:index];
+            
+            //===
+            
+            if (targetObject)
+            {
+                [self notifyAboutContentChangeWithObject:targetObject
+                                              changeType:kRemoveEMAChangeType];
+            }
         }
-    }
+    });
 }
 
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
 {
-    NSArray *storeCopy = [NSArray arrayWithArray:_store];
+    [self removeObjectAtIndexFromSelection:index];
     
-    if ([storeCopy isValidIndex:index])
-    {
-        id targetObject = ((ArrayItemWrapper *)storeCopy[index]).content;
+    //===
+    
+    dispatch_barrier_async(_operationQueue, ^{
         
-        //===
+        NSArray *storeCopy = [NSArray arrayWithArray:_store];
         
-        [self removeObjectAtIndexFromSelection:index];
-        [_store replaceObjectAtIndex:index
-                          withObject:[ArrayItemWrapper wrapperWithContent:anObject]];
-        
-        //===
-        
-        if (targetObject)
+        if ([storeCopy isValidIndex:index])
         {
-            [self notifyAboutContentChangeWithObject:targetObject changeType:kReplaceEMAChangeType];
+            id targetObject = ((ArrayItemWrapper *)storeCopy[index]).content;
+            
+            //===
+            
+            [_store replaceObjectAtIndex:index
+                              withObject:[ArrayItemWrapper wrapperWithContent:anObject]];
+            
+            //===
+            
+            if (targetObject)
+            {
+                [self notifyAboutContentChangeWithObject:targetObject
+                                              changeType:kReplaceEMAChangeType];
+            }
         }
-    }
+    });
 }
 
-#pragma mark - Service
+#pragma mark - Custom
+
+- (void)setup
+{
+    _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+                                                  valueOptions:NSPointerFunctionsStrongMemory];
+    
+    _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+                                                    valueOptions:NSPointerFunctionsStrongMemory];
+    
+    _onEqualityCheck = ^(id firstObject, id secondObject) {
+        
+        return [firstObject isEqual:secondObject];
+    };
+    
+    _operationQueue = dispatch_queue_create("com.queue.CTH", DISPATCH_QUEUE_CONCURRENT);
+    _notificationQueue = [NSOperationQueue mainQueue];
+
+}
 
 - (BOOL)willChangeSelectionWithObject:(id)targetObject changeType:(EMAChangeType)changeType
 {
@@ -339,9 +348,9 @@
     }
 }
 
-#pragma mark - Add to selection
+#pragma mark - Add to selection (private)
 
-- (void)addObjectToSelection:(id)object
+- (void)doAddObjectToSelection:(id)object
 {
     ArrayItemWrapper *targetWrapper = nil;
     
@@ -379,97 +388,188 @@
     }
 }
 
+- (void)doAddObjectAtIndexToSelection:(NSUInteger)index
+{
+    ArrayItemWrapper *targetWrapper = [_store safeObjectAtIndex:index];
+    
+    //===
+    
+    if (targetWrapper)
+    {
+        id object = targetWrapper.content;
+        
+        BOOL canProceed = [self willChangeSelectionWithObject:object
+                                                   changeType:kAddEMAChangeType];
+        
+        //===
+        
+        if (canProceed)
+        {
+            targetWrapper.selected = YES;
+            
+            //===
+            
+            [self didChangeSelectionWithObject:object
+                                    changeType:kAddEMAChangeType];
+        }
+    }
+}
+
+#pragma mark - Add to selection
+
+- (void)addObjectToSelection:(id)object
+{
+    dispatch_barrier_async(_operationQueue, ^{
+        
+        [self doAddObjectToSelection:object];
+    });
+}
+
 - (void)addObjectAtIndexToSelection:(NSUInteger)index
 {
-    [self addObjectToSelection:
-     [self safeObjectAtIndex:index]];
+    dispatch_barrier_async(_operationQueue, ^{
+        
+        [self doAddObjectAtIndexToSelection:index];
+    });
 }
 
 - (void)addObjectsToSelection:(NSArray *)objectList
 {
-    if (objectList.count)
-    {
-        for (id object in objectList)
+    dispatch_barrier_async(_operationQueue, ^{
+        
+        if (objectList.count)
         {
-            [self addObjectToSelection:object];
+            for (id object in objectList)
+            {
+                [self doAddObjectToSelection:object];
+            }
         }
-    }
-    else
-    {
-        NSLog(@"Nothing to add to selection list.");
-    }
+        else
+        {
+            NSLog(@"Nothing to add to selection list.");
+        }
+    });
 }
 
 #pragma mark - Set selection
 
 - (void)setObjectSelected:(id)object
 {
-    [self resetSelection];
-    
-    //===
-    
-    [self addObjectToSelection:object];
+    dispatch_barrier_async(_operationQueue, ^{
+        
+        [self doResetSelection];
+        
+        //===
+        
+        [self doAddObjectToSelection:object];
+    });
 }
 
 - (void)setObjectAtIndexSelected:(NSUInteger)index
 {
-    [self setObjectSelected:
-     [self safeObjectAtIndex:index]];
+    dispatch_barrier_async(_operationQueue, ^{
+        
+        [self doResetSelection];
+        
+        //===
+        
+        [self doAddObjectAtIndexToSelection:index];
+    });
 }
 
 - (void)setObjectsSelected:(NSArray *)objectList
 {
-    [self resetSelection];
-    
-    //===
-    
-    [self addObjectsToSelection:objectList];
+    dispatch_barrier_async(_operationQueue, ^{
+        
+        [self doResetSelection];
+        
+        //===
+        
+        if (objectList.count)
+        {
+            for (id object in objectList)
+            {
+                [self doAddObjectToSelection:object];
+            }
+        }
+        else
+        {
+            NSLog(@"Nothing to add to selection list.");
+        }
+    });
 }
 
 #pragma mark - Remove from selection
 
 - (void)removeObjectFromSelection:(id)object
 {
-    ArrayItemWrapper *targetWrapper = nil;
-    
-    //===
-    
-    NSArray *storeCopy = [NSArray arrayWithArray:_store];
-    
-    for (ArrayItemWrapper *wrapper in storeCopy)
-    {
-        if (_onEqualityCheck(wrapper.content, object))
-        {
-            targetWrapper = wrapper;
-            break;
-        }
-    }
-    
-    //===
-    
-    if (targetWrapper)
-    {
-        BOOL canProceed = [self willChangeSelectionWithObject:object
-                                                   changeType:kRemoveEMAChangeType];
+    dispatch_barrier_async(_operationQueue, ^{
+        
+        ArrayItemWrapper *targetWrapper = nil;
         
         //===
         
-        if (canProceed)
+        NSArray *storeCopy = [NSArray arrayWithArray:_store];
+        
+        for (ArrayItemWrapper *wrapper in storeCopy)
         {
-            targetWrapper.selected = NO;
+            if (_onEqualityCheck(wrapper.content, object))
+            {
+                targetWrapper = wrapper;
+                break;
+            }
+        }
+        
+        //===
+        
+        if (targetWrapper)
+        {
+            BOOL canProceed = [self willChangeSelectionWithObject:object
+                                                       changeType:kRemoveEMAChangeType];
             
             //===
             
-            [self didChangeSelectionWithObject:object
-                                    changeType:kRemoveEMAChangeType];
+            if (canProceed)
+            {
+                targetWrapper.selected = NO;
+                
+                //===
+                
+                [self didChangeSelectionWithObject:object
+                                        changeType:kRemoveEMAChangeType];
+            }
         }
-    }
+    });
 }
 
 - (void)removeObjectAtIndexFromSelection:(NSUInteger)index
 {
-    [self removeObjectFromSelection:
-     [self safeObjectAtIndex:index]];
+    dispatch_barrier_async(_operationQueue, ^{
+        
+        ArrayItemWrapper *targetWrapper = [_store safeObjectAtIndex:index];
+        
+        //===
+        
+        if (targetWrapper)
+        {
+            id object = targetWrapper.content;
+            
+            BOOL canProceed = [self willChangeSelectionWithObject:object
+                                                       changeType:kRemoveEMAChangeType];
+            
+            //===
+            
+            if (canProceed)
+            {
+                targetWrapper.selected = NO;
+                
+                //===
+                
+                [self didChangeSelectionWithObject:object
+                                        changeType:kRemoveEMAChangeType];
+            }
+        }
+    });
 }
 
 - (void)removeObjectsFromSelection:(NSArray *)objectList
@@ -482,14 +582,20 @@
 
 #pragma mark - Reset
 
-- (void)resetSelection
+- (void)doResetSelection
 {
-    NSArray *storeCopy = [NSArray arrayWithArray:_store];
-    
-    for (ArrayItemWrapper *wrapper in storeCopy)
+    for (ArrayItemWrapper *wrapper in _store)
     {
         wrapper.selected = NO;
     }
+}
+
+- (void)resetSelection
+{
+    dispatch_barrier_async(_operationQueue, ^{
+        
+        [self doResetSelection];
+    });
 }
 
 #pragma mark - Track selection

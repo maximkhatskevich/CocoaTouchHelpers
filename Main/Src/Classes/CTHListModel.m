@@ -10,6 +10,12 @@
 
 //===
 
+@implementation CTHListModelChangeParams
+
+@end
+
+//===
+
 @interface CTHListModel ()
 
 @property (strong, nonatomic) NSMutableArray *items;

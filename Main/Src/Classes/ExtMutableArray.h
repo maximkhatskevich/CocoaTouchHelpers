@@ -34,8 +34,8 @@ typedef void(^ExtArrayNotificationBlock)(id observer, ExtMutableArray *array, id
 
 @property (nonatomic, copy) ExtArrayEqualityCheck onEqualityCheck;
 
-@property (nonatomic, copy) ExtArrayWillChangeSelection onWillChangeSelection;
-@property (nonatomic, copy) ExtArrayDidChangeSelection onDidChangeSelection;
+//@property (nonatomic, copy) ExtArrayWillChangeSelection onWillChangeSelection;
+//@property (nonatomic, copy) ExtArrayDidChangeSelection onDidChangeSelection;
 
 @property (strong, nonatomic) dispatch_queue_t operationQueue;
 @property (strong, nonatomic) NSOperationQueue *notificationQueue;
@@ -54,8 +54,8 @@ typedef void(^ExtArrayNotificationBlock)(id observer, ExtMutableArray *array, id
 
 - (void)resetSelection;
 
-- (void)setOnWillChangeSelection:(ExtArrayWillChangeSelection)onWillChangeSelection;
-- (void)setOnDidChangeSelection:(ExtArrayDidChangeSelection)onDidChangeSelection;
+//- (void)setOnWillChangeSelection:(ExtArrayWillChangeSelection)onWillChangeSelection;
+//- (void)setOnDidChangeSelection:(ExtArrayDidChangeSelection)onDidChangeSelection;
 
 - (void)subscribe:(id)object forContentUpdates:(ExtArrayNotificationBlock)notificationBlock;
 - (void)unsubscribeFromContentUpdates:(id)object;

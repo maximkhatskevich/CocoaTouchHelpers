@@ -288,28 +288,28 @@
 
 }
 
-- (BOOL)willChangeSelectionWithObject:(id)targetObject changeType:(EMAChangeType)changeType
-{
-    BOOL result = YES;
-    
-    //===
-    
-    if (self.onWillChangeSelection)
-    {
-        result = self.onWillChangeSelection(self, targetObject, changeType);
-    }
-    
-    //===
-    
-    return result;
-}
+//- (BOOL)willChangeSelectionWithObject:(id)targetObject changeType:(EMAChangeType)changeType
+//{
+//    BOOL result = YES;
+//    
+//    //===
+//    
+//    if (self.onWillChangeSelection)
+//    {
+//        result = self.onWillChangeSelection(self, targetObject, changeType);
+//    }
+//    
+//    //===
+//    
+//    return result;
+//}
 
 - (void)didChangeSelectionWithObject:(id)targetObject changeType:(EMAChangeType)changeType
 {
-    if (self.onDidChangeSelection)
-    {
-        self.onDidChangeSelection(self, targetObject, changeType);
-    }
+//    if (self.onDidChangeSelection)
+//    {
+//        self.onDidChangeSelection(self, targetObject, changeType);
+//    }
     
     //===
     
@@ -371,20 +371,20 @@
     
     if (targetWrapper)
     {
-        BOOL canProceed = [self willChangeSelectionWithObject:object
-                                                   changeType:kAddEMAChangeType];
-        
-        //===
-        
-        if (canProceed)
-        {
+//        BOOL canProceed = [self willChangeSelectionWithObject:object
+//                                                   changeType:kAddEMAChangeType];
+//        
+//        //===
+//        
+//        if (canProceed)
+//        {
             targetWrapper.selected = YES;
             
             //===
             
             [self didChangeSelectionWithObject:object
                                     changeType:kAddEMAChangeType];
-        }
+//        }
     }
 }
 
@@ -398,20 +398,20 @@
     {
         id object = targetWrapper.content;
         
-        BOOL canProceed = [self willChangeSelectionWithObject:object
-                                                   changeType:kAddEMAChangeType];
-        
-        //===
-        
-        if (canProceed)
-        {
+//        BOOL canProceed = [self willChangeSelectionWithObject:object
+//                                                   changeType:kAddEMAChangeType];
+//        
+//        //===
+//        
+//        if (canProceed)
+//        {
             targetWrapper.selected = YES;
             
             //===
             
             [self didChangeSelectionWithObject:object
                                     changeType:kAddEMAChangeType];
-        }
+//        }
     }
 }
 
@@ -524,20 +524,20 @@
         
         if (targetWrapper)
         {
-            BOOL canProceed = [self willChangeSelectionWithObject:object
-                                                       changeType:kRemoveEMAChangeType];
-            
-            //===
-            
-            if (canProceed)
-            {
+//            BOOL canProceed = [self willChangeSelectionWithObject:object
+//                                                       changeType:kRemoveEMAChangeType];
+//            
+//            //===
+//            
+//            if (canProceed)
+//            {
                 targetWrapper.selected = NO;
                 
                 //===
                 
                 [self didChangeSelectionWithObject:object
                                         changeType:kRemoveEMAChangeType];
-            }
+//            }
         }
     });
 }
@@ -554,20 +554,20 @@
         {
             id object = targetWrapper.content;
             
-            BOOL canProceed = [self willChangeSelectionWithObject:object
-                                                       changeType:kRemoveEMAChangeType];
-            
-            //===
-            
-            if (canProceed)
-            {
+//            BOOL canProceed = [self willChangeSelectionWithObject:object
+//                                                       changeType:kRemoveEMAChangeType];
+//            
+//            //===
+//            
+//            if (canProceed)
+//            {
                 targetWrapper.selected = NO;
                 
                 //===
                 
                 [self didChangeSelectionWithObject:object
                                         changeType:kRemoveEMAChangeType];
-            }
+//            }
         }
     });
 }

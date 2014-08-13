@@ -371,7 +371,7 @@
     
     if (targetWrapper)
     {
-//        BOOL canProceed = [self willChangeSelectionWithObject:object
+//        BOOL canProceed = [self willChangeSelectionWithObject:targetWrapper.content
 //                                                   changeType:kAddEMAChangeType];
 //        
 //        //===
@@ -382,7 +382,7 @@
             
             //===
             
-            [self didChangeSelectionWithObject:object
+            [self didChangeSelectionWithObject:targetWrapper.content
                                     changeType:kAddEMAChangeType];
 //        }
     }
@@ -396,9 +396,7 @@
     
     if (targetWrapper)
     {
-        id object = targetWrapper.content;
-        
-//        BOOL canProceed = [self willChangeSelectionWithObject:object
+//        BOOL canProceed = [self willChangeSelectionWithObject:targetWrapper.content
 //                                                   changeType:kAddEMAChangeType];
 //        
 //        //===
@@ -409,7 +407,7 @@
             
             //===
             
-            [self didChangeSelectionWithObject:object
+            [self didChangeSelectionWithObject:targetWrapper.content
                                     changeType:kAddEMAChangeType];
 //        }
     }
@@ -524,7 +522,7 @@
         
         if (targetWrapper)
         {
-//            BOOL canProceed = [self willChangeSelectionWithObject:object
+//            BOOL canProceed = [self willChangeSelectionWithObject:targetWrapper.content
 //                                                       changeType:kRemoveEMAChangeType];
 //            
 //            //===
@@ -535,7 +533,7 @@
                 
                 //===
                 
-                [self didChangeSelectionWithObject:object
+                [self didChangeSelectionWithObject:targetWrapper.content
                                         changeType:kRemoveEMAChangeType];
 //            }
         }
@@ -552,9 +550,7 @@
         
         if (targetWrapper)
         {
-            id object = targetWrapper.content;
-            
-//            BOOL canProceed = [self willChangeSelectionWithObject:object
+//            BOOL canProceed = [self willChangeSelectionWithObject:targetWrapper.content
 //                                                       changeType:kRemoveEMAChangeType];
 //            
 //            //===
@@ -565,7 +561,7 @@
                 
                 //===
                 
-                [self didChangeSelectionWithObject:object
+                [self didChangeSelectionWithObject:targetWrapper.content
                                         changeType:kRemoveEMAChangeType];
 //            }
         }

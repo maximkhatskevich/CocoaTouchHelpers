@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5011398319A2AA2300D21BDF /* CTHDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */; };
 		509D7C7919949E0500D9D168 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509D7C7819949E0500D9D168 /* Foundation.framework */; };
 		509D7CE819949E7600D9D168 /* NSArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CA119949E7600D9D168 /* NSArray+Helpers.m */; };
 		509D7CE919949E7600D9D168 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CA319949E7600D9D168 /* NSDate+Helpers.m */; };
@@ -56,6 +57,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5011398119A2AA2300D21BDF /* CTHDeviceHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHDeviceHardware.h; sourceTree = "<group>"; };
+		5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHDeviceHardware.m; sourceTree = "<group>"; };
 		509D7C7519949E0500D9D168 /* libCocoaTouchHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaTouchHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		509D7C7819949E0500D9D168 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		509D7C8619949E0500D9D168 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -273,6 +276,8 @@
 				509D7CE319949E7600D9D168 /* ResultContainer.m */,
 				50F18E9019956AB700781A09 /* CTHListModel.h */,
 				50F18E9119956AB700781A09 /* CTHListModel.m */,
+				5011398119A2AA2300D21BDF /* CTHDeviceHardware.h */,
+				5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 				509D7CF119949E7600D9D168 /* UIColor+Helpers.m in Sources */,
 				509D7CF919949E7600D9D168 /* UIView+FontHelpers.m in Sources */,
 				509D7D0119949E7600D9D168 /* CoreDataCtrl.m in Sources */,
+				5011398319A2AA2300D21BDF /* CTHDeviceHardware.m in Sources */,
 				509D7CF219949E7600D9D168 /* UIImage+Helpers.m in Sources */,
 				509D7CEC19949E7600D9D168 /* NSObject+Helpers.m in Sources */,
 				509D7CED19949E7600D9D168 /* NSObject+State.m in Sources */,

@@ -54,3 +54,5 @@
 #import "UIColor+Helpers.h"
 
 #import "FlexiblePageControl.h"
+
+#import "CTHDeviceHardware.h"

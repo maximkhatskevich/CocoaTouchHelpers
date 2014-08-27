@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5009CA8119AE8951005FE34F /* CTHElasticFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */; };
 		5011398319A2AA2300D21BDF /* CTHDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */; };
 		509D7C7919949E0500D9D168 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509D7C7819949E0500D9D168 /* Foundation.framework */; };
 		509D7CE819949E7600D9D168 /* NSArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CA119949E7600D9D168 /* NSArray+Helpers.m */; };
@@ -57,6 +58,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5009CA7F19AE8951005FE34F /* CTHElasticFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHElasticFlowLayout.h; sourceTree = "<group>"; };
+		5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHElasticFlowLayout.m; sourceTree = "<group>"; };
 		5011398119A2AA2300D21BDF /* CTHDeviceHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHDeviceHardware.h; sourceTree = "<group>"; };
 		5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHDeviceHardware.m; sourceTree = "<group>"; };
 		509D7C7519949E0500D9D168 /* libCocoaTouchHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaTouchHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,6 +281,8 @@
 				50F18E9119956AB700781A09 /* CTHListModel.m */,
 				5011398119A2AA2300D21BDF /* CTHDeviceHardware.h */,
 				5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */,
+				5009CA7F19AE8951005FE34F /* CTHElasticFlowLayout.h */,
+				5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				509D7CFE19949E7600D9D168 /* ArrayItemWrapper.m in Sources */,
+				5009CA8119AE8951005FE34F /* CTHElasticFlowLayout.m in Sources */,
 				509D7CFD19949E7600D9D168 /* AdvancedList.m in Sources */,
 				509D7CFA19949E7600D9D168 /* UIView+Helpers.m in Sources */,
 				509D7CF419949E7600D9D168 /* UINavigationController+Helpers.m in Sources */,

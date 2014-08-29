@@ -162,48 +162,90 @@
 
 - (void)addObject:(id)anObject
 {
-    dispatch_barrier_async(_operationQueue, ^{
-        
-        [_store addObject:
-         [ArrayItemWrapper wrapperWithContent:anObject]];
-        
-        //===
-        
-        [self notifyAboutContentChangeWithObject:anObject
-                                      changeType:kAddEMAChangeType];
-    });
+    if (anObject)
+    {
+        dispatch_barrier_async(_operationQueue, ^{
+            
+            [_store addObject:
+             [ArrayItemWrapper wrapperWithContent:anObject]];
+            
+            //===
+            
+            [self notifyAboutContentChangeWithObject:anObject
+                                          changeType:kAddEMAChangeType];
+        });
+    }
 }
 
 - (void)insertObject:(id)anObject atIndex:(NSUInteger)index
 {
-    dispatch_barrier_async(_operationQueue, ^{
-        
-        [_store
-         insertObject:[ArrayItemWrapper wrapperWithContent:anObject]
-         atIndex:index];
-        
-        //===
-        
-        [self notifyAboutContentChangeWithObject:anObject
-                                      changeType:kInsertEMAChangeType];
-    });
+    if (anObject)
+    {
+        dispatch_barrier_async(_operationQueue, ^{
+            
+            ArrayItemWrapper *targetWrapper = [_store safeObjectAtIndex:index];
+            
+            //===
+            
+            if (targetWrapper) // it means that index exists
+            {
+                if (targetWrapper.selected)
+                {
+                    targetWrapper.selected = NO;
+                    
+                    //===
+                    
+                    [self didChangeSelectionWithObject:targetWrapper.content
+                                            changeType:kRemoveEMAChangeType];
+                }
+                
+                //===
+                
+                [_store
+                 insertObject:[ArrayItemWrapper wrapperWithContent:anObject]
+                 atIndex:index];
+                
+                //===
+                
+                [self notifyAboutContentChangeWithObject:targetWrapper.content
+                                              changeType:kRemoveEMAChangeType];
+                
+                //===
+                
+                [self notifyAboutContentChangeWithObject:anObject
+                                              changeType:kAddEMAChangeType];
+            }
+        });
+    }
 }
 
 - (void)removeLastObject
 {
     dispatch_barrier_async(_operationQueue, ^{
         
-        id targetObject = ((ArrayItemWrapper *)_store.lastObject).content;
+        ArrayItemWrapper *targetWrapper = [_store lastObject];
         
         //===
         
-        [_store removeLastObject];
-        
-        //===
-        
-        if (targetObject)
+        if (targetWrapper)
         {
-            [self notifyAboutContentChangeWithObject:targetObject
+            if (targetWrapper.selected)
+            {
+                targetWrapper.selected = NO;
+                
+                //===
+                
+                [self didChangeSelectionWithObject:targetWrapper.content
+                                        changeType:kRemoveEMAChangeType];
+            }
+            
+            //===
+            
+            [_store removeLastObject];
+            
+            //===
+            
+            [self notifyAboutContentChangeWithObject:targetWrapper.content
                                           changeType:kRemoveEMAChangeType];
         }
     });
@@ -211,17 +253,23 @@
 
 - (void)removeObjectAtIndex:(NSUInteger)index
 {
-    [self removeObjectAtIndexFromSelection:index];
-    
-    //===
-    
     dispatch_barrier_async(_operationQueue, ^{
         
-        NSArray *storeCopy = [NSArray arrayWithArray:_store];
+        ArrayItemWrapper *targetWrapper = [_store safeObjectAtIndex:index];
         
-        if ([storeCopy isValidIndex:index])
+        //===
+        
+        if (targetWrapper)
         {
-            id targetObject = ((ArrayItemWrapper *)storeCopy[index]).content;
+            if (targetWrapper.selected)
+            {
+                targetWrapper.selected = NO;
+                
+                //===
+                
+                [self didChangeSelectionWithObject:targetWrapper.content
+                                        changeType:kRemoveEMAChangeType];
+            }
             
             //===
             
@@ -229,9 +277,9 @@
             
             //===
             
-            if (targetObject)
+            if (targetWrapper)
             {
-                [self notifyAboutContentChangeWithObject:targetObject
+                [self notifyAboutContentChangeWithObject:targetWrapper.content
                                               changeType:kRemoveEMAChangeType];
             }
         }
@@ -240,32 +288,43 @@
 
 - (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject
 {
-    [self removeObjectAtIndexFromSelection:index];
-    
-    //===
-    
-    dispatch_barrier_async(_operationQueue, ^{
-        
-        NSArray *storeCopy = [NSArray arrayWithArray:_store];
-        
-        if ([storeCopy isValidIndex:index])
-        {
-            id targetObject = ((ArrayItemWrapper *)storeCopy[index]).content;
+    if (anObject)
+    {
+        dispatch_barrier_async(_operationQueue, ^{
+            
+            ArrayItemWrapper *targetWrapper = [_store safeObjectAtIndex:index];
             
             //===
             
-            [_store replaceObjectAtIndex:index
-                              withObject:[ArrayItemWrapper wrapperWithContent:anObject]];
-            
-            //===
-            
-            if (targetObject)
+            if (targetWrapper)
             {
-                [self notifyAboutContentChangeWithObject:targetObject
-                                              changeType:kReplaceEMAChangeType];
+                if (targetWrapper.selected)
+                {
+                    targetWrapper.selected = NO;
+                    
+                    //===
+                    
+                    [self didChangeSelectionWithObject:targetWrapper.content
+                                            changeType:kRemoveEMAChangeType];
+                }
+                
+                //===
+                
+                [_store replaceObjectAtIndex:index
+                                  withObject:[ArrayItemWrapper wrapperWithContent:anObject]];
+                
+                //===
+                
+                [self notifyAboutContentChangeWithObject:targetWrapper.content
+                                              changeType:kRemoveEMAChangeType];
+                
+                //===
+                
+                [self notifyAboutContentChangeWithObject:anObject
+                                              changeType:kAddEMAChangeType];
             }
-        }
-    });
+        });
+    }
 }
 
 #pragma mark - Custom
@@ -288,31 +347,9 @@
 
 }
 
-//- (BOOL)willChangeSelectionWithObject:(id)targetObject changeType:(EMAChangeType)changeType
-//{
-//    BOOL result = YES;
-//    
-//    //===
-//    
-//    if (self.onWillChangeSelection)
-//    {
-//        result = self.onWillChangeSelection(self, targetObject, changeType);
-//    }
-//    
-//    //===
-//    
-//    return result;
-//}
-
 - (void)didChangeSelectionWithObject:(id)targetObject changeType:(EMAChangeType)changeType
 {
-//    if (self.onDidChangeSelection)
-//    {
-//        self.onDidChangeSelection(self, targetObject, changeType);
-//    }
-    
-    //===
-    
+
     [self notifyAboutSelectionChangeWithObject:targetObject changeType:changeType];
 }
 
@@ -352,39 +389,35 @@
 
 - (void)doAddObjectToSelection:(id)object
 {
-    ArrayItemWrapper *targetWrapper = nil;
-    
-    //===
-    
-    NSArray *storeCopy = [NSArray arrayWithArray:_store];
-    
-    for (ArrayItemWrapper *wrapper in storeCopy)
+    if (object)
     {
-        if (_onEqualityCheck(wrapper.content, object))
+        ArrayItemWrapper *targetWrapper = nil;
+        
+        //===
+        
+        NSArray *storeCopy = [NSArray arrayWithArray:_store];
+        
+        for (ArrayItemWrapper *wrapper in storeCopy)
         {
-            targetWrapper = wrapper;
-            break;
+            if (_onEqualityCheck(wrapper.content, object))
+            {
+                targetWrapper = wrapper;
+                break;
+            }
         }
-    }
-    
-    //===
-    
-    if (targetWrapper)
-    {
-//        BOOL canProceed = [self willChangeSelectionWithObject:targetWrapper.content
-//                                                   changeType:kAddEMAChangeType];
-//        
-//        //===
-//        
-//        if (canProceed)
-//        {
+        
+        //===
+        
+        if (targetWrapper &&
+            !targetWrapper.selected)
+        {
             targetWrapper.selected = YES;
             
             //===
             
             [self didChangeSelectionWithObject:targetWrapper.content
                                     changeType:kAddEMAChangeType];
-//        }
+        }
     }
 }
 
@@ -396,20 +429,12 @@
     
     if (targetWrapper)
     {
-//        BOOL canProceed = [self willChangeSelectionWithObject:targetWrapper.content
-//                                                   changeType:kAddEMAChangeType];
-//        
-//        //===
-//        
-//        if (canProceed)
-//        {
-            targetWrapper.selected = YES;
-            
-            //===
-            
-            [self didChangeSelectionWithObject:targetWrapper.content
-                                    changeType:kAddEMAChangeType];
-//        }
+        targetWrapper.selected = YES;
+        
+        //===
+        
+        [self didChangeSelectionWithObject:targetWrapper.content
+                                changeType:kAddEMAChangeType];
     }
 }
 
@@ -501,43 +526,38 @@
 
 - (void)removeObjectFromSelection:(id)object
 {
-    dispatch_barrier_async(_operationQueue, ^{
-        
-        ArrayItemWrapper *targetWrapper = nil;
-        
-        //===
-        
-        NSArray *storeCopy = [NSArray arrayWithArray:_store];
-        
-        for (ArrayItemWrapper *wrapper in storeCopy)
-        {
-            if (_onEqualityCheck(wrapper.content, object))
+    if (object)
+    {
+        dispatch_barrier_async(_operationQueue, ^{
+            
+            ArrayItemWrapper *targetWrapper = nil;
+            
+            //===
+            
+            NSArray *storeCopy = [NSArray arrayWithArray:_store];
+            
+            for (ArrayItemWrapper *wrapper in storeCopy)
             {
-                targetWrapper = wrapper;
-                break;
+                if (_onEqualityCheck(wrapper.content, object))
+                {
+                    targetWrapper = wrapper;
+                    break;
+                }
             }
-        }
-        
-        //===
-        
-        if (targetWrapper)
-        {
-//            BOOL canProceed = [self willChangeSelectionWithObject:targetWrapper.content
-//                                                       changeType:kRemoveEMAChangeType];
-//            
-//            //===
-//            
-//            if (canProceed)
-//            {
+            
+            //===
+            
+            if (targetWrapper.selected)
+            {
                 targetWrapper.selected = NO;
                 
                 //===
                 
                 [self didChangeSelectionWithObject:targetWrapper.content
                                         changeType:kRemoveEMAChangeType];
-//            }
-        }
-    });
+            }
+        });
+    }
 }
 
 - (void)removeObjectAtIndexFromSelection:(NSUInteger)index
@@ -548,22 +568,14 @@
         
         //===
         
-        if (targetWrapper)
+        if (targetWrapper.selected)
         {
-//            BOOL canProceed = [self willChangeSelectionWithObject:targetWrapper.content
-//                                                       changeType:kRemoveEMAChangeType];
-//            
-//            //===
-//            
-//            if (canProceed)
-//            {
-                targetWrapper.selected = NO;
-                
-                //===
-                
-                [self didChangeSelectionWithObject:targetWrapper.content
-                                        changeType:kRemoveEMAChangeType];
-//            }
+            targetWrapper.selected = NO;
+            
+            //===
+            
+            [self didChangeSelectionWithObject:targetWrapper.content
+                                    changeType:kRemoveEMAChangeType];
         }
     });
 }
@@ -580,9 +592,19 @@
 
 - (void)doResetSelection
 {
-    for (ArrayItemWrapper *wrapper in _store)
+    NSArray *storeCopy = [NSArray arrayWithArray:_store];
+    
+    for (ArrayItemWrapper *wrapper in storeCopy)
     {
-        wrapper.selected = NO;
+        if (wrapper.selected)
+        {
+            wrapper.selected = NO;
+            
+            //===
+            
+            [self didChangeSelectionWithObject:wrapper.content
+                                    changeType:kRemoveEMAChangeType];
+        }
     }
 }
 

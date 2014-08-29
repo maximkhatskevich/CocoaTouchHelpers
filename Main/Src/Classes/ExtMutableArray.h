@@ -14,8 +14,6 @@
 
 typedef enum {
     kAddEMAChangeType,
-    kInsertEMAChangeType,
-    kReplaceEMAChangeType,
     kRemoveEMAChangeType
 } EMAChangeType;
 

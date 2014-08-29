@@ -187,34 +187,34 @@
             
             //===
             
-            if (targetWrapper) // it means that index exists
+            if (targetWrapper.selected)
             {
-                if (targetWrapper.selected)
-                {
-                    targetWrapper.selected = NO;
-                    
-                    //===
-                    
-                    [self didChangeSelectionWithObject:targetWrapper.content
-                                            changeType:kRemoveEMAChangeType];
-                }
+                targetWrapper.selected = NO;
                 
                 //===
                 
-                [_store
-                 insertObject:[ArrayItemWrapper wrapperWithContent:anObject]
-                 atIndex:index];
-                
-                //===
-                
+                [self didChangeSelectionWithObject:targetWrapper.content
+                                        changeType:kRemoveEMAChangeType];
+            }
+            
+            //===
+            
+            [_store
+             insertObject:[ArrayItemWrapper wrapperWithContent:anObject]
+             atIndex:index];
+            
+            //===
+            
+            if (targetWrapper)
+            {
                 [self notifyAboutContentChangeWithObject:targetWrapper.content
                                               changeType:kRemoveEMAChangeType];
-                
-                //===
-                
-                [self notifyAboutContentChangeWithObject:anObject
-                                              changeType:kAddEMAChangeType];
             }
+            
+            //===
+            
+            [self notifyAboutContentChangeWithObject:anObject
+                                          changeType:kAddEMAChangeType];
         });
     }
 }

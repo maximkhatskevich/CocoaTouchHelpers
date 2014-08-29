@@ -427,7 +427,8 @@
     
     //===
     
-    if (targetWrapper)
+    if (targetWrapper &&
+        !targetWrapper.selected)
     {
         targetWrapper.selected = YES;
         

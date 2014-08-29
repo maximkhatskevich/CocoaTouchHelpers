@@ -53,18 +53,7 @@
 
 - (id)selectedObject
 {
-    __block id result = nil;
-    
-    //===
-    
-    dispatch_sync(_operationQueue, ^{
-        
-        result = self.selection.firstObject;
-    });
-    
-    //===
-    
-    return result;
+    return self.selection.firstObject;
 }
 
 #pragma mark - Overrided methods
@@ -484,10 +473,13 @@
 
 - (void)setObjectSelected:(id)object
 {
+    NSArray *selection = self.selection;
+    
+    //===
+    
     dispatch_barrier_async(_operationQueue, ^{
         
         BOOL alreadySelected = NO;
-        NSArray *selection = self.selection;
         BOOL otherSelectedObjects = NO;
         
         for (id selectedObject in selection)
@@ -518,10 +510,14 @@
 
 - (void)setObjectAtIndexSelected:(NSUInteger)index
 {
+    NSArray *selection = self.selection;
+    
+    //===
+    
     dispatch_barrier_async(_operationQueue, ^{
         
         ArrayItemWrapper *targetWrapper = [_store safeObjectAtIndex:index];
-        BOOL multiSelection = (self.selection.count > 1);
+        BOOL multiSelection = (selection.count > 1);
         
         //===
         
@@ -538,6 +534,10 @@
 
 - (void)setObjectsSelected:(NSArray *)objectList
 {
+    NSArray *selection = self.selection;
+    
+    //===
+    
     dispatch_barrier_async(_operationQueue, ^{
         
         if (objectList.count)
@@ -545,9 +545,9 @@
             // lets check if current and target selection objects are identical?
             
             NSMutableArray *targetCopyList = [NSMutableArray arrayWithArray:objectList];
-            NSMutableArray *selectionCopyList = [NSMutableArray arrayWithArray:self.selection];
+            NSMutableArray *selectionCopyList = [NSMutableArray arrayWithArray:selection];
             
-            for (id selectedObject in self.selection)
+            for (id selectedObject in selection)
             {
                 for (id targetObject in objectList)
                 {

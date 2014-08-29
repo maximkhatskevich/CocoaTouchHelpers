@@ -481,11 +481,33 @@
 {
     dispatch_barrier_async(_operationQueue, ^{
         
-        [self doResetSelection];
+        BOOL alreadySelected = NO;
+        NSArray *selection = self.selection;
+        BOOL otherSelectedObjects = NO;
+        
+        for (id selectedObject in selection)
+        {
+            if (_onEqualityCheck(selectedObject, object))
+            {
+                alreadySelected = YES;
+                break;
+            }
+            else
+            {
+                otherSelectedObjects = YES;
+            }
+        }
         
         //===
         
-        [self doAddObjectToSelection:object];
+        if (!alreadySelected || otherSelectedObjects)
+        {
+            [self doResetSelection];
+            
+            //===
+            
+            [self doAddObjectToSelection:object];
+        }
     });
 }
 
@@ -493,11 +515,19 @@
 {
     dispatch_barrier_async(_operationQueue, ^{
         
-        [self doResetSelection];
+        ArrayItemWrapper *targetWrapper = [_store safeObjectAtIndex:index];
+        BOOL multiSelection = (self.selection.count > 1);
         
         //===
         
-        [self doAddObjectAtIndexToSelection:index];
+        if (!targetWrapper.selected || multiSelection)
+        {
+            [self doResetSelection];
+            
+            //===
+            
+            [self doAddObjectAtIndexToSelection:index];
+        }
     });
 }
 
@@ -505,15 +535,39 @@
 {
     dispatch_barrier_async(_operationQueue, ^{
         
-        [self doResetSelection];
-        
-        //===
-        
         if (objectList.count)
         {
-            for (id object in objectList)
+            // lets check if current and target selection objects are identical?
+            
+            NSMutableArray *targetCopyList = [NSMutableArray arrayWithArray:objectList];
+            NSMutableArray *selectionCopyList = [NSMutableArray arrayWithArray:self.selection];
+            
+            for (id selectedObject in self.selection)
             {
-                [self doAddObjectToSelection:object];
+                for (id targetObject in objectList)
+                {
+                    if (_onEqualityCheck(selectedObject, targetObject))
+                    {
+                        [targetCopyList removeObject:targetObject];
+                        [selectionCopyList removeObject:selectedObject];
+                    }
+                }
+            }
+            
+            //===
+            
+            // proceed if NOT fully identical
+            
+            if (targetCopyList.count || selectionCopyList.count)
+            {
+                [self doResetSelection];
+                
+                //===
+                
+                for (id object in objectList)
+                {
+                    [self doAddObjectToSelection:object];
+                }
             }
         }
         else

@@ -105,6 +105,12 @@
     {
         _store = [NSMutableArray array];
         
+        for (int i = 0; i < count; i++)
+        {
+            [_store addObject:
+             [ArrayItemWrapper wrapperWithContent:objects[i]]];
+        }
+        
         [self setup];
     }
     

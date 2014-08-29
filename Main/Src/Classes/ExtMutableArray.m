@@ -219,6 +219,11 @@
     }
 }
 
+- (void)addObjectsFromArray:(NSArray *)otherArray
+{
+    [super addObjectsFromArray:otherArray];
+}
+
 - (void)removeLastObject
 {
     dispatch_barrier_async(_operationQueue, ^{

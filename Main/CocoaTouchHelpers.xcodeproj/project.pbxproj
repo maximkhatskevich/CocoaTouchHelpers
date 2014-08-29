@@ -41,6 +41,7 @@
 		509D7D0619949E7600D9D168 /* PassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CDF19949E7600D9D168 /* PassthroughView.m */; };
 		509D7D0719949E7600D9D168 /* PlainTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CE119949E7600D9D168 /* PlainTableCtrl.m */; };
 		509D7D0819949E7600D9D168 /* ResultContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CE319949E7600D9D168 /* ResultContainer.m */; };
+		50DABC9619B0C71B0006E50C /* ExtTSMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DABC9519B0C71B0006E50C /* ExtTSMutableArray.m */; };
 		50F18E9219956AB700781A09 /* CTHListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F18E9119956AB700781A09 /* CTHListModel.m */; };
 		7166FCC2F0644F3489648D8B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DDD03A0F5704286BDC8410F /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -134,6 +135,8 @@
 		509D7CE519949E7600D9D168 /* CocoaTouchHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaTouchHelpers.h; sourceTree = "<group>"; };
 		509D7CE619949E7600D9D168 /* GlobalBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalBase.h; sourceTree = "<group>"; };
 		509D7CE719949E7600D9D168 /* MacrosBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacrosBase.h; sourceTree = "<group>"; };
+		50DABC9419B0C71B0006E50C /* ExtTSMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtTSMutableArray.h; sourceTree = "<group>"; };
+		50DABC9519B0C71B0006E50C /* ExtTSMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtTSMutableArray.m; sourceTree = "<group>"; };
 		50F18E9019956AB700781A09 /* CTHListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHListModel.h; sourceTree = "<group>"; };
 		50F18E9119956AB700781A09 /* CTHListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHListModel.m; sourceTree = "<group>"; };
 		8DDD03A0F5704286BDC8410F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +270,8 @@
 				509D7CD519949E7600D9D168 /* CoreDataCtrl.m */,
 				509D7CD819949E7600D9D168 /* ExtMutableArray.h */,
 				509D7CD919949E7600D9D168 /* ExtMutableArray.m */,
+				50DABC9419B0C71B0006E50C /* ExtTSMutableArray.h */,
+				50DABC9519B0C71B0006E50C /* ExtTSMutableArray.m */,
 				509D7CDA19949E7600D9D168 /* FlexiblePageControl.h */,
 				509D7CDB19949E7600D9D168 /* FlexiblePageControl.m */,
 				509D7CDC19949E7600D9D168 /* LoadingIndicatorView.h */,
@@ -415,6 +420,7 @@
 				509D7D0719949E7600D9D168 /* PlainTableCtrl.m in Sources */,
 				509D7CEA19949E7600D9D168 /* NSMutableArray+Helpers.m in Sources */,
 				509D7D0319949E7600D9D168 /* ExtMutableArray.m in Sources */,
+				50DABC9619B0C71B0006E50C /* ExtTSMutableArray.m in Sources */,
 				509D7CEB19949E7600D9D168 /* NSMutableDictionary+Helpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

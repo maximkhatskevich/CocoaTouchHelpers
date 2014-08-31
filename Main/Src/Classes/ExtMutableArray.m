@@ -25,34 +25,6 @@
 
 @implementation ExtMutableArray
 
-#pragma mark - Property accessors
-
-- (NSArray *)selection
-{
-    NSMutableArray *result = [NSMutableArray array];
-    
-    //===
-    
-    NSArray *storeCopy = [NSArray arrayWithArray:_store];
-    
-    for (ArrayItemWrapper *wrapper in storeCopy)
-    {
-        if (wrapper.selected)
-        {
-            [result addObject:wrapper.content];
-        }
-    }
-    
-    //===
-    
-    return [NSArray arrayWithArray:result];
-}
-
-- (id)selectedObject
-{
-    return self.selection.firstObject;
-}
-
 #pragma mark - Overrided methods
 
 - (instancetype)init
@@ -287,6 +259,58 @@
     }
 }
 
+#pragma mark - Property accessors
+
+- (NSArray *)selection
+{
+    NSMutableArray *result = [NSMutableArray array];
+    
+    //===
+    
+    NSArray *storeCopy = [NSArray arrayWithArray:_store];
+    
+    for (ArrayItemWrapper *wrapper in storeCopy)
+    {
+        if (wrapper.selected)
+        {
+            [result addObject:wrapper.content];
+        }
+    }
+    
+    //===
+    
+    return [NSArray arrayWithArray:result];
+}
+
+- (id)selectedObject
+{
+    return self.selection.firstObject;
+}
+
+- (NSUInteger)indexOfSelectedObject
+{
+    NSUInteger result = NSNotFound;
+    
+    //===
+    
+    NSArray *storeCopy = [NSArray arrayWithArray:_store];
+    
+    for (NSUInteger i = 0; i < storeCopy.count; i++)
+    {
+        ArrayItemWrapper *wrapper = storeCopy[i];
+        
+        if (wrapper.selected)
+        {
+            result = i;
+            break;
+        }
+    }
+    
+    //===
+    
+    return result;
+}
+
 #pragma mark - Custom
 
 - (void)setup
@@ -367,6 +391,10 @@
             [self didChangeSelectionWithObject:targetWrapper.content
                                     changeType:kAddEMAChangeType];
         }
+    }
+    else
+    {
+        NSLog(@"Nothing to add to selection list.");
     }
 }
 

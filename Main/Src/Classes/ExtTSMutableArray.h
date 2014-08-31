@@ -30,6 +30,9 @@ typedef void(^ExtTSArrayNotificationBlock)(id observer, ExtTSMutableArray *array
 @property (readonly, nonatomic) NSArray *selection;
 @property (readonly, nonatomic) id selectedObject;
 
+// returns index of FIRST selected object, if any
+@property (readonly) NSUInteger indexOfSelectedObject;
+
 @property (nonatomic, copy) ExtTSArrayEqualityCheck onEqualityCheck;
 
 @property (strong, nonatomic) dispatch_queue_t operationQueue;

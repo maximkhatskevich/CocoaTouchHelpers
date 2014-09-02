@@ -23,8 +23,8 @@ static void *OnStateDidChangeKey;
 
 - (NSInteger)state
 {
-    @synchronized(self)
-    {
+//    @synchronized(self)
+//    {
         NSInteger result = kObjectStateUnknown;
         
         //===
@@ -40,13 +40,13 @@ static void *OnStateDidChangeKey;
         //===
         
         return result;
-    }
+//    }
 }
 
 - (void)setState:(NSInteger)newValue
 {
-    @synchronized(self)
-    {
+//    @synchronized(self)
+//    {
         NSInteger currentValue = self.state;
         
         if (currentValue != newValue)
@@ -81,7 +81,7 @@ static void *OnStateDidChangeKey;
                 }
             }
         }
-    }
+//    }
 }
 
 - (StateWillChangeBlock)onStateWillChange

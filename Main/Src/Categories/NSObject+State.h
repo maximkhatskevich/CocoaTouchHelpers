@@ -23,7 +23,11 @@ typedef void (^StateDidChangeBlock)(NSInteger previousState, NSInteger currentSt
 @interface NSObject (State)
 
 @property NSInteger state;
+
 @property (strong, nonatomic) StateWillChangeBlock onStateWillChange;
 @property (strong, nonatomic) StateDidChangeBlock onStateDidChange;
+
+- (void)setOnStateWillChange:(StateWillChangeBlock)onStateWillChange;
+- (void)setOnStateDidChange:(StateDidChangeBlock)onStateDidChange;
 
 @end

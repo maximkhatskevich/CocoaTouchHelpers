@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5009CA8119AE8951005FE34F /* CTHElasticFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */; };
 		5011398319A2AA2300D21BDF /* CTHDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */; };
+		5062F7B019B69D32002F7F15 /* NSObject+ReturnExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5062F7AF19B69D32002F7F15 /* NSObject+ReturnExtension.m */; };
 		509D7C7919949E0500D9D168 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509D7C7819949E0500D9D168 /* Foundation.framework */; };
 		509D7CE819949E7600D9D168 /* NSArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CA119949E7600D9D168 /* NSArray+Helpers.m */; };
 		509D7CE919949E7600D9D168 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CA319949E7600D9D168 /* NSDate+Helpers.m */; };
@@ -36,7 +37,6 @@
 		509D7D0019949E7600D9D168 /* BaseGenericCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CD319949E7600D9D168 /* BaseGenericCtrl.m */; };
 		509D7D0119949E7600D9D168 /* CoreDataCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CD519949E7600D9D168 /* CoreDataCtrl.m */; };
 		509D7D0319949E7600D9D168 /* ExtMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CD919949E7600D9D168 /* ExtMutableArray.m */; };
-		509D7D0419949E7600D9D168 /* FlexiblePageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CDB19949E7600D9D168 /* FlexiblePageControl.m */; };
 		509D7D0519949E7600D9D168 /* LoadingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CDD19949E7600D9D168 /* LoadingIndicatorView.m */; };
 		509D7D0619949E7600D9D168 /* PassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CDF19949E7600D9D168 /* PassthroughView.m */; };
 		509D7D0719949E7600D9D168 /* PlainTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CE119949E7600D9D168 /* PlainTableCtrl.m */; };
@@ -63,6 +63,8 @@
 		5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHElasticFlowLayout.m; sourceTree = "<group>"; };
 		5011398119A2AA2300D21BDF /* CTHDeviceHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHDeviceHardware.h; sourceTree = "<group>"; };
 		5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHDeviceHardware.m; sourceTree = "<group>"; };
+		5062F7AE19B69D32002F7F15 /* NSObject+ReturnExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ReturnExtension.h"; sourceTree = "<group>"; };
+		5062F7AF19B69D32002F7F15 /* NSObject+ReturnExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ReturnExtension.m"; sourceTree = "<group>"; };
 		509D7C7519949E0500D9D168 /* libCocoaTouchHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaTouchHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		509D7C7819949E0500D9D168 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		509D7C8619949E0500D9D168 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -121,8 +123,6 @@
 		509D7CD519949E7600D9D168 /* CoreDataCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCtrl.m; sourceTree = "<group>"; };
 		509D7CD819949E7600D9D168 /* ExtMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtMutableArray.h; sourceTree = "<group>"; };
 		509D7CD919949E7600D9D168 /* ExtMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtMutableArray.m; sourceTree = "<group>"; };
-		509D7CDA19949E7600D9D168 /* FlexiblePageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexiblePageControl.h; sourceTree = "<group>"; };
-		509D7CDB19949E7600D9D168 /* FlexiblePageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexiblePageControl.m; sourceTree = "<group>"; };
 		509D7CDC19949E7600D9D168 /* LoadingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingIndicatorView.h; sourceTree = "<group>"; };
 		509D7CDD19949E7600D9D168 /* LoadingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingIndicatorView.m; sourceTree = "<group>"; };
 		509D7CDE19949E7600D9D168 /* PassthroughView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassthroughView.h; sourceTree = "<group>"; };
@@ -242,6 +242,8 @@
 				509D7CC819949E7600D9D168 /* UIViewController+Helpers.m */,
 				509D7CC919949E7600D9D168 /* UIViewController+KeyboardHelpers.h */,
 				509D7CCA19949E7600D9D168 /* UIViewController+KeyboardHelpers.m */,
+				5062F7AE19B69D32002F7F15 /* NSObject+ReturnExtension.h */,
+				5062F7AF19B69D32002F7F15 /* NSObject+ReturnExtension.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -272,8 +274,6 @@
 				509D7CD919949E7600D9D168 /* ExtMutableArray.m */,
 				50DABC9419B0C71B0006E50C /* ExtTSMutableArray.h */,
 				50DABC9519B0C71B0006E50C /* ExtTSMutableArray.m */,
-				509D7CDA19949E7600D9D168 /* FlexiblePageControl.h */,
-				509D7CDB19949E7600D9D168 /* FlexiblePageControl.m */,
 				509D7CDC19949E7600D9D168 /* LoadingIndicatorView.h */,
 				509D7CDD19949E7600D9D168 /* LoadingIndicatorView.m */,
 				509D7CDE19949E7600D9D168 /* PassthroughView.h */,
@@ -404,6 +404,7 @@
 				509D7CF319949E7600D9D168 /* UIImageView+Helpers.m in Sources */,
 				509D7D0819949E7600D9D168 /* ResultContainer.m in Sources */,
 				509D7D0019949E7600D9D168 /* BaseGenericCtrl.m in Sources */,
+				5062F7B019B69D32002F7F15 /* NSObject+ReturnExtension.m in Sources */,
 				509D7D0619949E7600D9D168 /* PassthroughView.m in Sources */,
 				509D7CF519949E7600D9D168 /* UIResponder+Helpers.m in Sources */,
 				509D7CF619949E7600D9D168 /* UIScrollView+Helpers.m in Sources */,
@@ -415,7 +416,6 @@
 				50F18E9219956AB700781A09 /* CTHListModel.m in Sources */,
 				509D7CE819949E7600D9D168 /* NSArray+Helpers.m in Sources */,
 				509D7CFB19949E7600D9D168 /* UIViewController+Helpers.m in Sources */,
-				509D7D0419949E7600D9D168 /* FlexiblePageControl.m in Sources */,
 				509D7CEE19949E7600D9D168 /* NSObject+TwitterHelpers.m in Sources */,
 				509D7D0719949E7600D9D168 /* PlainTableCtrl.m in Sources */,
 				509D7CEA19949E7600D9D168 /* NSMutableArray+Helpers.m in Sources */,

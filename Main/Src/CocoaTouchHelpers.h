@@ -28,6 +28,8 @@
 #import "ExtMutableArray.h"
 #import "ExtTSMutableArray.h"
 #import "CTHListModel.h"
+#import "CTHDeviceHardware.h"
+#import "CTHElasticFlowLayout.h"
 
 //=== categories
 
@@ -54,7 +56,4 @@
 
 #import "UIColor+Helpers.h"
 
-#import "FlexiblePageControl.h"
-
-#import "CTHDeviceHardware.h"
-#import "CTHElasticFlowLayout.h"
+#import "NSObject+ReturnExtension.h"

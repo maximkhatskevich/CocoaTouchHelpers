@@ -11,9 +11,9 @@
 
 //===
 
-static void *StateKey;
-static void *OnStateWillChangeKey;
-static void *OnStateDidChangeKey;
+static void *CTHStateKey;
+static void *CTHOnStateWillChangeKey;
+static void *CTHOnStateDidChangeKey;
 
 //===
 
@@ -30,7 +30,7 @@ static void *OnStateDidChangeKey;
         //===
         
         id state =
-        objc_getAssociatedObject(self, &StateKey);
+        objc_getAssociatedObject(self, &CTHStateKey);
         
         if ([state isKindOfClass:[NSNumber class]])
         {
@@ -64,7 +64,7 @@ static void *OnStateDidChangeKey;
             if (allowChange)
             {
                 objc_setAssociatedObject(self,
-                                         &StateKey,
+                                         &CTHStateKey,
                                          [NSNumber numberWithInteger:newValue],
                                          OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 
@@ -86,26 +86,26 @@ static void *OnStateDidChangeKey;
 
 - (StateWillChangeBlock)onStateWillChange
 {
-    return objc_getAssociatedObject(self, &OnStateWillChangeKey);
+    return objc_getAssociatedObject(self, &CTHOnStateWillChangeKey);
 }
 
 - (void)setOnStateWillChange:(StateWillChangeBlock)newValue
 {
     objc_setAssociatedObject(self,
-                             &OnStateWillChangeKey,
+                             &CTHOnStateWillChangeKey,
                              newValue,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (StateDidChangeBlock)onStateDidChange
 {
-    return objc_getAssociatedObject(self, &OnStateDidChangeKey);
+    return objc_getAssociatedObject(self, &CTHOnStateDidChangeKey);
 }
 
 - (void)setOnStateDidChange:(StateDidChangeBlock)newValue
 {
     objc_setAssociatedObject(self,
-                             &OnStateDidChangeKey,
+                             &CTHOnStateDidChangeKey,
                              newValue,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }

@@ -8,12 +8,15 @@
 
 #import "ResultContainer.h"
 
+#import "NSObject+Helpers.h"
+
 @interface ResultContainer ()
 {
     dispatch_semaphore_t _semaphore;
 }
 
 @property (strong, nonatomic) id content;
+@property (strong, nonatomic) NSError *error;
 
 @end
 
@@ -39,8 +42,52 @@
 
 - (void)configureWithObject:(id)object
 {
-    self.content = object;
+    if ([NSError isClassOfObject:object])
+    {
+        self.error = object;
+    }
+    else if (object)
+    {
+        self.content = object;
+    }
+    
+    //===
+    
     dispatch_semaphore_signal(_semaphore);
+}
+
+#pragma mark - Property accessors
+
+- (NSDictionary *)contentDict
+{
+    NSDictionary *result = nil;
+    
+    //===
+    
+    if ([NSDictionary isClassOfObject:self.content])
+    {
+        result = self.content;
+    }
+    
+    //===
+    
+    return result;
+}
+
+- (NSArray *)contentArray
+{
+    NSArray *result = nil;
+    
+    //===
+    
+    if ([NSArray isClassOfObject:self.content])
+    {
+        result = self.content;
+    }
+    
+    //===
+    
+    return result;
 }
 
 #pragma mark - Custom
@@ -48,6 +95,7 @@
 - (void)reset
 {
     _content = nil;
+    _error = nil;
     _semaphore = dispatch_semaphore_create(0);
 }
 

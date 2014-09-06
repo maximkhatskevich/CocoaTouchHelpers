@@ -13,6 +13,11 @@
 @interface ResultContainer : NSObject
 
 @property (readonly, nonatomic) id content;
+@property (readonly, nonatomic) NSError *error;
+
+// helpers:
+@property (readonly, nonatomic) NSDictionary *contentDict;
+@property (readonly, nonatomic) NSArray *contentArray;
 
 - (void)reset;
 - (void)wait;

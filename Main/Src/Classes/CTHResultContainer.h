@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define resultContainerMacro ResultContainer *result = [ResultContainer new];
+#define resultContainerMacro CTHResultContainer *result = [ResultContainer new];
 
 @interface CTHResultContainer : NSObject
 

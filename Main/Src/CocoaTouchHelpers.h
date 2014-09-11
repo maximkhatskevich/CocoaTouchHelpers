@@ -21,7 +21,7 @@
 #import "LoadingIndicatorView.h"
 #import "PassthroughView.h"
 
-#import "ResultContainer.h"
+#import "CTHResultContainer.h"
 
 #import "BaseGenericCtrl.h"
 

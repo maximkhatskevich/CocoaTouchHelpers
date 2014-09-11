@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Maxim Khatskevich. All rights reserved.
 //
 
-#import "ResultContainer.h"
+#import "CTHResultContainer.h"
 
 #import "NSObject+Helpers.h"
 
-@interface ResultContainer ()
+@interface CTHResultContainer ()
 {
     dispatch_semaphore_t _semaphore;
 }
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation ResultContainer
+@implementation CTHResultContainer
 
 #pragma mark - Overrided methods
 
@@ -88,6 +88,11 @@
     //===
     
     return result;
+}
+
+- (id)errorOrContent
+{
+    return (id)(self.error ?: self.content);
 }
 
 #pragma mark - Custom

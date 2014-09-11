@@ -10,7 +10,7 @@
 
 #define resultContainerMacro ResultContainer *result = [ResultContainer new];
 
-@interface ResultContainer : NSObject
+@interface CTHResultContainer : NSObject
 
 @property (readonly, nonatomic) id content;
 @property (readonly, nonatomic) NSError *error;
@@ -18,6 +18,7 @@
 // helpers:
 @property (readonly, nonatomic) NSDictionary *contentDict;
 @property (readonly, nonatomic) NSArray *contentArray;
+@property (readonly, nonatomic) id errorOrContent;
 
 - (void)reset;
 - (void)wait;

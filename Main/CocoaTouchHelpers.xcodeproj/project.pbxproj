@@ -40,7 +40,7 @@
 		509D7D0519949E7600D9D168 /* LoadingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CDD19949E7600D9D168 /* LoadingIndicatorView.m */; };
 		509D7D0619949E7600D9D168 /* PassthroughView.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CDF19949E7600D9D168 /* PassthroughView.m */; };
 		509D7D0719949E7600D9D168 /* PlainTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CE119949E7600D9D168 /* PlainTableCtrl.m */; };
-		509D7D0819949E7600D9D168 /* ResultContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CE319949E7600D9D168 /* ResultContainer.m */; };
+		509D7D0819949E7600D9D168 /* CTHResultContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CE319949E7600D9D168 /* CTHResultContainer.m */; };
 		50DABC9619B0C71B0006E50C /* ExtTSMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DABC9519B0C71B0006E50C /* ExtTSMutableArray.m */; };
 		50F18E9219956AB700781A09 /* CTHListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F18E9119956AB700781A09 /* CTHListModel.m */; };
 		7166FCC2F0644F3489648D8B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DDD03A0F5704286BDC8410F /* libPods.a */; };
@@ -129,8 +129,8 @@
 		509D7CDF19949E7600D9D168 /* PassthroughView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassthroughView.m; sourceTree = "<group>"; };
 		509D7CE019949E7600D9D168 /* PlainTableCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlainTableCtrl.h; sourceTree = "<group>"; };
 		509D7CE119949E7600D9D168 /* PlainTableCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlainTableCtrl.m; sourceTree = "<group>"; };
-		509D7CE219949E7600D9D168 /* ResultContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultContainer.h; sourceTree = "<group>"; };
-		509D7CE319949E7600D9D168 /* ResultContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultContainer.m; sourceTree = "<group>"; };
+		509D7CE219949E7600D9D168 /* CTHResultContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHResultContainer.h; sourceTree = "<group>"; };
+		509D7CE319949E7600D9D168 /* CTHResultContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHResultContainer.m; sourceTree = "<group>"; };
 		509D7CE419949E7600D9D168 /* CocoaTouchHelpers-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CocoaTouchHelpers-Prefix.pch"; sourceTree = "<group>"; };
 		509D7CE519949E7600D9D168 /* CocoaTouchHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaTouchHelpers.h; sourceTree = "<group>"; };
 		509D7CE619949E7600D9D168 /* GlobalBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalBase.h; sourceTree = "<group>"; };
@@ -280,8 +280,8 @@
 				509D7CDF19949E7600D9D168 /* PassthroughView.m */,
 				509D7CE019949E7600D9D168 /* PlainTableCtrl.h */,
 				509D7CE119949E7600D9D168 /* PlainTableCtrl.m */,
-				509D7CE219949E7600D9D168 /* ResultContainer.h */,
-				509D7CE319949E7600D9D168 /* ResultContainer.m */,
+				509D7CE219949E7600D9D168 /* CTHResultContainer.h */,
+				509D7CE319949E7600D9D168 /* CTHResultContainer.m */,
 				50F18E9019956AB700781A09 /* CTHListModel.h */,
 				50F18E9119956AB700781A09 /* CTHListModel.m */,
 				5011398119A2AA2300D21BDF /* CTHDeviceHardware.h */,
@@ -402,7 +402,7 @@
 				509D7CF719949E7600D9D168 /* UIStoryboard+Helpers.m in Sources */,
 				509D7CE919949E7600D9D168 /* NSDate+Helpers.m in Sources */,
 				509D7CF319949E7600D9D168 /* UIImageView+Helpers.m in Sources */,
-				509D7D0819949E7600D9D168 /* ResultContainer.m in Sources */,
+				509D7D0819949E7600D9D168 /* CTHResultContainer.m in Sources */,
 				509D7D0019949E7600D9D168 /* BaseGenericCtrl.m in Sources */,
 				5062F7B019B69D32002F7F15 /* NSObject+ReturnExtension.m in Sources */,
 				509D7D0619949E7600D9D168 /* PassthroughView.m in Sources */,

@@ -30,6 +30,7 @@
 #import "CTHListModel.h"
 #import "CTHDeviceHardware.h"
 #import "CTHElasticFlowLayout.h"
+#import "CTHCollectionCtrl.h"
 
 //=== categories
 

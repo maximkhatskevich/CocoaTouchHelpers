@@ -43,6 +43,7 @@
 		509D7D0819949E7600D9D168 /* CTHResultContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CE319949E7600D9D168 /* CTHResultContainer.m */; };
 		50DABC9619B0C71B0006E50C /* ExtTSMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DABC9519B0C71B0006E50C /* ExtTSMutableArray.m */; };
 		50F18E9219956AB700781A09 /* CTHListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F18E9119956AB700781A09 /* CTHListModel.m */; };
+		50FC170119C51EDC004C9010 /* CTHCollectionCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 50FC170019C51EDC004C9010 /* CTHCollectionCtrl.m */; };
 		7166FCC2F0644F3489648D8B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DDD03A0F5704286BDC8410F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +140,8 @@
 		50DABC9519B0C71B0006E50C /* ExtTSMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtTSMutableArray.m; sourceTree = "<group>"; };
 		50F18E9019956AB700781A09 /* CTHListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHListModel.h; sourceTree = "<group>"; };
 		50F18E9119956AB700781A09 /* CTHListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHListModel.m; sourceTree = "<group>"; };
+		50FC16FF19C51EDC004C9010 /* CTHCollectionCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHCollectionCtrl.h; sourceTree = "<group>"; };
+		50FC170019C51EDC004C9010 /* CTHCollectionCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHCollectionCtrl.m; sourceTree = "<group>"; };
 		8DDD03A0F5704286BDC8410F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B74E2A572AB64D68BCE1219F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -288,6 +291,8 @@
 				5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */,
 				5009CA7F19AE8951005FE34F /* CTHElasticFlowLayout.h */,
 				5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */,
+				50FC16FF19C51EDC004C9010 /* CTHCollectionCtrl.h */,
+				50FC170019C51EDC004C9010 /* CTHCollectionCtrl.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 				509D7CFA19949E7600D9D168 /* UIView+Helpers.m in Sources */,
 				509D7CF419949E7600D9D168 /* UINavigationController+Helpers.m in Sources */,
 				509D7CF119949E7600D9D168 /* UIColor+Helpers.m in Sources */,
+				50FC170119C51EDC004C9010 /* CTHCollectionCtrl.m in Sources */,
 				509D7CF919949E7600D9D168 /* UIView+FontHelpers.m in Sources */,
 				509D7D0119949E7600D9D168 /* CoreDataCtrl.m in Sources */,
 				5011398319A2AA2300D21BDF /* CTHDeviceHardware.m in Sources */,

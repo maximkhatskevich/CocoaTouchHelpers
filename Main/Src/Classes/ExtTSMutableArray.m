@@ -554,13 +554,16 @@
         
         //===
         
-        if (!targetWrapper.selected || multiSelection)
+        if (targetWrapper) // index MUST be valid !!!
         {
-            [self doResetSelection];
-            
-            //===
-            
-            [self doAddObjectAtIndexToSelection:index];
+            if (!targetWrapper.selected || multiSelection)
+            {
+                [self doResetSelection];
+                
+                //===
+                
+                [self doAddObjectAtIndexToSelection:index];
+            }
         }
     });
 }

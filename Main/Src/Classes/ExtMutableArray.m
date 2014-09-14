@@ -287,7 +287,7 @@
     return self.selection.firstObject;
 }
 
-- (NSUInteger)indexOfSelectedObject
+- (NSUInteger)selectedObjectIndex
 {
     NSUInteger result = NSNotFound;
     
@@ -309,6 +309,29 @@
     //===
     
     return result;
+}
+
+- (NSIndexSet *)selectedObjectsIndexSet
+{
+    NSMutableIndexSet *result = [NSMutableIndexSet indexSet];
+    
+    //===
+    
+    NSArray *storeCopy = [NSArray arrayWithArray:_store];
+    
+    for (NSUInteger i = 0; i < storeCopy.count; i++)
+    {
+        ArrayItemWrapper *wrapper = storeCopy[i];
+        
+        if (wrapper.selected)
+        {
+            [result addIndex:i];
+        }
+    }
+    
+    //===
+    
+    return [[NSIndexSet alloc] initWithIndexSet:result];
 }
 
 #pragma mark - Custom
@@ -360,7 +383,7 @@
 
 #pragma mark - Add to selection
 
-- (void)addObjectToSelection:(id)object
+- (void)addToSelectionObject:(id)object
 {
     if (object)
     {
@@ -398,7 +421,7 @@
     }
 }
 
-- (void)addObjectAtIndexToSelection:(NSUInteger)index
+- (void)addToSelectionObjectAtIndex:(NSUInteger)index
 {
     ArrayItemWrapper *targetWrapper = [_store safeObjectAtIndex:index];
     
@@ -416,13 +439,13 @@
     }
 }
 
-- (void)addObjectsToSelection:(NSArray *)objectList
+- (void)addToSelectionObjects:(NSArray *)objectList
 {
     if (objectList.count)
     {
         for (id object in objectList)
         {
-            [self addObjectToSelection:object];
+            [self addToSelectionObject:object];
         }
     }
     else
@@ -433,7 +456,7 @@
 
 #pragma mark - Set selection
 
-- (void)setObjectSelected:(id)object
+- (void)setSelectedObject:(id)object
 {
     NSArray *selection = self.selection;
     
@@ -463,11 +486,11 @@
         
         //===
         
-        [self addObjectToSelection:object];
+        [self addToSelectionObject:object];
     }
 }
 
-- (void)setObjectAtIndexSelected:(NSUInteger)index
+- (void)setSelectedObjectAtIndex:(NSUInteger)index
 {
     NSArray *selection = self.selection;
     
@@ -478,17 +501,20 @@
     
     //===
     
-    if (!targetWrapper.selected || multiSelection)
+    if (targetWrapper) // index MUST be valid !!!
     {
-        [self resetSelection];
-        
-        //===
-        
-        [self addObjectAtIndexToSelection:index];
+        if (!targetWrapper.selected || multiSelection)
+        {
+            [self resetSelection];
+            
+            //===
+            
+            [self addToSelectionObjectAtIndex:index];
+        }
     }
 }
 
-- (void)setObjectsSelected:(NSArray *)objectList
+- (void)setSelectedObjects:(NSArray *)objectList
 {
     NSArray *selection = self.selection;
     
@@ -525,7 +551,7 @@
             
             for (id object in objectList)
             {
-                [self addObjectToSelection:object];
+                [self addToSelectionObject:object];
             }
         }
     }
@@ -537,7 +563,7 @@
 
 #pragma mark - Remove from selection
 
-- (void)removeObjectFromSelection:(id)object
+- (void)removeFromSelectionObject:(id)object
 {
     if (object)
     {
@@ -570,7 +596,7 @@
     }
 }
 
-- (void)removeObjectAtIndexFromSelection:(NSUInteger)index
+- (void)removeFromSelectionObjectAtIndex:(NSUInteger)index
 {
     ArrayItemWrapper *targetWrapper = [_store safeObjectAtIndex:index];
     
@@ -587,11 +613,11 @@
     }
 }
 
-- (void)removeObjectsFromSelection:(NSArray *)objectList
+- (void)removeFromSelectionObjects:(NSArray *)objectList
 {
     for (id object in objectList)
     {
-        [self removeObjectFromSelection:object];
+        [self removeFromSelectionObject:object];
     }
 }
 

@@ -30,22 +30,24 @@ typedef void(^ExtArrayNotificationBlock)(id observer, ExtMutableArray *array, id
 @property (readonly, nonatomic) NSArray *selection;
 @property (readonly, nonatomic) id selectedObject;
 
-// returns index of FIRST selected object, if any
-@property (readonly) NSUInteger indexOfSelectedObject;
+// indesxes of all selected objects:
+@property (readonly) NSIndexSet *selectedObjectsIndexSet;
+// index of FIRST selected object, if any:
+@property (readonly) NSUInteger selectedObjectIndex;
 
 @property (nonatomic, copy) ExtArrayEqualityCheck onEqualityCheck;
 
-- (void)addObjectToSelection:(id)object;
-- (void)addObjectAtIndexToSelection:(NSUInteger)index;
-- (void)addObjectsToSelection:(NSArray *)objectList;
+- (void)addToSelectionObject:(id)object;
+- (void)addToSelectionObjectAtIndex:(NSUInteger)index;
+- (void)addToSelectionObjects:(NSArray *)objectList;
 
-- (void)setObjectSelected:(id)object;
-- (void)setObjectAtIndexSelected:(NSUInteger)index;
-- (void)setObjectsSelected:(NSArray *)objectList;
+- (void)setSelectedObject:(id)object;
+- (void)setSelectedObjectAtIndex:(NSUInteger)index;
+- (void)setSelectedObjects:(NSArray *)objectList;
 
-- (void)removeObjectFromSelection:(id)object;
-- (void)removeObjectAtIndexFromSelection:(NSUInteger)index;
-- (void)removeObjectsFromSelection:(NSArray *)objectList;
+- (void)removeFromSelectionObject:(id)object;
+- (void)removeFromSelectionObjectAtIndex:(NSUInteger)index;
+- (void)removeFromSelectionObjects:(NSArray *)objectList;
 
 - (void)resetSelection;
 

@@ -39,7 +39,7 @@ typedef BOOL(^CTHCollectionCtrlNeedMoreItems)(CTHCollectionCtrl *collectionCtrl,
 @property (copy, nonatomic) CTHCollectionCtrlSelectItem onDidDeselectItem;
 
 // pagination support:
-@property NSUInteger moreItemsOffset;
+@property NSUInteger preloadOffset;
 @property (copy, nonatomic) CTHCollectionCtrlNeedMoreItems onNeedMoreItems;
 
 - (void)resetContent;

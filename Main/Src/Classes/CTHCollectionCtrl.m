@@ -179,6 +179,7 @@
     //===
     
     if (targetSectionItemList.moreItemsAvailalbe &&
+        ((targetSectionItemList.count - indexPath.item) <= self.preloadOffset) &&
         self.onNeedMoreItems)
     {
         self.onNeedMoreItems(self, indexPath.section, targetSectionItemList);

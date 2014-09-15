@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "GlobalBase.h"
+
 //===
 
 #define CTHCollectionSectionClass ExtMutableArray
@@ -20,6 +22,9 @@
 typedef BOOL(^CTHCollectionCtrlSelectItem)(CTHCollectionCtrl *collectionCtrl,
                                            NSIndexPath *indexPath,
                                            id targetItem);
+typedef BOOL(^CTHCollectionCtrlNeedMoreItems)(CTHCollectionCtrl *collectionCtrl,
+                                              NSUInteger sectionNumber,
+                                              CTHCollectionSectionClass *sectionItemList);
 
 //===
 
@@ -29,8 +34,13 @@ typedef BOOL(^CTHCollectionCtrlSelectItem)(CTHCollectionCtrl *collectionCtrl,
 @property(getter = isMultiselectEnabled) BOOL multiselectEnabled;
 
 @property (copy, nonatomic) NSString *defaultCellIdentifier;
+
 @property (copy, nonatomic) CTHCollectionCtrlSelectItem onDidSelectItem;
 @property (copy, nonatomic) CTHCollectionCtrlSelectItem onDidDeselectItem;
+
+// pagination support:
+@property NSUInteger moreItemsOffset;
+@property (copy, nonatomic) CTHCollectionCtrlNeedMoreItems onNeedMoreItems;
 
 - (void)resetContent;
 

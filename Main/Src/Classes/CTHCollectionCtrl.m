@@ -39,6 +39,7 @@
         
         self.multiselectEnabled = NO;
         self.defaultCellIdentifier = @"Cell";
+        self.moreItemsOffset = 10;
     }
     return self;
 }
@@ -174,6 +175,14 @@
     
     [cell configureWithObject:
      [targetSectionItemList safeObjectAtIndex:indexPath.item]];
+    
+    //===
+    
+    if (targetSectionItemList.moreItemsAvailalbe &&
+        self.onNeedMoreItems)
+    {
+        self.onNeedMoreItems(self, indexPath.section, targetSectionItemList);
+    }
     
     //===
     

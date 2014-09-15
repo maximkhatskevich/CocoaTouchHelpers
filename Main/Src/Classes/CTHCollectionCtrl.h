@@ -49,4 +49,8 @@ typedef BOOL(^CTHCollectionCtrlNeedMoreItems)(CTHCollectionCtrl *collectionCtrl,
 - (NSString *)cellReuseIdentifierForIndexPath:(NSIndexPath *)indexPath;
 - (CTHCollectionSectionClass *)itemListForSectionAtIndex:(NSUInteger)sectionIndex;
 
+- (void)setOnDidSelectItem:(CTHCollectionCtrlSelectItem)onDidSelectItem;
+- (void)setOnDidDeselectItem:(CTHCollectionCtrlSelectItem)onDidDeselectItem;
+- (void)setOnNeedMoreItems:(CTHCollectionCtrlNeedMoreItems)onNeedMoreItems;
+
 @end

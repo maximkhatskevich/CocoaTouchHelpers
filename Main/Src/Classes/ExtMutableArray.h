@@ -27,6 +27,9 @@ typedef void(^ExtArrayNotificationBlock)(id observer, ExtMutableArray *array, id
 
 @interface ExtMutableArray : NSMutableArray
 
+// pagination support:
+@property NSUInteger totalCount;
+
 @property (readonly, nonatomic) NSArray *selection;
 @property (readonly, nonatomic) id selectedObject;
 

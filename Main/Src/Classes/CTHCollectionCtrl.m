@@ -49,7 +49,12 @@
     
     //===
     
-    if ([NSArray isClassOfObject:object])
+    if ([UICollectionView isClassOfObject:object])
+    {
+        ((UICollectionView *)object).dataSource = self;
+        ((UICollectionView *)object).delegate = self;
+    }
+    else if ([NSArray isClassOfObject:object])
     {
         for (id item in object)
         {
@@ -96,7 +101,16 @@
     
     if ([CTHCollectionSectionClass isClassOfObject:sectionItemList])
     {
-        result = sectionItemList.count;
+        // with pagination support:
+        
+        if (sectionItemList.totalCount > sectionItemList.count)
+        {
+            result = sectionItemList.totalCount;
+        }
+        else
+        {
+            result = sectionItemList.count;
+        }
     }
     
     //===

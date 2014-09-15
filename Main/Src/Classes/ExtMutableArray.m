@@ -348,6 +348,8 @@
         
         return [firstObject isEqual:secondObject];
     };
+    
+    _totalCount = 0;
 }
 
 - (void)didChangeSelectionWithObject:(id)targetObject changeType:(EMAChangeType)changeType

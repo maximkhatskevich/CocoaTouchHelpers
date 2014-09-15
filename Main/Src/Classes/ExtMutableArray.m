@@ -261,6 +261,11 @@
 
 #pragma mark - Property accessors
 
+- (BOOL)moreItemsAvailalbe
+{
+    return (self.totalCount > self.count);
+}
+
 - (NSArray *)selection
 {
     NSMutableArray *result = [NSMutableArray array];

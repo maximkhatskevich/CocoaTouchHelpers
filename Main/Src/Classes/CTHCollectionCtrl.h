@@ -19,10 +19,10 @@
 @class CTHCollectionCtrl;
 @class ExtMutableArray;
 
-typedef BOOL(^CTHCollectionCtrlSelectItem)(CTHCollectionCtrl *collectionCtrl,
+typedef void(^CTHCollectionCtrlSelectItem)(CTHCollectionCtrl *collectionCtrl,
                                            NSIndexPath *indexPath,
                                            id targetItem);
-typedef BOOL(^CTHCollectionCtrlNeedMoreItems)(CTHCollectionCtrl *collectionCtrl,
+typedef void(^CTHCollectionCtrlNeedMoreItems)(CTHCollectionCtrl *collectionCtrl,
                                               NSUInteger sectionNumber,
                                               CTHCollectionSectionClass *sectionItemList);
 

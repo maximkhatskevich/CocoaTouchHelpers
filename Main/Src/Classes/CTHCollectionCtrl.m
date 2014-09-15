@@ -39,7 +39,7 @@
         
         self.multiselectEnabled = NO;
         self.defaultCellIdentifier = @"Cell";
-        self.moreItemsOffset = 10;
+        self.preloadOffset = 10;
     }
     return self;
 }

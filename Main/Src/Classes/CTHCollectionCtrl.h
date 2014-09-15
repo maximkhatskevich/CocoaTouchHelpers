@@ -19,6 +19,10 @@
 @class CTHCollectionCtrl;
 @class ExtMutableArray;
 
+typedef void(^CTHCollectionCtrlConfigureCell)(CTHCollectionCtrl *collectionCtrl,
+                                              NSIndexPath *indexPath,
+                                              id targetItem,
+                                              UICollectionViewCell *targetCell);
 typedef void(^CTHCollectionCtrlSelectItem)(CTHCollectionCtrl *collectionCtrl,
                                            NSIndexPath *indexPath,
                                            id targetItem);
@@ -35,6 +39,7 @@ typedef void(^CTHCollectionCtrlNeedMoreItems)(CTHCollectionCtrl *collectionCtrl,
 
 @property (copy, nonatomic) NSString *defaultCellIdentifier;
 
+@property (copy, nonatomic) CTHCollectionCtrlConfigureCell onConfigureCell;
 @property (copy, nonatomic) CTHCollectionCtrlSelectItem onDidSelectItem;
 @property (copy, nonatomic) CTHCollectionCtrlSelectItem onDidDeselectItem;
 
@@ -49,6 +54,7 @@ typedef void(^CTHCollectionCtrlNeedMoreItems)(CTHCollectionCtrl *collectionCtrl,
 - (NSString *)cellReuseIdentifierForIndexPath:(NSIndexPath *)indexPath;
 - (CTHCollectionSectionClass *)itemListForSectionAtIndex:(NSUInteger)sectionIndex;
 
+- (void)setOnConfigureCell:(CTHCollectionCtrlConfigureCell)onConfigureCell;
 - (void)setOnDidSelectItem:(CTHCollectionCtrlSelectItem)onDidSelectItem;
 - (void)setOnDidDeselectItem:(CTHCollectionCtrlSelectItem)onDidDeselectItem;
 - (void)setOnNeedMoreItems:(CTHCollectionCtrlNeedMoreItems)onNeedMoreItems;

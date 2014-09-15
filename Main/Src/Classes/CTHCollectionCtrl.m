@@ -173,8 +173,20 @@
     CTHCollectionSectionClass *targetSectionItemList =
     [self itemListForSectionAtIndex:indexPath.section];
     
-    [cell configureWithObject:
-     [targetSectionItemList safeObjectAtIndex:indexPath.item]];
+    id targetItem = [targetSectionItemList safeObjectAtIndex:indexPath.item];
+    
+    if (self.onConfigureCell)
+    {
+        self.onConfigureCell(self,
+                             indexPath,
+                             targetItem,
+                             cell);
+    }
+    else
+    {
+        // default fallback:
+        [cell configureWithObject:targetItem];
+    }
     
     //===
     

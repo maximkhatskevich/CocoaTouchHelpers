@@ -55,6 +55,10 @@
         ((UICollectionView *)object).dataSource = self;
         ((UICollectionView *)object).delegate = self;
     }
+    else if ([CTHCollectionSectionClass isClassOfObject:object])
+    {
+        [self addSection:object];
+    }
     else if ([NSArray isClassOfObject:object])
     {
         for (id item in object)
@@ -64,10 +68,6 @@
                 [self addSection:item];
             }
         }
-    }
-    else if ([CTHCollectionSectionClass isClassOfObject:object])
-    {
-        [self addSection:object];
     }
 }
 

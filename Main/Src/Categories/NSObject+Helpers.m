@@ -70,6 +70,11 @@
     // any item selection events should be processed here
 }
 
+- (void)syncWithData
+{
+    // any data model related updates shuld be done here
+}
+
 - (NSString *)stringValueForKey:(NSString *)key
 {
     NSString *result = @"N/A";

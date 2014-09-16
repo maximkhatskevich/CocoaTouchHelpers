@@ -20,6 +20,10 @@
 
 - (void)applyItem:(id)item; // it means this item has been selected, has been made "current"
 
+// it is supposed to be used to apply any data model changes
+// to receiver, usually it is for updating UI inside UIViewController or UIView
+- (void)syncWithData;
+
 - (NSString *)stringValueForKey:(NSString *)key;
 
 - (NSDictionary *)dictFromJSONForKey:(NSString *)key;

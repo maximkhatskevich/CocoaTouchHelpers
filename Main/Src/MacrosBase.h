@@ -123,7 +123,7 @@ isIntValueInRangeBetweenMinAndMax(int value, int min, int max)
 
 #define mainInfoDict [NSBundle mainBundle].infoDictionary
 
-#define keyPath(targetSelector) NSStringFromSelector(@selector(targetSelector))
+#define selectorStr(targetSelector) NSStringFromSelector(@selector(targetSelector))
 
 //===
 

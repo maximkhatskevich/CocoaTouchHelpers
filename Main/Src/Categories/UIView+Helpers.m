@@ -593,6 +593,12 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
 {
     BOOL shouldProceed;
     
+    if (ifNeeded && self.hidden && (self.alpha == 1.0))
+    {
+        // in case alpha is 1.0 but self is hidden
+        self.alpha = 0.0;
+    }
+    
     if (ifNeeded)
     {
         shouldProceed = (self.alpha < 1.0);

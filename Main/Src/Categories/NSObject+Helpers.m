@@ -9,10 +9,41 @@
 #import "NSObject+Helpers.h"
 
 #import "MacrosBase.h"
+#import <objc/runtime.h>
 
 @implementation NSObject (Helpers)
 
-#pragma mark - Helpers
+#pragma mark - Property accessors
+
+- (NSArray *)allPropertyNames
+{
+    // http://stackoverflow.com/a/11774276
+    
+    //===
+    
+    NSMutableArray *result = [NSMutableArray array];
+    
+    //===
+    
+    unsigned count;
+    objc_property_t *properties = class_copyPropertyList([self class], &count);
+    
+    unsigned i;
+    for (i = 0; i < count; i++)
+    {
+        objc_property_t property = properties[i];
+        NSString *name = [NSString stringWithUTF8String:property_getName(property)];
+        [result addObject:name];
+    }
+    
+    free(properties);
+    
+    //===
+    
+    return result;
+}
+
+#pragma mark - Custom
 
 + (id)objectWithProperties:(NSDictionary *)properties
 {

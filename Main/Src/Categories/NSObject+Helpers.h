@@ -10,6 +10,8 @@
 
 @interface NSObject (Helpers)
 
+@property (readonly, nonatomic) NSArray *allPropertyNames;
+
 + (id)objectWithProperties:(NSDictionary *)properties;
 - (void)configureWithProperties:(NSDictionary *)properties;
 

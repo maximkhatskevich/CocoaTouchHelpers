@@ -10,6 +10,7 @@
 		5009CA8119AE8951005FE34F /* CTHElasticFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */; };
 		5011398319A2AA2300D21BDF /* CTHDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */; };
 		5062F7B019B69D32002F7F15 /* NSObject+ReturnExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5062F7AF19B69D32002F7F15 /* NSObject+ReturnExtension.m */; };
+		507C3E1C19D3326F00E0D25A /* CTHPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C3E1B19D3326F00E0D25A /* CTHPair.m */; };
 		509D7C7919949E0500D9D168 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509D7C7819949E0500D9D168 /* Foundation.framework */; };
 		509D7CE819949E7600D9D168 /* NSArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CA119949E7600D9D168 /* NSArray+Helpers.m */; };
 		509D7CE919949E7600D9D168 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CA319949E7600D9D168 /* NSDate+Helpers.m */; };
@@ -66,6 +67,8 @@
 		5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHDeviceHardware.m; sourceTree = "<group>"; };
 		5062F7AE19B69D32002F7F15 /* NSObject+ReturnExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ReturnExtension.h"; sourceTree = "<group>"; };
 		5062F7AF19B69D32002F7F15 /* NSObject+ReturnExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ReturnExtension.m"; sourceTree = "<group>"; };
+		507C3E1A19D3326F00E0D25A /* CTHPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHPair.h; sourceTree = "<group>"; };
+		507C3E1B19D3326F00E0D25A /* CTHPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHPair.m; sourceTree = "<group>"; };
 		509D7C7519949E0500D9D168 /* libCocoaTouchHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaTouchHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		509D7C7819949E0500D9D168 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		509D7C8619949E0500D9D168 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -293,6 +296,8 @@
 				5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */,
 				50FC16FF19C51EDC004C9010 /* CTHCollectionCtrl.h */,
 				50FC170019C51EDC004C9010 /* CTHCollectionCtrl.m */,
+				507C3E1A19D3326F00E0D25A /* CTHPair.h */,
+				507C3E1B19D3326F00E0D25A /* CTHPair.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				507C3E1C19D3326F00E0D25A /* CTHPair.m in Sources */,
 				509D7CFE19949E7600D9D168 /* ArrayItemWrapper.m in Sources */,
 				5009CA8119AE8951005FE34F /* CTHElasticFlowLayout.m in Sources */,
 				509D7CFD19949E7600D9D168 /* AdvancedList.m in Sources */,

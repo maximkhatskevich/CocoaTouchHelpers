@@ -12,10 +12,14 @@
 
 @class ExtMutableArray;
 
+//===
+
 typedef enum {
     kAddEMAChangeType,
     kRemoveEMAChangeType
 } EMAChangeType;
+
+//===
 
 typedef BOOL(^ExtArrayEqualityCheck)(id firstObject, id secondObject);
 typedef BOOL(^ExtArrayWillChangeSelection)(ExtMutableArray *array, id targetObject, EMAChangeType changeType);

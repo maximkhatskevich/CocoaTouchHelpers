@@ -29,11 +29,13 @@
     
     if (self.isSocialFrameworkAvailable)
     {
+        // iOS 6.0+
         result = [SLComposeViewController
                   isAvailableForServiceType:SLServiceTypeTwitter];
     }
     else
     {
+        // prior iOS 6.0
         result = [TWTweetComposeViewController canSendTweet];
     }
     

@@ -10,8 +10,8 @@
 
 @interface CTHPair : NSObject
 
-@property (strong, nonatomic) id key;
-@property (strong, nonatomic) id value;
+@property (strong, nonatomic) id key; // mainValue
+@property (strong, nonatomic) id value; // associatedValue
 
 + (instancetype)pairWithKey:(id)key value:(id)value;
 

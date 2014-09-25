@@ -31,6 +31,7 @@
 #import "CTHDeviceHardware.h"
 #import "CTHElasticFlowLayout.h"
 #import "CTHCollectionCtrl.h"
+#import "CTHPair.h"
 
 //=== categories
 

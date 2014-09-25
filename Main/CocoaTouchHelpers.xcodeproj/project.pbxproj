@@ -11,7 +11,7 @@
 		5011398319A2AA2300D21BDF /* CTHDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */; };
 		5062F7B019B69D32002F7F15 /* NSObject+ReturnExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5062F7AF19B69D32002F7F15 /* NSObject+ReturnExtension.m */; };
 		507C3E1C19D3326F00E0D25A /* CTHPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C3E1B19D3326F00E0D25A /* CTHPair.m */; };
-		507C3E1F19D3DAB900E0D25A /* ExtMutableArray+CTHPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C3E1E19D3DAB900E0D25A /* ExtMutableArray+CTHPair.m */; };
+		507C3E1F19D3DAB900E0D25A /* NSArray+CTHPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C3E1E19D3DAB900E0D25A /* NSArray+CTHPair.m */; };
 		509D7C7919949E0500D9D168 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509D7C7819949E0500D9D168 /* Foundation.framework */; };
 		509D7CE819949E7600D9D168 /* NSArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CA119949E7600D9D168 /* NSArray+Helpers.m */; };
 		509D7CE919949E7600D9D168 /* NSDate+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CA319949E7600D9D168 /* NSDate+Helpers.m */; };
@@ -70,8 +70,8 @@
 		5062F7AF19B69D32002F7F15 /* NSObject+ReturnExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ReturnExtension.m"; sourceTree = "<group>"; };
 		507C3E1A19D3326F00E0D25A /* CTHPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHPair.h; sourceTree = "<group>"; };
 		507C3E1B19D3326F00E0D25A /* CTHPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHPair.m; sourceTree = "<group>"; };
-		507C3E1D19D3DAB900E0D25A /* ExtMutableArray+CTHPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ExtMutableArray+CTHPair.h"; sourceTree = "<group>"; };
-		507C3E1E19D3DAB900E0D25A /* ExtMutableArray+CTHPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ExtMutableArray+CTHPair.m"; sourceTree = "<group>"; };
+		507C3E1D19D3DAB900E0D25A /* NSArray+CTHPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CTHPair.h"; sourceTree = "<group>"; };
+		507C3E1E19D3DAB900E0D25A /* NSArray+CTHPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CTHPair.m"; sourceTree = "<group>"; };
 		509D7C7519949E0500D9D168 /* libCocoaTouchHelpers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaTouchHelpers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		509D7C7819949E0500D9D168 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		509D7C8619949E0500D9D168 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -253,8 +253,8 @@
 				509D7CCA19949E7600D9D168 /* UIViewController+KeyboardHelpers.m */,
 				5062F7AE19B69D32002F7F15 /* NSObject+ReturnExtension.h */,
 				5062F7AF19B69D32002F7F15 /* NSObject+ReturnExtension.m */,
-				507C3E1D19D3DAB900E0D25A /* ExtMutableArray+CTHPair.h */,
-				507C3E1E19D3DAB900E0D25A /* ExtMutableArray+CTHPair.m */,
+				507C3E1D19D3DAB900E0D25A /* NSArray+CTHPair.h */,
+				507C3E1E19D3DAB900E0D25A /* NSArray+CTHPair.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -426,7 +426,7 @@
 				509D7CF519949E7600D9D168 /* UIResponder+Helpers.m in Sources */,
 				509D7CF619949E7600D9D168 /* UIScrollView+Helpers.m in Sources */,
 				509D7CFC19949E7600D9D168 /* UIViewController+KeyboardHelpers.m in Sources */,
-				507C3E1F19D3DAB900E0D25A /* ExtMutableArray+CTHPair.m in Sources */,
+				507C3E1F19D3DAB900E0D25A /* NSArray+CTHPair.m in Sources */,
 				509D7CFF19949E7600D9D168 /* Base64.m in Sources */,
 				509D7CF819949E7600D9D168 /* UITableView+Helpers.m in Sources */,
 				509D7D0519949E7600D9D168 /* LoadingIndicatorView.m in Sources */,

@@ -1,17 +1,17 @@
 //
-//  ExtMutableArray+CTHPair.m
+//  NSArray+CTHPair.m
 //  CocoaTouchHelpers
 //
 //  Created by Maxim Khatskevich on 25/09/14.
 //  Copyright (c) 2014 Maxim Khatskevich. All rights reserved.
 //
 
-#import "ExtMutableArray+CTHPair.h"
+#import "NSArray+CTHPair.h"
 
 #import "CTHPair.h"
 #import "NSObject+Helpers.h"
 
-@implementation ExtMutableArray (CTHPair)
+@implementation NSArray (CTHPair)
 
 #pragma mark - Custom
 

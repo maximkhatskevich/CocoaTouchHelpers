@@ -625,6 +625,13 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
          }
          completion:completionBlock];
     }
+    else
+    {
+        if (completionBlock)
+        {
+            completionBlock(YES);
+        }
+    }
 }
 
 //- (void)dimToAlpha:(CGFloat)targetAlpha
@@ -718,6 +725,13 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
                  completionBlock(finished);
              }
          }];
+    }
+    else
+    {
+        if (completionBlock)
+        {
+            completionBlock(YES);
+        }
     }
 }
 

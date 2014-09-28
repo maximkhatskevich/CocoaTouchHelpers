@@ -12,5 +12,6 @@
 
 - (void)safeAddObject:(id)object;
 - (void)safeAddUniqueObject:(id)object;
+- (void)addUniqueObjectsFromArray:(NSArray *)objects;
 
 @end

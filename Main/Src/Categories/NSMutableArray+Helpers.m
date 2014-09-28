@@ -27,4 +27,12 @@
     }
 }
 
+- (void)addUniqueObjectsFromArray:(NSArray *)objects
+{
+    for (id obj in objects)
+    {
+        [self safeAddUniqueObject:obj];
+    }
+}
+
 @end

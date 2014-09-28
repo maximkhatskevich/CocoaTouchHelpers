@@ -165,6 +165,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5050265519D882CB00C8FE3B /* Experiment */ = {
+			isa = PBXGroup;
+			children = (
+				50DABC9419B0C71B0006E50C /* ExtTSMutableArray.h */,
+				50DABC9519B0C71B0006E50C /* ExtTSMutableArray.m */,
+			);
+			name = Experiment;
+			sourceTree = "<group>";
+		};
+		5050265619D882E300C8FE3B /* DEPRECATED */ = {
+			isa = PBXGroup;
+			children = (
+				509D7CCC19949E7600D9D168 /* AdvancedList.h */,
+				509D7CCD19949E7600D9D168 /* AdvancedList.m */,
+				509D7CE019949E7600D9D168 /* PlainTableCtrl.h */,
+				509D7CE119949E7600D9D168 /* PlainTableCtrl.m */,
+			);
+			name = DEPRECATED;
+			sourceTree = "<group>";
+		};
 		509D7C6C19949E0500D9D168 = {
 			isa = PBXGroup;
 			children = (
@@ -271,8 +291,8 @@
 		509D7CCB19949E7600D9D168 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				509D7CCC19949E7600D9D168 /* AdvancedList.h */,
-				509D7CCD19949E7600D9D168 /* AdvancedList.m */,
+				5050265519D882CB00C8FE3B /* Experiment */,
+				5050265619D882E300C8FE3B /* DEPRECATED */,
 				509D7CCE19949E7600D9D168 /* ArrayItemWrapper.h */,
 				509D7CCF19949E7600D9D168 /* ArrayItemWrapper.m */,
 				509D7CD019949E7600D9D168 /* Base64.h */,
@@ -283,14 +303,10 @@
 				509D7CD519949E7600D9D168 /* CoreDataCtrl.m */,
 				509D7CD819949E7600D9D168 /* ExtMutableArray.h */,
 				509D7CD919949E7600D9D168 /* ExtMutableArray.m */,
-				50DABC9419B0C71B0006E50C /* ExtTSMutableArray.h */,
-				50DABC9519B0C71B0006E50C /* ExtTSMutableArray.m */,
 				509D7CDC19949E7600D9D168 /* LoadingIndicatorView.h */,
 				509D7CDD19949E7600D9D168 /* LoadingIndicatorView.m */,
 				509D7CDE19949E7600D9D168 /* PassthroughView.h */,
 				509D7CDF19949E7600D9D168 /* PassthroughView.m */,
-				509D7CE019949E7600D9D168 /* PlainTableCtrl.h */,
-				509D7CE119949E7600D9D168 /* PlainTableCtrl.m */,
 				509D7CE219949E7600D9D168 /* CTHResultContainer.h */,
 				509D7CE319949E7600D9D168 /* CTHResultContainer.m */,
 				50F18E9019956AB700781A09 /* CTHListModel.h */,

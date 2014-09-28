@@ -18,8 +18,9 @@
 // backing store
 @property (readonly, nonatomic) NSMutableArray *store;
 
-@property (strong, nonatomic) NSMapTable *contentNotifications;
-@property (strong, nonatomic) NSMapTable *selectionNotifications;
+@property (strong, nonatomic) NSMapTable *didChangeContentSubscriptions;
+@property (strong, nonatomic) NSMapTable *willChangeSelectionSubscriptions;
+@property (strong, nonatomic) NSMapTable *didChangeSelectionSubscriptions;
 
 @end
 
@@ -111,7 +112,7 @@
         
         //===
         
-        [self notifyAboutContentChangeWithObject:anObject
+        [self didChangeContentWithObject:anObject
                                       changeType:kAddEMAChangeType];
     }
 }
@@ -130,8 +131,9 @@
             
             //===
             
-            [self didChangeSelectionWithObject:targetWrapper.content
-                                    changeType:kRemoveEMAChangeType];
+            [self
+             didChangeSelectionWithObject:targetWrapper.content
+             changeType:kRemoveEMAChangeType];
         }
         
         //===
@@ -144,13 +146,13 @@
         
         if (targetWrapper)
         {
-            [self notifyAboutContentChangeWithObject:targetWrapper.content
+            [self didChangeContentWithObject:targetWrapper.content
                                           changeType:kRemoveEMAChangeType];
         }
         
         //===
         
-        [self notifyAboutContentChangeWithObject:anObject
+        [self didChangeContentWithObject:anObject
                                       changeType:kAddEMAChangeType];
     }
 }
@@ -174,8 +176,9 @@
             
             //===
             
-            [self didChangeSelectionWithObject:targetWrapper.content
-                                    changeType:kRemoveEMAChangeType];
+            [self
+             didChangeSelectionWithObject:targetWrapper.content
+             changeType:kRemoveEMAChangeType];
         }
         
         //===
@@ -184,7 +187,7 @@
         
         //===
         
-        [self notifyAboutContentChangeWithObject:targetWrapper.content
+        [self didChangeContentWithObject:targetWrapper.content
                                       changeType:kRemoveEMAChangeType];
     }
 }
@@ -203,8 +206,9 @@
             
             //===
             
-            [self didChangeSelectionWithObject:targetWrapper.content
-                                    changeType:kRemoveEMAChangeType];
+            [self
+             didChangeSelectionWithObject:targetWrapper.content
+             changeType:kRemoveEMAChangeType];
         }
         
         //===
@@ -215,7 +219,7 @@
         
         if (targetWrapper)
         {
-            [self notifyAboutContentChangeWithObject:targetWrapper.content
+            [self didChangeContentWithObject:targetWrapper.content
                                           changeType:kRemoveEMAChangeType];
         }
     }
@@ -237,8 +241,9 @@
                 
                 //===
                 
-                [self didChangeSelectionWithObject:targetWrapper.content
-                                        changeType:kRemoveEMAChangeType];
+                [self
+                 didChangeSelectionWithObject:targetWrapper.content
+                 changeType:kRemoveEMAChangeType];
             }
             
             //===
@@ -248,12 +253,12 @@
             
             //===
             
-            [self notifyAboutContentChangeWithObject:targetWrapper.content
+            [self didChangeContentWithObject:targetWrapper.content
                                           changeType:kRemoveEMAChangeType];
             
             //===
             
-            [self notifyAboutContentChangeWithObject:anObject
+            [self didChangeContentWithObject:anObject
                                           changeType:kAddEMAChangeType];
         }
     }
@@ -343,11 +348,20 @@
 
 - (void)setup
 {
-    _contentNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
-                                                  valueOptions:NSPointerFunctionsStrongMemory];
+    _didChangeContentSubscriptions =
+    [NSMapTable
+     mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+     valueOptions:NSPointerFunctionsCopyIn];
     
-    _selectionNotifications = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
-                                                    valueOptions:NSPointerFunctionsStrongMemory];
+    _willChangeSelectionSubscriptions =
+    [NSMapTable
+     mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+     valueOptions:NSPointerFunctionsCopyIn];
+    
+    _didChangeSelectionSubscriptions =
+    [NSMapTable
+     mapTableWithKeyOptions:NSPointerFunctionsWeakMemory
+     valueOptions:NSPointerFunctionsCopyIn];
     
     _onEqualityCheck = ^(id firstObject, id secondObject) {
         
@@ -357,16 +371,11 @@
     _totalCount = 0;
 }
 
-- (void)didChangeSelectionWithObject:(id)targetObject changeType:(EMAChangeType)changeType
+- (void)didChangeContentWithObject:(id)targetObject changeType:(EMAChangeType)changeType
 {
-    [self notifyAboutSelectionChangeWithObject:targetObject changeType:changeType];
-}
-
-- (void)notifyAboutContentChangeWithObject:(id)targetObject changeType:(EMAChangeType)changeType
-{
-    for (id key in [[self.contentNotifications keyEnumerator] allObjects])
+    for (id key in [[self.didChangeContentSubscriptions keyEnumerator] allObjects])
     {
-        ExtArrayNotificationBlock block = [self.contentNotifications objectForKey:key];
+        ExtArrayDidChangeContentBlock block = [self.didChangeContentSubscriptions objectForKey:key];
         
         if (block)
         {
@@ -375,11 +384,39 @@
     }
 }
 
-- (void)notifyAboutSelectionChangeWithObject:(id)targetObject changeType:(EMAChangeType)changeType
+- (BOOL)canChangeSelectionWithObject:(id)targetObject changeType:(EMAChangeType)changeType
 {
-    for (id key in [[self.selectionNotifications keyEnumerator] allObjects])
+    BOOL result = YES;
+    
+    //===
+    
+    for (id key in [[self.willChangeSelectionSubscriptions keyEnumerator] allObjects])
     {
-        ExtArrayNotificationBlock block = [self.selectionNotifications objectForKey:key];
+        ExtArrayWillChangeSelectionBlock block = [self.willChangeSelectionSubscriptions objectForKey:key];
+        
+        if (block)
+        {
+            result = block(key, self, targetObject, changeType);
+        }
+        
+        //===
+        
+        if (!result)
+        {
+            break;
+        }
+    }
+    
+    //===
+    
+    return result;
+}
+
+- (void)didChangeSelectionWithObject:(id)targetObject changeType:(EMAChangeType)changeType
+{
+    for (id key in [[self.didChangeSelectionSubscriptions keyEnumerator] allObjects])
+    {
+        ExtArrayDidChangeSelectionBlock block = [self.didChangeSelectionSubscriptions objectForKey:key];
         
         if (block)
         {
@@ -414,12 +451,22 @@
         if (targetWrapper &&
             !targetWrapper.selected)
         {
-            targetWrapper.selected = YES;
+            BOOL canProceed =
+            [self canChangeSelectionWithObject:targetWrapper.content
+                                       changeType:kAddEMAChangeType];
             
             //===
             
-            [self didChangeSelectionWithObject:targetWrapper.content
-                                    changeType:kAddEMAChangeType];
+            if (canProceed)
+            {
+                targetWrapper.selected = YES;
+                
+                //===
+                
+                [self
+                 didChangeSelectionWithObject:targetWrapper.content
+                 changeType:kAddEMAChangeType];
+            }
         }
     }
     else
@@ -437,12 +484,22 @@
     if (targetWrapper &&
         !targetWrapper.selected)
     {
-        targetWrapper.selected = YES;
+        BOOL canProceed =
+        [self canChangeSelectionWithObject:targetWrapper.content
+                                   changeType:kAddEMAChangeType];
         
         //===
         
-        [self didChangeSelectionWithObject:targetWrapper.content
-                                changeType:kAddEMAChangeType];
+        if (canProceed)
+        {
+            targetWrapper.selected = YES;
+            
+            //===
+            
+            [self
+             didChangeSelectionWithObject:targetWrapper.content
+             changeType:kAddEMAChangeType];
+        }
     }
 }
 
@@ -593,12 +650,22 @@
         
         if (targetWrapper.selected)
         {
-            targetWrapper.selected = NO;
+            BOOL canProceed =
+            [self canChangeSelectionWithObject:targetWrapper.content
+                                       changeType:kRemoveEMAChangeType];
             
             //===
             
-            [self didChangeSelectionWithObject:targetWrapper.content
-                                    changeType:kRemoveEMAChangeType];
+            if (canProceed)
+            {
+                targetWrapper.selected = NO;
+                
+                //===
+                
+                [self
+                 didChangeSelectionWithObject:targetWrapper.content
+                 changeType:kRemoveEMAChangeType];
+            }
         }
     }
 }
@@ -611,12 +678,22 @@
     
     if (targetWrapper.selected)
     {
-        targetWrapper.selected = NO;
+        BOOL canProceed =
+        [self canChangeSelectionWithObject:targetWrapper.content
+                                   changeType:kRemoveEMAChangeType];
         
         //===
         
-        [self didChangeSelectionWithObject:targetWrapper.content
-                                changeType:kRemoveEMAChangeType];
+        if (canProceed)
+        {
+            targetWrapper.selected = NO;
+            
+            //===
+            
+            [self
+             didChangeSelectionWithObject:targetWrapper.content
+             changeType:kRemoveEMAChangeType];
+        }
     }
 }
 
@@ -634,48 +711,75 @@
 {
     NSArray *storeCopy = [NSArray arrayWithArray:_store];
     
-    for (ArrayItemWrapper *wrapper in storeCopy)
+    for (ArrayItemWrapper *targetWrapper in storeCopy)
     {
-        if (wrapper.selected)
+        if (targetWrapper.selected)
         {
-            wrapper.selected = NO;
+            BOOL canProceed =
+            [self canChangeSelectionWithObject:targetWrapper.content
+                                       changeType:kRemoveEMAChangeType];
             
             //===
             
-            [self didChangeSelectionWithObject:wrapper.content
-                                    changeType:kRemoveEMAChangeType];
+            if (canProceed)
+            {
+                targetWrapper.selected = NO;
+                
+                //===
+                
+                [self
+                 didChangeSelectionWithObject:targetWrapper.content
+                 changeType:kRemoveEMAChangeType];
+            }
         }
     }
 }
 
-#pragma mark - Track selection
+#pragma mark - Track changes
 
-- (void)subscribe:(id)object forContentUpdates:(ExtArrayNotificationBlock)notificationBlock
+- (void)notify:(id)object onDidChangeContent:(ExtArrayDidChangeContentBlock)notificationBlock
 {
     if (object && notificationBlock)
     {
-        [self.contentNotifications setObject:notificationBlock
-                                      forKey:object];
+        [self.didChangeContentSubscriptions
+         setObject:notificationBlock
+         forKey:object];
     }
 }
 
-- (void)unsubscribeFromContentUpdates:(id)object
+- (void)cancelDidChangeContentNotificationsFor:(id)object
 {
-    [self.contentNotifications removeObjectForKey:object];
+    [self.didChangeContentSubscriptions removeObjectForKey:object];
 }
 
-- (void)subscribe:(id)object forSelectionUpdates:(ExtArrayNotificationBlock)notificationBlock
+- (void)notify:(id)object onWillChangeSelection:(ExtArrayWillChangeSelectionBlock)notificationBlock
 {
     if (object && notificationBlock)
     {
-        [self.selectionNotifications setObject:notificationBlock
-                                        forKey:object];
+        [self.willChangeSelectionSubscriptions
+         setObject:notificationBlock
+         forKey:object];
     }
 }
 
-- (void)unsubscribeFromSelectionUpdates:(id)object
+- (void)cancelWillChangeSelectionNotificationsFor:(id)object
 {
-    [self.selectionNotifications removeObjectForKey:object];
+    [self.willChangeSelectionSubscriptions removeObjectForKey:object];
+}
+
+- (void)notify:(id)object onDidChangeSelection:(ExtArrayDidChangeSelectionBlock)notificationBlock
+{
+    if (object && notificationBlock)
+    {
+        [self.didChangeSelectionSubscriptions
+         setObject:notificationBlock
+         forKey:object];
+    }
+}
+
+- (void)cancelDidChangeSelectionNotificationsFor:(id)object
+{
+    [self.didChangeSelectionSubscriptions removeObjectForKey:object];
 }
 
 @end

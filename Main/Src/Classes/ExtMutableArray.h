@@ -22,10 +22,20 @@ typedef enum {
 //===
 
 typedef BOOL(^ExtArrayEqualityCheck)(id firstObject, id secondObject);
-typedef BOOL(^ExtArrayWillChangeSelection)(ExtMutableArray *array, id targetObject, EMAChangeType changeType);
-typedef void(^ExtArrayDidChangeSelection)(ExtMutableArray *array, id targetObject, EMAChangeType changeType);
 
-typedef void(^ExtArrayNotificationBlock)(id observer, ExtMutableArray *array, id targetObject, EMAChangeType changeType);
+typedef BOOL(^ExtArrayChangeConfirmationBlock)(id observer,
+                                               ExtMutableArray *array,
+                                               id targetObject,
+                                               EMAChangeType changeType);
+
+typedef void(^ExtArrayChangeNotificationBlock)(id observer,
+                                               ExtMutableArray *array,
+                                               id targetObject,
+                                               EMAChangeType changeType);
+
+typedef ExtArrayChangeNotificationBlock ExtArrayDidChangeContentBlock;
+typedef ExtArrayChangeConfirmationBlock ExtArrayWillChangeSelectionBlock;
+typedef ExtArrayChangeNotificationBlock ExtArrayDidChangeSelectionBlock;
 
 //===
 
@@ -59,10 +69,13 @@ typedef void(^ExtArrayNotificationBlock)(id observer, ExtMutableArray *array, id
 
 - (void)resetSelection;
 
-- (void)subscribe:(id)object forContentUpdates:(ExtArrayNotificationBlock)notificationBlock;
-- (void)unsubscribeFromContentUpdates:(id)object;
+- (void)notify:(id)object onDidChangeContent:(ExtArrayDidChangeContentBlock)notificationBlock;
+- (void)cancelDidChangeContentNotificationsFor:(id)object;
 
-- (void)subscribe:(id)object forSelectionUpdates:(ExtArrayNotificationBlock)notificationBlock;
-- (void)unsubscribeFromSelectionUpdates:(id)object;
+- (void)notify:(id)object onWillChangeSelection:(ExtArrayWillChangeSelectionBlock)notificationBlock;
+- (void)cancelWillChangeSelectionNotificationsFor:(id)object;
+
+- (void)notify:(id)object onDidChangeSelection:(ExtArrayDidChangeSelectionBlock)notificationBlock;
+- (void)cancelDidChangeSelectionNotificationsFor:(id)object;
 
 @end

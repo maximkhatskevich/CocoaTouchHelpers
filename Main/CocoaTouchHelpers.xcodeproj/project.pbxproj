@@ -44,6 +44,7 @@
 		509D7D0719949E7600D9D168 /* PlainTableCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CE119949E7600D9D168 /* PlainTableCtrl.m */; };
 		509D7D0819949E7600D9D168 /* CTHResultContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CE319949E7600D9D168 /* CTHResultContainer.m */; };
 		50DABC9619B0C71B0006E50C /* ExtTSMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DABC9519B0C71B0006E50C /* ExtTSMutableArray.m */; };
+		50E3F90219D9E8A7003F002E /* NSObject+CTHSubscriptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E3F90119D9E8A7003F002E /* NSObject+CTHSubscriptions.m */; };
 		50F18E9219956AB700781A09 /* CTHListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F18E9119956AB700781A09 /* CTHListModel.m */; };
 		50FC170119C51EDC004C9010 /* CTHCollectionCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 50FC170019C51EDC004C9010 /* CTHCollectionCtrl.m */; };
 		7166FCC2F0644F3489648D8B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DDD03A0F5704286BDC8410F /* libPods.a */; };
@@ -144,6 +145,8 @@
 		509D7CE719949E7600D9D168 /* MacrosBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacrosBase.h; sourceTree = "<group>"; };
 		50DABC9419B0C71B0006E50C /* ExtTSMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtTSMutableArray.h; sourceTree = "<group>"; };
 		50DABC9519B0C71B0006E50C /* ExtTSMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtTSMutableArray.m; sourceTree = "<group>"; };
+		50E3F90019D9E8A7003F002E /* NSObject+CTHSubscriptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+CTHSubscriptions.h"; sourceTree = "<group>"; };
+		50E3F90119D9E8A7003F002E /* NSObject+CTHSubscriptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CTHSubscriptions.m"; sourceTree = "<group>"; };
 		50F18E9019956AB700781A09 /* CTHListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHListModel.h; sourceTree = "<group>"; };
 		50F18E9119956AB700781A09 /* CTHListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHListModel.m; sourceTree = "<group>"; };
 		50FC16FF19C51EDC004C9010 /* CTHCollectionCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHCollectionCtrl.h; sourceTree = "<group>"; };
@@ -243,6 +246,8 @@
 				509D7CA919949E7600D9D168 /* NSObject+Helpers.m */,
 				509D7CAA19949E7600D9D168 /* NSObject+State.h */,
 				509D7CAB19949E7600D9D168 /* NSObject+State.m */,
+				50E3F90019D9E8A7003F002E /* NSObject+CTHSubscriptions.h */,
+				50E3F90119D9E8A7003F002E /* NSObject+CTHSubscriptions.m */,
 				509D7CAC19949E7600D9D168 /* NSObject+TwitterHelpers.h */,
 				509D7CAD19949E7600D9D168 /* NSObject+TwitterHelpers.m */,
 				509D7CAE19949E7600D9D168 /* NSString+Helpers.h */,
@@ -451,6 +456,7 @@
 				509D7CE819949E7600D9D168 /* NSArray+Helpers.m in Sources */,
 				509D7CFB19949E7600D9D168 /* UIViewController+Helpers.m in Sources */,
 				509D7CEE19949E7600D9D168 /* NSObject+TwitterHelpers.m in Sources */,
+				50E3F90219D9E8A7003F002E /* NSObject+CTHSubscriptions.m in Sources */,
 				509D7D0719949E7600D9D168 /* PlainTableCtrl.m in Sources */,
 				509D7CEA19949E7600D9D168 /* NSMutableArray+Helpers.m in Sources */,
 				509D7D0319949E7600D9D168 /* ExtMutableArray.m in Sources */,

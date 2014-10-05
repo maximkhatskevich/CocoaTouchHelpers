@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		500997D419E18C4D007810DA /* CTHMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 500997D319E18C4D007810DA /* CTHMutableArray.m */; };
 		5009CA8119AE8951005FE34F /* CTHElasticFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */; };
 		5011398319A2AA2300D21BDF /* CTHDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */; };
 		5062F7B019B69D32002F7F15 /* NSObject+ReturnExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5062F7AF19B69D32002F7F15 /* NSObject+ReturnExtension.m */; };
@@ -63,6 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		500997D219E18C4D007810DA /* CTHMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHMutableArray.h; sourceTree = "<group>"; };
+		500997D319E18C4D007810DA /* CTHMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHMutableArray.m; sourceTree = "<group>"; };
 		5009CA7F19AE8951005FE34F /* CTHElasticFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHElasticFlowLayout.h; sourceTree = "<group>"; };
 		5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHElasticFlowLayout.m; sourceTree = "<group>"; };
 		5011398119A2AA2300D21BDF /* CTHDeviceHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHDeviceHardware.h; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 		5050265619D882E300C8FE3B /* DEPRECATED */ = {
 			isa = PBXGroup;
 			children = (
+				509D7CD819949E7600D9D168 /* ExtMutableArray.h */,
+				509D7CD919949E7600D9D168 /* ExtMutableArray.m */,
 				509D7CCC19949E7600D9D168 /* AdvancedList.h */,
 				509D7CCD19949E7600D9D168 /* AdvancedList.m */,
 				509D7CE019949E7600D9D168 /* PlainTableCtrl.h */,
@@ -306,8 +311,8 @@
 				509D7CD319949E7600D9D168 /* BaseGenericCtrl.m */,
 				509D7CD419949E7600D9D168 /* CoreDataCtrl.h */,
 				509D7CD519949E7600D9D168 /* CoreDataCtrl.m */,
-				509D7CD819949E7600D9D168 /* ExtMutableArray.h */,
-				509D7CD919949E7600D9D168 /* ExtMutableArray.m */,
+				500997D219E18C4D007810DA /* CTHMutableArray.h */,
+				500997D319E18C4D007810DA /* CTHMutableArray.m */,
 				509D7CDC19949E7600D9D168 /* LoadingIndicatorView.h */,
 				509D7CDD19949E7600D9D168 /* LoadingIndicatorView.m */,
 				509D7CDE19949E7600D9D168 /* PassthroughView.h */,
@@ -451,6 +456,7 @@
 				509D7CFF19949E7600D9D168 /* Base64.m in Sources */,
 				509D7CF819949E7600D9D168 /* UITableView+Helpers.m in Sources */,
 				509D7D0519949E7600D9D168 /* LoadingIndicatorView.m in Sources */,
+				500997D419E18C4D007810DA /* CTHMutableArray.m in Sources */,
 				509D7CEF19949E7600D9D168 /* NSString+Helpers.m in Sources */,
 				50F18E9219956AB700781A09 /* CTHListModel.m in Sources */,
 				509D7CE819949E7600D9D168 /* NSArray+Helpers.m in Sources */,

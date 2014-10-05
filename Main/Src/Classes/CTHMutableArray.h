@@ -35,8 +35,8 @@ typedef void(^CTHMAChangeNotificationBlock)(CTHMAChangeParamSet *params);
 @interface CTHMAResetParamSet : NSObject
 
 @property (readonly, strong, nonatomic) CTHMutableArray *array;
-@property (readonly, copy, nonatomic) NSArray *oldValues;
-@property (readonly, copy, nonatomic) NSArray *newValues;
+@property (readonly, copy, nonatomic) NSArray *previousValues;
+@property (readonly, copy, nonatomic) NSArray *targetValues;
 
 @end
 
@@ -47,8 +47,8 @@ typedef void(^CTHMAChangeNotificationBlock)(CTHMAChangeParamSet *params);
 @property (readonly, strong, nonatomic) CTHMutableArray *array;
 @property (readonly) CTHMAChangeType changeType;
 @property (readonly) NSUInteger targetIndex;
-@property (readonly, strong, nonatomic) id oldValue;
-@property (readonly, strong, nonatomic) id newValue;
+@property (readonly, strong, nonatomic) id previousValue;
+@property (readonly, strong, nonatomic) id targetValue;
 
 @end
 

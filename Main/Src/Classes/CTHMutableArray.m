@@ -19,8 +19,14 @@
 @interface CTHMAResetParamSet ()
 
 @property (strong, nonatomic) CTHMutableArray *array;
-@property (copy, nonatomic) NSArray *oldValues;
-@property (copy, nonatomic) NSArray *newValues;
+@property (copy, nonatomic) NSArray *previousValues;
+@property (copy, nonatomic) NSArray *targetValues;
+
+@end
+
+@implementation CTHMAResetParamSet
+
+//
 
 @end
 
@@ -31,8 +37,14 @@
 @property (strong, nonatomic) CTHMutableArray *array;
 @property CTHMAChangeType changeType;
 @property NSUInteger targetIndex;
-@property (strong, nonatomic) id oldValue;
-@property (strong, nonatomic) id newValue;
+@property (strong, nonatomic) id previousValue;
+@property (strong, nonatomic) id targetValue;
+
+@end
+
+@implementation CTHMAChangeParamSet
+
+//
 
 @end
 
@@ -143,7 +155,7 @@
         params.array = self;
         params.changeType = kInsertionCTHMAChangeType;
         params.targetIndex = self.count; // !!!
-        params.newValue = anObject;
+        params.targetValue = anObject;
         
         //===
         
@@ -170,7 +182,7 @@
         params.array = self;
         params.changeType = kInsertionCTHMAChangeType;
         params.targetIndex = index;
-        params.newValue = anObject;
+        params.targetValue = anObject;
         
         //===
         
@@ -203,7 +215,7 @@
         params.array = self;
         params.changeType = kRemovalCTHMAChangeType;
         params.targetIndex = (self.count - 1);
-        params.oldValue = targetWrapper.content;
+        params.previousValue = targetWrapper.content;
         
         //===
         
@@ -247,7 +259,7 @@
         params.array = self;
         params.changeType = kRemovalCTHMAChangeType;
         params.targetIndex = index;
-        params.oldValue = targetWrapper.content;
+        params.previousValue = targetWrapper.content;
         
         //===
         
@@ -293,8 +305,8 @@
             params.array = self;
             params.changeType = kReplacementCTHMAChangeType;
             params.targetIndex = index;
-            params.oldValue = currentWrapper.content;
-            params.newValue = anObject;
+            params.previousValue = currentWrapper.content;
+            params.targetValue = anObject;
             
             //===
             
@@ -489,8 +501,8 @@
     CTHMAResetParamSet *params = [CTHMAResetParamSet new];
     
     params.array = self;
-    params.oldValues = self;
-    params.newValues = otherArray;
+    params.previousValues = self;
+    params.targetValues = otherArray;
     
     //===
     
@@ -539,7 +551,7 @@
             params.array = self;
             params.changeType = kInsertionCTHMAChangeType;
             params.targetIndex = targetIndex;
-            params.newValue = newObject;
+            params.targetValue = newObject;
             
             //===
             
@@ -570,7 +582,7 @@
         params.array = self;
         params.changeType = kInsertionCTHMAChangeType;
         params.targetIndex = index;
-        params.newValue = targetWrapper.content;
+        params.targetValue = targetWrapper.content;
         
         //===
         
@@ -731,7 +743,7 @@
             params.array = self;
             params.changeType = kRemovalCTHMAChangeType;
             params.targetIndex = (self.count - 1);
-            params.oldValue = targetWrapper.content;
+            params.previousValue = targetWrapper.content;
             
             //===
             
@@ -761,7 +773,7 @@
         params.array = self;
         params.changeType = kRemovalCTHMAChangeType;
         params.targetIndex = (self.count - 1);
-        params.oldValue = targetWrapper.content;
+        params.previousValue = targetWrapper.content;
         
         //===
         
@@ -800,7 +812,7 @@
             params.array = self;
             params.changeType = kRemovalCTHMAChangeType;
             params.targetIndex = i;
-            params.oldValue = targetWrapper.content;
+            params.previousValue = targetWrapper.content;
             
             //===
             

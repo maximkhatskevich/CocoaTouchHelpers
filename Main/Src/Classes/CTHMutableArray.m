@@ -831,152 +831,98 @@
 
 #pragma mark - Notifications - Public
 
-- (NSString *)notifyOnWillResetContent:(CTHMAResetNotificationBlock)notificationBlock
+- (void)subscribe:(id)subscriber onWillResetContent:(CTHMAResetNotificationBlock)notificationBlock
 {
-    return [self
-            addNotification:notificationBlock
-            targetTable:self.willResetContentSubscriptions];
+    [self
+     addNotification:notificationBlock
+     subscriber:subscriber
+     targetTable:self.willResetContentSubscriptions];
 }
 
-- (NSString *)notifyOnDidResetContent:(CTHMAResetNotificationBlock)notificationBlock
+- (void)subscribe:(id)subscriber onDidResetContent:(CTHMAResetNotificationBlock)notificationBlock
 {
-    return [self
-            addNotification:notificationBlock
-            targetTable:self.didResetContentSubscriptions];
+    [self
+     addNotification:notificationBlock
+     subscriber:subscriber
+     targetTable:self.didResetContentSubscriptions];
 }
 
-- (NSString *)notifyOnWillChangeContent:(CTHMAChangeNotificationBlock)notificationBlock
+- (void)subscribe:(id)subscriber onWillChangeContent:(CTHMAChangeNotificationBlock)notificationBlock
 {
-    return [self
-            addNotification:notificationBlock
-            targetTable:self.willChangeContentSubscriptions];
+    [self
+     addNotification:notificationBlock
+     subscriber:subscriber
+     targetTable:self.willChangeContentSubscriptions];
 }
 
-- (NSString *)notifyOnDidChangeContent:(CTHMAChangeNotificationBlock)notificationBlock
+- (void)subscribe:(id)subscriber onDidChangeContent:(CTHMAChangeNotificationBlock)notificationBlock
 {
-    return [self
-            addNotification:notificationBlock
-            targetTable:self.didChangeContentSubscriptions];
+    [self
+     addNotification:notificationBlock
+     subscriber:subscriber
+     targetTable:self.didChangeContentSubscriptions];
 }
 
-- (NSString *)notifyOnWillChangeSelection:(CTHMAChangeNotificationBlock)notificationBlock
+- (void)subscribe:(id)subscriber onWillChangeSelection:(CTHMAChangeNotificationBlock)notificationBlock
 {
-    return [self
-            addNotification:notificationBlock
-            targetTable:self.willChangeSelectionSubscriptions];
+    [self
+     addNotification:notificationBlock
+     subscriber:subscriber
+     targetTable:self.willChangeSelectionSubscriptions];
 }
 
-- (NSString *)notifyOnDidChangeSelection:(CTHMAChangeNotificationBlock)notificationBlock
+- (void)subscribe:(id)subscriber onDidChangeSelection:(CTHMAChangeNotificationBlock)notificationBlock
 {
-    return [self
-            addNotification:notificationBlock
-            targetTable:self.didChangeSelectionSubscriptions];
+    [self
+     addNotification:notificationBlock
+     subscriber:subscriber
+     targetTable:self.didChangeSelectionSubscriptions];
 }
 
-- (BOOL)cancelNotificationWithId:(NSString *)notificationId
+- (void)unsubscribe:(id)subscriber
 {
-    BOOL result = NO;
+    [self
+     remove:subscriber
+     fromTable:self.willResetContentSubscriptions];
     
-    //===
+    [self
+     remove:subscriber
+     fromTable:self.didResetContentSubscriptions];
     
-    result = [self
-              removeNotificationWithId:notificationId
-              fromTable:self.willResetContentSubscriptions];
+    [self
+     remove:subscriber
+     fromTable:self.willChangeContentSubscriptions];
+
+    [self
+     remove:subscriber
+     fromTable:self.didChangeContentSubscriptions];
     
-    if (!result)
-    {
-        result = [self
-                  removeNotificationWithId:notificationId
-                  fromTable:self.didResetContentSubscriptions];
-    }
+    [self
+     remove:subscriber
+     fromTable:self.willChangeSelectionSubscriptions];
     
-    if (!result)
-    {
-        result = [self
-                  removeNotificationWithId:notificationId
-                  fromTable:self.willChangeContentSubscriptions];
-    }
-    
-    if (!result)
-    {
-        result = [self
-                  removeNotificationWithId:notificationId
-                  fromTable:self.didChangeContentSubscriptions];
-    }
-    
-    if (!result)
-    {
-        result = [self
-                  removeNotificationWithId:notificationId
-                  fromTable:self.willChangeSelectionSubscriptions];
-    }
-    
-    if (!result)
-    {
-        result = [self
-                  removeNotificationWithId:notificationId
-                  fromTable:self.didChangeSelectionSubscriptions];
-    }
-    
-    //===
-    
-    return result;
+    [self
+     remove:subscriber
+     fromTable:self.didChangeSelectionSubscriptions];
 }
 
 #pragma mark - Notifications - Private - Manage
 
-- (NSString *)addNotification:(id)notificationBlock
-                  targetTable:(NSMapTable *)targetTable
+- (void)addNotification:(id)notificationBlock
+             subscriber:(id)subscriber
+            targetTable:(NSMapTable *)targetTable
 {
-    NSString *result = nil; // target notification id
-    
-    //===
-    
-    if (notificationBlock)
+    if (notificationBlock && subscriber && targetTable)
     {
-        result = [[NSProcessInfo processInfo] globallyUniqueString];
-        
-        //===
-        
-        if (isNonZeroString(result))
-        {
-            [targetTable
-             setObject:notificationBlock
-             forKey:result];
-        }
+        [targetTable
+         setObject:notificationBlock
+         forKey:subscriber];
     }
-    
-    //===
-    
-    return result;
 }
 
-- (BOOL)removeNotificationWithId:(NSString *)notificationId
-                       fromTable:(NSMapTable *)targetTable
+- (void)remove:(id)subscriber fromTable:(NSMapTable *)targetTable
 {
-    BOOL result = NO;
-    
-    //===
-    
-    for (id key in [[targetTable keyEnumerator] allObjects])
-    {
-        if ([key isEqualToString:notificationId])
-        {
-            result = YES;
-            break;
-        }
-    }
-    
-    //===
-    
-    if (result)
-    {
-        [targetTable removeObjectForKey:notificationId];
-    }
-    
-    //===
-    
-    return result;
+    [targetTable removeObjectForKey:subscriber];
 }
 
 #pragma mark - Notifications - Private - Send notifications

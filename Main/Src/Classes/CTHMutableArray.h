@@ -86,14 +86,14 @@ typedef void(^CTHMAChangeNotificationBlock)(CTHMAChangeParamSet *params);
 
 - (void)resetSelection;
 
-- (NSString *)notifyOnWillResetContent:(CTHMAResetNotificationBlock)notificationBlock;
-- (NSString *)notifyOnDidResetContent:(CTHMAResetNotificationBlock)notificationBlock;
+- (void)subscribe:(id)subscriber onWillResetContent:(CTHMAResetNotificationBlock)notificationBlock;
+- (void)subscribe:(id)subscriber onDidResetContent:(CTHMAResetNotificationBlock)notificationBlock;
 
-- (NSString *)notifyOnWillChangeContent:(CTHMAChangeNotificationBlock)notificationBlock;
-- (NSString *)notifyOnDidChangeContent:(CTHMAChangeNotificationBlock)notificationBlock;
-- (NSString *)notifyOnWillChangeSelection:(CTHMAChangeNotificationBlock)notificationBlock;
-- (NSString *)notifyOnDidChangeSelection:(CTHMAChangeNotificationBlock)notificationBlock;
+- (void)subscribe:(id)subscriber onWillChangeContent:(CTHMAChangeNotificationBlock)notificationBlock;
+- (void)subscribe:(id)subscriber onDidChangeContent:(CTHMAChangeNotificationBlock)notificationBlock;
+- (void)subscribe:(id)subscriber onWillChangeSelection:(CTHMAChangeNotificationBlock)notificationBlock;
+- (void)subscribe:(id)subscriber onDidChangeSelection:(CTHMAChangeNotificationBlock)notificationBlock;
 
-- (BOOL)cancelNotificationWithId:(NSString *)notificationId;
+- (void)unsubscribe:(id)subscriber;
 
 @end

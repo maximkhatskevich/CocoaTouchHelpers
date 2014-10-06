@@ -31,7 +31,7 @@
 #import "CTHDeviceHardware.h"
 #import "CTHElasticFlowLayout.h"
 #import "CTHExtCollectionCtrl.h"
-//#import "CTHCollectionCtrl.h"
+#import "CTHCollectionCtrl.h"
 #import "CTHPair.h"
 #import "CTHMutableArray.h"
 

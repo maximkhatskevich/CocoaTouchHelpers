@@ -18,16 +18,15 @@
 
 @class CTHExtCollectionCtrl;
 @class ExtMutableArray;
-@class CTHMutableArray;
 
-typedef void(^CTHCollectionCtrlConfigureCell)(CTHExtCollectionCtrl *collectionCtrl,
+typedef void(^CTHExtCollectionCtrlConfigureCell)(CTHExtCollectionCtrl *collectionCtrl,
                                               NSIndexPath *indexPath,
                                               id targetItem,
                                               UICollectionViewCell *targetCell);
-typedef void(^CTHCollectionCtrlSelectItem)(CTHExtCollectionCtrl *collectionCtrl,
+typedef void(^CTHExtCollectionCtrlSelectItem)(CTHExtCollectionCtrl *collectionCtrl,
                                            NSIndexPath *indexPath,
                                            id targetItem);
-typedef void(^CTHCollectionCtrlNeedMoreItems)(CTHExtCollectionCtrl *collectionCtrl,
+typedef void(^CTHExtCollectionCtrlNeedMoreItems)(CTHExtCollectionCtrl *collectionCtrl,
                                               NSUInteger sectionNumber,
                                               CTHExtCollectionSectionClass *sectionItemList);
 
@@ -40,13 +39,13 @@ typedef void(^CTHCollectionCtrlNeedMoreItems)(CTHExtCollectionCtrl *collectionCt
 
 @property (copy, nonatomic) NSString *defaultCellIdentifier;
 
-@property (copy, nonatomic) CTHCollectionCtrlConfigureCell onConfigureCell;
-@property (copy, nonatomic) CTHCollectionCtrlSelectItem onDidSelectItem;
-@property (copy, nonatomic) CTHCollectionCtrlSelectItem onDidDeselectItem;
+@property (copy, nonatomic) CTHExtCollectionCtrlConfigureCell onConfigureCell;
+@property (copy, nonatomic) CTHExtCollectionCtrlSelectItem onDidSelectItem;
+@property (copy, nonatomic) CTHExtCollectionCtrlSelectItem onDidDeselectItem;
 
 // pagination support:
 @property NSUInteger preloadOffset;
-@property (copy, nonatomic) CTHCollectionCtrlNeedMoreItems onNeedMoreItems;
+@property (copy, nonatomic) CTHExtCollectionCtrlNeedMoreItems onNeedMoreItems;
 
 - (void)resetContent;
 
@@ -55,9 +54,9 @@ typedef void(^CTHCollectionCtrlNeedMoreItems)(CTHExtCollectionCtrl *collectionCt
 - (NSString *)cellReuseIdentifierForIndexPath:(NSIndexPath *)indexPath;
 - (CTHExtCollectionSectionClass *)itemListForSectionAtIndex:(NSUInteger)sectionIndex;
 
-- (void)setOnConfigureCell:(CTHCollectionCtrlConfigureCell)onConfigureCell;
-- (void)setOnDidSelectItem:(CTHCollectionCtrlSelectItem)onDidSelectItem;
-- (void)setOnDidDeselectItem:(CTHCollectionCtrlSelectItem)onDidDeselectItem;
-- (void)setOnNeedMoreItems:(CTHCollectionCtrlNeedMoreItems)onNeedMoreItems;
+- (void)setOnConfigureCell:(CTHExtCollectionCtrlConfigureCell)onConfigureCell;
+- (void)setOnDidSelectItem:(CTHExtCollectionCtrlSelectItem)onDidSelectItem;
+- (void)setOnDidDeselectItem:(CTHExtCollectionCtrlSelectItem)onDidDeselectItem;
+- (void)setOnNeedMoreItems:(CTHExtCollectionCtrlNeedMoreItems)onNeedMoreItems;
 
 @end

@@ -10,6 +10,7 @@
 		500997D419E18C4D007810DA /* CTHMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 500997D319E18C4D007810DA /* CTHMutableArray.m */; };
 		5009CA8119AE8951005FE34F /* CTHElasticFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */; };
 		5011398319A2AA2300D21BDF /* CTHDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */; };
+		501574C419E30E7E00908808 /* CTHCollectionCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 501574C319E30E7E00908808 /* CTHCollectionCtrl.m */; };
 		5062F7B019B69D32002F7F15 /* NSObject+ReturnExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5062F7AF19B69D32002F7F15 /* NSObject+ReturnExtension.m */; };
 		507C3E1C19D3326F00E0D25A /* CTHPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C3E1B19D3326F00E0D25A /* CTHPair.m */; };
 		507C3E1F19D3DAB900E0D25A /* NSArray+CTHPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C3E1E19D3DAB900E0D25A /* NSArray+CTHPair.m */; };
@@ -70,6 +71,8 @@
 		5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHElasticFlowLayout.m; sourceTree = "<group>"; };
 		5011398119A2AA2300D21BDF /* CTHDeviceHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHDeviceHardware.h; sourceTree = "<group>"; };
 		5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHDeviceHardware.m; sourceTree = "<group>"; };
+		501574C219E30E7E00908808 /* CTHCollectionCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHCollectionCtrl.h; sourceTree = "<group>"; };
+		501574C319E30E7E00908808 /* CTHCollectionCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHCollectionCtrl.m; sourceTree = "<group>"; };
 		5062F7AE19B69D32002F7F15 /* NSObject+ReturnExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ReturnExtension.h"; sourceTree = "<group>"; };
 		5062F7AF19B69D32002F7F15 /* NSObject+ReturnExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ReturnExtension.m"; sourceTree = "<group>"; };
 		507C3E1A19D3326F00E0D25A /* CTHPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHPair.h; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 			children = (
 				509D7CD819949E7600D9D168 /* ExtMutableArray.h */,
 				509D7CD919949E7600D9D168 /* ExtMutableArray.m */,
+				50FC16FF19C51EDC004C9010 /* CTHExtCollectionCtrl.h */,
+				50FC170019C51EDC004C9010 /* CTHExtCollectionCtrl.m */,
 				509D7CCC19949E7600D9D168 /* AdvancedList.h */,
 				509D7CCD19949E7600D9D168 /* AdvancedList.m */,
 				509D7CE019949E7600D9D168 /* PlainTableCtrl.h */,
@@ -323,6 +328,8 @@
 				509D7CD519949E7600D9D168 /* CoreDataCtrl.m */,
 				500997D219E18C4D007810DA /* CTHMutableArray.h */,
 				500997D319E18C4D007810DA /* CTHMutableArray.m */,
+				501574C219E30E7E00908808 /* CTHCollectionCtrl.h */,
+				501574C319E30E7E00908808 /* CTHCollectionCtrl.m */,
 				509D7CDC19949E7600D9D168 /* LoadingIndicatorView.h */,
 				509D7CDD19949E7600D9D168 /* LoadingIndicatorView.m */,
 				509D7CDE19949E7600D9D168 /* PassthroughView.h */,
@@ -335,8 +342,6 @@
 				5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */,
 				5009CA7F19AE8951005FE34F /* CTHElasticFlowLayout.h */,
 				5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */,
-				50FC16FF19C51EDC004C9010 /* CTHExtCollectionCtrl.h */,
-				50FC170019C51EDC004C9010 /* CTHExtCollectionCtrl.m */,
 				507C3E1A19D3326F00E0D25A /* CTHPair.h */,
 				507C3E1B19D3326F00E0D25A /* CTHPair.m */,
 			);
@@ -478,6 +483,7 @@
 				509D7D0319949E7600D9D168 /* ExtMutableArray.m in Sources */,
 				50DABC9619B0C71B0006E50C /* ExtTSMutableArray.m in Sources */,
 				509D7CEB19949E7600D9D168 /* NSMutableDictionary+Helpers.m in Sources */,
+				501574C419E30E7E00908808 /* CTHCollectionCtrl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

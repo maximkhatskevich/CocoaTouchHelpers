@@ -6,15 +6,16 @@
 //  Copyright (c) 2014 Maxim Khatskevich. All rights reserved.
 //
 
-#import "CTHCollectionCtrl.h"
+#import "CTHExtCollectionCtrl.h"
 
+#import "CTHMutableArray.h"
 #import "ExtMutableArray.h"
 #import "NSObject+Helpers.h"
 #import "NSArray+Helpers.h"
 
 //===
 
-@interface CTHCollectionCtrl ()
+@interface CTHExtCollectionCtrl ()
 
 @property(strong, nonatomic) NSHashTable *contentStorage;
 
@@ -22,7 +23,7 @@
 
 //===
 
-@implementation CTHCollectionCtrl
+@implementation CTHExtCollectionCtrl
 
 #pragma mark - Overrided methods
 
@@ -55,7 +56,7 @@
         ((UICollectionView *)object).dataSource = self;
         ((UICollectionView *)object).delegate = self;
     }
-    else if ([CTHCollectionSectionClass isClassOfObject:object])
+    else if ([CTHExtCollectionSectionClass isClassOfObject:object])
     {
         [self addSection:object];
     }
@@ -63,7 +64,7 @@
     {
         for (id item in object)
         {
-            if ([CTHCollectionSectionClass isClassOfObject:item])
+            if ([CTHExtCollectionSectionClass isClassOfObject:item])
             {
                 [self addSection:item];
             }
@@ -78,9 +79,9 @@
     [self.contentStorage removeAllObjects];
 }
 
-- (void)addSection:(CTHCollectionSectionClass *)itemList
+- (void)addSection:(CTHExtCollectionSectionClass *)itemList
 {
-    if ([CTHCollectionSectionClass isClassOfObject:itemList])
+    if ([CTHExtCollectionSectionClass isClassOfObject:itemList])
     {
         [self.contentStorage addObject:itemList];
     }
@@ -97,10 +98,10 @@
     
     //===
     
-    CTHCollectionSectionClass *sectionItemList =
+    CTHExtCollectionSectionClass *sectionItemList =
     [[self.contentStorage allObjects] safeObjectAtIndex:sectionIndex];
     
-    if ([CTHCollectionSectionClass isClassOfObject:sectionItemList])
+    if ([CTHExtCollectionSectionClass isClassOfObject:sectionItemList])
     {
         // with pagination support:
         
@@ -124,16 +125,16 @@
     return self.defaultCellIdentifier;
 }
 
-- (CTHCollectionSectionClass *)itemListForSectionAtIndex:(NSUInteger)sectionIndex
+- (CTHExtCollectionSectionClass *)itemListForSectionAtIndex:(NSUInteger)sectionIndex
 {
-    CTHCollectionSectionClass *result = nil;
+    CTHExtCollectionSectionClass *result = nil;
     
     //===
     
-    CTHCollectionSectionClass *tmp =
+    CTHExtCollectionSectionClass *tmp =
     [[self.contentStorage allObjects] safeObjectAtIndex:sectionIndex];
     
-    if ([CTHCollectionSectionClass isClassOfObject:tmp])
+    if ([CTHExtCollectionSectionClass isClassOfObject:tmp])
     {
         result = tmp;
     }
@@ -170,7 +171,7 @@
     
     //===
     
-    CTHCollectionSectionClass *targetSectionItemList =
+    CTHExtCollectionSectionClass *targetSectionItemList =
     [self itemListForSectionAtIndex:indexPath.section];
     
     id targetItem = [targetSectionItemList safeObjectAtIndex:indexPath.item];
@@ -206,7 +207,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CTHCollectionSectionClass *targetSectionItemList =
+    CTHExtCollectionSectionClass *targetSectionItemList =
     [self itemListForSectionAtIndex:indexPath.section];
     
     id targetItem = [targetSectionItemList safeObjectAtIndex:indexPath.item];
@@ -232,7 +233,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CTHCollectionSectionClass *targetSectionItemList =
+    CTHExtCollectionSectionClass *targetSectionItemList =
     [self itemListForSectionAtIndex:indexPath.section];
     
     if (targetSectionItemList.selectedObjectIndex == indexPath.item)

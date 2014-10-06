@@ -12,27 +12,28 @@
 
 //===
 
-#define CTHCollectionSectionClass ExtMutableArray
+#define CTHExtCollectionSectionClass ExtMutableArray
 
 //===
 
-@class CTHCollectionCtrl;
+@class CTHExtCollectionCtrl;
 @class ExtMutableArray;
+@class CTHMutableArray;
 
-typedef void(^CTHCollectionCtrlConfigureCell)(CTHCollectionCtrl *collectionCtrl,
+typedef void(^CTHCollectionCtrlConfigureCell)(CTHExtCollectionCtrl *collectionCtrl,
                                               NSIndexPath *indexPath,
                                               id targetItem,
                                               UICollectionViewCell *targetCell);
-typedef void(^CTHCollectionCtrlSelectItem)(CTHCollectionCtrl *collectionCtrl,
+typedef void(^CTHCollectionCtrlSelectItem)(CTHExtCollectionCtrl *collectionCtrl,
                                            NSIndexPath *indexPath,
                                            id targetItem);
-typedef void(^CTHCollectionCtrlNeedMoreItems)(CTHCollectionCtrl *collectionCtrl,
+typedef void(^CTHCollectionCtrlNeedMoreItems)(CTHExtCollectionCtrl *collectionCtrl,
                                               NSUInteger sectionNumber,
-                                              CTHCollectionSectionClass *sectionItemList);
+                                              CTHExtCollectionSectionClass *sectionItemList);
 
 //===
 
-@interface CTHCollectionCtrl : NSObject
+@interface CTHExtCollectionCtrl : NSObject
 <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property(getter = isMultiselectEnabled) BOOL multiselectEnabled;
@@ -52,7 +53,7 @@ typedef void(^CTHCollectionCtrlNeedMoreItems)(CTHCollectionCtrl *collectionCtrl,
 - (NSUInteger)numberOfItems;
 - (NSUInteger)numberOfItemsForSectionAtIndex:(NSUInteger)sectionIndex;
 - (NSString *)cellReuseIdentifierForIndexPath:(NSIndexPath *)indexPath;
-- (CTHCollectionSectionClass *)itemListForSectionAtIndex:(NSUInteger)sectionIndex;
+- (CTHExtCollectionSectionClass *)itemListForSectionAtIndex:(NSUInteger)sectionIndex;
 
 - (void)setOnConfigureCell:(CTHCollectionCtrlConfigureCell)onConfigureCell;
 - (void)setOnDidSelectItem:(CTHCollectionCtrlSelectItem)onDidSelectItem;

@@ -30,7 +30,8 @@
 #import "CTHListModel.h"
 #import "CTHDeviceHardware.h"
 #import "CTHElasticFlowLayout.h"
-#import "CTHCollectionCtrl.h"
+#import "CTHExtCollectionCtrl.h"
+//#import "CTHCollectionCtrl.h"
 #import "CTHPair.h"
 #import "CTHMutableArray.h"
 

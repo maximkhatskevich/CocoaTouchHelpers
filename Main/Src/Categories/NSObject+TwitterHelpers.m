@@ -36,7 +36,7 @@
     else
     {
         // prior iOS 6.0
-        result = [TWTweetComposeViewController canSendTweet];
+        // result = [TWTweetComposeViewController canSendTweet];
     }
     
     //===

@@ -34,6 +34,7 @@
 #import "CTHCollectionCtrl.h"
 #import "CTHPair.h"
 #import "CTHMutableArray.h"
+#import "CTHRequestResult.h"
 
 //=== categories
 

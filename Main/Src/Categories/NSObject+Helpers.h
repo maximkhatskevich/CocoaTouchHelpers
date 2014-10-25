@@ -35,5 +35,6 @@
 - (NSString *)stringFromDateForKey:(NSString *)dateKey withFormat:(NSString *)format;
 
 + (BOOL)isClassOfObject:(id)objectToCheck;
++ (UINib *)nibFromClassName;
 
 @end

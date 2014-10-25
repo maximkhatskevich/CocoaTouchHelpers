@@ -201,4 +201,11 @@
     return isClassOfObject([self class], objectToCheck);
 }
 
++ (UINib *)nibFromClassName
+{
+    return [UINib
+            nibWithNibName:NSStringFromClass(self)
+            bundle:nil];
+}
+
 @end

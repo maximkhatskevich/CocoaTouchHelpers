@@ -11,6 +11,7 @@
 		5009CA8119AE8951005FE34F /* CTHElasticFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */; };
 		5011398319A2AA2300D21BDF /* CTHDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */; };
 		501574C419E30E7E00908808 /* CTHCollectionCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 501574C319E30E7E00908808 /* CTHCollectionCtrl.m */; };
+		5034A03419FC59A600C52A42 /* CTHMutableArray+ParseExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 5034A03319FC59A600C52A42 /* CTHMutableArray+ParseExt.m */; };
 		5062F7B019B69D32002F7F15 /* NSObject+ReturnExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5062F7AF19B69D32002F7F15 /* NSObject+ReturnExtension.m */; };
 		507C3E1C19D3326F00E0D25A /* CTHPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C3E1B19D3326F00E0D25A /* CTHPair.m */; };
 		507C3E1F19D3DAB900E0D25A /* NSArray+CTHPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C3E1E19D3DAB900E0D25A /* NSArray+CTHPair.m */; };
@@ -74,6 +75,8 @@
 		5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHDeviceHardware.m; sourceTree = "<group>"; };
 		501574C219E30E7E00908808 /* CTHCollectionCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHCollectionCtrl.h; sourceTree = "<group>"; };
 		501574C319E30E7E00908808 /* CTHCollectionCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHCollectionCtrl.m; sourceTree = "<group>"; };
+		5034A03219FC59A600C52A42 /* CTHMutableArray+ParseExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTHMutableArray+ParseExt.h"; sourceTree = "<group>"; };
+		5034A03319FC59A600C52A42 /* CTHMutableArray+ParseExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CTHMutableArray+ParseExt.m"; sourceTree = "<group>"; };
 		5062F7AE19B69D32002F7F15 /* NSObject+ReturnExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ReturnExtension.h"; sourceTree = "<group>"; };
 		5062F7AF19B69D32002F7F15 /* NSObject+ReturnExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ReturnExtension.m"; sourceTree = "<group>"; };
 		507C3E1A19D3326F00E0D25A /* CTHPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHPair.h; sourceTree = "<group>"; };
@@ -312,6 +315,8 @@
 			children = (
 				509D7CB119949E7600D9D168 /* ExtMutableArray+ParseExt.h */,
 				509D7CB219949E7600D9D168 /* ExtMutableArray+ParseExt.m */,
+				5034A03219FC59A600C52A42 /* CTHMutableArray+ParseExt.h */,
+				5034A03319FC59A600C52A42 /* CTHMutableArray+ParseExt.m */,
 			);
 			path = Parse;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 				509D7CF619949E7600D9D168 /* UIScrollView+Helpers.m in Sources */,
 				509D7CFC19949E7600D9D168 /* UIViewController+KeyboardHelpers.m in Sources */,
 				507C3E1F19D3DAB900E0D25A /* NSArray+CTHPair.m in Sources */,
+				5034A03419FC59A600C52A42 /* CTHMutableArray+ParseExt.m in Sources */,
 				509D7CFF19949E7600D9D168 /* Base64.m in Sources */,
 				509D7CF819949E7600D9D168 /* UITableView+Helpers.m in Sources */,
 				509D7D0519949E7600D9D168 /* LoadingIndicatorView.m in Sources */,

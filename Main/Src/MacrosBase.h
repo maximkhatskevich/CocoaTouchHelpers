@@ -127,4 +127,8 @@ isIntValueInRangeBetweenMinAndMax(int value, int min, int max)
 
 //===
 
+#define onePixelValue (1 / [UIScreen mainScreen].scale)
+
+//===
+
 #endif

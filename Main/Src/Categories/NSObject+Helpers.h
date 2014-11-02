@@ -15,7 +15,7 @@
 + (id)objectWithProperties:(NSDictionary *)properties;
 - (void)configureWithProperties:(NSDictionary *)properties;
 
-+ (id)newWithObject:(id)object;
++ (instancetype)newWithObject:(id)object;
 
 - (void)configureWithObject:(id)object; // initial/base instance configuration
 - (void)reConfigure;

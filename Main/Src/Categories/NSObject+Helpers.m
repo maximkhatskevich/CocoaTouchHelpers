@@ -73,7 +73,7 @@
     }
 }
 
-+ (id)newWithObject:(id)object
++ (instancetype)newWithObject:(id)object
 {
     id result = [[self class] new];
     

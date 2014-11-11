@@ -47,15 +47,26 @@
 
 //===
 
+// screen size
+#define mainScreenSize [UIScreen mainScreen].bounds.size
+
+// device type
 #define isPhone ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
 #define isPad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 
+// particular iPhone type by screen height
+#define is480hScreen (isPhone && (mainScreenSize.height == 480)) // up to iPhone 4S - 3.5"
+#define is568hScreen (isPhone && (mainScreenSize.height == 568)) // iPhone 5/5S - 4"
+#define is667hScreen (isPhone && (mainScreenSize.height == 667)) // iPhone 6 - 4.7"
+#define is736hScreen (isPhone && (mainScreenSize.height == 736)) // iPhone 6 Plus - 5.5"
+
+//=== DEPRECATED
+
 // is it iPhone with retina 4 inches (iPhone 5)?
-#define isRetina4 (isPhone && ([UIScreen mainScreen].bounds.size.height == 568))
+#define isRetina4 is568hScreen
 
-#define isRetina ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0))
-
-#define mainScreenSize [UIScreen mainScreen].bounds.size
+// is retina display?
+#define isRetina ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale > 1.0))
 
 //===
 

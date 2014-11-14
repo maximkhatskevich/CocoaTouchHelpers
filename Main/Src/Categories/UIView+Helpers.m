@@ -10,6 +10,9 @@
 
 #import "MacrosBase.h"
 
+NSTimeInterval defaultAnimationDuration = 0.35;
+UIViewAnimationOptions defaultAnimationOptions = UIViewAnimationOptionCurveEaseInOut;
+
 static __weak UIView *sharedOverlay = nil;
 static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
 

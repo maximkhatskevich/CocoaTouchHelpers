@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.default_subspec = 'Core'
 
   s.subspec 'Core' do |cs|
-    cs.source_files  = "Main/Src/*.swift", "Main/Src/*.{h,m}", "Main/Src/Categories/*.{h,m}", "Main/Src/Classes/*.{h,m}"
+    cs.source_files  = "Main/Src/*.{h,m}", "Main/Src/Categories/*.{h,m}", "Main/Src/Classes/*.{h,m}"
   end
 
   s.subspec 'ParseExt' do |ps|

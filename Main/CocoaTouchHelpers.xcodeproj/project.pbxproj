@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		500043DC1A16A4D5007B4450 /* CTHUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500043DB1A16A4D5007B4450 /* CTHUtils.swift */; };
 		500997D419E18C4D007810DA /* CTHMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 500997D319E18C4D007810DA /* CTHMutableArray.m */; };
 		5009CA8119AE8951005FE34F /* CTHElasticFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5009CA8019AE8951005FE34F /* CTHElasticFlowLayout.m */; };
 		5011398319A2AA2300D21BDF /* CTHDeviceHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 5011398219A2AA2300D21BDF /* CTHDeviceHardware.m */; };
@@ -68,8 +67,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		500043D81A167639007B4450 /* CocoaTouchHelpers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CocoaTouchHelpers-Bridging-Header.h"; sourceTree = "<group>"; };
-		500043DB1A16A4D5007B4450 /* CTHUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTHUtils.swift; sourceTree = "<group>"; };
 		500997D219E18C4D007810DA /* CTHMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHMutableArray.h; sourceTree = "<group>"; };
 		500997D319E18C4D007810DA /* CTHMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHMutableArray.m; sourceTree = "<group>"; };
 		5009CA7F19AE8951005FE34F /* CTHElasticFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHElasticFlowLayout.h; sourceTree = "<group>"; };
@@ -252,7 +249,6 @@
 				509D7CE519949E7600D9D168 /* CocoaTouchHelpers.h */,
 				509D7CE619949E7600D9D168 /* GlobalBase.h */,
 				509D7CE719949E7600D9D168 /* MacrosBase.h */,
-				500043DB1A16A4D5007B4450 /* CTHUtils.swift */,
 				509D7C9F19949E7600D9D168 /* Categories */,
 				509D7CCB19949E7600D9D168 /* Classes */,
 				509D7D0919949E8400D9D168 /* Supporting files */,
@@ -365,7 +361,6 @@
 		509D7D0919949E8400D9D168 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
-				500043D81A167639007B4450 /* CocoaTouchHelpers-Bridging-Header.h */,
 				509D7CE419949E7600D9D168 /* CocoaTouchHelpers-Prefix.pch */,
 			);
 			name = "Supporting files";
@@ -467,7 +462,6 @@
 				509D7CF119949E7600D9D168 /* UIColor+Helpers.m in Sources */,
 				50FC170119C51EDC004C9010 /* CTHExtCollectionCtrl.m in Sources */,
 				509D7CF919949E7600D9D168 /* UIView+FontHelpers.m in Sources */,
-				500043DC1A16A4D5007B4450 /* CTHUtils.swift in Sources */,
 				509D7D0119949E7600D9D168 /* CoreDataCtrl.m in Sources */,
 				5011398319A2AA2300D21BDF /* CTHDeviceHardware.m in Sources */,
 				509D7CF219949E7600D9D168 /* UIImage+Helpers.m in Sources */,
@@ -582,16 +576,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B17609AFF25496AA685BE9A2 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				DSTROOT = /tmp/CocoaTouchHelpers.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Src/CocoaTouchHelpers-Prefix.pch";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Src/CocoaTouchHelpers-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -599,15 +589,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 52E67605996F6B44A8CC2FB8 /* Pods.release.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				DSTROOT = /tmp/CocoaTouchHelpers.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Src/CocoaTouchHelpers-Prefix.pch";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Src/CocoaTouchHelpers-Bridging-Header.h";
 			};
 			name = Release;
 		};

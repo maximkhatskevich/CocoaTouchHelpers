@@ -7,6 +7,6 @@ xcodeproj 'Main/CocoaTouchHelpers'
 
 # target 'CocoaTouchHelpers' do
 
-	pod 'Parse-SDK-Helpers', :git => 'https://github.com/maximkhatskevich/ParseHelpers.git'
+pod 'Parse-SDK-Helpers', :git => 'https://github.com/maximkhatskevich/ParseHelpers.git'
 
 # end

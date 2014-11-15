@@ -67,7 +67,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		500044221A16BD43007B4450 /* CTHUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTHUtils.h; sourceTree = "<group>"; };
 		500997D219E18C4D007810DA /* CTHMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHMutableArray.h; sourceTree = "<group>"; };
 		500997D319E18C4D007810DA /* CTHMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHMutableArray.m; sourceTree = "<group>"; };
 		5009CA7F19AE8951005FE34F /* CTHElasticFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHElasticFlowLayout.h; sourceTree = "<group>"; };
@@ -250,7 +249,6 @@
 				509D7CE519949E7600D9D168 /* CocoaTouchHelpers.h */,
 				509D7CE619949E7600D9D168 /* GlobalBase.h */,
 				509D7CE719949E7600D9D168 /* MacrosBase.h */,
-				500044221A16BD43007B4450 /* CTHUtils.h */,
 				509D7C9F19949E7600D9D168 /* Categories */,
 				509D7CCB19949E7600D9D168 /* Classes */,
 				509D7D0919949E8400D9D168 /* Supporting files */,

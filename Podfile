@@ -8,7 +8,8 @@ xcodeproj 'CTHSamples/CTHSamples'
 
 # target 'CocoaTouchHelpers' do
 
-pod 'CocoaTouchHelpers', :git => 'https://github.com/maximkhatskevich/CocoaTouchHelpers.git'
+pod 'Parse-SDK-Helpers', :git => 'https://github.com/maximkhatskevich/ParseHelpers.git'
+pod 'CocoaTouchHelpers/Core', :git => 'https://github.com/maximkhatskevich/CocoaTouchHelpers.git'
 pod 'CocoaTouchHelpers/ParseExt', :git => 'https://github.com/maximkhatskevich/CocoaTouchHelpers.git'
 
 # end

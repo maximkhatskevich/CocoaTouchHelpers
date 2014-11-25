@@ -21,8 +21,8 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'ParseExt' do |ps|
-    ps.dependency 'Parse-SDK-Helpers', :git => 'https://github.com/maximkhatskevich/ParseHelpers.git'
-    ps.dependency 'CocoaTouchHelpers/Core', :git => 'https://github.com/maximkhatskevich/CocoaTouchHelpers.git'
+    ps.dependency 'Parse-SDK-Helpers'
+    ps.dependency 'CocoaTouchHelpers/Core'
     ps.source_files  = "Main/Src/Categories/Parse/*.{h,m}"
   end
 

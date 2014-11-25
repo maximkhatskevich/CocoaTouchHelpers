@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 #import "CocoaTouchHelpers.h"
+#import "CTHMutableArray+ParseExt.h"
 
 @interface ViewController ()
 
@@ -22,7 +23,11 @@
     
     //===
     
-    //
+    if (thisMoment &&
+        [CTHMutableArray arrayWithParseSupport])
+    {
+        NSLog(@"It works!");
+    }
 }
 
 @end

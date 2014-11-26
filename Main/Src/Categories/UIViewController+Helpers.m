@@ -147,19 +147,24 @@
 
 + (id)newWithScreenNib
 {
-    NSString *className = NSStringFromClass([self class]);
+    NSString *baseName = NSStringFromClass([self class]);
     NSString *targetNibName = @"";
     
     //===
     
-    if ([self.class xibExists:className])
+    if ([self.class xibExists:baseName])
     {
-        targetNibName = [className copy]; // default fallback
+        targetNibName = [baseName copy]; // default fallback
     }
     
     //===
     
-    NSString *nibName = [className stringByAppendingString:@"480"];
+    baseName = [baseName stringByAppendingString:
+                (isPhone ? @"Phone" : @"Pad")];
+    
+    //===
+    
+    NSString *nibName = [baseName stringByAppendingString:@"480"];
     
     if ([self.class xibExists:nibName])
     {
@@ -171,7 +176,7 @@
     
     //===
     
-    nibName = [className stringByAppendingString:@"568"];
+    nibName = [baseName stringByAppendingString:@"568"];
     
     if ([self.class xibExists:nibName])
     {
@@ -183,7 +188,7 @@
     
     //===
     
-    nibName = [className stringByAppendingString:@"667"];
+    nibName = [baseName stringByAppendingString:@"667"];
     
     if ([self.class xibExists:nibName])
     {
@@ -195,7 +200,7 @@
     
     //===
     
-    nibName = [className stringByAppendingString:@"736"];
+    nibName = [baseName stringByAppendingString:@"736"];
     
     if ([self.class xibExists:nibName])
     {

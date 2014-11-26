@@ -15,7 +15,7 @@
 
 @implementation CTHDeviceHardware
 
-+ (NSString *) platform
++ (NSString *)platformId
 {
     size_t size;
     sysctlbyname("hw.machine", NULL, &size, NULL, 0);
@@ -29,9 +29,9 @@
     return platform;
 }
 
-+ (NSString *) platformString
++ (NSString *)platformName
 {
-    NSString *platform = [self platform];
+    NSString *platform = [self platformId];
     
     if ([platform isEqualToString:@"iPhone1,1"])    return @"iPhone 1G";
     if ([platform isEqualToString:@"iPhone1,2"])    return @"iPhone 3G";

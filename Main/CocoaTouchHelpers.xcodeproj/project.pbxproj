@@ -25,6 +25,7 @@
 		50465B011A2661C200CB105B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50465B001A2661C200CB105B /* Security.framework */; };
 		50465B031A2661C800CB105B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50465B021A2661C800CB105B /* StoreKit.framework */; };
 		50465B051A2661CF00CB105B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50465B041A2661CF00CB105B /* SystemConfiguration.framework */; };
+		50465B061A26651A00CB105B /* ExtMutableArray+ParseExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 509D7CB219949E7600D9D168 /* ExtMutableArray+ParseExt.m */; };
 		5062F7B019B69D32002F7F15 /* NSObject+ReturnExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5062F7AF19B69D32002F7F15 /* NSObject+ReturnExtension.m */; };
 		507C3E1C19D3326F00E0D25A /* CTHPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C3E1B19D3326F00E0D25A /* CTHPair.m */; };
 		507C3E1F19D3DAB900E0D25A /* NSArray+CTHPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C3E1E19D3DAB900E0D25A /* NSArray+CTHPair.m */; };
@@ -470,6 +471,7 @@
 				509D7D0019949E7600D9D168 /* BaseGenericCtrl.m in Sources */,
 				5062F7B019B69D32002F7F15 /* NSObject+ReturnExtension.m in Sources */,
 				509D7D0619949E7600D9D168 /* PassthroughView.m in Sources */,
+				50465B061A26651A00CB105B /* ExtMutableArray+ParseExt.m in Sources */,
 				509D7CF519949E7600D9D168 /* UIResponder+Helpers.m in Sources */,
 				509D7CF619949E7600D9D168 /* UIScrollView+Helpers.m in Sources */,
 				509D7CFC19949E7600D9D168 /* UIViewController+KeyboardHelpers.m in Sources */,

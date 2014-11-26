@@ -12,7 +12,7 @@
 
 @interface CTHDeviceHardware : NSObject
 
-+ (NSString *) platform;
-+ (NSString *) platformString;
++ (NSString *)platformId;
++ (NSString *)platformName;
 
 @end

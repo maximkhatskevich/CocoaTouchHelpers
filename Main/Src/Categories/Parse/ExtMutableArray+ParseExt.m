@@ -8,7 +8,8 @@
 
 #import "ExtMutableArray+ParseExt.h"
 
-#import "NSObject+ParseHelpers.h"
+#import "NSObject+Helpers.h"
+#import <Parse/Parse.h>
 
 //===
 

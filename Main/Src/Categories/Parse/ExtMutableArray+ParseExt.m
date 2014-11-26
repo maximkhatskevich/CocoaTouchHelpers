@@ -20,10 +20,24 @@
     
     //===
     
-    result.onEqualityCheck = ^(id firstObject, id secondObject) {
-        
-        return [firstObject isEqualToParseObject:secondObject];
-    };
+    [result
+     setOnEqualityCheck:^BOOL(id leftObject, id rightObject){
+         
+         BOOL result = NO;
+         
+         //===
+         
+         if ([PFObject isClassOfObject:leftObject] &&
+             [PFObject isClassOfObject:rightObject])
+         {
+             result = [((PFObject *)leftObject).objectId
+                       isEqualToString:((PFObject *)rightObject).objectId];
+         }
+         
+         //===
+         
+         return result;
+     }];
     
     //===
     

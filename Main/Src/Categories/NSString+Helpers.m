@@ -8,6 +8,7 @@
 
 #import "NSString+Helpers.h"
 
+#import <UIKit/UIKit.h>
 #import "MacrosBase.h"
 #import <CommonCrypto/CommonDigest.h>
 

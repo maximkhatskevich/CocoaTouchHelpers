@@ -8,7 +8,8 @@
 
 #import "CTHMutableArray+ParseExt.h"
 
-#import "NSObject+ParseHelpers.h"
+#import "NSObject+Helpers.h"
+#import <Parse/Parse.h>
 
 //===
 
@@ -20,9 +21,23 @@
     
     //===
     
-    [result setOnEqualityCheck:^BOOL(id leftObject, id rightObject){
+    [result
+     setOnEqualityCheck:^BOOL(id leftObject, id rightObject){
         
-        return [leftObject isEqualToParseObject:rightObject];
+         BOOL result = NO;
+         
+         //===
+         
+         if ([PFObject isClassOfObject:leftObject] &&
+             [PFObject isClassOfObject:rightObject])
+         {
+             result = [((PFObject *)leftObject).objectId
+                       isEqualToString:((PFObject *)rightObject).objectId];
+         }
+         
+         //===
+         
+         return result;
      }];
     
     //===

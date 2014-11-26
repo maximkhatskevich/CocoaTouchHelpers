@@ -7,10 +7,4 @@
    <FileRef
       location = "group:Main/CocoaTouchHelpers.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:CTHSamples/CTHSamples.xcodeproj">
-   </FileRef>
 </Workspace>

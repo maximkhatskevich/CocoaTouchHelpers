@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Maxim Khatskevich. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 #ifndef CocoaTouchHelpers_GlobalBase_h
 #define CocoaTouchHelpers_GlobalBase_h
 

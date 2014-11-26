@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "CocoaTouchHelpers"
-  s.version      = "1.1.0"
+  s.version      = "1.2.0"
   s.summary      = "Helper classes and categories for Cocoa Touch."
   s.homepage     = "https://github.com/maximkhatskevich/CocoaTouchHelpers"
 
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'ParseExt' do |ps|
-    ps.dependency 'Parse-SDK-Helpers'
+    ps.dependency 'Parse', '~> 1.5'
     ps.dependency 'CocoaTouchHelpers/Core'
     ps.source_files  = "Main/Src/Categories/Parse/*.{h,m}"
   end

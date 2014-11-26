@@ -298,8 +298,11 @@ NSString *retina4postfix = @"-568h";
 
 - (NSString *)stringByAppendingScreenType
 {
-    // Phone4 --> iPhone/iPod Touch with 4 inch (retine) screen
-    return [self stringByAppendingString:(isPhone ? (isRetina4 ? @"Phone4" : @"Phone") : @"Pad")];
+    return
+    [self
+     stringByAppendingFormat:@"%@%f.0",
+     (isPhone ? @"Phone" : @"Pad"),
+     mainScreenSize.height];
 }
 
 @end

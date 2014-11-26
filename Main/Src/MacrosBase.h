@@ -54,6 +54,10 @@
 #define isPhone ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
 #define isPad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 
+#define mainScreenScale [UIScreen mainScreen].scale
+#define isRetinaScreen ([UIScreen mainScreen].scale == 2.0)
+#define isRetinaHDScreen ([UIScreen mainScreen].scale == 3.0)
+
 // particular iPhone type by screen height
 #define is480hScreen (isPhone && (mainScreenSize.height == 480)) // up to iPhone 4S - 3.5"
 #define is568hScreen (isPhone && (mainScreenSize.height == 568)) // iPhone 5/5S - 4"

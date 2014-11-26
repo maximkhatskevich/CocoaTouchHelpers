@@ -138,11 +138,11 @@
             initWithNibName:nibFileName bundle:nil];
 }
 
-+ (BOOL)xibExists:(NSString *)xibName
++ (BOOL)nibExists:(NSString *)nibName
 {
     return
     [[NSFileManager defaultManager] fileExistsAtPath:
-     [[NSBundle mainBundle] pathForResource:xibName ofType:@"xib"]];
+     [[NSBundle mainBundle] pathForResource:nibName ofType:@"nib"]];
 }
 
 + (id)newWithScreenNib
@@ -152,7 +152,7 @@
     
     //===
     
-    if ([self.class xibExists:baseName])
+    if ([self.class nibExists:baseName])
     {
         targetNibName = [baseName copy]; // default fallback
     }
@@ -166,7 +166,7 @@
     
     NSString *nibName = [baseName stringByAppendingString:@"480"];
     
-    if ([self.class xibExists:nibName])
+    if ([self.class nibExists:nibName])
     {
         if (mainScreenSize.height >= 480.0)
         {
@@ -178,7 +178,7 @@
     
     nibName = [baseName stringByAppendingString:@"568"];
     
-    if ([self.class xibExists:nibName])
+    if ([self.class nibExists:nibName])
     {
         if (mainScreenSize.height >= 568.0)
         {
@@ -190,7 +190,7 @@
     
     nibName = [baseName stringByAppendingString:@"667"];
     
-    if ([self.class xibExists:nibName])
+    if ([self.class nibExists:nibName])
     {
         if (mainScreenSize.height >= 667.0)
         {
@@ -202,7 +202,7 @@
     
     nibName = [baseName stringByAppendingString:@"736"];
     
-    if ([self.class xibExists:nibName])
+    if ([self.class nibExists:nibName])
     {
         if (mainScreenSize.height >= 736.0)
         {

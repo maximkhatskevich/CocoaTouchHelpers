@@ -8,11 +8,13 @@
 
 #import "UIViewController+Helpers.h"
 
+#import <Foundation/Foundation.h>
 #import "UINavigationController+Helpers.h"
 #import "UIStoryboard+Helpers.h"
 #import "UIView+Helpers.h"
 #import "NSString+Helpers.h"
 #import "UIResponder+Helpers.h"
+#import "MacrosBase.h"
 
 @implementation UIViewController (Helpers)
 
@@ -136,13 +138,77 @@
             initWithNibName:nibFileName bundle:nil];
 }
 
++ (BOOL)xibExists:(NSString *)xibName
+{
+    return
+    [[NSFileManager defaultManager] fileExistsAtPath:
+     [[NSBundle mainBundle] pathForResource:xibName ofType:@"xib"]];
+}
+
 + (id)newWithScreenNib
 {
-    NSString *nibFileName = NSStringFromClass([self class]);
-    nibFileName = [nibFileName stringByAppendingScreenType];
+    NSString *className = NSStringFromClass([self class]);
+    NSString *targetNibName = @"";
+    
+    //===
+    
+    if ([self.class xibExists:className])
+    {
+        targetNibName = [className copy]; // default fallback
+    }
+    
+    //===
+    
+    NSString *nibName = [className stringByAppendingString:@"480"];
+    
+    if ([self.class xibExists:nibName])
+    {
+        if (mainScreenSize.height >= 480.0)
+        {
+            targetNibName = nibName;
+        }
+    }
+    
+    //===
+    
+    nibName = [className stringByAppendingString:@"568"];
+    
+    if ([self.class xibExists:nibName])
+    {
+        if (mainScreenSize.height >= 568.0)
+        {
+            targetNibName = nibName;
+        }
+    }
+    
+    //===
+    
+    nibName = [className stringByAppendingString:@"667"];
+    
+    if ([self.class xibExists:nibName])
+    {
+        if (mainScreenSize.height >= 667.0)
+        {
+            targetNibName = nibName;
+        }
+    }
+    
+    //===
+    
+    nibName = [className stringByAppendingString:@"736"];
+    
+    if ([self.class xibExists:nibName])
+    {
+        if (mainScreenSize.height >= 736.0)
+        {
+            targetNibName = nibName;
+        }
+    }
+    
+    //===
     
     return [[[self class] alloc]
-            initWithNibName:nibFileName bundle:nil];
+            initWithNibName:targetNibName bundle:nil];
 }
 
 + (id)newWithSuperview:(UIView *)targetSuperView

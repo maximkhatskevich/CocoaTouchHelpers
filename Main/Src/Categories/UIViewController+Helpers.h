@@ -28,6 +28,7 @@
 + (id)instantiateWithSuperview:(UIView *)targetSuperView andParent:(UIViewController *)parentCtrl;
 
 + (id)newWithDeviceNib; // with device-specific NIB file
++ (BOOL)xibExists:(NSString *)xibName;
 + (id)newWithScreenNib; // with screen-specific NIB file
 
 + (id)newWithSuperview:(UIView *)targetSuperView;

@@ -212,6 +212,17 @@
     
     //===
     
+    if (targetNibName.length)
+    {
+        NSLog(@"Founded NIB with name: %@.", targetNibName);
+    }
+    else
+    {
+        NSLog(@"ERROR: no NIB has been found.");
+    }
+    
+    //===
+    
     return [[[self class] alloc]
             initWithNibName:targetNibName bundle:nil];
 }

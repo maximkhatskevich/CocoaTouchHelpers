@@ -300,7 +300,7 @@ NSString *retina4postfix = @"-568h";
 {
     return
     [self
-     stringByAppendingFormat:@"%@%f.0",
+     stringByAppendingFormat:@"%@%.0f",
      (isPhone ? @"Phone" : @"Pad"),
      mainScreenSize.height];
 }

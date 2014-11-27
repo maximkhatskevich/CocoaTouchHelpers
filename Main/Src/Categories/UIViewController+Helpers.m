@@ -129,15 +129,6 @@
     return result;
 }
 
-+ (id)newWithDeviceNib
-{
-    NSString *nibFileName = NSStringFromClass([self class]);
-    nibFileName = [nibFileName stringByAppendingDeviceType];
-    
-    return [[[self class] alloc]
-            initWithNibName:nibFileName bundle:nil];
-}
-
 + (BOOL)nibExists:(NSString *)nibName
 {
     return
@@ -145,7 +136,49 @@
      [[NSBundle mainBundle] pathForResource:nibName ofType:@"nib"]];
 }
 
-+ (id)newWithScreenNib
++ (instancetype)newWithNib:(NSString *)nibName
+{
+    return [self.class newWithNib:nibName preload:NO]; // do not preload by default
+}
+
++ (instancetype)newWithNib:(NSString *)nibName preload:(BOOL)shouldPreload
+{
+    UIViewController *result = [[[self class] alloc]
+                                initWithNibName:nibName bundle:nil];
+    
+    //===
+    
+    if (shouldPreload)
+    {
+        [result view]; // make it load the view
+    }
+    
+    //===
+    
+    return result;
+}
+
++ (instancetype)newWithDeviceNib
+{
+    return [self.class newWithDeviceNibAndPreload:NO];
+}
+
++ (instancetype)newWithDeviceNibAndPreload:(BOOL)shouldPreload
+{
+    NSString *targetNibName = NSStringFromClass([self class]);
+    targetNibName = [targetNibName stringByAppendingDeviceType];
+    
+    //===
+    
+    return [self.class newWithNib:targetNibName preload:shouldPreload];
+}
+
++ (instancetype)newWithScreenNib
+{
+    return [self.class newWithScreenNibAndPreload:NO];
+}
+
++ (instancetype)newWithScreenNibAndPreload:(BOOL)shouldPreload
 {
     NSString *baseName = NSStringFromClass([self class]);
     NSString *targetNibName = @"";
@@ -223,8 +256,7 @@
     
     //===
     
-    return [[[self class] alloc]
-            initWithNibName:targetNibName bundle:nil];
+    return [self.class newWithNib:targetNibName preload:shouldPreload];
 }
 
 + (id)newWithSuperview:(UIView *)targetSuperView

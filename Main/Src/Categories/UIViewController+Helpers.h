@@ -27,9 +27,13 @@
 + (id)instantiateWithSuperview:(UIView *)targetSuperView;
 + (id)instantiateWithSuperview:(UIView *)targetSuperView andParent:(UIViewController *)parentCtrl;
 
-+ (id)newWithDeviceNib; // with device-specific NIB file
 + (BOOL)nibExists:(NSString *)xibName;
-+ (id)newWithScreenNib; // with screen-specific NIB file
++ (instancetype)newWithNib:(NSString *)nibName;
++ (instancetype)newWithNib:(NSString *)nibName preload:(BOOL)shouldPreload;
++ (instancetype)newWithDeviceNib; // with device-specific NIB file
++ (instancetype)newWithDeviceNibAndPreload:(BOOL)shouldPreload;
++ (instancetype)newWithScreenNib; // with screen-specific NIB file
++ (instancetype)newWithScreenNibAndPreload:(BOOL)shouldPreload;
 
 + (id)newWithSuperview:(UIView *)targetSuperView;
 + (id)newWithSuperview:(UIView *)targetSuperView andParent:(UIViewController *)parentCtrl;

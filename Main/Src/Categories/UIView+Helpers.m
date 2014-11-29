@@ -398,7 +398,7 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
     return result;
 }
 
-+ (id)newWithSuperview:(UIView *)targetSuperView
++ (instancetype)newWithSuperview:(UIView *)targetSuperView
 {
     UIView *result = [[self class] new];
     [result configureWithSuperview:targetSuperView];
@@ -406,6 +406,22 @@ static __weak UIActivityIndicatorView *sharedActivityIndicator = nil;
     //===
     
     return result;
+}
+
++ (instancetype)newWithNibNamed:(NSString *)nibName
+{
+    static UIViewController *ctrl = nil;
+    
+    if (!ctrl)
+    {
+        ctrl = [UIViewController new];
+    }
+    
+    //===
+    
+    return
+    [[NSBundle mainBundle]
+     loadNibNamed:nibName owner:ctrl options:nil].lastObject;
 }
 
 - (void)removeFromSuperviewAnimated

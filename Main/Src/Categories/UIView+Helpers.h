@@ -50,7 +50,8 @@ typedef void (^AnimationCompletionBlock)(BOOL finished);
 
 + (BOOL)isView:(UIView *)childView aSubviewOfView:(UIView *)superView;
 
-+ (id)newWithSuperview:(UIView *)targetSuperView;
++ (instancetype)newWithSuperview:(UIView *)targetSuperView;
++ (instancetype)newWithNibNamed:(NSString *)nibName;
 
 - (void)removeFromSuperviewAnimated;
 

@@ -12,9 +12,11 @@
 
 //===
 
+@class CTHPromise;
+
 typedef id (^CTHPromiseInitialBlock)(void);
 typedef id (^CTHPromiseGenericBlock)(id object);
-typedef void (^CTHPromiseFinalBlock)(id);
+typedef CTHPromise *(^CTHPromiseFinalBlock)(id);
 
 //===
 

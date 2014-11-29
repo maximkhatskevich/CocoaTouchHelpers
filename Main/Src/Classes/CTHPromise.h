@@ -20,7 +20,7 @@
 
 typedef id (^CTHPromiseInitialBlock)(void);
 typedef id (^CTHPromiseGenericBlock)(id object);
-typedef void (^CTHPromiseFinalBlock)(id);
+typedef void (^CTHPromiseFinalBlock)(id object);
 
 //===
 

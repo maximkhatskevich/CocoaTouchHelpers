@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    kObjectStateUnknown = 0 // "unset"
+    kUnknownObjectState = 0 // "unset"
 }
 ObjectState;
 

@@ -12,11 +12,15 @@
 
 //===
 
-@class CTHPromise;
+#define CTHNewPromise CTHPromise *promise = [CTHPromise new]
+
+//===
+
+//@class CTHPromise;
 
 typedef id (^CTHPromiseInitialBlock)(void);
 typedef id (^CTHPromiseGenericBlock)(id object);
-typedef CTHPromise *(^CTHPromiseFinalBlock)(id);
+typedef void (^CTHPromiseFinalBlock)(id);
 
 //===
 
@@ -27,8 +31,9 @@ typedef CTHPromise *(^CTHPromiseFinalBlock)(id);
 + (instancetype)execute:(CTHPromiseInitialBlock)block;
 
 - (instancetype)then:(CTHPromiseGenericBlock)block;
-//- (instancetype)finally:(CTHPromiseFinalBlock)block;
-- (CTHPromiseFinalBlock)finally;
+- (instancetype)finally:(CTHPromiseFinalBlock)block;
 - (instancetype)error:(CTHErrorBlock)block;
+
+- (void)cancel;
 
 @end

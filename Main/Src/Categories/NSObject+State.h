@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "GlobalBase.h"
+
 typedef enum {
     kUnknownObjectState = 0 // "unset"
 }
@@ -31,5 +33,6 @@ typedef void (^StateDidChangeBlock)(NSInteger previousState, NSInteger currentSt
 - (void)setOnStateDidChange:(StateDidChangeBlock)onStateDidChange;
 
 - (void)switchToState:(NSInteger)targetState;
+- (void)switchToState:(NSInteger)targetState completion:(SimpleBlock)completion;
 
 @end

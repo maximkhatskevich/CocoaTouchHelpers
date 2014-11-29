@@ -112,6 +112,11 @@ static void *CTHOnStateDidChangeKey;
 
 - (void)switchToState:(NSInteger)targetState
 {
+    [self switchToState:targetState completion:nil];
+}
+
+- (void)switchToState:(NSInteger)targetState completion:(SimpleBlock)completion
+{
     // needs to be implemented in a custom class
 }
 

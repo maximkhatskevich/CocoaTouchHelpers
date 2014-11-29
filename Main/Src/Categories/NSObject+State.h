@@ -30,4 +30,6 @@ typedef void (^StateDidChangeBlock)(NSInteger previousState, NSInteger currentSt
 - (void)setOnStateWillChange:(StateWillChangeBlock)onStateWillChange;
 - (void)setOnStateDidChange:(StateDidChangeBlock)onStateDidChange;
 
+- (void)switchToState:(NSInteger)targetState;
+
 @end

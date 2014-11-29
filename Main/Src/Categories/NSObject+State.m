@@ -25,7 +25,7 @@ static void *CTHOnStateDidChangeKey;
 {
 //    @synchronized(self)
 //    {
-        NSInteger result = kObjectStateUnknown;
+        NSInteger result = kUnknownObjectState;
         
         //===
         
@@ -108,6 +108,11 @@ static void *CTHOnStateDidChangeKey;
                              &CTHOnStateDidChangeKey,
                              newValue,
                              OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (void)switchToState:(NSInteger)targetState
+{
+    // needs to be implemented in a custom class
 }
 
 @end

@@ -28,6 +28,9 @@ typedef void (^CTHPromiseFinalBlock)(id object);
 
 + (void)setDefaultQueue:(NSOperationQueue *)defaultQueue;
 
++ (CTHPromise *(^)(CTHPromiseInitialBlock block))execute;
+- (CTHPromise *(^)(CTHPromiseGenericBlock block))then;
+
 + (instancetype)execute:(CTHPromiseInitialBlock)block;
 
 - (instancetype)then:(CTHPromiseGenericBlock)block;

@@ -70,12 +70,32 @@ static __weak NSOperationQueue *__defaultQueue;
     return self;
 }
 
-#pragma mark - Custom
+#pragma mark - Global
 
 + (void)setDefaultQueue:(NSOperationQueue *)defaultQueue
 {
     __defaultQueue = defaultQueue;
 }
+
+#pragma mark - Dot syntax suport
+
++ (CTHPromise *(^)(CTHPromiseInitialBlock block))execute
+{
+    return ^CTHPromise *(CTHPromiseInitialBlock block) {
+        
+        return [CTHPromise execute:block];
+    };
+}
+
+- (CTHPromise *(^)(CTHPromiseGenericBlock block))then
+{
+    return ^CTHPromise *(CTHPromiseGenericBlock block) {
+        
+        return [self then:block];
+    };
+}
+
+#pragma mark - Regular syntax suport
 
 + (instancetype)execute:(CTHPromiseInitialBlock)block
 {

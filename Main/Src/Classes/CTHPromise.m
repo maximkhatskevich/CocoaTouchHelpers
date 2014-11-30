@@ -38,6 +38,11 @@ static __weak NSOperationQueue *__defaultQueue;
 
 #pragma mark - Overrided methods
 
++ (void)initialize
+{
+    [self setDefaultQueue:[NSOperationQueue currentQueue]];
+}
+
 - (instancetype)init
 {
     self = [super init];

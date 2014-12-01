@@ -16,18 +16,20 @@
 //===
 
 static __weak NSOperationQueue *__defaultQueue;
+static CTHErrorBlock __defaultErrorBlock;
 
 //===
 
 @interface CTHPromise ()
 
+@property (copy, nonatomic) NSString *name;
 @property (strong, nonatomic) NSBlockOperation *currentOperation;
 
-@property (strong, nonatomic) CTHMutableArray *items;
+@property (strong, nonatomic) NSMutableArray *items;
 @property (strong, nonatomic) id selfLink;
 
-@property (strong, nonatomic) CTHPromiseFinalBlock finalBlock;
-@property (strong, nonatomic) CTHErrorBlock errorBlock;
+@property (copy, nonatomic) CTHPromiseFinalBlock finalBlock;
+@property (copy, nonatomic) CTHErrorBlock errorBlock;
 
 @end
 
@@ -39,7 +41,12 @@ static __weak NSOperationQueue *__defaultQueue;
 
 + (void)initialize
 {
+    [super initialize];
+    
+    //===
+    
     [self setDefaultQueue:[NSOperationQueue currentQueue]];
+    [self setDefaultErrorHandler:nil];
 }
 
 - (instancetype)init
@@ -54,14 +61,26 @@ static __weak NSOperationQueue *__defaultQueue;
         
         //===
         
-        self.items = [CTHMutableArray array];
+        if (__defaultErrorBlock)
+        {
+            self.errorBlock = __defaultErrorBlock;
+        }
+        else
+        {
+            weakSelfMacro;
+            
+            [self
+             setErrorBlock:^(NSError *error) {
+                 
+                 NSLog(@"Sequence named >> %@ << error: %@",
+                       weakSelf.name,
+                       error);
+             }];
+        }
         
-//        [self.items
-//         subscribe:self
-//         onDidChangeContent:^(CTHMAChangeParamSet *params) {
-//             
-//             
-//         }];
+        //===
+        
+        self.items = [NSMutableArray array];
     }
     
     //===
@@ -76,7 +95,25 @@ static __weak NSOperationQueue *__defaultQueue;
     __defaultQueue = defaultQueue;
 }
 
++ (void)setDefaultErrorHandler:(CTHErrorBlock)defaultErrorBlock
+{
+    __defaultErrorBlock = defaultErrorBlock;
+}
+
 #pragma mark - Custom
+
++ (instancetype)newWithName:(NSString *)sequenceName
+{
+    CTHPromise *result = [self.class new];
+    
+    //===
+    
+    result.name = sequenceName;
+    
+    //===
+    
+    return result;
+}
 
 + (instancetype)execute:(CTHPromiseInitialBlock)block
 {
@@ -128,7 +165,7 @@ static __weak NSOperationQueue *__defaultQueue;
     return self;
 }
 
-- (instancetype)error:(CTHErrorBlock)block
+- (instancetype)errorHandler:(CTHErrorBlock)block
 {
     self.errorBlock = block;
     

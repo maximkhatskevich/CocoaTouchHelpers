@@ -29,12 +29,14 @@ typedef void (^CTHPromiseFinalBlock)(id object);
 @property (weak, nonatomic) NSOperationQueue *targetQueue;
 
 + (void)setDefaultQueue:(NSOperationQueue *)defaultQueue;
++ (void)setDefaultErrorHandler:(CTHErrorBlock)defaultErrorBlock;
 
++ (instancetype)newWithName:(NSString *)sequenceName;
 + (instancetype)execute:(CTHPromiseInitialBlock)block;
 
 - (instancetype)then:(CTHPromiseGenericBlock)block;
 - (instancetype)finally:(CTHPromiseFinalBlock)block;
-- (instancetype)error:(CTHErrorBlock)block;
+- (instancetype)errorHandler:(CTHErrorBlock)block;
 
 - (void)cancel;
 

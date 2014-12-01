@@ -77,30 +77,12 @@ static __weak NSOperationQueue *__defaultQueue;
     __defaultQueue = defaultQueue;
 }
 
-#pragma mark - Dot syntax suport
-
-+ (CTHPromise *(^)(CTHPromiseInitialBlock block))execute
-{
-    return ^CTHPromise *(CTHPromiseInitialBlock block) {
-        
-        return [CTHPromise execute:block];
-    };
-}
-
-- (CTHPromise *(^)(CTHPromiseGenericBlock block))then
-{
-    return ^CTHPromise *(CTHPromiseGenericBlock block) {
-        
-        return [self then:block];
-    };
-}
-
-#pragma mark - Regular syntax suport
+#pragma mark - Custom
 
 + (instancetype)execute:(CTHPromiseInitialBlock)block
 {
     return
-    [[self.class new]
+    [self.class.new
      then:^(id object) {
          
          id result = nil;

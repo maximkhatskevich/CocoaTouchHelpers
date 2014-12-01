@@ -19,8 +19,8 @@
 //@class CTHPromise;
 
 typedef id (^CTHPromiseInitialBlock)(void);
-typedef id (^CTHPromiseGenericBlock)(id object);
-typedef void (^CTHPromiseFinalBlock)(id object);
+typedef id (^CTHPromiseGenericBlock)(id previousResult);
+typedef void (^CTHPromiseFinalBlock)(id lastResult);
 
 //===
 
@@ -32,11 +32,11 @@ typedef void (^CTHPromiseFinalBlock)(id object);
 + (void)setDefaultErrorHandler:(CTHErrorBlock)defaultErrorBlock;
 
 + (instancetype)newWithName:(NSString *)sequenceName;
-+ (instancetype)execute:(CTHPromiseInitialBlock)block;
++ (instancetype)execute:(CTHPromiseInitialBlock)firstOperation;
 
-- (instancetype)then:(CTHPromiseGenericBlock)block;
-- (instancetype)finally:(CTHPromiseFinalBlock)block;
-- (instancetype)errorHandler:(CTHErrorBlock)block;
+- (instancetype)then:(CTHPromiseGenericBlock)operation;
+- (instancetype)finally:(CTHPromiseFinalBlock)completion;
+- (instancetype)errorHandler:(CTHErrorBlock)errorHandling;
 
 - (void)cancel;
 

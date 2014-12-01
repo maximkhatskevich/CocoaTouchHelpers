@@ -115,7 +115,7 @@ static CTHErrorBlock __defaultErrorBlock;
     return result;
 }
 
-+ (instancetype)execute:(CTHPromiseInitialBlock)block
++ (instancetype)execute:(CTHPromiseInitialBlock)firstOperation
 {
     return
     [self.class.new
@@ -136,18 +136,18 @@ static CTHErrorBlock __defaultErrorBlock;
     }];
 }
 
-- (instancetype)then:(CTHPromiseGenericBlock)block
+- (instancetype)then:(CTHPromiseGenericBlock)operation
 {
-    [self.items safeAddObject:block];
+    [self.items safeAddObject:operation];
     
     //===
     
     return self;
 }
 
-- (instancetype)finally:(CTHPromiseFinalBlock)block
+- (instancetype)finally:(CTHPromiseFinalBlock)completion
 {
-    self.finalBlock = block;
+    self.finalBlock = completion;
     
     //===
     
@@ -165,9 +165,9 @@ static CTHErrorBlock __defaultErrorBlock;
     return self;
 }
 
-- (instancetype)errorHandler:(CTHErrorBlock)block
+- (instancetype)errorHandler:(CTHErrorBlock)errorHandling
 {
-    self.errorBlock = block;
+    self.errorBlock = errorHandling;
     
     //===
     
@@ -183,14 +183,21 @@ static CTHErrorBlock __defaultErrorBlock;
 
 - (void)start
 {
-    if (self.items.count)
-    {
-        [self executeNextWithObject:nil];
-    }
+    // make sure we start sequence on main queue:
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        if (self.items.count)
+        {
+            [self executeNextWithObject:nil];
+        }
+    });
 }
 
 - (void)executeNextWithObject:(id)previousResult
 {
+    // NOTE: this mehtod is supposed to be called on main queue
+    
     if (self.items.count)
     {
         // regular block
@@ -249,21 +256,21 @@ static CTHErrorBlock __defaultErrorBlock;
     }
 }
 
-- (void)executeFinal:(id)previousResult
+- (void)executeFinal:(id)lastResult
 {
     if (self.finalBlock)
     {
         // final block
         // run on main queue
         
-        self.finalBlock(previousResult);
-        
-        //===
-        
-        // release self
-        
-        self.selfLink = nil;
+        self.finalBlock(lastResult);
     }
+    
+    //===
+    
+    // release self
+    
+    self.selfLink = nil;
 }
 
 - (void)reportError:(NSError *)error
@@ -274,13 +281,13 @@ static CTHErrorBlock __defaultErrorBlock;
         // run on main queue
         
         self.errorBlock(error);
-        
-        //===
-        
-        // release self
-        
-        self.selfLink = nil;
     }
+    
+    //===
+    
+    // release self
+    
+    self.selfLink = nil;
 }
 
 @end

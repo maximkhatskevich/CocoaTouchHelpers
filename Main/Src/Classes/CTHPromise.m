@@ -21,7 +21,6 @@ static __weak NSOperationQueue *__defaultQueue;
 
 @interface CTHPromise ()
 
-@property (weak, nonatomic) NSOperationQueue *targetQueue;
 @property (strong, nonatomic) NSBlockOperation *currentOperation;
 
 @property (strong, nonatomic) CTHMutableArray *items;
@@ -159,46 +158,53 @@ static __weak NSOperationQueue *__defaultQueue;
     {
         // regular block
         
-        CTHPromiseGenericBlock block = [self.items objectAtIndex:0];
-        [self.items removeObjectAtIndex:0];
-        
-        //===
-        
-        thisOperationMacro;
-        thisOperation = self.currentOperation = [NSBlockOperation new];
-        
-        [thisOperation
-         addExecutionBlock:^{
-             
-             id result = block(previousResult);
-             
-             //===
-             
-             dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.targetQueue)
+        {
+            CTHPromiseGenericBlock block = [self.items objectAtIndex:0];
+            [self.items removeObjectAtIndex:0];
+            
+            //===
+            
+            thisOperationMacro;
+            thisOperation = self.currentOperation = [NSBlockOperation new];
+            
+            [thisOperation
+             addExecutionBlock:^{
                  
-                 self.currentOperation = nil;
+                 id result = block(previousResult);
                  
                  //===
                  
-                 if (!thisOperation.isCancelled)
-                 {
-                     // return
+                 dispatch_async(dispatch_get_main_queue(), ^{
                      
-                     if ([NSError isClassOfObject:result])
+                     self.currentOperation = nil;
+                     
+                     //===
+                     
+                     if (!thisOperation.isCancelled)
                      {
-                         [self reportError:result];
+                         // return
+                         
+                         if ([NSError isClassOfObject:result])
+                         {
+                             [self reportError:result];
+                         }
+                         else
+                         {
+                             [self executeNextWithObject:result];
+                         }
                      }
-                     else
-                     {
-                         [self executeNextWithObject:result];
-                     }
-                 }
-             });
-         }];
-        
-        //===
-        
-        [self.targetQueue addOperation:thisOperation];
+                 });
+             }];
+            
+            //===
+            
+            [self.targetQueue addOperation:thisOperation];
+        }
+        else
+        {
+            NSLog(@"WARNING: Can't execute block sequence, .targetQueue hasn't been set.");
+        }
     }
     else
     {

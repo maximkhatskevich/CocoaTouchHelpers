@@ -26,6 +26,8 @@ typedef void (^CTHPromiseFinalBlock)(id object);
 
 @interface CTHPromise : NSObject
 
+@property (weak, nonatomic) NSOperationQueue *targetQueue;
+
 + (void)setDefaultQueue:(NSOperationQueue *)defaultQueue;
 
 + (instancetype)execute:(CTHPromiseInitialBlock)block;

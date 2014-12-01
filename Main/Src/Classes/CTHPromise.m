@@ -225,7 +225,11 @@ static CTHErrorBlock __defaultErrorBlock;
                      
                      //===
                      
-                     if (!thisOperation.isCancelled)
+                     if (thisOperation.isCancelled)
+                     {
+                         [self releaseSelf];
+                     }
+                     else
                      {
                          // return
                          
@@ -248,6 +252,8 @@ static CTHErrorBlock __defaultErrorBlock;
         else
         {
             NSLog(@"WARNING: Can't execute block sequence, .targetQueue hasn't been set.");
+            
+            [self releaseSelf];
         }
     }
     else
@@ -268,9 +274,7 @@ static CTHErrorBlock __defaultErrorBlock;
     
     //===
     
-    // release self
-    
-    self.selfLink = nil;
+    [self releaseSelf];
 }
 
 - (void)reportError:(NSError *)error
@@ -285,8 +289,11 @@ static CTHErrorBlock __defaultErrorBlock;
     
     //===
     
-    // release self
-    
+    [self releaseSelf];
+}
+
+- (void)releaseSelf
+{
     self.selfLink = nil;
 }
 
